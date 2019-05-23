@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5065a45d-e798-42d7-85a7-c74f34d1f004" name="bioinfluencers" url="http://labmm.clients.ua.pt/deca_18L4/deca_18L4_02">
+        <fileTransfer host="labmm.clients.ua.pt" port="21" rootFolder="/deca_18L4_02">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
