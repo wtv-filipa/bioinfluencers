@@ -21,6 +21,12 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
+    <?php
+    require_once "connections/connection.php";
+    new_db_connection();
+    ?>
+
+
     <!-- Sidebar -->
     <?php include "componentes/navigation.php"; ?>
     <!-- End of Sidebar -->

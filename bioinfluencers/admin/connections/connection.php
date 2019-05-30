@@ -5,9 +5,9 @@ function new_db_connection()
 {
     // Variables for the database connection
     $hostname = 'labmm.clients.ua.pt';
-    $username = "deca_18L4_02_web";
-    $password = "7a9J2U";
-    $dbname = "deca_18L4_02";
+    $username = "deca_18L4_20_web";
+    $password = "Hbsf3u";
+    $dbname = "deca_18L4_20";
 
 
 // Makes the connection
