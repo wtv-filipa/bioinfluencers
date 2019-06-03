@@ -16,7 +16,6 @@
 
 </head>
 
-laadkad
 
 <body id="page-top">
 
