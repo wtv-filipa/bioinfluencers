@@ -85,6 +85,20 @@
                         <th>Ações</th>
                     </tr>
                     </tfoot>
+
+                    <?php
+
+                    require_once "connections/connection.php";
+
+                    $link= new_db_connection(); //Create a new DB connection
+                    $stmt = mysqli_stmt_init($link); //create a prepared statement
+
+                    $query = "SELECT id_users, email, username, date_creation, active, roles_descricao FROM users INNER JOIN roles ON users.ref_id_roles= roles.id_roles WHERE username LIKE ? OR email LIKE ? "; // Define the query
+
+
+                    ?>
+
+
                     <tbody>
                     <tr>
                         <td>100 pessoas ajudaram na recolha de beatas na UA</td>
