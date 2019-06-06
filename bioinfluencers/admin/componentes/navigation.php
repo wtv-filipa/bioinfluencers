@@ -29,38 +29,14 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-           aria-controls="collapseTwo">
+        <a class="nav-link" href="administradores.php">
             <i class="fas fa-user-cog"></i>
             <span>Utilizadores</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Editar utilizadores:</h6>
-                <a class="collapse-item" href="administradores.php">Utilizadores</a>
-            </div>
-        </div>
+
     </li>
 
-    <!--Nav Item - Utilities Collapse Menu-->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-           aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Códigos</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Códigos</h6>
-                <a class="collapse-item" href="codigos_users.php">Códigos dos Utilizadores</a>
-                <!--
-               <a class="collapse-item" href="utilities-border.php">Borders</a>
-               <a class="collapse-item" href="utilities-animation.php">Animations</a>
-               <a class="collapse-item" href="utilities-other.php">Other</a>
-           </div>
-       </div>
-   </li>
-   -->
+
 
                 <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -72,19 +48,34 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
 
-                <h6 class="collapse-header">Páginas:</h6>
+<!--parte das notícias-->
+                <h6 class="collapse-header">Notícias:</h6>
 
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-
-                        <p>Eventos</p>
-                        <a class="collapse-item" href="eventos.php">Eventos</a>
-                        <a class="collapse-item" href="eventos.php">Confirmações</a>
-                    </div>
-                </div>
+                <a class="collapse-item" href="criar_noticia.php"> Criar notícia</a>
                 <a class="collapse-item" href="noticias.php">Notícias</a>
+                <div class="dropdown-divider"></div>
+
+                <!--parte dos eventos-->
+                <h6 class="collapse-header">Eventos:</h6>
+                <a class="collapse-item" href="criar_evento.php"> Criar evento</a>
+                <a class="collapse-item" href="eventos.php">Eventos</a>
+                <div class="dropdown-divider"></div>
+
+                <!--parte dos foruns-->
+                <h6 class="collapse-header">Fóruns:</h6>
+                <a class="collapse-item" href="criar_forum.php"> Criar fórum</a>
                 <a class="collapse-item" href="forum.php">Fórum</a>
+                <div class="dropdown-divider"></div>
+
+                <!--parte dos Categorias-->
+                <h6 class="collapse-header">Fóruns:</h6>
+                <a class="collapse-item" href="criar_categoria.php"> Criar categoria</a>
                 <a class="collapse-item" href="categorias.php">Categorias do fórum</a>
+                <div class="dropdown-divider"></div>
+
+
+                <!--parte dos Categorias-->
+                <h6 class="collapse-header">Conteúdos:</h6>
                 <a class="collapse-item" href="conteudos.php">Conteúdos</a>
                 <!--<div class="collapse-divider"></div>
                 <h6 class="collapse-header">Other Pages:</h6>
