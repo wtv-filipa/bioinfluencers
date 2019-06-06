@@ -38,13 +38,13 @@
 
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT nome_categoria, data_criacao, descricao 
+                    $query = "SELECT id_categorias, nome_categoria, data_criacao, descricao 
                               FROM categorias";
 
                     if (mysqli_stmt_prepare($stmt, $query)) {
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $nome_categoria, $data_criacao, $descricao);
+                    mysqli_stmt_bind_result($stmt, $id_categoria,$nome_categoria, $data_criacao, $descricao);
                     while (mysqli_stmt_fetch($stmt)) {
 
                         ?>
@@ -54,9 +54,13 @@
                          <td><?= $data_criacao?></td>
                          <td><?=$descricao?></td>
                          <td>
-                             <i class="fas fa-trash"></i>
+                             <a href="scripts/apagar_categorias.php?id=<?=$id_categoria?>">
+                                 <i class="fas fa-trash"></i>
+                             </a>
 
-                             <i class="fas fa-edit"></i></td>
+                             <a href="">
+                                 <i class="fas fa-edit"></i></td>
+                             <a href="">
                         </tr>
 
                     <?php

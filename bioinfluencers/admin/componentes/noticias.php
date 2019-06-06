@@ -17,7 +17,7 @@
                 <!--colocar título da notícia-->
                 <div class="form-group col-xl-6 col-lg-6 col-sm-6">
                     <label class="text-gray-800" for="titulo">Título</label>
-                    <input type="text" class="form-control" id="titulo" placeholder="Indique o título">
+                    <input type="text" class="form-control" id="titulo" name="titulo" formmethod="post" placeholder="Indique o título">
                 </div>
 
                 <!--colocar subtítulo da notícia-->
