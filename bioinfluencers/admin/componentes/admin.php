@@ -1,3 +1,5 @@
+
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -16,22 +18,27 @@
                     <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Função Administrador</th>
+                        <th>Nickname</th>
+                        <th>Password</th>
                         <th>Email</th>
-                        <th>Ação</th>
+                        <th>Data de nascimento</th>
+                        <th>Descrição</th>
+                        <th>Pontos</th>
+                        <th>Data criação</th>
+                        <th>Tipo</th>
+                        <th>Código utilizador</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Função Administrador</th>
-                        <th>Email</th>
-                        <th>Ação</th>
-                    </tr>
-                    </tfoot>
+
                     <tbody>
                     <tr>
-                        <td>Ana Ferreira</td>
+                        <td></td>
+                        <td>Tudo</td>
+                        <td>Tudo</td>
+                        <td>Tudo</td>
+                        <td>Tudo</td>
+                        <td>Tudo</td>
+                        <td>Tudo</td>
                         <td>Tudo</td>
                         <td>anafilipa.ferreira99@ua.pt</td>
                         <td>
@@ -40,48 +47,20 @@
                             <i class="fas fa-edit"></i></td>
                     </tr>
 
+                    <tfoot>
                     <tr>
-                        <td> Frederico Almeida</td>
-                        <td>Edição de notícias</td>
-                        <td>joseinfluencer@gmail.com</td>
-                        <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban"></i>
-                            <i class="fas fa-edit"></i></td>
+                        <th>Nome</th>
+                        <th>Nickname</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Data de nascimento</th>
+                        <th>Descrição</th>
+                        <th>Pontos</th>
+                        <th>Data criação</th>
+                        <th>Tipo</th>
+                        <th>Código utilizador</th>
                     </tr>
-
-                    <tr>
-                        <td>Adriana Simões</td>
-                        <td>Tudo</td>
-                        <td>asimoes@gmail.com</td>
-                        <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban"></i>
-                            <i class="fas fa-edit"></i></td>
-                    </tr>
-
-                    <tr>
-                        <td>Rita Silva</td>
-                        <td>Gestora de códigos</td>
-                        <td>ritas@gmail.com</td>
-                        <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban"></i>
-                            <i class="fas fa-edit"></i></td>
-                    </tr>
-
-                    <tr>
-                        <td>Eduardo Santos</td>
-                        <td>Gestor de eventos</td>
-                        <td>edusantos@gmail.com</td>
-                        <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban"></i>
-                            <i class="fas fa-edit"></i></td>
-                    </tr>
-
-
-
+                    </tfoot>
                     </tbody>
                 </table>
             </div>
