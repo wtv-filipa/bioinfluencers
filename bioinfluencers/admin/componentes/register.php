@@ -13,40 +13,47 @@
 
                         <form method="post" role="form" id="register-form" action="scripts/registo.php">
                             <div class="form-group">
-                                <label for="input2EmailForm" class="sr-only form-control-label">username</label>
-                                <div class="mx-auto col-sm-10">
+                                <label class="text-gray-800" for="username">Username</label>
+                                <div class="col-sm-10 p-0 m-0">
                                     <input type="text" class="form-control" id="input2UserForm" name="nome"
                                            placeholder="username"
                                            required="required">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input2EmailForm" class="sr-only form-control-label">nickname</label>
-                                <div class="mx-auto col-sm-10">
+                                <label class="text-gray-800" for="nickname">Nickname</label>
+                                <div class="col-sm-10 p-0 m-0">
                                     <input type="text" class="form-control" id="input2UserForm" name="nickname"
                                            placeholder="nickname"
                                            required="required">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input2EmailForm" class="sr-only form-control-label">email</label>
-                                <div class="mx-auto col-sm-10">
+                                <label class="text-gray-800" for="email">Email</label>
+                                <div class="col-sm-10 p-0 m-0">
                                     <input type="email" class="form-control" id="input2EmailForm" name="email"
                                            placeholder="email"
                                            required="required" onchange="email_validate(this.value);">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input2PasswordForm" class="sr-only form-control-label">password</label>
-                                <div class="mx-auto col-sm-10">
+                                <label class="text-gray-800" for="data_nasc">Data de nascimento</label>
+                                <div class="col-sm-10 p-0 m-0">
+                                    <input type="date" class="form-control" id="data_nasc" name="data_nasc"
+                                           placeholder="data de nascimento">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-gray-800" for="pass">Password</label>
+                                <div class="col-sm-10 p-0 m-0">
                                     <input type="password" class="form-control" id="password" name="password"
                                            placeholder="password" required="required"
                                            onkeyup="checkPass(); return false;">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input2Password2Form" class="sr-only form-control-label">verify</label>
-                                <div class="mx-auto col-sm-10">
+                                <label class="text-gray-800" for="vpass">Verify password</label>
+                                <div class="col-sm-10 p-0 m-0">
                                     <input type="password" class="form-control" id="password_confirm"
                                            placeholder="verify password" required="required"
                                            onkeyup="checkPass(); return false;">
@@ -54,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="mx-auto col-sm-10 pb-3 pt-2">
+                                <div class="col-sm-10 pb-3 pt-2">
                                     <button type="submit" class="btn btn-outline-secondary btn-lg btn-block">Register
                                     </button>
                                 </div>

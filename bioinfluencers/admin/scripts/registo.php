@@ -1,19 +1,21 @@
 <?php
 require_once "../connections/connection.php";
 
-if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"]) && isset($_POST["password"])) {
+if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["data_nasc"])) {
 
     $link = new_db_connection();
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "INSERT INTO utilizadores (nome, nickname, email, password) VALUES (?,?,?,?)";
+    $query = "INSERT INTO utilizadores (nome, nickname, password, email, data_nascimento, descricao) VALUES (?,?,?,?,?,?)";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
-        mysqli_stmt_bind_param($stmt, 'ssss', $nome, $nickname, $email, $password_hash);
+        mysqli_stmt_bind_param($stmt, 'ssssss', $nome, $nickname,  $password_hash, $email, $data_nasc, $descricao);
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $nickname = $_POST['nickname'];
+        $data_nasc = $_POST["data_nasc"];
+        $descricao = $_POST["descricao"];
         $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         // VALIDAÇÃO DO RESULTADO DO EXECUTE
@@ -36,6 +38,6 @@ if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"])
         mysqli_close($link);
     }
 } else {
-    echo "Error:" . mysqli_error($link);
+    //echo "Error:" . mysqli_error($link);
     echo "Campos do formulário por preencher";
 }
