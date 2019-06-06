@@ -47,7 +47,7 @@
                         <td>$title</td>
                         <td>$subtitle</td>
                         <td>
-                            <i class=\"fas fa-trash\"></i>
+                            <a data-toggle=\"modal\" data-target=\"#apagar\"> <i class=\"fas fa-trash\"></i> </a>
                             <a href='editar_noticia.php?id=$id'><i class=\"fas fa-edit\"></i></a>
                             <!-- Button trigger modal -->
                             <a data-toggle=\"modal\" data-target=\"#mymodal\">
@@ -61,7 +61,8 @@
 
                     </tbody>";
 
-                            echo "<!-- Modal -->
+
+                            echo "<!-- Modal mais info -->
     <div class=\"modal fade\" id=\"mymodal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
         <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
             <div class=\"modal-content\">
@@ -84,6 +85,29 @@
                     <h5>Data: </h5>
                     <p> $date </p>
                     <hr style=\"background-color: #7FC53C; opacity: 0.5\">
+
+                </div>
+            </div>
+        </div>
+    </div>";
+
+
+
+                            echo "<!-- Modal delete -->
+    <div class=\"modal fade\" id=\"apagar\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
+        <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
+            <div class=\"modal-content\">
+                <div class=\"modal-header\" style=\"background-color: #7FC53C\">
+                    <h5 class=\"modal-title\" style=\"color:white\" id=\"exampleModalLongTitle\">Tem a certeza que quer apagar $title ?</h5>
+                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                        <span aria-hidden=\"true\">&times;</span>
+                    </button>
+                </div>
+                <div class=\"modal-body\">
+                    
+                    <a href='scripts/delete_noticias.php?id=$id'> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                        Apagar
+                    </button> </a>
 
                 </div>
             </div>
