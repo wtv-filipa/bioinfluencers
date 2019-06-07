@@ -2,11 +2,13 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center p-0" href="index.php">
         <!--<div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>-->
-        <div class="sidebar-brand-text mx-3">BioInfluencers Admin</div>
+        <div class="sidebar-brand-text mx-3">
+            <img class="w-100" src="img/logo_n.png">
+        </div>
     </a>
 
     <!-- Divider -->
@@ -50,27 +52,26 @@
 
 <!--parte das notícias-->
                 <h6 class="collapse-header">Notícias:</h6>
-
-                <a class="collapse-item" href="criar_noticia.php"> Criar notícia</a>
                 <a class="collapse-item" href="noticias.php">Notícias</a>
+                <a class="collapse-item" href="criar_noticia.php"> Criar notícia</a>
                 <div class="dropdown-divider"></div>
 
                 <!--parte dos eventos-->
                 <h6 class="collapse-header">Eventos:</h6>
-                <a class="collapse-item" href="criar_evento.php"> Criar evento</a>
                 <a class="collapse-item" href="eventos.php">Eventos</a>
+                <a class="collapse-item" href="criar_evento.php"> Criar evento</a>
                 <div class="dropdown-divider"></div>
 
                 <!--parte dos foruns-->
-                <h6 class="collapse-header">Fóruns:</h6>
-                <a class="collapse-item" href="criar_forum.php"> Criar fórum</a>
-                <a class="collapse-item" href="forum.php">Fórum</a>
+                <h6 class="collapse-header">Grupos:</h6>
+                <a class="collapse-item" href="grupos.php">Grupos</a>
+                <a class="collapse-item" href="criar_grupo.php"> Criar grupos</a>
                 <div class="dropdown-divider"></div>
 
                 <!--parte dos Categorias-->
-                <h6 class="collapse-header">Fóruns:</h6>
-                <a class="collapse-item" href="criar_categoria.php"> Criar categoria</a>
-                <a class="collapse-item" href="categorias.php">Categorias do fórum</a>
+                <h6 class="collapse-header">Categorias: </h6>
+                <a class="collapse-item" href="categorias.php">Categorias dos grupos</a>
+                <a class="collapse-item" href="criar_categorias.php"> Criar categoria</a>
                 <div class="dropdown-divider"></div>
 
 

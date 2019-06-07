@@ -27,11 +27,6 @@
     new_db_connection();
     ?>
 
-
-
-
-
-
             <!-- Begin Page Content -->
             <div class="container-fluid">
 

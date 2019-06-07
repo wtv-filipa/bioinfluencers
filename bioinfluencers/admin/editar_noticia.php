@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +8,7 @@
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Editar Eventos</title>
+    <title>Editar Notícias</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>

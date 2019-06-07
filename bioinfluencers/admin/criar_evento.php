@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Notícias</title>
+    <title>Eventos</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -32,6 +31,11 @@ session_start();
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
+        <?php
+        require_once "connections/connection.php";
+        new_db_connection();
+        ?>
+
         <!-- Main Content -->
         <div id="content">
 
@@ -40,7 +44,8 @@ session_start();
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <?php include "componentes/criar_noticia.php"; ?>
+            <?php include "componentes/criar_evento.php"; ?>
+
             <!-- /.container-fluid -->
 
         </div>

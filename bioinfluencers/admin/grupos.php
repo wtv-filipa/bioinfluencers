@@ -10,7 +10,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Notícias</title>
+    <title>Fórum</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -40,7 +40,7 @@ session_start();
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <?php include "componentes/criar_noticia.php"; ?>
+             <?php include "componentes/grupos.php"; ?>
             <!-- /.container-fluid -->
 
         </div>
