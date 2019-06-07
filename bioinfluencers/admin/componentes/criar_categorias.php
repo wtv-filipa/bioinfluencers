@@ -8,14 +8,14 @@
     <div class="row">
         <div class="col-xl-12">
 
-            <form method="post" action="scripts/categorias.php">
+            <form method="post" action="scripts/inserir_categorias.php">
 
                 <div class="row">
 
                     <!--colocar nome da categoria-->
                     <div class="form-group  col-xl-6 col-lg-6 col-sm-6">
                         <label class="text-gray-800" for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Indique o nome do fórum">
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Indique o nome da categoria">
                     </div>
 
                     <!--colocar descrição-->

@@ -50,27 +50,26 @@
 
 <!--parte das notícias-->
                 <h6 class="collapse-header">Notícias:</h6>
-
-                <a class="collapse-item" href="criar_noticia.php"> Criar notícia</a>
                 <a class="collapse-item" href="noticias.php">Notícias</a>
+                <a class="collapse-item" href="criar_noticia.php"> Criar notícia</a>
                 <div class="dropdown-divider"></div>
 
                 <!--parte dos eventos-->
                 <h6 class="collapse-header">Eventos:</h6>
-                <a class="collapse-item" href="criar_evento.php"> Criar evento</a>
                 <a class="collapse-item" href="eventos.php">Eventos</a>
+                <a class="collapse-item" href="criar_evento.php"> Criar evento</a>
                 <div class="dropdown-divider"></div>
 
                 <!--parte dos foruns-->
-                <h6 class="collapse-header">Fóruns:</h6>
-                <a class="collapse-item" href="criar_forum.php"> Criar fórum</a>
-                <a class="collapse-item" href="forum.php">Fórum</a>
+                <h6 class="collapse-header">Grupos:</h6>
+                <a class="collapse-item" href="forum.php">Grupos</a>
+                <a class="collapse-item" href="criar_forum.php"> Criar grupos</a>
                 <div class="dropdown-divider"></div>
 
                 <!--parte dos Categorias-->
-                <h6 class="collapse-header">Fóruns:</h6>
-                <a class="collapse-item" href="criar_categoria.php"> Criar categoria</a>
-                <a class="collapse-item" href="categorias.php">Categorias do fórum</a>
+                <h6 class="collapse-header">Categorias: </h6>
+                <a class="collapse-item" href="categorias.php">Categorias dos grupos</a>
+                <a class="collapse-item" href="criar_categorias.php"> Criar categoria</a>
                 <div class="dropdown-divider"></div>
 
 
