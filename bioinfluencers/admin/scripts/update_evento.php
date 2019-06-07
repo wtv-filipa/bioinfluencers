@@ -31,7 +31,7 @@ if (isset($_GET["id"])  && isset($_POST["nome"]) && isset($_POST["local"])  && i
 
     if (mysqli_stmt_prepare($stmt, $query)) {
 
-        mysqli_stmt_bind_param($stmt, 'sssssssssi', $nome,  $local, $data_inicio, $data_fim,  $hora_inicio, $hora_fim, $descricao, $responsavel, $custos, $id_evento);
+        mysqli_stmt_bind_param($stmt, 'ssssssssii', $nome,  $local, $data_inicio, $data_fim,  $hora_inicio, $hora_fim, $descricao, $responsavel, $custos, $id_evento);
 
 
         /* execute the prepared statement */
