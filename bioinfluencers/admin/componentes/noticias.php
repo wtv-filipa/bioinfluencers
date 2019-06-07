@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Título</th>
@@ -47,7 +47,7 @@
                         <td>$title</td>
                         <td>$subtitle</td>
                         <td>
-                            <i class=\"fas fa-trash\"></i>
+                             <a href='scripts/delete_noticias.php?id=$id'><i class=\"fas fa-trash\"></i></a>
                             <a href='editar_noticia.php?id=$id'><i class=\"fas fa-edit\"></i></a>
                             <!-- Button trigger modal -->
                             <a data-toggle=\"modal\" data-target=\"#mymodal\">
