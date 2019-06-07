@@ -2,11 +2,13 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center p-0" href="index.php">
         <!--<div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>-->
-        <div class="sidebar-brand-text mx-3">BioInfluencers Admin</div>
+        <div class="sidebar-brand-text mx-3">
+            <img class="w-100" src="img/logo_n.png">
+        </div>
     </a>
 
     <!-- Divider -->
@@ -62,8 +64,8 @@
 
                 <!--parte dos foruns-->
                 <h6 class="collapse-header">Grupos:</h6>
-                <a class="collapse-item" href="forum.php">Grupos</a>
-                <a class="collapse-item" href="criar_forum.php"> Criar grupos</a>
+                <a class="collapse-item" href="grupos.php">Grupos</a>
+                <a class="collapse-item" href="criar_grupo.php"> Criar grupos</a>
                 <div class="dropdown-divider"></div>
 
                 <!--parte dos Categorias-->
