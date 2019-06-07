@@ -10,7 +10,7 @@ if (isset($_GET["id"])) {
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "DELETE FROM eventos WHERE id_categorias= ?";
+    $query = "DELETE FROM eventos WHERE id_eventos= ?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
         mysqli_stmt_bind_param($stmt, 'i', $id_evento);
@@ -30,7 +30,7 @@ if (isset($_GET["id"])) {
     }
     mysqli_close($link);
 
-    header("Location: ../categorias.php");
+    header("Location: ../eventos.php");
 
 
 }
