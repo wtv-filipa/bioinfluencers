@@ -42,9 +42,6 @@
                         <input type="time"  min="00:00" max="23:59" class="form-control" id="hora_fim" name="hora_fim" placeholder="Indique a hora do fim">
                     </div>
 
-
-
-
                     <!--upload de imagem
                     <div class="form-group col-xl-6 col-lg-6 col-sm-6">
                         <label class="text-gray-800" for="img2">Imagem</label>
@@ -52,7 +49,6 @@
                             <input type="file" id="img2" name="image" class="file-upload"/>
                         </div>
                     </div>-->
-
 
                 <div class="form-group col-12">
                     <label class="text-gray-800" for="descricao">Descrição</label>
@@ -68,7 +64,7 @@
 
                 <div class="form-group col-xl-6 col-lg-6 col-sm-6">
                     <label class="text-gray-800" for="custos">Custos</label>
-                    <input type="text" class="form-control" id="custos" placeholder="Indique os custos do evento" name="custos">
+                    <input type="number" class="form-control" id="custos" placeholder="Indique os custos do evento" name="custos">
                 </div>
 
                 <div class="form-group col-3">

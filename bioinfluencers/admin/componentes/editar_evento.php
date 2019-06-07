@@ -95,7 +95,7 @@ if (isset($_GET["id"])){
 
                                 <div class="form-group col-xl-6 col-lg-6 col-sm-6">
                                     <label class="text-gray-800" for="custos">Custos</label>
-                                    <input type="text" class="form-control" id="custos"
+                                    <input type="number" class="form-control" id="custos"
                                            value="<?=$custos?>" placeholder="Indique os custos do evento" name="custos">
                                 </div>
 

@@ -11,7 +11,7 @@ if (isset($_POST["nome"]) && isset($_POST["data_inicio"]) && isset($_POST["data_
     $query = "INSERT INTO eventos (nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, responsavel) VALUES (?,?,?,?,?,?,?,?,?)";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
-        mysqli_stmt_bind_param($stmt, 'sssssssss', $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $descricao, $custos, $responsavel);
+        mysqli_stmt_bind_param($stmt, 'sssssssis', $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $descricao, $custos, $responsavel);
         $nome = $_POST['nome'];
         $data_inicio= $_POST['data_inicio'];
         $data_fim= $_POST['data_fim'];

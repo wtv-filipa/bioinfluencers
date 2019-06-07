@@ -10691,9 +10691,7 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #78BE20;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #78BE20), to(#00B13F));
-  background-image: linear-gradient(180deg, #78BE20 10%, #00B13F 100%);
+  background-image: url("../img/fundoadmin.png");
   background-size: cover;
 }
 
@@ -11137,7 +11135,7 @@ a:focus {
   text-transform: uppercase;
   font-weight: 800;
   font-size: 0.65rem;
-  color: #b7b9cc;
+  color: black;
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item,
@@ -11415,35 +11413,35 @@ a:focus {
 }
 
 .sidebar-dark .sidebar-heading {
-  color: rgba(255, 255, 255, 0.4);
+  color: black;
 }
 
 .sidebar-dark .nav-item .nav-link {
-  color: rgba(255, 255, 255, 0.8);
+  color: black;
 }
 
 .sidebar-dark .nav-item .nav-link i {
-  color: rgba(255, 255, 255, 0.3);
+  color: black;
 }
 
 .sidebar-dark .nav-item .nav-link:active, .sidebar-dark .nav-item .nav-link:focus, .sidebar-dark .nav-item .nav-link:hover {
-  color: #fff;
+  color: #6e707e;
 }
 
 .sidebar-dark .nav-item .nav-link:active i, .sidebar-dark .nav-item .nav-link:focus i, .sidebar-dark .nav-item .nav-link:hover i {
-  color: #fff;
+  color: #6e707e;
 }
 
 .sidebar-dark .nav-item .nav-link[data-toggle="collapse"]::after {
-  color: rgba(255, 255, 255, 0.5);
+  color: black;
 }
 
 .sidebar-dark .nav-item.active .nav-link {
-  color: #fff;
+  color: black;
 }
 
 .sidebar-dark .nav-item.active .nav-link i {
-  color: #fff;
+  color: black;
 }
 
 .sidebar-dark #sidebarToggle {

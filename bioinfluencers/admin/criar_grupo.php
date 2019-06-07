@@ -9,7 +9,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Editar Eventos</title>
+    <title>Fórum</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -39,7 +39,7 @@ session_start();
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <?php include "componentes/editar_evento.php"; ?>
+             <?php include "componentes/criar_grupo.php"; ?>
             <!-- /.container-fluid -->
 
         </div>
