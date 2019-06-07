@@ -1,7 +1,3 @@
-<?php
-
-session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,10 +18,6 @@ session_start();
 </head>
 
 <body id="page-top">
-<?php
-require_once "connections/connection.php";
-new_db_connection();
-?>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -36,10 +28,12 @@ new_db_connection();
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
+
         <?php
         require_once "connections/connection.php";
         new_db_connection();
         ?>
+
         <!-- Main Content -->
         <div id="content">
 
@@ -48,7 +42,8 @@ new_db_connection();
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <?php include "componentes/listar_eventos.php"; ?>
+            <?php include "componentes/criar_evento.php"; ?>
+
             <!-- /.container-fluid -->
 
         </div>
