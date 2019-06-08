@@ -48,7 +48,7 @@ new_db_connection();
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <?php include "componentes/listar_eventos.php"; ?>
+            <?php include "componentes/eventos.php"; ?>
             <!-- /.container-fluid -->
 
         </div>

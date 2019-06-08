@@ -7,12 +7,10 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary textCustom">Fóruns</h6>
-        </div>
+
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Autor</th>
@@ -42,51 +40,6 @@
                             <i class="fas fa-ban"></i>
                            </td>
                     </tr>
-
-                    <tr>
-                        <td>Eduardo Miguel</td>
-                        <td>vid_03.mp4</td>
-                        <td>vídeo</td>
-                        <td>2019/04/20</td>
-                        <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban"></i>
-                           </td>
-                    </tr>
-
-                    <tr>
-                        <td>Adriana Simões</td>
-                        <td>arvore.jpg</td>
-                        <td>imagem</td>
-                        <td>2019/05/13</td>
-                        <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban"></i>
-                           </td>
-                    </tr>
-
-                    <tr>
-                        <td>Rita silva</td>
-                        <td>IMG_34.jpg</td>
-                        <td>imagem</td>
-                        <td>2019/04/30</td>
-                        <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban"></i>
-                           </td>
-                    </tr>
-
-                    <tr>
-                        <td>Frederico Proença</td>
-                        <td>VID_98.mp4</td>
-                        <td>vídeo</td>
-                        <td>2019/06/20</td>
-                        <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban"></i>
-                           </td>
-                    </tr>
-
                     </tbody>
                 </table>
             </div>
