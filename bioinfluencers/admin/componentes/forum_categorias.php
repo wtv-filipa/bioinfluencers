@@ -3,16 +3,16 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Categorias</h1>
-    <p class="mb-4">Aqui é possível gerir todas as categorias do fórum.</p>
+    <p class="mb-4">Aqui é possível gerir todas as categorias dos grupos.</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary textCustom">Fóruns</h6>
+            <h6 class="m-0 font-weight-bold text-primary textCustom">Categorias</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Nome</th>
@@ -30,11 +30,8 @@
                     </tr>
                     </tfoot>
                     <tbody>
-
                     <?php
-
                     require_once "connections/connection.php";
-
 
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
@@ -52,15 +49,16 @@
                         <tr>
                          <td><?= $nome_categoria?></td>
                          <td><?= $data_criacao?></td>
-                         <td><?=$descricao?></td>
+                         <td><?= $descricao?></td>
                          <td>
+                             <a href="editar_categorias.php?id=<?=$id_categoria?>">
+                                 <i class="fas fa-edit"></i></a>
+
                              <a href="scripts/apagar_categorias.php?id=<?=$id_categoria?>">
                                  <i class="fas fa-trash"></i>
                              </a>
+                         </td>
 
-                             <a href="">
-                                 <i class="fas fa-edit"></i></td>
-                             <a href="">
                         </tr>
 
                     <?php

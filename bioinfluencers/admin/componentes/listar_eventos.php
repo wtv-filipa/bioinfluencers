@@ -1,9 +1,17 @@
 
 
 <div class="container-fluid">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary textCustom">Eventos do BioInfluencers</h6>
-    </div>
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Eventos</h1>
+    <p class="mb-4">Aqui é possível gerir todos os eventos.</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary textCustom">Eventos</h6>
+        </div>
+
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="" width="100%" cellspacing="0">
