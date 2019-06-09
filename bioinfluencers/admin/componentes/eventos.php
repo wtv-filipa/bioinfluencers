@@ -2,15 +2,23 @@
 
 <div class="container-fluid">
 
-    <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Eventos</h1>
-    <p class="mb-4">Aqui é possível gerir todos os eventos.</p>
+    <p class="mb-4">Aqui é possível gerir e ter uma vista geral dos eventos do BioInfluencers.</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary textCustom">Eventos</h6>
-        </div>
+
+        <!-- Topbar Search -->
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="get" action="">
+            <div class="input-group mt-3">
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="p">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
 
     <div class="card-body">
         <div class="table-responsive">

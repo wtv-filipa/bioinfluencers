@@ -39,7 +39,7 @@ session_start();
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-             <?php include "componentes/forum_categorias.php"; ?>
+             <?php include "componentes/categorias.php"; ?>
             <!-- /.container-fluid -->
 
         </div>
