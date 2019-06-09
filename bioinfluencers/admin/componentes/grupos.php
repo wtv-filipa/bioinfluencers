@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Grupos</h1>
-    <p class="mb-4">Aqui é possível ter uma vista geral de todos os grupos que existem, bem como as categorias disponíveis e todos os comentários publicados. O administrador pode adicionar novos fóruns, categorias e apagar comentários.</p>
+    <p class="mb-4">Aqui é possível ter uma vista geral de todos os grupos que existem, bem como as categorias disponíveis e todos os comentários publicados. O administrador pode adicionar novos grupos, categorias e apagar comentários.</p>
 
 
     <!-- DataTales Example -->
