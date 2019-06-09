@@ -1,9 +1,10 @@
 <div class="container-fluid">
-    <h1 class="h3 mb-2 text-gray-800">Notícias</h1>
-    <p class="mb-4">Aqui é possível fazer update das notícias e verificar quais já se encontram publicadas, podendo ser atualizadas se necessário.</p>
+    <h1 class="h3 mb-2 text-gray-800">Noticias</h1>
+    <p class="mb-4">Aqui é possível gerir e ter uma vista geral das noticias do BioInfluencers.</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
+
         <!-- Topbar Search -->
         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="get" action="">
             <div class="input-group mt-3">
@@ -49,57 +50,61 @@
 
 
                         while (mysqli_stmt_fetch($stmt)) {
-                            ?>
-                            <tbody>
-                                <tr>
-                                    <td><?=$title?></td>
-                                    <td><?=$subtitle?></td>
-                                    <td>
-                                        <a data-toggle="modal" data-target="#mymodal">
-                                            <i class="fas fa-info-circle"></i>
-                                        </a>
-                                        <a href='editar_noticia.php?id=$id'><i class="fas fa-edit"></i></a>
-                                        <a href='scripts/delete_noticias.php?id=$id'><i class="fas fa-trash"></i></a>
-                                    </td>
+                            echo "<tbody>
+                    <tr>
+                        <td>$title</td>
+                        <td>$subtitle</td>
+                        <td>
+                             <a href='scripts/delete_noticias.php?id=$id'><i class=\"fas fa-trash\"></i></a>
+                            <a href='editar_noticia.php?id=$id'><i class=\"fas fa-edit\"></i></a>
+                            <!-- Button trigger modal -->
+                            <a data-toggle=\"modal\" data-target=\"#mymodal\">
+                                <i class=\"fas fa-info-circle\"></i>
+                            </a>
+                            
+                            </td>
                             
                             
-                                </tr>
+                    </tr>
 
-                            </tbody>
+                    </tbody>";
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="background-color: #7FC53C">
-                                            <h5 class="modal-title" style="color:white" id="exampleModalLongTitle">Mais info</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h5>Título:</h5>
-                                            <p><?=$title?></p>
-                                            <hr style="background-color: #7FC53C; opacity: 0.5">
-                                            <h5>Subtitlo:</h5>
-                                            <p><?=$subtitle ?></p>
-                                            <hr style="background-color: #7FC53C; opacity: 0.5">
-                                            <h5>Corpo da notícia: </h5>
-                                            <p><?=$text?></p>
-                                            <hr style="background-color: #7FC53C; opacity: 0.5">
-                                            <h5>Data: </h5>
-                                            <p><?= $date ?></p>
-                                            <hr style="background-color: #7FC53C; opacity: 0.5">
+                            echo "<!-- Modal -->
+    <div class=\"modal fade\" id=\"mymodal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
+        <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
+            <div class=\"modal-content\">
+                <div class=\"modal-header\" style=\"background-color: #7FC53C\">
+                    <h5 class=\"modal-title\" style=\"color:white\" id=\"exampleModalLongTitle\">Mais info</h5>
+                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                        <span aria-hidden=\"true\">&times;</span>
+                    </button>
+                </div>
+                <div class=\"modal-body\">
+                    <h5>Título:</h5>
+                    <p>$title</p>
+                    <hr style=\"background-color: #7FC53C; opacity: 0.5\">
+                    <h5>Subtitlo:</h5>
+                    <p>$subtitle </p>
+                    <hr style=\"background-color: #7FC53C; opacity: 0.5\">
+                    <h5>Corpo da notícia: </h5>
+                    <p>$text</p>
+                    <hr style=\"background-color: #7FC53C; opacity: 0.5\">
+                    <h5>Data: </h5>
+                    <p> $date </p>
+                    <hr style=\"background-color: #7FC53C; opacity: 0.5\">
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    <?php
+                </div>
+            </div>
+        </div>
+    </div>";
+
                         }
                     }
 
                     ?>
+
+
+
                 </table>
             </div>
         </div>

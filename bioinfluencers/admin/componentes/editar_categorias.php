@@ -11,7 +11,7 @@ if (isset($_GET["id"])){
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT id_categorias, nome_categoria, data_criacao, descricao 
+    $query = "SELECT id_categorias, nome_categoria, data_criacao, descricao_c 
                 FROM categorias 
                 WHERE id_categorias = ?";
 

@@ -7,7 +7,7 @@ if (isset($_POST["nome"]) && isset($_POST["descricao"])) {
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "INSERT INTO categorias(nome_categoria, descricao) VALUES (?,?)";
+    $query = "INSERT INTO categorias(nome_categoria, descricao_c) VALUES (?,?)";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
         mysqli_stmt_bind_param($stmt, 'ss', $nome_c, $descricao);

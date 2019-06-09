@@ -1,11 +1,13 @@
 
 
 <div class="container-fluid">
+
     <h1 class="h3 mb-2 text-gray-800">Eventos</h1>
-    <p class="mb-4">Aqui é possível ver todos os eventos.</p>
+    <p class="mb-4">Aqui é possível gerir e ter uma vista geral dos eventos do BioInfluencers.</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
+
         <!-- Topbar Search -->
         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="get" action="">
             <div class="input-group mt-3">
@@ -17,6 +19,7 @@
                 </div>
             </div>
         </form>
+
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="" width="100%" cellspacing="0">
@@ -63,65 +66,49 @@
                 <tr>
                     <td><?= $nome?></td>
                     <td><?= $local?></td>
-                    <td><?= $data_inicio. " às ". $data_fim?></td>
-                    <td><?= $hora_inicio. " a ". $hora_fim?></td>
+                    <td><?= $data_inicio. " -> ". $data_fim?></td>
+                    <td><?= $hora_inicio. " -> ". $hora_fim?></td>
                     <td><?= $responsavel?></td>
 
                     <td>
-
-                        <a href='editar_evento.php?id=<?=$id_evento?>'><i class="fas fa-edit"></i></a>
-                        <a href="scripts/delete_evento.php?id=<?=$id_evento?>">
-                            <i class="fas fa-trash"></i>
-                        </a>
-
-                        <!-- Button trigger modal -->
                         <a data-toggle="modal" data-target="#mymodal">
                             <i class="fas fa-info-circle"></i>
                         </a>
+                        <a href='editar_evento.php?id=<?=$id_evento?>'><i class="fas fa-edit"></i></a>
+                        <i class="fas fa-trash"></i>
+
+                        <!-- Button trigger modal -->
+
 
                     </td>
                 </tr>
 
                 <!-- Modal -->
-                <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header" style="background-color: #7FC53C">
-                                <h5 class="modal-title" style="color:white" id="exampleModalLongTitle">Mais info</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-               <div class="modal-body">
-                    <h5>Nome:</h5>
-                    <p><?=$nome?></p>
-                    <hr style="background-color: #7FC53C; opacity: 0.5">
-                    <h5>Data de início:</h5>
-                    <p><?=$data_inicio?> </p>
-                    <hr style="background-color:#7FC53C; opacity: 0.5">
-                    <h5>Data do fim: </h5>
-                    <p><?=$data_fim?></p>
-                    <hr style="background-color: #7FC53C; opacity: 0.5">
-                   <h5>Hora do início </h5>
-                   <p><?=$hora_inicio?></p>
-                   <hr style="background-color: #7FC53C; opacity: 0.5">
-                   <h5>Hora do fim </h5>
-                   <p><?=$hora_fim?></p>
-                   <hr style="background-color: #7FC53C; opacity: 0.5">
-                   <h5>Local: </h5>
-                   <p><?=$local?></p>
-                   <hr style="background-color: #7FC53C; opacity: 0.5">
-                   <h5>Descrição: </h5>
-                   <p><?=$descricao?></p>
-                   <hr style="background-color: #7FC53C; opacity: 0.5">
-                   <h5>Custos:</h5>
-                   <p><?=$custos?></p>
-                   <hr style="background-color: #7FC53C; opacity: 0.5">
-                   <h5>Responsável: </h5>
-                   <p><?=$responsavel?></p>
-                   <hr style="background-color: #7FC53C; opacity: 0.5">
-
+                <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby=\"exampleModalCenterTitle\"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class=\"modal-content\">
+                    <div class=\"modal-header\" style="background-color: #7FC53C">
+                    <h5 class="modal-title" style="color:white" id=\"exampleModalLongTitle\">Mais info</h5>
+                    <button type="button" class="close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <!--<div class="modal-body">
+                    <h5>Título:</h5>
+                    <p>$title</p>
+                    <hr style="background-color: #7FC53C; opacity: 0.5">
+                    <h5>Subtitlo:</h5>
+                    <p>$subtitle </p>
+                    <hr style="background-color:#7FC53C; opacity: 0.5">
+                    <h5>Corpo da notícia: </h5>
+                    <p>$text</p>
+                    <hr style="background-color: #7FC53C; opacity: 0.5">
+                    <h5>Data: </h5>
+                    <p> $date </p>
+                    <hr style="background-color: #7FC53C; opacity: 0.5">
+
+                </div> -->
         </div>
     </div>
 </div>
