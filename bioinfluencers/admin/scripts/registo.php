@@ -7,15 +7,18 @@ if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"])
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "INSERT INTO utilizadores (nome, nickname, password, email, data_nascimento, descricao) VALUES (?,?,?,?,?,?)";
+    $query = "INSERT INTO utilizadores (nome, nickname, password, email, data_nascimento, descricao, codigo_utilizador) VALUES (?,?,?,?,?,?,?)";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
-        mysqli_stmt_bind_param($stmt, 'ssssss', $nome, $nickname,  $password_hash, $email, $data_nasc, $descricao);
+        mysqli_stmt_bind_param($stmt, 'sssssss', $nome, $nickname,  $password_hash, $email, $data_nasc, $descricao, $codigo_uti);
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $nickname = $_POST['nickname'];
         $data_nasc = $_POST["data_nasc"];
         $descricao = $_POST["descricao"];
+
+        $codigo_uti = strtoupper(substr(md5(date("YmdHis")), 1,12));
+
         $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         // VALIDAÇÃO DO RESULTADO DO EXECUTE

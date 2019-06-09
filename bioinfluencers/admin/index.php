@@ -50,6 +50,7 @@ session_start();
                 <!--cartões com earnings pequenos-->
                 <?php include "componentes/contador_utilizadores.php"; ?>
 
+
                 <!-- graficos earnings-->
 
 

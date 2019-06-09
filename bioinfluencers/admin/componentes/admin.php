@@ -79,14 +79,17 @@
 
                     mysqli_stmt_execute($stmt);
                     mysqli_stmt_bind_result($stmt, $id, $nome, $nickname, $email, $data_nasc, $descricao, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $nome_tipo);
+
+
                     while (mysqli_stmt_fetch($stmt)) {
+
 
                         ?>
                         <tbody>
                         <tr>
                             <td><?= $nickname ?></td>
                             <td><?= $email ?></td>
-                            <td>pontos</td>
+                            <td><?= $pontos ?></td>
                             <td><?= $nome_tipo ?></td>
                             <td><?= $data_criacao ?></td>
                             <td>
