@@ -9,12 +9,11 @@
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary textCustom">Comentários</h6>
-                    </div>
+
                     <div class="card-body">
+
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Autor</th>
@@ -24,6 +23,53 @@
                                     <th>Ação</th>
                                 </tr>
                                 </thead>
+                                <?php
+                                if (isset($_GET["id_f"]))
+                                    $id_f = $_GET["id_f"];
+
+                                require_once("connections/connection.php");
+
+                                // Create a new DB connection
+                                $link = new_db_connection();
+
+                                /* create a prepared statement */
+                                $stmt = mysqli_stmt_init($link);
+
+                                $query = "SELECT id_forumcomentarios, titulo_comentarios, mensagem, data_hora, utilizadores_id_utilizadores, ref_id_foruns, respostas, id_utilizadores, nome
+                                  FROM forum_comentarios
+                                  INNER JOIN utilizadores
+                                  ON forum_comentarios.utilizadores_id_utilizadores = utilizadores.id_utilizadores
+                                  WHERE ref_id_foruns = ?";
+
+
+                                if (mysqli_stmt_prepare($stmt, $query)) {
+                                mysqli_stmt_bind_param($stmt, 'i', $id_f);
+
+                                mysqli_stmt_execute($stmt);
+                                mysqli_stmt_bind_result($stmt, $id_f, $titulo_c, $mensagem, $data_hora, $uti_id, $id_foruns, $respostas, $id_u, $nome);
+
+
+                                while (mysqli_stmt_fetch($stmt)) {
+
+                                ?>
+                                <tbody>
+                                <tr>
+                                    <td><?= $nome ?></td>
+                                    <td><?= $titulo_c ?></td>
+                                    <td><?= $mensagem ?></td>
+                                    <td><?= $data_hora ?></td>
+                                    <td>
+                                        <i class="fas fa-trash"></i>
+
+                                        <i class="fas fa-comment-dots"></i></td>
+                                </tr>
+
+                                </tbody>
+                                <?php
+                                }
+                                }
+                                ?>
+
                                 <tfoot>
                                 <tr>
                                     <th>Autor</th>
@@ -33,42 +79,7 @@
                                     <th>Ação</th>
                                 </tr>
                                 </tfoot>
-                                <tbody>
-                                <tr>
-                                    <td>Ana Ferreira</td>
-                                    <td>Plástico</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi gravida libero nec velit. Morbi scelerisque luctus velit.</td>
-                                    <td>2019/05/20</td>
-                                    <td>
-                                        <i class="fas fa-trash"></i>
-                                       
-                                        <i class="fas fa-comment-dots"></i></td>
-                                </tr>
 
-                                <tr>
-                                    <td>Eduardo Miguel</td>
-                                    <td>Fim às beatas!!!</td>
-                                    <td>Morbi gravida libero nec velit. Morbi scelerisque luctus velit.</td>
-                                    <td>2019/04/20</td>
-                                    <td>
-                                        <i class="fas fa-trash"></i>
-                                       
-                                        <i class="fas fa-comment-dots"></i></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Ana Vaz</td>
-                                    <td>Reciclar para que?</td>
-                                    <td>Morbi gravida libero nec velit. Morbi scelerisque luctus velit.</td>
-                                    <td>2019/04/20</td>
-                                    <td>
-                                        <i class="fas fa-trash"></i>
-                                       
-                                        <i class="fas fa-comment-dots"></i></td>
-                                </tr>
-
-
-                                </tbody>
                             </table>
                         </div>
                     </div>

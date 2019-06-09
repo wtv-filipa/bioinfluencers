@@ -48,7 +48,7 @@
                     $stmt = mysqli_stmt_init($link);
                     $query = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descricao, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, nome_tipo
                               FROM utilizadores
-                               INNER JOIN tipos_utilizador
+                              INNER JOIN tipos_utilizador
                               ON utilizadores.tipos_id_tipos = tipos_utilizador.id_tipos
                               WHERE nickname LIKE ?";
 
