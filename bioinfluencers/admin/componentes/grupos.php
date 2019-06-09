@@ -30,6 +30,40 @@
                         <th>Ação</th>
                     </tr>
                     </thead>
+                    <?php
+                    require_once "connections/connection.php";
+
+                    $link= new_db_connection(); //Create a new DB connection
+                    $stmt = mysqli_stmt_init($link); //create a prepared statement
+
+                    $query = "SELECT id_foruns, nome_forum, descricao, estado, categorias_id_categorias, id_categorias, nome_categoria FROM foruns INNER JOIN categorias ON foruns.categorias_id_categorias= categorias.id_categorias"; // Define the query
+
+                    if (mysqli_stmt_prepare($stmt, $query)) { // Prepare the statement
+                        mysqli_stmt_execute($stmt); // Execute the prepared statement
+
+                        mysqli_stmt_bind_result($stmt, $id_f, $nome, $descricao, $estado, $categorias_id, $id_cat, $nome_cat); // Bind results
+
+                        while (mysqli_stmt_fetch($stmt)) {
+                            ?>
+                    <tbody>
+                    <tr>
+                        <td><?= $nome ?></td>
+                        <td><?=$nome_cat ?></td>
+                        <td><?=$estado ?></td>
+                        <td> <a href="comentarios.php">ver comentários</a></td>
+                        <td>
+                            <i class="fas fa-trash"></i>
+                            <i class="fas fa-ban\"></i>
+                            <a href='editar_grupo.php?id=<?=$id_f?>'><i class="fas fa-edit"></i></a>
+
+                        </td>
+                    </tr>
+                    </tbody>
+
+                    <?php
+                        }
+                    }
+                    ?>
                     <tfoot>
                     <tr>
                         <th>Nome</th>
@@ -39,37 +73,6 @@
                         <th>Ação</th>
                     </tr>
                     </tfoot>
-
-                    <?php
-                    require_once "connections/connection.php";
-
-                    $link= new_db_connection(); //Create a new DB connection
-                    $stmt = mysqli_stmt_init($link); //create a prepared statement
-
-                    $query = "SELECT id_foruns, nome_forum, descricao, estado FROM foruns"; // Define the query
-                    if (mysqli_stmt_prepare($stmt, $query)) { // Prepare the statement
-                        mysqli_stmt_execute($stmt); // Execute the prepared statement
-
-                        mysqli_stmt_bind_result($stmt, $id, $nome, $descricao, $estado); // Bind results
-
-                        while (mysqli_stmt_fetch($stmt)) {
-                            echo "<tbody>
-                    <tr>
-                        <td>$nome</td>
-                        <td></td>
-                        <td>$estado</td>
-                        <td> <a href=\"comentarios.php\">ver comentários</a></td>
-                        <td>
-                            <i class=\"fas fa-trash\"></i>
-                            <i class=\"fas fa-ban\"></i>
-                            <i class=\"fas fa-edit\"></i></td>
-                    </tr>
-                    </tbody>";
-
-
-                        }
-                    }
-                    ?>
 
 
 

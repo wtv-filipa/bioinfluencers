@@ -91,8 +91,11 @@
                             <td><?= $data_criacao ?></td>
                             <td>
                                 <!-- Button trigger modal -->
+
                                 <a data-toggle="modal" data-target="#exampleModalCenter">
-                                    <i class="fas fa-info-circle"></i>
+                                    <button type="submit" value="texto">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
                                 </a>
                                 <i class="fas fa-ban"></i>
                             </td>
@@ -111,34 +114,8 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        <h5>Nome: </h5>
-                                        <p><?= $nome ?></p>
-                                        <hr style="background-color: #7FC53C; opacity: 0.5">
-                                        <h5>Nickname: </h5>
-                                        <p><?= $nickname ?></p>
-                                        <hr style="background-color: #7FC53C; opacity: 0.5">
-                                        <h5>Email: </h5>
-                                        <p><?= $email ?></p>
-                                        <hr style="background-color: #7FC53C; opacity: 0.5">
-                                        <h5>Data de nascimento: </h5>
-                                        <p><?= $data_nasc ?></p>
-                                        <hr style="background-color: #7FC53C; opacity: 0.5">
-                                        <h5>Descrição: </h5>
-                                        <p><?= $descricao ?></p>
-                                        <hr style="background-color: #7FC53C; opacity: 0.5">
-                                        <h5>Pontos: </h5>
-                                        <p><?= $pontos ?></p>
-                                        <hr style="background-color: #7FC53C; opacity: 0.5">
-                                        <h5>Tipo: </h5>
-                                        <p><?= $nome_tipo ?></p>
-                                        <hr style="background-color: #7FC53C; opacity: 0.5">
-                                        <h5>Código: </h5>
-                                        <p><?= $codigo_utilizador ?></p>
-                                        <hr style="background-color: #7FC53C; opacity: 0.5">
-                                        <h5>Data de criação: </h5>
-                                        <p><?= $data_criacao ?></p>
-                                        <hr style="background-color: #7FC53C; opacity: 0.5">
+                                    <div class="modal-body" id="texto">
+
                                     </div>
                                 </div>
                             </div>
@@ -173,5 +150,3 @@ mysqli_close($link);
 }
 ?>
 <!-- /.container-fluid -->
-
-

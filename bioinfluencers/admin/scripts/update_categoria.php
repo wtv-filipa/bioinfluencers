@@ -15,7 +15,7 @@ if (isset($_GET["id"]) && isset($_POST["nome_categoria"]) && isset($_POST["descr
     $stmt = mysqli_stmt_init($link);
 
     $query = "UPDATE categorias 
-              SET nome_categoria = ?, descricao = ?
+              SET nome_categoria = ?, descricao_c = ?
               WHERE id_categorias = ?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {

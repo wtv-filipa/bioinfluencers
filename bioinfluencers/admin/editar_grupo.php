@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +9,7 @@
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Fórum</title>
+    <title>Editar Eventos</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -36,7 +39,7 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-             <?php include "componentes/forum.php"; ?>
+            <?php include "componentes/editar_grupo.php"; ?>
             <!-- /.container-fluid -->
 
         </div>
