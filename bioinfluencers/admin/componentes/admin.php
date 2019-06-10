@@ -187,7 +187,7 @@ $query2 = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descr
                         <th>Ações</th>
                     </tr>
                     </tfoot>
-                    </tbody>
+
                 </table>
             </div>
         </div>

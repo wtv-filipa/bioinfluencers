@@ -59,12 +59,61 @@
                                     <td><?= $mensagem ?></td>
                                     <td><?= $data_hora ?></td>
                                     <td>
-                                        <a href='scripts/delete_comentario.php?id_f=<?= $id_f?>&id_c=<?=$id_c?>'><i class="fas fa-trash"></i></a>
+                                        <a href="" data-toggle="modal" data-target="#apagar<?= $id_f?><?=$id_c?>"><i class="fas fa-trash"></i></a>
 
-                                        <i class="fas fa-comment-dots"></i></td>
                                 </tr>
 
                                 </tbody>
+                                    <!--MODAL PARA APAGAR-->
+                                    <div class="modal fade" id="apagar<?= $id_f?><?=$id_c?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <?php
+
+                                            $link2 = new_db_connection();
+                                            $stmt2 = mysqli_stmt_init($link2);
+
+                                            $query2 = "SELECT id_forumcomentarios, titulo_comentarios, mensagem, data_hora, utilizadores_id_utilizadores, ref_id_foruns, respostas, id_utilizadores, nome
+                                  FROM forum_comentarios
+                                  INNER JOIN utilizadores
+                                  ON forum_comentarios.utilizadores_id_utilizadores = utilizadores.id_utilizadores
+                                  WHERE id_forumcomentarios = ?";
+
+
+                                            if (mysqli_stmt_prepare($stmt2, $query2)) {
+
+                                                mysqli_stmt_bind_param($stmt2, 'i', $id_c);
+                                                /* execute the prepared statement */
+                                                mysqli_stmt_execute($stmt2);
+                                                /* bind result variables */
+                                                mysqli_stmt_bind_result($stmt2, $id_c, $titulo_c, $mensagem, $data_hora, $uti_id, $id_foruns, $respostas, $id_u, $nome);
+
+                                                /* resultados da store */
+                                                mysqli_stmt_store_result($stmt2);
+                                                while (mysqli_stmt_fetch($stmt2)) {
+                                                    echo ' ';
+                                                }
+                                            }
+                                            ?>
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color: #78BE20; color:white">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Apagar</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Tem a certeza que quer apagar o comentário <?=$mensagem?>?</p>
+                                                    <a href="scripts/delete_comentario.php?id_f=<?= $id_f?>&id_c=<?=$id_c?>"><input type = "submit" value = "Eliminar" class="buttonCustomise"> </a>
+                                                    <button type="button" class="buttonCustomise" data-dismiss="modal">Cancelar</button>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                                 <?php
                                 }
                                 }
@@ -87,5 +136,3 @@
 
             </div>
             <!-- /.container-fluid -->
-
-
