@@ -134,7 +134,6 @@
                                         <h5>Data de publicação:</h5>
                                         <p><?=$date?></p>
                                         <hr style="background-color: #78BE20; opacity: 0.3">
-
                                     </div>
 
                                 </div>
