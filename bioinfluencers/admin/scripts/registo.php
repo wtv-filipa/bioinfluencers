@@ -27,11 +27,11 @@ if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"])
             mysqli_close($link);
 
             // SUCCESS ACTION
-            header("Location: ../login.php");
+            header("Location: ../login.php?msg=1");
         } else {
             // ERROR ACTION
 
-            header("Location: ../register.php");
+            header("Location: ../register.php?msg=0");
             echo "Error:" . mysqli_stmt_error($stmt);
         }
 

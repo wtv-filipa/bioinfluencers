@@ -17,6 +17,36 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Bem-vindo à BioInfluencers!</h1>
                                 </div>
+                                <?php
+                                if (isset($_GET["msg"])) {
+                                    $msg_show = true;
+                                    switch ($_GET["msg"]) {
+                                        case 0:
+                                            $message = "Ocorreu um erro no registo, por favor tenta novamente!";
+                                            $class = "alert-warning";
+                                            break;
+                                        case 1:
+                                            $message = "Registo efectuado com sucesso";
+                                            $class = "alert-success";
+                                            break;
+                                        case 2:
+                                            $message = "Ocorreu um erro no login, por favor tenta novamente";
+                                            $class = "alert-warning";
+                                            break;
+                                        default:
+                                            $msg_show = false;
+                                    }
+
+                                    echo "<div class=\"alert $class alert-dismissible fade show\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+                                    if ($msg_show) {
+                                        echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+                                    }
+                                }
+                                ?>
                                 <form method="post" role="form" id="register-form" action="scripts/login.php">
 
                                     <div class="form-group">

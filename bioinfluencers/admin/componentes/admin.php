@@ -27,8 +27,8 @@
                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th><a href="administradores.php?sort=n">Nickname</th>
-                        <th><a href="administradores.php?sort=e">Email</th>
+                        <th><a href="administradores.php?sort=n">Nickname</a></th>
+                        <th><a href="administradores.php?sort=e">Email</a></th>
                         <th><!--<a href="administradores.php?sort=p"-->Pontos</th>
                         <th><!--<a href="administradores.php?sort=t"-->Tipo</th>
                         <th><!--<a href="administradores.php?sort=d"-->Data criação</th>
@@ -48,7 +48,7 @@
 
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descricao, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, nome_tipo
+                    $query = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descricao, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, active, nome_tipo
                               FROM utilizadores
                                INNER JOIN tipos_utilizador
                               ON utilizadores.tipos_id_tipos = tipos_utilizador.id_tipos
@@ -82,13 +82,20 @@
                     mysqli_stmt_bind_param($stmt, 's', $pesquisar);
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $id, $nome, $nickname, $email, $data_nasc, $descricao, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $nome_tipo);
+                    mysqli_stmt_bind_result($stmt, $id, $nome, $nickname, $email, $data_nasc, $descricao, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $active, $nome_tipo);
+
                     while (mysqli_stmt_fetch($stmt)) {
 
                         ?>
                         <tbody>
                         <tr>
-                            <td><?= $nickname ?></td>
+                            <td>
+                                <?php
+                                if ($active == 0) {
+                                    echo '<i class="fas fa-lock mr-1" style="color: red"></i>';
+                                } echo $nickname
+                                ?>
+                            </td>
                             <td><?= $email ?></td>
                             <td>pontos</td>
                             <td><?= $nome_tipo ?></td>
@@ -96,25 +103,38 @@
                             <td>
                                 <!-- Button trigger modal -->
 
-                                <a data-toggle="modal" data-target="#exampleModalCenter<?=$id?>">
+                                <a data-toggle="modal" data-target="#info<?=$id?>">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <?php
+                                if ($active == 0 ) {
+                                    echo "<a href='' data-toggle=\"modal\" data-target=\"#bloquear_ativar_utilizador$id\">
+                                        <i class=\"fas fa-lock-open\"></i>
+                                    </a>";
 
-                                    <i class="fas fa-info-circle"></i> </a>
-                                <i class="fas fa-ban"></i>
+                                } else {
+                                    echo "<a data-toggle=\"modal\" data-target=\"#bloquear_ativar_utilizador$id\">
+                                        <i style='color:red' class=\"fas fa-lock\"></i>
+                                    </a>";
+
+                                }
+
+                                ?>
+
                             </td>
 
                         </tr>
                         </tbody>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModalCenter<?=$id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="info<?=$id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <?php
 
                                 $link2 = new_db_connection();
                                 $stmt2 = mysqli_stmt_init($link2);
 
-$query2 = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descricao, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, nome_tipo
-                              FROM utilizadores";
-
+                                $query2 = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descricao, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, nome_tipo
+                                            FROM utilizadores";
 
                                 if (mysqli_stmt_prepare($stmt2, $query2)) {
 
@@ -171,9 +191,80 @@ $query2 = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descr
                             </div>
                         </div>
 
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="bloquear_ativar_utilizador<?=$id?>" tabindex="-1" role="dialog" aria-labelledby="bloquear_utilizador" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <?php
+
+                                $link3 = new_db_connection();
+                                $stmt3 = mysqli_stmt_init($link3);
+
+                                $query3 = "SELECT id_utilizadores, active,
+                                            FROM utilizadores";
+
+                                if (mysqli_stmt_prepare($stmt3, $query3)) {
+
+                                    /* execute the prepared statement */
+                                    mysqli_stmt_execute($stmt3);
+                                    /* bind result variables */
+                                    mysqli_stmt_bind_result($stmt3, $id, $nome, $nickname, $email, $data_nasc, $descricao, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $active, $nome_tipo );
+
+                                    /* resultados da store */
+                                    mysqli_stmt_store_result($stmt3);
+                                    while (mysqli_stmt_fetch($stmt3)) {
+                                        echo ' ';
+                                    }
+                                }
+                                ?>
+                                <div class="modal-content">
+                                    <?php
+                                    if ($active == 0 ){
+                                        echo "<div class=\"modal-header\" style=\"background-color: #5a5c69; color:white\">
+                                        <h5 class=\"modal-title\" id=\"bloquear_utilizador\">Alerta</h5>
+                                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                                            <span aria-hidden=\"true\">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class=\"modal-body\">
+                                        <h5>Tem a certeza que deseja ativar este utilizador?</h5>
+                                        <a href=\"scripts/update_active.php?id=$id&a=$active\">
+                                            <button type=\"submit\" class=\"btn btn-secondary\">Sim
+                                        </a>
+
+                                        </button>
+                                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Não</button>
+
+                                    </div>";
+
+                                    } else {
+                                        echo "<form method=\"post\" action=\"scripts/update_active.php?id=$id\">
+                                        <div class=\"modal-header\" style=\"background-color: #5a5c69; color:white\">
+                                        <h5 class=\"modal-title\" id=\"bloquear_utilizador\">Alerta</h5>
+                                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                                            <span aria-hidden=\"true\">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class=\"modal-body\">
+                                        <h5>Tem a certeza que deseja bloquear este utilizador?</h5>
+                                        <a>
+                                            <button type=\"submit\" class=\"btn btn-secondary\" name=\"active\">Sim
+                                        </a>
+    
+                                        </button>
+                                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Não</button>
+    
+                                    </div>
+                                </form>";
+
+                                    }
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div>
 
 
-                        <?php
+            <?php
                     }
 
                     ?>

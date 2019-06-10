@@ -25,18 +25,11 @@
     <?php
     require_once "connections/connection.php";
     new_db_connection();
+
     ?>
-
-
-
-
-
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
-
-
         <!--cartões com earnings pequenos-->
         <?php include "componentes/login.php"; ?>
 
