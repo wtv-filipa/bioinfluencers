@@ -278,7 +278,7 @@
                         <th>Ações</th>
                     </tr>
                     </tfoot>
-                    </tbody>
+
                 </table>
             </div>
         </div>
