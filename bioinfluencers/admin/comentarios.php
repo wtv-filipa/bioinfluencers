@@ -41,7 +41,7 @@ session_start();
             <!-- Begin Page Content -->
             <!-- tabela que mostra os fóruns disponíveis -->
 
-            <?php include "componentes/forum_comentarios.php" ?>
+            <?php include "componentes/comentarios.php" ?>
             <!-- /.container-fluid -->
 
 

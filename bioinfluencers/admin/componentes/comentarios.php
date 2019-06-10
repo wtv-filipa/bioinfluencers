@@ -46,7 +46,7 @@
                                 mysqli_stmt_bind_param($stmt, 'i', $id_f);
 
                                 mysqli_stmt_execute($stmt);
-                                mysqli_stmt_bind_result($stmt, $id_f, $titulo_c, $mensagem, $data_hora, $uti_id, $id_foruns, $respostas, $id_u, $nome);
+                                mysqli_stmt_bind_result($stmt, $id_c, $titulo_c, $mensagem, $data_hora, $uti_id, $id_foruns, $respostas, $id_u, $nome);
 
 
                                 while (mysqli_stmt_fetch($stmt)) {
@@ -59,7 +59,7 @@
                                     <td><?= $mensagem ?></td>
                                     <td><?= $data_hora ?></td>
                                     <td>
-                                        <i class="fas fa-trash"></i>
+                                        <a href='scripts/delete_comentario.php?id_f=<?= $id_f?>&id_c=<?=$id_c?>'><i class="fas fa-trash"></i></a>
 
                                         <i class="fas fa-comment-dots"></i></td>
                                 </tr>

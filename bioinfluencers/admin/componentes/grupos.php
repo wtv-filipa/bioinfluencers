@@ -52,10 +52,8 @@
                         <td><?=$estado ?></td>
                         <td> <a href="comentarios.php?id_f=<?= $id_f ?>">ver comentários</a></td>
                         <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban\"></i>
                             <a href='editar_grupo.php?id=<?=$id_f?>'><i class="fas fa-edit"></i></a>
-
+                            <a href='scripts/delete_grupo.php?id_f=<?=$id_f?>'><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -73,10 +71,6 @@
                         <th>Ação</th>
                     </tr>
                     </tfoot>
-
-
-
-
                 </table>
             </div>
         </div>
