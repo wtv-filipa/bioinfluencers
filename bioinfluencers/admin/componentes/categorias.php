@@ -44,7 +44,7 @@
 
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_categorias, nome_categoria, data_criacao, descricao 
+                    $query = "SELECT id_categorias, nome_categoria, data_criacao, descricao_c 
                               FROM categorias";
 
                     if (mysqli_stmt_prepare($stmt, $query)) {

@@ -9,9 +9,11 @@
     <div class="card shadow mb-4">
 
         <!-- Topbar Search -->
-        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="get" action="">
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+              method="get" action="">
             <div class="input-group mt-3">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="p">
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                       aria-label="Search" aria-describedby="basic-addon2" name="p">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search fa-sm"></i>
@@ -48,7 +50,7 @@
                     $stmt = mysqli_stmt_init($link);
                     $query = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descricao, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, nome_tipo
                               FROM utilizadores
-                              INNER JOIN tipos_utilizador
+                               INNER JOIN tipos_utilizador
                               ON utilizadores.tipos_id_tipos = tipos_utilizador.id_tipos
                               WHERE nickname LIKE ?";
 
@@ -74,55 +76,102 @@
                         $query .= " ORDER BY " . $ordem_listagem . " ASC ";
                     }
 
+
+
                     if (mysqli_stmt_prepare($stmt, $query)) {
                     mysqli_stmt_bind_param($stmt, 's', $pesquisar);
 
                     mysqli_stmt_execute($stmt);
                     mysqli_stmt_bind_result($stmt, $id, $nome, $nickname, $email, $data_nasc, $descricao, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $nome_tipo);
-
-
                     while (mysqli_stmt_fetch($stmt)) {
-
 
                         ?>
                         <tbody>
                         <tr>
                             <td><?= $nickname ?></td>
                             <td><?= $email ?></td>
-                            <td><?= $pontos ?></td>
+                            <td>pontos</td>
                             <td><?= $nome_tipo ?></td>
                             <td><?= $data_criacao ?></td>
                             <td>
                                 <!-- Button trigger modal -->
 
-                                <a data-toggle="modal" data-target="#exampleModalCenter">
-                                    <button type="submit" value="texto">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                </a>
+                                <a data-toggle="modal" data-target="#exampleModalCenter<?=$id?>">
+
+                                    <i class="fas fa-info-circle"></i> </a>
                                 <i class="fas fa-ban"></i>
                             </td>
 
                         </tr>
                         </tbody>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal fade" id="exampleModalCenter<?=$id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <?php
+
+                                $link2 = new_db_connection();
+                                $stmt2 = mysqli_stmt_init($link2);
+
+$query2 = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descricao, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, nome_tipo
+                              FROM utilizadores";
+
+
+                                if (mysqli_stmt_prepare($stmt2, $query2)) {
+
+                                /* execute the prepared statement */
+                                mysqli_stmt_execute($stmt2);
+                                /* bind result variables */
+                                mysqli_stmt_bind_result($stmt2, $id, $nome, $nickname, $email, $data_nasc, $descricao, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $nome_tipo );
+
+                                /* resultados da store */
+                                mysqli_stmt_store_result($stmt2);
+                                while (mysqli_stmt_fetch($stmt2)) {
+                                echo ' ';
+                                }
+                                }
+                                ?>
                                 <div class="modal-content">
-                                    <div class="modal-header" style="background-color: #7FC53C">
-                                        <h5 class="modal-title" style="color:white" id="exampleModalLongTitle">Mais
-                                            info</h5>
+                                    <div class="modal-header" style="background-color: #78BE20; color:white">
+                                        <h5 class="modal-title" id="exampleModalLabel">Mais info</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body" id="texto">
-
+                                    <div class="modal-body">
+                                        <h5>Nome:</h5>
+                                        <p><?=$nome?></p>
+                                            <hr style="background-color: #78BE20; opacity: 0.3">
+                                        <h5>Nickname</h5>
+                                        <p><?=$nickname?></p>
+                                            <hr style="background-color: #78BE20; opacity: 0.3">
+                                        <h5>Email:</h5>
+                                        <p><?=$email?></p>
+                                            <hr style="background-color: #78BE20; opacity: 0.3">
+                                        <h5>Data de Nascimento:</h5>
+                                        <p><?=$data_nasc?></p>
+                                            <hr style="background-color: #78BE20; opacity: 0.3">
+                                        <h5>Descrição:</h5>
+                                        <p><?=$descricao?></p>
+                                            <hr style="background-color: #78BE20; opacity: 0.3">
+                                        <h5>Pontos:</h5>
+                                        <p><?=$pontos?></p>
+                                            <hr style="background-color: #78BE20; opacity: 0.3">
+                                        <h5>Código:</h5>
+                                        <p><?=$codigo_utilizador?></p>
+                                            <hr style="background-color: #78BE20; opacity: 0.3">
+                                        <h5>Tipo:</h5>
+                                        <p><?=$nome_tipo?></p>
+                                            <hr style="background-color: #78BE20; opacity: 0.3">
+                                        <h5>Data de criação:</h5>
+                                        <p><?=$data_criacao?></p>
+                                            <hr style="background-color: #78BE20; opacity: 0.3">
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+
+
 
                         <?php
                     }

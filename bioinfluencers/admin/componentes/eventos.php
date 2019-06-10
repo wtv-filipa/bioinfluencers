@@ -75,7 +75,8 @@
                             <i class="fas fa-info-circle"></i>
                         </a>
                         <a href='editar_evento.php?id=<?=$id_evento?>'><i class="fas fa-edit"></i></a>
-                        <i class="fas fa-trash"></i>
+
+                        <a href="scripts/delete_evento.php?id=<?=$id_evento?>"> <i class="fas fa-trash"></i></a>
 
                         <!-- Button trigger modal -->
 
