@@ -29,6 +29,7 @@ session_start();
 
 </header>
 
+
 <main class="container-fluid p-0 mb-5">
 
     <?php include "componentes/feed.php"; ?>
