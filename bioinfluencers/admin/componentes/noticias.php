@@ -2,8 +2,8 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Noticias</h1>
-    <p class="mb-4">Aqui é possível gerir e ter uma vista geral das noticias do BioInfluencers.</p>
+    <h1 class="h3 mb-2 text-gray-800">Notícias</h1>
+    <p class="mb-4">Aqui é possível gerir e ter uma vista geral das notícias da BioInfluencers.</p>
 
 
     <!-- DataTales Example -->
@@ -13,7 +13,7 @@
         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
               method="get" action="">
             <div class="input-group mt-3">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Pesquisar..."
                        aria-label="Search" aria-describedby="basic-addon2" name="p">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit">
