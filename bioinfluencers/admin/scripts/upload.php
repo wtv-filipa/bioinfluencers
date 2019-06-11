@@ -2,6 +2,7 @@
 if (isset($_FILES["fileToUpload"])) {
 
     $ficheiro = $_FILES["fileToUpload"]["name"];
+    $tipo=$_POST["tipo"];
     // We need the function!
     require_once("../connections/connection.php");
 
@@ -11,12 +12,12 @@ if (isset($_FILES["fileToUpload"])) {
     /* create a prepared statemet */
     $stmt = mysqli_stmt_init($link);
 
-    $query = "INSERT INTO conteudos (filename)
-              VALUES (?)";
+    $query = "INSERT INTO conteudos (filename, tipos_conteudos_id_tiposconteudos1)
+              VALUES (?,?)";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
 
-        mysqli_stmt_bind_param($stmt, 's',$ficheiro);
+        mysqli_stmt_bind_param($stmt, 'si',$ficheiro, $tipo);
 
         /* execute the prepared statement */
         if (!mysqli_stmt_execute($stmt)){

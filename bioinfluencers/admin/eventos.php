@@ -65,11 +65,6 @@ new_db_connection();
 
 </div>
 <!-- End of Page Wrapper -->
-
-
-<!-- Logout Modal-->
-<?php include "componentes/logout_modal.php"; ?>
-
 <!-- JavaScript-->
 
 <?php include "helpers/js.php"; ?>

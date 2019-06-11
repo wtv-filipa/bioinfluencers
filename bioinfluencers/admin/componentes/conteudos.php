@@ -21,35 +21,55 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
+
                     <thead>
                     <tr>
-                        <th>Autor</th>
                         <th>Nome do ficheiro</th>
-                        <th>Tipo de ficheiro</th>
                         <th>Data</th>
+                        <th>Tipo de conteúdo</th>
                         <th>Ação</th>
                     </tr>
                     </thead>
+
+                    <?php
+                    require_once("connections/connection.php");
+
+                    $link = new_db_connection();
+
+                    $stmt = mysqli_stmt_init($link);
+
+                    $query = "SELECT id_conteudos, filename, data, nome_tipo
+                              FROM conteudos
+                              INNER JOIN tipos_conteudos
+                              ON conteudos.tipos_conteudos_id_tiposconteudos1 = tipos_conteudos.id_tiposconteudos";
+
+                    if (mysqli_stmt_prepare($stmt, $query)) {
+
+                    mysqli_stmt_execute($stmt);
+                    mysqli_stmt_bind_result($stmt, $id_conteudo,$filename, $data, $nome_tipo);
+                    while (mysqli_stmt_fetch($stmt)) {
+
+                    ?>
+                    <tbody>
+                    <tr>
+                        <td><?= $filename ?></td>
+                        <td><?= $data ?></td>
+                        <td><?= $nome_tipo ?></td>
+                        <td>
+                            <i class="fas fa-trash"></i>
+                        </td>
+                    </tr><?php
+}
+}
+?>
                     <tfoot>
                     <tr>
-                        <th>Autor</th>
                         <th>Nome do ficheiro</th>
-                        <th>Tipo de ficheiro</th>
                         <th>Data</th>
+                        <th>Tipo de conteúdo</th>
                         <th>Ação</th>
                     </tr>
                     </tfoot>
-                    <tbody>
-                    <tr>
-                        <td>Ana Ferreira</td>
-                        <td>img_03.jpg</td>
-                        <td>imagem</td>
-                        <td>2019/05/20</td>
-                        <td>
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-ban"></i>
-                           </td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
