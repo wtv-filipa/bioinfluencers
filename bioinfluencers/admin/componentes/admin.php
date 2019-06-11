@@ -31,7 +31,6 @@
                         <th><a href="administradores.php?sort=e">Email</a></th>
                         <th><!--<a href="administradores.php?sort=p"-->Pontos</th>
                         <th><!--<a href="administradores.php?sort=t"-->Tipo</th>
-                        <th><!--<a href="administradores.php?sort=d"-->Data criação</th>
                         <th>Ações</th>
                     </tr>
                     </thead>
@@ -48,7 +47,7 @@
 
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descricao, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, active, nome_tipo
+                    $query = "SELECT id_utilizadores, nome_u, nickname, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, active, nome_tipo
                               FROM utilizadores
                                INNER JOIN tipos_utilizador
                               ON utilizadores.tipos_id_tipos = tipos_utilizador.id_tipos
@@ -82,7 +81,7 @@
                     mysqli_stmt_bind_param($stmt, 's', $pesquisar);
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $id, $nome, $nickname, $email, $data_nasc, $descricao, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $active, $nome_tipo);
+                    mysqli_stmt_bind_result($stmt, $id, $nome_u, $nickname, $email, $data_nasc, $descricao_u, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $active, $nome_tipo);
 
                     while (mysqli_stmt_fetch($stmt)) {
 
@@ -99,7 +98,6 @@
                             <td><?= $email ?></td>
                             <td>pontos</td>
                             <td><?= $nome_tipo ?></td>
-                            <td><?= $data_criacao ?></td>
                             <td>
                                 <!-- Button trigger modal -->
 
@@ -133,7 +131,7 @@
                                 $link2 = new_db_connection();
                                 $stmt2 = mysqli_stmt_init($link2);
 
-                                $query2 = "SELECT id_utilizadores, nome, nickname, email, data_nascimento, descricao, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, nome_tipo
+                                $query2 = "SELECT id_utilizadores, nome_u, nickname, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, nome_tipo
                                             FROM utilizadores";
 
                                 if (mysqli_stmt_prepare($stmt2, $query2)) {
@@ -141,7 +139,7 @@
                                 /* execute the prepared statement */
                                 mysqli_stmt_execute($stmt2);
                                 /* bind result variables */
-                                mysqli_stmt_bind_result($stmt2, $id, $nome, $nickname, $email, $data_nasc, $descricao, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $nome_tipo );
+                                mysqli_stmt_bind_result($stmt2, $id, $nome_u, $nickname, $email, $data_nasc, $descricao_u, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $nome_tipo );
 
                                 /* resultados da store */
                                 mysqli_stmt_store_result($stmt2);
@@ -159,7 +157,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <h5>Nome:</h5>
-                                        <p><?=$nome?></p>
+                                        <p><?=$nome_u?></p>
                                             <hr style="background-color: #78BE20; opacity: 0.3">
                                         <h5>Nickname</h5>
                                         <p><?=$nickname?></p>
@@ -171,7 +169,7 @@
                                         <p><?=$data_nasc?></p>
                                             <hr style="background-color: #78BE20; opacity: 0.3">
                                         <h5>Descrição:</h5>
-                                        <p><?=$descricao?></p>
+                                        <p><?=$descricao_u?></p>
                                             <hr style="background-color: #78BE20; opacity: 0.3">
                                         <h5>Pontos:</h5>
                                         <p><?=$pontos?></p>
@@ -182,11 +180,7 @@
                                         <h5>Tipo:</h5>
                                         <p><?=$nome_tipo?></p>
                                             <hr style="background-color: #78BE20; opacity: 0.3">
-                                        <h5>Data de criação:</h5>
-                                        <p><?=$data_criacao?></p>
-                                            <hr style="background-color: #78BE20; opacity: 0.3">
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -207,7 +201,7 @@
                                     /* execute the prepared statement */
                                     mysqli_stmt_execute($stmt3);
                                     /* bind result variables */
-                                    mysqli_stmt_bind_result($stmt3, $id, $nome, $nickname, $email, $data_nasc, $descricao, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $active, $nome_tipo );
+                                    mysqli_stmt_bind_result($stmt3, $id, $active);
 
                                     /* resultados da store */
                                     mysqli_stmt_store_result($stmt3);
@@ -250,15 +244,11 @@
                                         <button type = \"button\" class=\"btn btn-secondary\" data-dismiss =\"modal\">Não</button >
 
                                     </div >";
-
                                     }
                                     ?>
-
                                 </div>
                             </div>
                         </div>
-
-
             <?php
                     }
 
@@ -269,7 +259,6 @@
                         <th>Email</th>
                         <th>Pontos</th>
                         <th>Tipo</th>
-                        <th>Data criação</th>
                         <th>Ações</th>
                     </tr>
                     </tfoot>

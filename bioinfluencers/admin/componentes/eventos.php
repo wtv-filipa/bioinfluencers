@@ -30,7 +30,7 @@
                         <th><a href="eventos.php?sort=n">Nome</a></th>
                         <th><a href="eventos.php?sort=l">Local</a></th>
                         <th><a href="eventos.php?sort=d">Data</a></th>
-                        <th><a href="eventos.php?sort=h">Hora</a></th>
+                        <th>Participantes</th>
                         <th><a href="eventos.php?sort=r">Responsável</a></th>
                         <th>Ação</th>
 
@@ -49,7 +49,9 @@
 
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_eventos, nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, responsavel FROM eventos WHERE nome LIKE ?";
+                    $query = "SELECT id_eventos, nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, responsavel 
+                              FROM eventos 
+                              WHERE nome LIKE ?";
 
                     if (isset($_GET["sort"])) {
                         if ($_GET["sort"] == "n") {
@@ -61,13 +63,10 @@
                                 if ($_GET["sort"] == "d") {
                                     $ordem_listagem = "data_inicio";
                                 } else {
-                                    if ($_GET["sort"] == "h") {
-                                        $ordem_listagem = "hora_inicio";
-                                    } else {
                                         $ordem_listagem = "responsavel";
                                     }
                                 }
-                            }
+
                         }
 
                         $query .= " ORDER BY " . $ordem_listagem . " ASC ";
@@ -88,9 +87,8 @@
                             <td><?= $nome?></td>
                             <td><?= $local?></td>
                             <td><?= $data_inicio. " -> ". $data_fim?></td>
-                            <td><?= $hora_inicio. " -> ". $hora_fim?></td>
+                            <td><a href="participantes.php?id_e=<?=$id_evento?>">Ver participantes</td>
                             <td><?= $responsavel?></td>
-
                             <td>
                                 <!-- Button trigger modal -->
 
@@ -221,7 +219,7 @@
                         <th>Nome</th>
                         <th>Local</th>
                         <th>Data</th>
-                        <th>Hora</th>
+                        <th>Participantes</th>
                         <th>Responsável</th>
                         <th>Ação</th>
 

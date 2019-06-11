@@ -79,7 +79,7 @@
                         <td><?= $nome ?></td>
                         <td><?=$nome_cat ?></td>
                         <td><?=$estado ?></td>
-                        <td> <a href="comentarios.php?id_f=<?=$id_f?>">ver comentários</a></td>
+                        <td><a href="comentarios.php?id_f=<?=$id_f?>">ver comentários</a></td>
 
 
                         <td>
