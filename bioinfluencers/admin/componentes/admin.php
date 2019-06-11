@@ -221,10 +221,10 @@
                                     </div>
                                     <div class=\"modal-body\">
                                         <h5>Tem a certeza que deseja ativar este utilizador?</h5>
-                                        <a href=\"scripts/update_active.php?id=$id&a=$active\">
-                                            <button type=\"submit\" class=\"btn btn-secondary\">Sim</a>
+                                        <a class='branco' href=\"scripts/update_active.php?id=$id&a=$active\">
+                                            <button type=\"submit\" class=\"buttonCustomise\">Sim</a>
                                         </button>
-                                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Não</button>
+                                        <button type=\"button\" class=\"buttonCustomise\" data-dismiss=\"modal\">Não</button>
 
                                     </div>";
 
@@ -236,12 +236,12 @@
                                         </button >
                                     </div >
                                     <div class=\"modal-body\" >
-                                        <h5 > Tem a certeza que deseja ativar este utilizador ?</h5 >
-                                        <a href = \"scripts/update_active.php?id=$id&a=$active\" >
-                                            <button type = \"submit\" class=\"btn btn-secondary\" >Sim</a >
+                                        <h5> Tem a certeza que deseja bloquear este utilizador ?</h5 >
+                                        <a class='branco'  href = \"scripts/update_active.php?id=$id&a=$active\" >
+                                            <button type = \"submit\" class=\"buttonCustomise\" >Sim</a >
 
                                         </button >
-                                        <button type = \"button\" class=\"btn btn-secondary\" data-dismiss =\"modal\">Não</button >
+                                        <button type = \"button\" class=\"buttonCustomise\" data-dismiss =\"modal\">Não</button >
 
                                     </div >";
                                     }

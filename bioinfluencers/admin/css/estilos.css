@@ -27,7 +27,9 @@
   padding: 2px;
 }
 
-
+.branco {
+  color: white; !important
+}
 
 
 *,

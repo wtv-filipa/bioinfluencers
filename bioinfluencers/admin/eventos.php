@@ -49,7 +49,6 @@ new_db_connection();
 
             <!-- Begin Page Content -->
             <?php include "componentes/eventos.php"; ?>
-            <?php include "componentes/buttons_pagination.php"; ?>
 
             <!-- /.container-fluid -->
 

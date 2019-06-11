@@ -38,8 +38,6 @@
 
     </li>
 
-
-
                 <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
@@ -79,9 +77,6 @@
                 <h6 class="collapse-header">Conteúdos:</h6>
                 <a class="collapse-item" href="conteudos.php">Conteúdos</a>
                 <a class="collapse-item" href="criar_conteudos.php">Adicionar conteúdos</a>
-                <!--<div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="../extras/404.php">404 Page</a>-->
 
             </div>
         </div>
