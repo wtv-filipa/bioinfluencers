@@ -153,11 +153,10 @@
     </div>
 </div>
 
-
-
-<a href="" class="float"">
-<i class="fa fa-pencil-square-o mx-auto" style="font-size: 2rem;"></i>
+<a href="#" class="float">
+    <i class="fa  fa-pencil-square-o my-float"></i>
 </a>
 <div class="label-container">
-    <div class="label-text">Nova Publicação</div>
+    <div class="label-text">Criar publicação</div>
+    <i class="fa fa-play label-arrow"></i>
 </div>
