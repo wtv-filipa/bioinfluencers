@@ -1,8 +1,8 @@
 <?php
 
-if (isset($_GET["id"]) && isset($_POST["active"])) {
+if (isset($_GET["id"]) && isset($_GET["a"])) {
     $id = $_GET["id"];
-    $active = $_POST["active"];
+    $active = $_GET["a"];
 
     require_once("../connections/connection.php");
 

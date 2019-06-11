@@ -228,33 +228,28 @@
                                     <div class=\"modal-body\">
                                         <h5>Tem a certeza que deseja ativar este utilizador?</h5>
                                         <a href=\"scripts/update_active.php?id=$id&a=$active\">
-                                            <button type=\"submit\" class=\"btn btn-secondary\">Sim
-                                        </a>
-
+                                            <button type=\"submit\" class=\"btn btn-secondary\">Sim</a>
                                         </button>
                                         <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Não</button>
 
                                     </div>";
 
                                     } else {
-                                        echo "<form method=\"post\" action=\"scripts/update_active.php?id=$id\">
-                                        <div class=\"modal-header\" style=\"background-color: #5a5c69; color:white\">
-                                        <h5 class=\"modal-title\" id=\"bloquear_utilizador\">Alerta</h5>
-                                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
-                                            <span aria-hidden=\"true\">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class=\"modal-body\">
-                                        <h5>Tem a certeza que deseja bloquear este utilizador?</h5>
-                                        <a>
-                                            <button type=\"submit\" class=\"btn btn-secondary\" name=\"active\">Sim
-                                        </a>
-    
-                                        </button>
-                                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Não</button>
-    
-                                    </div>
-                                </form>";
+                                        echo "<div class=\"modal-header\" style=\"background-color: #5a5c69; color:white\">
+                                        <h5 class=\"modal-title\" id =\"bloquear_utilizador\"> Alerta</h5 >
+                                        <button type = \"button\" class=\"close\" data-dismiss= \"modal\" aria-label = \"Close\" >
+                                            <span aria-hidden = \"true\">&times;</span >
+                                        </button >
+                                    </div >
+                                    <div class=\"modal-body\" >
+                                        <h5 > Tem a certeza que deseja ativar este utilizador ?</h5 >
+                                        <a href = \"scripts/update_active.php?id=$id&a=$active\" >
+                                            <button type = \"submit\" class=\"btn btn-secondary\" >Sim</a >
+
+                                        </button >
+                                        <button type = \"button\" class=\"btn btn-secondary\" data-dismiss =\"modal\">Não</button >
+
+                                    </div >";
 
                                     }
                                     ?>
