@@ -132,17 +132,6 @@
             </div>
         </div>-->
 
-        <div class="actions">
-            <div class="like-wrapper">
-                <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 1.5rem"></i>
-                <span class="like-napis-dla-rafala">
-          Ver mais
-        </span>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <a href="#" class="float">
     <i class="fa  fa-pencil-square-o my-float"></i>

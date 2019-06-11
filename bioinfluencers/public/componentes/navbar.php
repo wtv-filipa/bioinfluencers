@@ -20,8 +20,8 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
         <ul class="nav navbar-nav">
-            <li class="nav-item active"><a href="#" class="nav-link"><i class="fa fa-picture-o" style="font-size: 1.3rem"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-calendar-o" style="font-size: 1.3rem"></i></a></li>
+            <li class="nav-item active"><a href="index.php" class="nav-link"><i class="fa fa-picture-o" style="font-size: 1.3rem"></i></a></li>
+            <li class="nav-item"><a href="eventos.php" class="nav-link"><i class="fa fa-calendar-o" style="font-size: 1.3rem"></i></a></li>
             <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sitemap" style="font-size: 1.3rem"></i></a></li>
             <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-newspaper-o" style="font-size: 1.3rem"></i></a></li>
             <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-star-o" style="font-size: 1.3rem"></i></a></li>
@@ -36,7 +36,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
         <ul class="nav navbar-nav navbar-right ml-auto">
             <li class="nav-item"><a href="#" class="nav-link notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
             <li class="nav-item dropdown">
-                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="img/Michelle_3188.jpg" class="avatar" alt="Avatar"><?= $nickname ?><b class="caret"></b></a>
+                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="img/icone_pessoa.png" class="avatar" alt="Avatar"><?= $nickname ?><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <?php
                     if(isset($tipo) && $tipo == 1) {

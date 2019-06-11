@@ -106,12 +106,21 @@
             </div>
         </div>
     </div>
-
-    <a href="#" class="float">
+    <?php
+    if(isset($tipo)) {
+        if($tipo == 1 || $tipo == 3) {
+            ?>
+            <a href="#" class="float">
         <i class="fa fa-calendar-plus-o my-float"></i>
     </a>
     <div class="label-container">
         <div class="label-text">Criar evento</div>
         <i class="fa fa-play label-arrow"></i>
     </div>
+
+    <?php
+    }
+    }
+    ?>
+
 
