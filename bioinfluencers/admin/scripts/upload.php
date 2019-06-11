@@ -1,93 +1,87 @@
 <?php
-define ("MAX_SIZE","400");
-var_dump($_FILES );
+if (isset($_FILES["fileToUpload"])) {
 
-function getExtension($str) {
+    $ficheiro = $_FILES["fileToUpload"]["name"];
+    // We need the function!
+    require_once("../connections/connection.php");
 
-    $i = strrpos($str,".");
-    if (!$i) { return ""; }
-    $l = strlen($str) - $i;
-    $ext = substr($str,$i+1,$l);
-    return $ext;
+// Create a new DB connection
+    $link = new_db_connection();
+
+    /* create a prepared statemet */
+    $stmt = mysqli_stmt_init($link);
+
+    $query = "INSERT INTO conteudos (filename)
+              VALUES (?)";
+
+    if (mysqli_stmt_prepare($stmt, $query)) {
+
+        mysqli_stmt_bind_param($stmt, 's',$ficheiro);
+
+        /* execute the prepared statement */
+        if (!mysqli_stmt_execute($stmt)){
+            echo "Error: " . mysqli_stmt_error($stmt);
+        } else {
+            header("Location: ../conteudos.php");
+        }
+
+        /* close statement */
+        mysqli_stmt_close($stmt);
+    }
+
+    /* close connection */
+    mysqli_close($link);
 }
 
-$errors=0;
+$target_dir = "../uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    $image =$_FILES["file"]["name"];
-    $uploadedfile = $_FILES['file']['tmp_name'];
-
-    if ($image)
-    {
-        $filename = stripslashes($_FILES['file']['name']);
-        $extension = getExtension($filename);
-        $extension = strtolower($extension);
-        if (($extension != "jpg") && ($extension != "jpeg")
-            && ($extension != "png") && ($extension != "gif"))
-        {
-            echo ' Unknown Image extension ';
-            $errors=1;
-        }
-        else
-        {
-            $size=filesize($_FILES['file']['tmp_name']);
-
-            if ($size > MAX_SIZE*1024)
-            {
-                echo "You have exceeded the size limit";
-                $errors=1;
-            }
-
-            if($extension=="jpg" || $extension=="jpeg" )
-            {
-                //$uploadedfile = $_FILES['file']['tmp_name'];
-                $src = imagecreatefromjpeg($uploadedfile);
-            }
-            else if($extension=="png")
-            {
-                //$uploadedfile = $_FILES['file']['tmp_name'];
-                $src = imagecreatefrompng($uploadedfile);
-            }
-            else
-            {
-                $src = imagecreatefromgif($uploadedfile);
-            }
-
-            list($width,$height)=getimagesize($uploadedfile);
-
-            $newwidth=60;
-            $newheight=($height/$width)*$newwidth;
-            $tmp=imagecreatetruecolor($newwidth,$newheight);
-
-            $newwidth1=25;
-            $newheight1=($height/$width)*$newwidth1;
-            $tmp1=imagecreatetruecolor($newwidth1,$newheight1);
-
-            imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight,
-                $width,$height);
-
-            imagecopyresampled($tmp1,$src,0,0,0,0,$newwidth1,$newheight1,
-                $width,$height);
-
-            $filename = "images/". $_FILES['file']['name'];
-            $filename1 = "images/small". $_FILES['file']['name'];
-
-            imagejpeg($tmp,$filename,100);
-            imagejpeg($tmp1,$filename1,100);
-
-            imagedestroy($src);
-            imagedestroy($tmp);
-            imagedestroy($tmp1);
-        }
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
     }
 }
-//If no errors registred, print the success message
 
-if(isset($_POST['Submit']) && !$errors)
-{
-    header("Location: ../criar_conteudos.php?msg=0");
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif"  ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+
+
+header("Location: ../conteudos.php");
     // mysql_query("update SQL statement ");
 
-
-}
