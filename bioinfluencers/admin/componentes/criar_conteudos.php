@@ -25,6 +25,7 @@
 
                             ?>
 
+
                             <!--colocar nome do forum-->
                             <div class="form-group  col-xl-6 col-lg-6 col-sm-6">
                                 <label class="text-gray-800" for="nome">Seleciona uma imagem para upload:</label>
