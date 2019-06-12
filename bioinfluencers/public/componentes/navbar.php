@@ -48,7 +48,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
                     ?>
 
                     <li class="divider dropdown-divider"></li>
-                    <li><a href="#" class="dropdown-item"><i class="fa fa-user-o"></i>Ver perfil</a></li>
+                    <li><a href="perfil.php" class="dropdown-item"><i class="fa fa-user-o"></i>Ver perfil</a></li>
                     <li><a href="#" class="dropdown-item"><i class="fa fa-star-o"></i> Código</a></li>
                     <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i>Definições</a></li>
                     <li class="divider dropdown-divider"></li>

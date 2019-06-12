@@ -6,7 +6,7 @@
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Página Inicial</title>
+    <title>Registo</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -15,7 +15,6 @@
     <?php include "helpers/css.php"; ?>
 
 </head>
-
 
 <body id="page-top">
 

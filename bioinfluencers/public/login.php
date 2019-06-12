@@ -6,7 +6,7 @@
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Página Inicial</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>

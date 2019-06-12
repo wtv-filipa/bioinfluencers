@@ -19,11 +19,11 @@
                                     $class = "alert-warning";
                                     break;
                                 case 1:
-                                    $message = "Registo efectuado com sucesso";
+                                    $message = "Registo efectuado com sucesso.";
                                     $class = "alert-success";
                                     break;
                                 case 2:
-                                    $message = "Ocorreu um erro no login, por favor tenta novamente";
+                                    $message = "Campos do formulário por preencher.";
                                     $class = "alert-warning";
                                     break;
                                 default:

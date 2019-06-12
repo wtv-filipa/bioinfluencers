@@ -41,6 +41,5 @@ if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"])
         mysqli_close($link);
     }
 } else {
-    //echo "Error:" . mysqli_error($link);
-    echo "Campos do formulário por preencher";
+    header("Location: ../register.php?msg=2");
 }

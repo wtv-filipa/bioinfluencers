@@ -27,18 +27,18 @@ if (isset($_POST["nickname"]) && isset($_POST["password"])){
 
 
                 } else {
-                    header("Location: ../login.php?msg=2");
+                    header("Location: ../login.php?msg=1");
                 }
 
             } else {
                 // feedback de erro geral devido à password estar errada
-                echo "pass errada";
-                header("Location: ../index.php");
+                //echo "pass errada";
+                header("Location: ../login.php?msg=0");
             }
         } else {
             // feedback de erro feral devido ao username estar errado
-            echo "nickname errado";
-            //header("Location: ../index.php?msg=#2login");
+            //echo "nickname errado";
+            header("Location: ../login.php?msg=0");
         }
 
         mysqli_stmt_close($stmt);

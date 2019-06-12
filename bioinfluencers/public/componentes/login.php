@@ -22,15 +22,11 @@
                                     $msg_show = true;
                                     switch ($_GET["msg"]) {
                                         case 0:
-                                            $message = "Ocorreu um erro no registo, por favor tenta novamente!";
+                                            $message = "Credenciais erradas, por favor tente novamente.";
                                             $class = "alert-warning";
                                             break;
                                         case 1:
-                                            $message = "Registo efectuado com sucesso";
-                                            $class = "alert-success";
-                                            break;
-                                        case 2:
-                                            $message = "Ocorreu um erro no login, por favor tenta novamente";
+                                            $message = "Utilizador inválido.";
                                             $class = "alert-warning";
                                             break;
                                         default:

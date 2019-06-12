@@ -1,12 +1,13 @@
 <?php
 session_start();
+
+if (isset($_SESSION["nickname"])){
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
@@ -47,16 +48,19 @@ session_start();
         <!-- Footer -->
         <?php include "componentes/footer.php"; ?>
         <!-- End of Footer -->
-
     </div>
     <!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->
 <!-- JavaScript-->
-
 <?php include "helpers/js.php"; ?>
 
 </body>
 
 </html>
+    <?php
+} else {
+header("Location: ../public/login.php");
+}
+?>

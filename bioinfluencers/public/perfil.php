@@ -10,7 +10,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Eventos</title>
+    <title>Perfil</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -31,7 +31,7 @@ session_start();
 
 <main class="container-fluid p-0 mb-5">
 
-    <?php include "componentes/eventos.php"; ?>
+    <?php include "componentes/perfil.php"; ?>
 
 </main>
 
