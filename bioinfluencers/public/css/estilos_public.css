@@ -515,3 +515,18 @@ a.float:hover + div.label-container{
     width: 100%;
     background-size: cover;
 }
+
+
+
+
+
+
+
+
+/* ANA */
+.fundo_noticias {
+    background-image: url("../img/coral.jpg");
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+}
