@@ -507,11 +507,31 @@ a.float:hover + div.label-container{
 /*PERFIL*/
 
 .img_redonda{
-    border-radius: 50%;
+    border-radius: 100%;
 }
 
 .fundo_login{
     background-image: url("../img/background.png");
     width: 100%;
     background-size: cover;
+}
+
+.topo{
+
+    margin-top: 8%;
+}
+
+.topo1{
+
+    padding-top:3%;
+}
+
+.centro{
+
+    margin-top: 5%;
+}
+
+.utilizador{
+    display: block;
+    margin: auto;
 }
