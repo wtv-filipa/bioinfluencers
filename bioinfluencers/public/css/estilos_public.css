@@ -1,6 +1,9 @@
 .form-inline {
     display: inline-block;
 }
+
+
+/*NAVBAR*/
 .navbar-header.col {
     padding: 0 !important;
 }
@@ -106,6 +109,10 @@
 .navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
     background: transparent !important;
 }
+
+
+
+
 @media (min-width: 1200px){
     .form-inline .input-group {
         width: 300px;
@@ -122,6 +129,8 @@
     }
 }
 
+/*FIM NAVBAR*/
+
 html {
     line-height: 1.5;
     font-family: 'Dosis', sans-serif;
@@ -134,6 +143,8 @@ a {
     text-decoration: none;
 }
 
+
+/*FEED*/
 .card {
     animation-duration: 0.3s;
     animation-name: card_opacity;
@@ -204,24 +215,7 @@ a {
     width: 100%;
 }
 
-.music-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-}
-.music-content i {
-    font-size: 35px;
-    color: #006fd4;
-    padding-right: 16px;
-}
-.music-content .bar-title {
-    flex: 1;
-}
-.music-content .bar-title .song-title {
-    font-size: 17px;
-    padding-bottom: 2px;
-}
+
 
 .actions {
     display: flex;
@@ -274,22 +268,6 @@ a {
 } */
 
 
-.btn {
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    color: #fff;
-    background-color: #008276;
-    margin-bottom: 0.3125rem;
-    text-decoration: none;
-    cursor: pointer;
-    display: inline-block;
-}
-
-
- #pageTitle {
-     display: none;
- }
 
 .label-container{
     position:fixed;
@@ -323,122 +301,9 @@ a {
     opacity:0.5;
 }
 
+/*FIM DO FEED*/
 
-
-
-.my-float{
-    font-size:24px;
-    margin-top:18px;
-}
-
-
-
-a:link.float{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-a:visited.float{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-a:hover.float{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-a:active.float{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-a.float2{
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size: 40px;
-}
-
-a:link.float2{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-a:visited.float2{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-a:hover.float2{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-a:active.float2{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-a.float + div.label-container {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s ease;
-}
-
-a.float:hover + div.label-container{
-    visibility: visible;
-    opacity: 1;
-}
-
-a.float2 + div.label-container2 {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s ease;
-}
-
-a.float2:hover + div.label-container2{
-    visibility: visible;
-    opacity: 1;
-}
-
-
-
-
-
-
-body:after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    opacity: 0.7;
-    background-size: cover;
-}
-
-h1 {
-
-    font-size: 50px;
-    text-align: center;
-    padding-top: 15px;
-    letter-spacing: 5px;
-
-}
-
-#backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-    z-index: 3;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 100ms linear;
-}
+/*EVENTOS*/
 
 .add-event-section {
     position: fixed;
@@ -606,6 +471,8 @@ h1 {
     opacity:0.5;
 }
 
+
+/*botões flutoantes
 .float{
     position:fixed;
     width:60px;
@@ -633,4 +500,18 @@ a.float + div.label-container {
 a.float:hover + div.label-container{
     visibility: visible;
     opacity: 1;
+}
+
+/*FIM EVENTOS*/
+
+/*PERFIL*/
+
+.img_redonda{
+
+}
+
+.fundo_login{
+    background-image: url("../img/background.png");
+    width: 100%;
+    background-size: cover;
 }

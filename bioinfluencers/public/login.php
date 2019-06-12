@@ -17,7 +17,7 @@
 </head>
 
 
-<body id="page-top">
+<body id="page-top" class="fundo_login">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
