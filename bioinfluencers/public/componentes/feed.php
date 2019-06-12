@@ -2,7 +2,7 @@
     <div class="card test">
         <div class="header">
             <div class="right-side">
-                <img src="img/pessoa 2.jpg"class="avatar"/>
+                <img src="img/pessoa2.jpg"class="avatar"/>
                 <div class="headers-text">
                     <span class="author-name">Cristina Costa</span>
                     <span class="header-secondary-text">Há 15 min.</span>
@@ -49,7 +49,7 @@
     <div class="card test">
         <div class="header">
             <div class="right-side">
-                <img src="img/pessoa 3.jpg" class="avatar"/>
+                <img src="img/pessoa3.jpg" class="avatar"/>
                 <div class="headers-text">
                     <span class="author-name">Ana Silva</span>
                     <span class="header-secondary-text">Há 20 min.</span>
@@ -102,7 +102,7 @@
     <div class="card test">
         <div class="header">
             <div class="right-side">
-                <img src="img/pessoa 4.jpg"class="avatar"/>
+                <img src="img/pessoa4.jpg"class="avatar"/>
                 <div class="headers-text">
                     <span class="author-name">Rui Ferreira</span>
                     <span class="header-secondary-text">Há 22 min.</span>

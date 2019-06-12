@@ -507,7 +507,7 @@ a.float:hover + div.label-container{
 /*PERFIL*/
 
 .img_redonda{
-
+    border-radius: 50%;
 }
 
 .fundo_login{
