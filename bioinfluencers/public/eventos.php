@@ -29,7 +29,7 @@ session_start();
 
 </header>
 
-<main class="container-fluid p-0 mb-5">
+<main class="container p-0 mb-5">
 
     <?php include "componentes/eventos.php"; ?>
 
