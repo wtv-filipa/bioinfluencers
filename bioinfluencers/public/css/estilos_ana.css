@@ -1,0 +1,228 @@
+.texto_branco {
+    color: white;
+}
+
+.card-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.card-photo1 {
+    width: 100%;
+    height: 100%;
+    background-image: url("https://source.unsplash.com/random");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 20px;
+}
+
+.card-text {
+    text-align: center;
+    line-height: 1.5;
+    padding: 1.5rem;
+}
+
+.card-text h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin: 0;
+}
+
+.card-text a {
+    text-decoration: none;
+    color: dimgray;
+    border: 1px solid dimgray;
+    padding: 5px 7px;
+    border-radius: 4px;
+}
+
+.card-text a:hover {
+    background: dimgray;
+    color: #fff;
+}
+
+.card-text p {
+    text-align: justify;
+}
+
+.texto_preto {
+    color: black;
+}
+
+
+.add-event-section {
+    position: fixed;
+    right: 50px;
+    bottom: 120px;
+}
+
+.add-event-section a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.9);
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    margin: 0;
+    text-align: right;
+    background-color: white;
+    padding: 5px 15px 5px 30px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    transition: all 100ms linear;
+    font-size: 17px;
+    z-index: 4;
+}
+
+.add-event-section a:hover {
+    background-color: rgba(150, 210, 255, 0.9);
+}
+
+.add-event-section a:before {
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 10px;
+    top: 9px;
+}
+
+.add-event-section #upload:before {
+    content: "";
+}
+
+.add-event-section #add:before {
+    content: "";
+}
+
+.add-event-section input[type="checkbox"] {
+    display: none;
+}
+
+.add-event-section input[type="checkbox"]:checked ~ .floating-action-button {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.add-event-section input[type="checkbox"]:checked ~ .floating-action-button:hover {
+    -webkit-transform: rotate(45deg) scale(1.05);
+    transform: rotate(45deg) scale(1.05);
+}
+
+.add-event-section input[type="checkbox"]:checked ~ a {
+    visibility: visible;
+    opacity: 1;
+    margin: 25px 0;
+}
+
+.add-event-section input[type="checkbox"]:checked ~ #backdrop {
+    opacity: 0.65;
+    visibility: visible;
+}
+
+.add-event-section .floating-action-button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    display: block;
+    width: 70px;
+    z-index: 100;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #146eff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    line-height: 70px;
+    text-align: center;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+}
+
+.add-event-section .floating-action-button:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.add-event-section .floating-action-button i {
+    transition: -webkit-transform 100ms linear;
+    transition: transform 100ms linear;
+    transition: transform 100ms linear, -webkit-transform 100ms linear;
+}
+
+.events1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 0 50px;
+}
+
+.events .event-card1 {
+    display: block;
+    background: white;
+    width: 300px;
+    margin: 20px;
+    cursor: default;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+
+    border-radius: 20px;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.events1 .event-card1:hover {
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.5);
+}
+
+.events1 .event-card1 img {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px 20px 0 0;
+}
+
+.events1 .event-card1 .description {
+    padding: 5px 15px 15px;
+    height: 200px;
+}
+
+.events1 .event-card1 .description h3 {
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+
+
+
+.label-text {
+    color: #FFF;
+    background: rgba(51, 51, 51, 0.5);
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.label-arrow {
+    display: table-cell;
+    vertical-align: middle;
+    color: #333;
+    opacity: 0.5;
+}
+
+/* Extra small devices (0px --- 599px) */
+@media only screen and (max-width: 599px) {
+}
+/* Small devices (600px --- 767px) */
+@media only screen and (min-width: 600px) {
+}
+/* Medium devices (768px --- 991px) */
+@media only screen and (min-width: 768px) {
+}
+/* Large devices (992px --- 1199px) */
+@media only screen and (min-width: 992px) {
+}
+/* Extra large devices (1200 e superior) */
+@media only screen and (min-width: 1200px) {
+}

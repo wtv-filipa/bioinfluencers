@@ -24,7 +24,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
             <li class="nav-item"><a href="eventos.php" class="nav-link"><i class="fa fa-calendar-o" style="font-size: 1.3rem"></i></a></li>
             <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sitemap" style="font-size: 1.3rem"></i></a></li>
             <li class="nav-item"><a href="noticias.php" class="nav-link"><i class="fa fa-newspaper-o" style="font-size: 1.3rem"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-star-o" style="font-size: 1.3rem"></i></a></li>
+            <li class="nav-item"><a href="grupos.php" class="nav-link"><i class="fa fa-star-o" style="font-size: 1.3rem"></i></a></li>
 
         </ul>
         <form class="navbar-form form-inline">
