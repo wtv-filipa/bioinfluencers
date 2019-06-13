@@ -39,8 +39,8 @@
 
     <div class="row">
         <div class="events1 mx-auto">
-            <div class="col-xl-4 col-md-6 col-sm-6">
-                <div class="event-card1 mx-auto">
+            <div class="col-xl-4 col-md-6 col-sm-6 mx-auto">
+                <div class="event-card1 ">
                     <img src="img/escavar.jpg" alt=""/>
                     <div class="description">
                         <h4 class="mt-2">BioLousada</h4>
@@ -54,8 +54,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6 col-sm-6 ">
-                <div class="event-card1 mx-auto">
+            <div class="col-xl-4 col-md-6 col-sm-6 mx-auto">
+                <div class="event-card1 ">
                     <img src="img/escavar.jpg" alt=""/>
                     <div class="description">
                         <h4 class="mt-2">BioLousada</h4>
@@ -69,8 +69,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6 col-sm-6">
-                <div class="event-card1 mx-auto">
+            <div class="col-xl-4 col-md-6 col-sm-6 mx-auto">
+                <div class="event-card1 ">
                     <img src="img/escavar.jpg" alt=""/>
                     <div class="description">
                         <h4 class="mt-2">BioLousada</h4>

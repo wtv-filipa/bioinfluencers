@@ -58,99 +58,6 @@
     bottom: 120px;
 }
 
-.add-event-section a {
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.9);
-    display: block;
-    visibility: hidden;
-    opacity: 0;
-    margin: 0;
-    text-align: right;
-    background-color: white;
-    padding: 5px 15px 5px 30px;
-    border-radius: 20px;
-    position: relative;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
-    transition: all 100ms linear;
-    font-size: 17px;
-    z-index: 4;
-}
-
-.add-event-section a:hover {
-    background-color: rgba(150, 210, 255, 0.9);
-}
-
-.add-event-section a:before {
-    font-family: "FontAwesome";
-    position: absolute;
-    left: 10px;
-    top: 9px;
-}
-
-.add-event-section #upload:before {
-    content: "";
-}
-
-.add-event-section #add:before {
-    content: "";
-}
-
-.add-event-section input[type="checkbox"] {
-    display: none;
-}
-
-.add-event-section input[type="checkbox"]:checked ~ .floating-action-button {
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.add-event-section input[type="checkbox"]:checked ~ .floating-action-button:hover {
-    -webkit-transform: rotate(45deg) scale(1.05);
-    transform: rotate(45deg) scale(1.05);
-}
-
-.add-event-section input[type="checkbox"]:checked ~ a {
-    visibility: visible;
-    opacity: 1;
-    margin: 25px 0;
-}
-
-.add-event-section input[type="checkbox"]:checked ~ #backdrop {
-    opacity: 0.65;
-    visibility: visible;
-}
-
-.add-event-section .floating-action-button {
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    display: block;
-    width: 70px;
-    z-index: 100;
-    height: 70px;
-    border-radius: 50%;
-    background-color: #146eff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    line-height: 70px;
-    text-align: center;
-    font-size: 30px;
-    color: rgba(255, 255, 255, 0.9);
-    cursor: pointer;
-    transition: all 100ms ease-in-out;
-}
-
-.add-event-section .floating-action-button:hover {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.add-event-section .floating-action-button i {
-    transition: -webkit-transform 100ms linear;
-    transition: transform 100ms linear;
-    transition: transform 100ms linear, -webkit-transform 100ms linear;
-}
-
 .events1 {
     display: flex;
     justify-content: center;
@@ -158,7 +65,7 @@
     padding: 20px 0 50px;
 }
 
-.events .event-card1 {
+.events1 .event-card1 {
     display: block;
     background: white;
     width: 300px;
@@ -186,13 +93,6 @@
     padding: 5px 15px 15px;
     height: 200px;
 }
-
-.events1 .event-card1 .description h3 {
-    padding-bottom: 5px;
-    font-size: 20px;
-}
-
-
 
 
 .label-text {
