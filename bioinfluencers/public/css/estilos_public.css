@@ -598,31 +598,63 @@ div.sticky {
     position: -webkit-sticky;
     position: sticky;
     top: 8%;
-    background-color: #e5e5e5;
-    padding: 35px;
+    background-color: #f1f2f2;
+    padding: 13px;
     font-size: 20px;
     z-index: 10000;
 }
 
 .square {
-    width: 100%;
+    width: 103%;
     padding-bottom: 3%;
-    background-size: cover;
-    background-position: center;
     z-index: 1;
 }
 
 .square img{
-    width: 360px;
+    width: 104%;
 }
 
+.square1 {
+    width: auto;
+    padding-bottom: 3%;
+    display: block;
+    margin: 2%;
+    z-index: 1;
+}
 
-/*ESTILOS NOTÍCIAS*/
+.square1 img{
+    width: 40%;
+}
 
-/* ANA */
-.fundo_noticias {
-    background-image: url("../img/coral.jpg");
-    width: 100%;
-    height: 80vh;
-    background-size: cover;
+.nav-tabs{
+    display: block;
+    margin: auto;
+    width: 45%;!important;
+}
+
+.nav-item{
+    display: block;
+    margin: auto;
+}
+
+.nav-item img{
+    width: 40px;
+    height: auto;
+}
+
+.icon_perfil{
+    width: 140px;
+    height: 154px;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    background-color: transparent !important;
+    border-color: #dddfeb #dddfeb transparent !important;
+    width: 80px;
+    height: 50px;
+}
+
+.nav-tabs .nav-link{
+    width: 80px;
+    height: 50px;
 }
