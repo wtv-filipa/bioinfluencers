@@ -557,6 +557,12 @@ a.float:hover + div.label-container{
     border-radius: 100%;
 }
 
+.tamanho {
+
+    width: 190px;
+    height: 170px;
+}
+
 .fundo_login {
     background-image: url("../img/background.png");
     width: 100%;
@@ -565,6 +571,8 @@ a.float:hover + div.label-container{
 
 .topo {
 
+    height: 8%;
+    width: auto;
     margin-top: 8%;
 }
 
@@ -583,11 +591,7 @@ a.float:hover + div.label-container{
     margin: auto;
 }
 
-.tamanho {
 
-    width: 190px;
-    height: 170px;
-}
 
 .alinhar{
     width: 30%;
@@ -605,13 +609,13 @@ div.sticky {
 }
 
 .square {
-    width: 103%;
+    width: 100%;
     padding-bottom: 3%;
     z-index: 1;
 }
 
 .square img{
-    width: 104%;
+    width: 100%;
 }
 
 .square1 {
@@ -658,3 +662,19 @@ div.sticky {
     width: 80px;
     height: 50px;
 }
+
+.cantos_redondos{
+    border-radius: 20px;
+}
+
+#perfil{
+    margin-top: -6%;
+    background-image: url("../img/perfil.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 70vh;
+
+}
+
+

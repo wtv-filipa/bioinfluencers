@@ -23,13 +23,13 @@ session_start();
 
 
 <body>
-<header class="sticky-top">
+<header class="sticky-top" >
 
     <?php include "componentes/navbar.php"; ?>
 
 </header>
 
-<main class="container-fluid p-0 mb-5">
+<main class="p-0 mb-5" >
 
     <?php include "componentes/perfil.php"; ?>
 
@@ -39,6 +39,7 @@ session_start();
 <!-- JavaScript-->
 
 <?php include "helpers/js.php"; ?>
+
 
 </body>
 

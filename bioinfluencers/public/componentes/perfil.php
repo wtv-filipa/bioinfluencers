@@ -1,6 +1,10 @@
+<header id="perfil">
 
 <div class="container">
 
+    <div class="topo">
+
+    </div>
     <!--DIV QUE CONTÉM OS SEGUIDORES E A FOTO DE PERFIL-->
     <div class="row text-center topo">
 
@@ -35,7 +39,9 @@
 
     </div>
 </div>
-    <!--DIV QUE É A "SEGUNDA NAV" AKA A QUE SELECIONA SE É IMAGENS, MEDALHAS OU CALENDÁRIO-->
+</header>
+
+<!--DIV QUE É A "SEGUNDA NAV" AKA A QUE SELECIONA SE É IMAGENS, MEDALHAS OU CALENDÁRIO-->
 
     <div class="sticky">
         <div style="display: block; margin: auto;" class="container text-center">
@@ -64,54 +70,54 @@
     <div id="galeria" class="container tab-pane active"><br>
         <div class="row">
             <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
+                <div class="square "><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
             </div>
 
             <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
             </div>
             <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
             </div>
             <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
-            </div>
-
-            <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
-            </div>
-            <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
-            </div>
-            <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
             </div>
 
             <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
             </div>
             <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
             </div>
             <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
-            </div>
-
-            <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
-            </div>
-            <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
-            </div>
-            <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
             </div>
 
             <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
             </div>
             <div class="col-4">
-                <div class="square"><img class="img-fluid" src="img/arvores.jpg"></div>
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
+            </div>
+            <div class="col-4">
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
+            </div>
+
+            <div class="col-4">
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
+            </div>
+            <div class="col-4">
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
+            </div>
+            <div class="col-4">
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
+            </div>
+
+            <div class="col-4">
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
+            </div>
+            <div class="col-4">
+                <div class="square"><img class="img-fluid cantos_redondos" src="img/arvores.jpg"></div>
             </div>
         </div>
     </div>
@@ -119,7 +125,7 @@
     <!----------------------------------------MEDALHAS------------------------------------------------------------->
     <div id="medalhas" class="container tab-pane fade"><br>
 
-        <h4 class="text-center">Troféus</h4>
+            <h4 class="text-center mt-3 mb-3">Troféus</h4>
 
 
         <div class="row text-center">
@@ -138,7 +144,7 @@
 
     </div>
 
-        <h4 class="text-center">Medalhas</h4>
+        <h4 class="text-center mt-3 mb-3">Medalhas</h4>
         <div class="row text-center">
 
             <div class="col-4">
@@ -167,6 +173,9 @@
 
         <!----------------------------------------EVENTOS--------------------------------------------------------->
     <div id="evento" class="container tab-pane fade">
+
+        <h4 class="text-center mt-5 mb-3">Próximos eventos</h4>
+
         <div class="events row mx-auto">
 
 
@@ -210,48 +219,57 @@
                 </div>
             </div>
 
-            <div class="event-card">
-                <img src="img/escavar.jpg" alt="" />
-                <div class="description">
-                    <h4 class="mt-2"><span style="font-weight: bold;">6 JUN | </span>BioLousada</h4>
-                    <p class="location mb-0">Serra da Lousada</p>
-                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9h-16
-                    <div class="controls">
-                        <a href="#">
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-share" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <img src="img/escavar.jpg" alt="" />
-                <div class="description">
-                    <h4 class="mt-2"><span style="font-weight: bold;">6 JUN | </span>BioLousada</h4>
-                    <p class="location mb-0">Serra da Lousada</p>
-                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9h-16
-                    <div class="controls">
-                        <a href="#">
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-share" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
     </div>
+
+
+        <h4 class="text-center mt-5 mb-3">Eventos passados</h4>
+
+        <div class="events row mx-auto">
+
+
+            <div class="event-card">
+                <img src="img/escavar.jpg" alt="" />
+                <div class="description">
+                    <h4 class="mt-2"><span style="font-weight: bold;">6 JUN | </span>BioLousada</h4>
+                    <p class="location mb-0">Serra da Lousada</p>
+                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9h-16
+                    <div class="controls">
+                        <a href="#">
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="img/beata.jpg" alt="" />
+                <div class="description">
+                    <h4 class="mt-2"><span style="font-weight: bold;">6 JUN | </span>Campus Sem Filtros</h4>
+                    <p class="location mb-0">Universidade de Aveiro</p>
+                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>14h-15h30
+                    <div class="controls">
+                        <a href="#">
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
 </div>
 
 
