@@ -36,7 +36,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
         <ul class="nav navbar-nav navbar-right ml-auto">
             <li class="nav-item"><a href="#" class="nav-link notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
             <li class="nav-item dropdown">
-                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="img/pessoa2.jpg" class="avatar" alt="Avatar"><?= $nickname ?><b class="caret"></b></a>
+                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="img/pessoa 2.jpg" class="avatar" alt="Avatar"><?= $nickname ?><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <?php
                     if(isset($tipo) && $tipo == 1) {
