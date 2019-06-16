@@ -10,7 +10,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Notícias</title>
+    <title>Meu código</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -23,17 +23,18 @@ session_start();
 
 
 <body>
-<header class="sticky-top ">
+<header class="sticky-top">
 
     <?php include "componentes/navbar.php"; ?>
 
 </header>
 
-<main class="p-0">
+<main class="mb-5">
 
-    <?php include "componentes/noticias.php"; ?>
+    <?php include "componentes/codigo_evento.php"; ?>
 
 </main>
+
 
 <!-- JavaScript-->
 

@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="823d4523-a44f-49a8-8d71-b5121f62ebc3" name="Default Changelist" comment="">
+    <list default="true" id="823d4523-a44f-49a8-8d71-b5121f62ebc3" name="Default Changelist" comment="perfil última versão atualizada">
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/codigo_evento.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/codigo_utilizador.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/componentes/codigo_evento.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/componentes/codigo_utilizador.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/componentes/grupos.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/css/estilos_ana.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/grupos.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/img/beata_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/img/codigo_evento.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/img/codigo_user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bioinfluencers/public/img/mar.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bioinfluencers/public/componentes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/bioinfluencers/public/componentes/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bioinfluencers/public/componentes/noticias.php" beforeDir="false" afterPath="$PROJECT_DIR$/bioinfluencers/public/componentes/noticias.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bioinfluencers/public/componentes/perfil.php" beforeDir="false" afterPath="$PROJECT_DIR$/bioinfluencers/public/componentes/perfil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bioinfluencers/public/css/estilos.css" beforeDir="false" afterPath="$PROJECT_DIR$/bioinfluencers/public/css/estilos.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bioinfluencers/public/css/estilos_public.css" beforeDir="false" afterPath="$PROJECT_DIR$/bioinfluencers/public/css/estilos_public.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bioinfluencers/public/helpers/css.php" beforeDir="false" afterPath="$PROJECT_DIR$/bioinfluencers/public/helpers/css.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bioinfluencers/public/helpers/js.php" beforeDir="false" afterPath="$PROJECT_DIR$/bioinfluencers/public/helpers/js.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bioinfluencers/public/helpers/meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/bioinfluencers/public/helpers/meta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bioinfluencers/public/img/coral.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bioinfluencers/public/noticias.php" beforeDir="false" afterPath="$PROJECT_DIR$/bioinfluencers/public/noticias.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,30 +33,110 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/perfil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
+            <state relative-caret-position="-54">
+              <caret column="12" selection-start-column="12" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/login.php">
+        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/codigo_utilizador.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/codigo_evento.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/feed.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/css/estilos_public.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="428">
+              <caret line="729" column="5" lean-forward="true" selection-start-line="729" selection-start-column="5" selection-end-line="729" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/css/estilos_ana.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="213" selection-start-line="213" selection-end-line="227" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/css/estilos.css">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/css/estilos_public.css">
+        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/navbar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10818">
-              <caret line="601" column="15" selection-start-line="601" selection-start-column="15" selection-end-line="601" selection-end-column="15" />
+            <state relative-caret-position="432">
+              <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#a#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bioinfluencers/public/eventos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>avatar</find>
+      <find>cdnjs.cloudflare.com</find>
+      <find>icon_perfil</find>
+      <find>card-</find>
+      <find>add-event-section</find>
+      <find>perfil</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,11 +149,23 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bioinfluencers/public/componentes/navbar.php" />
         <option value="$PROJECT_DIR$/bioinfluencers/public/noticias.php" />
         <option value="$PROJECT_DIR$/bioinfluencers/public/componentes/noticias.php" />
-        <option value="$PROJECT_DIR$/bioinfluencers/public/css/estilos_public.css" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/eventos.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/index.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/javascript/perfil_script.js" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/perfil.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/helpers/css.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/codigo_utilizador.php" />
         <option value="$PROJECT_DIR$/bioinfluencers/public/componentes/perfil.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/helpers/fonts.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/helpers/js.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/helpers/meta.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/codigo_evento.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/componentes/navbar.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/componentes/codigo_evento.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/componentes/codigo_utilizador.php" />
+        <option value="$PROJECT_DIR$/bioinfluencers/public/css/estilos_public.css" />
       </list>
     </option>
   </component>
@@ -70,10 +181,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="916" />
-    <option name="height" value="920" />
+    <option name="x" value="793" />
+    <option name="width" value="814" />
+    <option name="height" value="907" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -83,6 +193,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -95,38 +206,10 @@
               <item name="projeto_final" type="462c0819:PsiDirectoryNode" />
               <item name="bioinfluencers" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="projeto_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_final" type="462c0819:PsiDirectoryNode" />
-              <item name="bioinfluencers" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projeto_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_final" type="462c0819:PsiDirectoryNode" />
-              <item name="bioinfluencers" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="componentes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projeto_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_final" type="462c0819:PsiDirectoryNode" />
-              <item name="bioinfluencers" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projeto_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_final" type="462c0819:PsiDirectoryNode" />
-              <item name="bioinfluencers" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -135,6 +218,12 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projeto_final\bioinfluencers\public" />
+      <recent name="C:\xampp\htdocs\projeto_final\bioinfluencers\public\css" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -161,6 +250,9 @@
       <workItem from="1560352430963" duration="169000" />
       <workItem from="1560352601515" duration="9297000" />
       <workItem from="1560366060193" duration="599000" />
+      <workItem from="1560469880025" duration="1270000" />
+      <workItem from="1560509666668" duration="6587000" />
+      <workItem from="1560717176917" duration="10180000" />
     </task>
     <task id="LOCAL-00001" summary="notícias by ana">
       <created>1560355860584</created>
@@ -169,16 +261,44 @@
       <option name="project" value="LOCAL" />
       <updated>1560355860584</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="atualizada 10h43 do dia 13.06">
+      <created>1560419003667</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1560419003667</updated>
+    </task>
+    <task id="LOCAL-00003" summary="perfil última versão atualizada">
+      <created>1560437426679</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1560437426680</updated>
+    </task>
+    <task id="LOCAL-00004" summary="versão de última hora, mega fresca">
+      <created>1560437744651</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1560437744651</updated>
+    </task>
+    <task id="LOCAL-00005" summary="perfil última versão atualizada v.2">
+      <created>1560451380241</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1560451380242</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10065000" />
+    <option name="totallyTimeSpent" value="57201000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="916" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25642672" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19280206" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -193,6 +313,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32806325" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="12" weight="0.32938075" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -228,57 +349,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="notícias by ana" />
-    <option name="LAST_COMMIT_MESSAGE" value="notícias by ana" />
+    <MESSAGE value="atualizada 10h43 do dia 13.06" />
+    <MESSAGE value="perfil última versão atualizada" />
+    <MESSAGE value="versão de última hora, mega fresca" />
+    <MESSAGE value="perfil última versão atualizada v.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="perfil última versão atualizada v.2" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/eventos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="22" selection-end-line="44" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/feed.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#1;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#3;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#1;n#div#3;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/login.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/helpers/css.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/noticias.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/navbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="109" lean-forward="true" selection-start-line="25" selection-start-column="109" selection-end-line="25" selection-end-column="109" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#a#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/noticias.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -287,26 +366,165 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/javascript/perfil_script.js" />
     <entry file="file://$PROJECT_DIR$/bioinfluencers/public/perfil.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/helpers/fonts.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/perfil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
+        <state relative-caret-position="360">
+          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/helpers/css.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/eventos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="123" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bioinfluencers/public/login.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/css/estilos.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/codigo_utilizador.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/noticias.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/admin/componentes/editar_noticia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="59" column="43" lean-forward="true" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="65" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/admin/helpers/fonts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/eventos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/register.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/helpers/fonts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/helpers/js.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/helpers/meta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/perfil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54">
+          <caret column="12" selection-start-column="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/feed.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/navbar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#a#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/codigo_evento.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/codigo_utilizador.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/componentes/codigo_evento.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioinfluencers/public/css/estilos_ana.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="213" selection-start-line="213" selection-end-line="227" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bioinfluencers/public/css/estilos_public.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10818">
-          <caret line="601" column="15" selection-start-line="601" selection-start-column="15" selection-end-line="601" selection-end-column="15" />
+        <state relative-caret-position="428">
+          <caret line="729" column="5" lean-forward="true" selection-start-line="729" selection-start-column="5" selection-end-line="729" selection-end-column="5" />
         </state>
       </provider>
     </entry>

@@ -31,7 +31,7 @@ session_start();
 
 <main class="p-0">
 
-    <?php include "componentes/noticias.php"; ?>
+    <?php include "componentes/grupos.php"; ?>
 
 </main>
 
