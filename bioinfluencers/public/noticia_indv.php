@@ -10,7 +10,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Grupos</title>
+    <title>Notícias</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -31,7 +31,7 @@ session_start();
 
 <main class="p-0">
 
-    <?php include "componentes/grupos.php"; ?>
+    <?php include "componentes/noticia_indv.php"; ?>
 
 </main>
 

@@ -22,7 +22,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
         <ul class="nav navbar-nav">
             <li class="nav-item active"><a href="index.php" class="nav-link"><i class="fa fa-picture-o" style="font-size: 1.3rem"></i></a></li>
             <li class="nav-item"><a href="eventos.php" class="nav-link"><i class="fa fa-calendar-o" style="font-size: 1.3rem"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sitemap" style="font-size: 1.3rem"></i></a></li>
+            <li class="nav-item"><a href="top.php" class="nav-link"><i class="fa fa-sitemap" style="font-size: 1.3rem"></i></a></li>
             <li class="nav-item"><a href="noticias.php" class="nav-link"><i class="fa fa-newspaper-o" style="font-size: 1.3rem"></i></a></li>
             <li class="nav-item"><a href="grupos.php" class="nav-link"><i class="fa fa-star-o" style="font-size: 1.3rem"></i></a></li>
             <li class="nav-item"><a href="codigo_evento.php" class="nav-link"><i class="fa fa-star-o" style="font-size: 1.3rem"></i></a></li>
@@ -42,7 +42,6 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
                     <?php
                     if(isset($tipo) && $tipo == 1) {
                         ?>
-
                         <li><a href="../admin/index.php" class="dropdown-item" style="font-weight: bold"><i class="fa fa-shield"></i>ADMIN</a></li>
                         <?php
                     }
@@ -51,7 +50,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
                     <li class="divider dropdown-divider"></li>
                     <li><a href="perfil.php" class="dropdown-item"><i class="fa fa-user-o"></i>Ver perfil</a></li>
                     <li><a href="codigo_utilizador.php" class="dropdown-item"><i class="fa fa-star-o"></i> Código</a></li>
-                    <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i>Definições</a></li>
+                    <li><a href="definicoes.php" class="dropdown-item"><i class="fa fa-sliders"></i>Definições</a></li>
                     <li class="divider dropdown-divider"></li>
                     <li><a href="scripts/logout.php" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
                 </ul>

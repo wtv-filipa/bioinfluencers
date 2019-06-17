@@ -10,7 +10,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Grupos</title>
+    <title>Eventos</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -23,17 +23,18 @@ session_start();
 
 
 <body>
-<header class="sticky-top ">
+<header class="sticky-top">
 
     <?php include "componentes/navbar.php"; ?>
 
 </header>
 
-<main class="p-0">
+<main class="container mb-5 p-0">
 
-    <?php include "componentes/grupos.php"; ?>
+    <?php include "componentes/top.php"; ?>
 
 </main>
+
 
 <!-- JavaScript-->
 
@@ -42,3 +43,4 @@ session_start();
 </body>
 
 </html>
+

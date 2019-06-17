@@ -1,31 +1,45 @@
 <div class="container">
 
-    <div id="demo" class="carousel slide mb-5 height_carousel" data-ride="carousel">
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
+    <div id="demo" class="carousel slide mb-5" data-ride="carousel">
+
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="img-fluid" src="img/mar.png" alt="Los Angeles" width="1140" height="500">
-                <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>We had such a great time in LA!</p>
+                <div class="card text-white mb-5 mt-0">
+                    <img class="card-img" src="img/mar.png" alt="Card image">
+                    <div class="card-img-overlay p-5 d-flex align-items-end">
+                        <div >
+                            <h3 class="card-title sombra_text_not">Algo sobre o mar</h3>
+                            <p class="card-text p-0 sombra_text_not ">This is a wider card with supporting text below as a natural lead-in to additional
+                                content. This content is a little bit longer.</p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="img-fluid" src="img/mar.png" alt="Chicago" width="1140" height="500">
-                <div class="carousel-caption">
-                    <h3>Chicago</h3>
-                    <p>Thank you, Chicago!</p>
+                <div class="card text-white mb-5 mt-0">
+                    <img class="card-img" src="img/mar.png" alt="Card image">
+                    <div class="card-img-overlay p-5 d-flex align-items-end">
+                        <div class="">
+                            <h3 class="card-title">Algo sobre o mar</h3>
+                            <p class="card-text p-0">This is a wider card with supporting text below as a natural lead-in to additional
+                                content. This content is a little bit longer.</p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="img-fluid" src="img/mar.png" alt="New York" width="1140" height="500">
-                <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                <div class="card text-white mb-5 mt-0">
+                    <img class="card-img" src="img/mar.png" alt="Card image">
+                    <div class="card-img-overlay p-5 d-flex align-items-end">
+                        <div class="">
+                            <h3 class="card-title">Algo sobre o mar</h3>
+                            <p class="card-text p-0">This is a wider card with supporting text below as a natural lead-in to additional
+                                content. This content is a little bit longer.</p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,45 +51,54 @@
         </a>
     </div>
 
-    <div class="col-6 mx-auto mb-5">
-        <select class="form-control" id="" name="">
-            <option>Seleciona um tema das notícias</option>
-            <option value="">Volvo</option>
-            <option value="">Saab</option>
-            <option value="">Opel</option>
-            <option value="">Audi</option>
-        </select>
-    </div>
 
-    <div class="card-content mb-5">
-        <div class="card-photo1"></div>
-        <div class="card-text">
-            <h2>Project Name</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sit sequi beatae architecto. Voluptatem
-                quisquam pariatur cupiditate iure eum excepturi consequatur deserunt architecto doloremque nostrum.</p>
-            <a href="#">View Project</a>
+    <div>
+
+        <div class="col-6 mx-auto mb-5">
+            <select class="form-control" id="" name="">
+                <option>Seleciona um tema das notícias</option>
+                <option value="">Volvo</option>
+                <option value="">Saab</option>
+                <option value="">Opel</option>
+                <option value="">Audi</option>
+            </select>
+        </div>
+
+        <div class="card-content mb-5">
+            <div class="card-photo1"></div>
+            <div class="card-text">
+                <h2>Project Name</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sit sequi beatae architecto.
+                    Voluptatem
+                    quisquam pariatur cupiditate iure eum excepturi consequatur deserunt architecto doloremque
+                    nostrum.</p>
+                <a href="noticia_indv.php">View Project</a>
+            </div>
+        </div>
+
+        <div class="card-content mb-5">
+            <div class="card-photo1"></div>
+            <div class="card-text">
+                <h2>Project Name</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sit sequi beatae architecto.
+                    Voluptatem
+                    quisquam pariatur cupiditate iure eum excepturi consequatur deserunt architecto doloremque
+                    nostrum.</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+
+        <div class="card-content mb-5">
+            <div class="card-photo1"></div>
+            <div class="card-text">
+                <h2>Project Name</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sit sequi beatae architecto.
+                    Voluptatem
+                    quisquam pariatur cupiditate iure eum excepturi consequatur deserunt architecto doloremque
+                    nostrum.</p>
+                <a href="#">View Project</a>
+            </div>
         </div>
     </div>
-
-    <div class="card-content mb-5">
-        <div class="card-photo1"></div>
-        <div class="card-text">
-            <h2>Project Name</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sit sequi beatae architecto. Voluptatem
-                quisquam pariatur cupiditate iure eum excepturi consequatur deserunt architecto doloremque nostrum.</p>
-            <a href="#">View Project</a>
-        </div>
-    </div>
-
-    <div class="card-content mb-5">
-        <div class="card-photo1"></div>
-        <div class="card-text">
-            <h2>Project Name</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sit sequi beatae architecto. Voluptatem
-                quisquam pariatur cupiditate iure eum excepturi consequatur deserunt architecto doloremque nostrum.</p>
-            <a href="#">View Project</a>
-        </div>
-    </div>
-
 
 </div>

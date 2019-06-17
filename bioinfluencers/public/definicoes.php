@@ -10,30 +10,31 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Grupos</title>
+    <title>Definições</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
 
     <!-- Custom styles for this template-->
 
-    <?php include "helpers/css.php"; ?>
+    <?php include "helpers/css_definicoes.php"; ?>
 
 </head>
 
 
 <body>
-<header class="sticky-top ">
+<header class="sticky-top">
 
     <?php include "componentes/navbar.php"; ?>
 
 </header>
 
-<main class="p-0">
+<main class="container p-0 mb-5">
 
-    <?php include "componentes/grupos.php"; ?>
+    <?php include "componentes/definicoes.php"; ?>
 
 </main>
+
 
 <!-- JavaScript-->
 

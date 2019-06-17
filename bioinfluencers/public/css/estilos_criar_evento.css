@@ -1,0 +1,108 @@
+.body_criar_evento {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #858796;
+    text-align: left;
+    background-image: url("../img/perfil.png");
+    background-size: cover;
+    width: 100%;
+}
+
+h6 {
+
+    color: #7FC53C;
+}
+
+
+a {
+
+    color: #7FC53C;
+}
+
+
+a:hover {
+
+    color: #85da4b;
+    text-decoration: none;
+}
+
+
+
+
+/*COPIADO*/
+.card.light-version .file-field input[type=text] {
+    border-bottom: 1px solid #fff; }
+.card.light-version .file-field input[type=text]::-webkit-input-placeholder {
+    color: #fff;
+    font-weight: 300; }
+.card.light-version .file-field input[type=text]::-moz-placeholder {
+    color: #fff;
+    font-weight: 300; }
+.card.light-version .file-field input[type=text]:-ms-input-placeholder {
+    color: #fff;
+    font-weight: 300; }
+.card.light-version .file-field input[type=text]::placeholder {
+    color: #fff;
+    font-weight: 300; }
+.card.light-version .file-field input[type=text]:focus:not([readonly]) {
+    -webkit-box-shadow: 0 1px 0 0 #fff;
+    box-shadow: 0 1px 0 0 #fff; }
+.card.light-version .file-field input[type=text].valid {
+    border-bottom: 1px solid #00c851;
+    -webkit-box-shadow: 0 1px 0 0 #00c851;
+    box-shadow: 0 1px 0 0 #00c851; }
+.card.light-version .file-field input[type=text]:focus.valid {
+    border-bottom: 1px solid #00c851;
+    -webkit-box-shadow: 0 1px 0 0 #00c851;
+    box-shadow: 0 1px 0 0 #00c851; }
+
+
+
+.inserir_dados {
+
+    margin-top: 10%;
+}
+
+
+
+
+.publicar_btn {
+
+    width: 50%!important;
+    height: 10%!important;
+    color: #fff!important;
+    background-color: #7FC53C!important;
+    margin-bottom: 0.3125rem!important;
+    text-decoration: none!important;
+    cursor: pointer!important;
+    display: inline-block!important;
+    border-radius: 40px!important;
+    margin-top: 10%;
+    font-weight: bold;
+    border-color: #7FC53C!important;
+}
+
+
+.publicar_btn:hover {
+
+    width: 50%!important;
+    height: 10%!important;
+    color: #fff!important;
+    background-color: #61a439 !important;
+    margin-bottom: 0.3125rem!important;
+    text-decoration: none!important;
+    cursor: pointer!important;
+    display: inline-block!important;
+    border-color: #61a439!important;
+    border-radius: 40px!important;
+}
+
+
+
+
+.upload_docs:hover {
+
+    background-color: #eeeeee;/*a cor antes era fafafa*/
+}
