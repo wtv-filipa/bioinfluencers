@@ -63,8 +63,8 @@ if (isset($_GET["edit"])) {
 
                 <a href="criar_perfil.php?edit=<?= $nome_u ?>"><label class="label fa fa-pencil"
                                                                       for="imgInp"></label></a>
-
             </form>
+
             <?php
         }
     }

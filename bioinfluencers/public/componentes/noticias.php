@@ -1,47 +1,57 @@
 <div class="container">
-
     <div id="demo" class="carousel slide mb-5" data-ride="carousel">
-
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+            <li data-target="#demo" data-slide-to="3"></li>
+        </ul>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="card text-white mb-5 mt-0">
-                    <img class="card-img" src="img/mar.png" alt="Card image">
-                    <div class="card-img-overlay p-5 d-flex align-items-end">
-                        <div >
-                            <h3 class="card-title sombra_text_not">Algo sobre o mar</h3>
-                            <p class="card-text p-0 sombra_text_not ">This is a wider card with supporting text below as a natural lead-in to additional
-                                content. This content is a little bit longer.</p>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="card text-white mb-5 mt-0">
-                    <img class="card-img" src="img/mar.png" alt="Card image">
-                    <div class="card-img-overlay p-5 d-flex align-items-end">
-                        <div class="">
-                            <h3 class="card-title">Algo sobre o mar</h3>
-                            <p class="card-text p-0">This is a wider card with supporting text below as a natural lead-in to additional
-                                content. This content is a little bit longer.</p>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="card text-white mb-5 mt-0">
-                    <img class="card-img" src="img/mar.png" alt="Card image">
-                    <div class="card-img-overlay p-5 d-flex align-items-end">
-                        <div class="">
-                            <h3 class="card-title">Algo sobre o mar</h3>
-                            <p class="card-text p-0">This is a wider card with supporting text below as a natural lead-in to additional
-                                content. This content is a little bit longer.</p>
-                        </div>
+        <?php
+        require_once("connections/connection.php");
 
+        $link = new_db_connection();
+        $stmt = mysqli_stmt_init($link);
+
+        $query = "SELECT id_noticias, titulo, subtitulo, data_hora FROM noticias ORDER BY data_hora DESC LIMIT 4";
+
+        if (mysqli_stmt_prepare($stmt, $query)) {
+
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $id, $titulo, $subtitulo, $data_hora);
+            $active = true;
+
+            while(mysqli_stmt_fetch($stmt)) {
+                if ($active == true) {
+                    ?>
+                    <div class="carousel-item active">
+                        <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
+                        <div class="carousel-caption">
+                            <h3><?= $titulo ?></h3>
+                            <p><?= $subtitulo ?></p>
+                        </div>
                     </div>
-                </div>
-            </div>
+
+                    <?php
+                    $active = false;
+                } else {
+                    ?>
+                    <div class="carousel-item">
+                        <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
+                        <div class="carousel-caption">
+                            <h3><?= $titulo ?></h3>
+                            <p><?= $subtitulo ?></p>
+                        </div>
+                    </div>
+            <?php
+                }
+            }
+        }
+
+        ?>
+
         </div>
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
@@ -51,54 +61,60 @@
         </a>
     </div>
 
-
     <div>
+        <div class="row mb-3">
+            <div class="col-xl-8 col-sm-12">
+                <h3>Encontra aqui todas as notícias disponíveis</h3>
+            </div>
+            <div class="col-xl-4 col-sm-8 mx-auto mb-5">
+                <select class="form-control" id="" name="">
+                    <option>Seleciona uma notícia</option>
+                    <?php
 
-        <div class="col-6 mx-auto mb-5">
-            <select class="form-control" id="" name="">
-                <option>Seleciona um tema das notícias</option>
-                <option value="">Volvo</option>
-                <option value="">Saab</option>
-                <option value="">Opel</option>
-                <option value="">Audi</option>
-            </select>
-        </div>
+                    $link2 = new_db_connection();
+                    $stmt2 = mysqli_stmt_init($link2);
+                    $query2 = "SELECT nome_tema
+                                FROM temas";
 
-        <div class="card-content mb-5">
-            <div class="card-photo1"></div>
-            <div class="card-text">
-                <h2>Project Name</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sit sequi beatae architecto.
-                    Voluptatem
-                    quisquam pariatur cupiditate iure eum excepturi consequatur deserunt architecto doloremque
-                    nostrum.</p>
-                <a href="noticia_indv.php">View Project</a>
+                    if (mysqli_stmt_prepare($stmt2, $query2)) {
+
+                        mysqli_stmt_execute($stmt2);
+                        mysqli_stmt_bind_result($stmt2,$nome_tema);
+
+                        while (mysqli_stmt_fetch($stmt2)) {
+                            ?>
+                            <option value="nome_tema"><?= $nome_tema ?></option>
+                            <?php
+                        }
+                    }
+                    ?>
+                </select>
             </div>
         </div>
+        <?php
 
-        <div class="card-content mb-5">
-            <div class="card-photo1"></div>
-            <div class="card-text">
-                <h2>Project Name</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sit sequi beatae architecto.
-                    Voluptatem
-                    quisquam pariatur cupiditate iure eum excepturi consequatur deserunt architecto doloremque
-                    nostrum.</p>
-                <a href="#">View Project</a>
-            </div>
-        </div>
+        if (mysqli_stmt_prepare($stmt, $query)) {
 
-        <div class="card-content mb-5">
-            <div class="card-photo1"></div>
-            <div class="card-text">
-                <h2>Project Name</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sit sequi beatae architecto.
-                    Voluptatem
-                    quisquam pariatur cupiditate iure eum excepturi consequatur deserunt architecto doloremque
-                    nostrum.</p>
-                <a href="#">View Project</a>
-            </div>
-        </div>
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $id, $titulo, $subtitulo, $data_hora);
+
+            while (mysqli_stmt_fetch($stmt)) {
+
+                ?>
+                <div class="card-content mb-5">
+                    <div class="card-photo1"></div>
+                    <div class="card-text">
+                        <h2><?= $titulo ?></h2>
+                        <p><?= $subtitulo ?></p>
+                        <a href="noticia_indv.php?id=<?= $id ?>">Saber mais</a>
+                    </div>
+                </div>
+                <?php
+            }
+        }
+        ?>
+
+
     </div>
 
 </div>

@@ -28,6 +28,10 @@
                                             $message = "Utilizador inválido.";
                                             $class = "alert-warning";
                                             break;
+                                        case 2:
+                                            $message = "Utilizador criado com sucesso";
+                                            $class = "alert-warning";
+                                            break;
                                         default:
                                             $msg_show = false;
                                     }

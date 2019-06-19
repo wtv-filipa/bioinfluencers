@@ -18,6 +18,7 @@
 .card-text {
     line-height: 1.5;
     padding: 1.5rem;
+    height: 200px;
 }
 
 .card-text h2 {
@@ -100,7 +101,7 @@
 
 .events1 .event-card1 .description {
     margin: 25px;
-    height: border-box;
+    height: 200px;
 }
 
 /*
@@ -128,12 +129,20 @@
         width: 240px;
     }
 
+    .lili {
+        text-align: center;
+    }
+
 }
 /* Small devices (600px --- 767px) */
 @media only screen and (min-width: 600px) {
     .events1 .event-card1 {
         width: 240px;
     }
+    .lili {
+        text-align: center;
+    }
+
 
 }
 /* Medium devices (768px --- 991px) */
@@ -141,9 +150,17 @@
 }
 /* Large devices (992px --- 1199px) */
 @media only screen and (min-width: 992px) {
+    .lili {
+        text-align: left;
+    }
+
 }
 /* Extra large devices (1200 e superior) */
 @media only screen and (min-width: 1200px) {
+    .lili {
+        text-align: left;
+    }
+
 }
 
 
@@ -172,6 +189,25 @@
     border-radius: 20px 20px 0 0;
 }
 
+.botao_select {
+    border: 1px solid #adb5bd;
+    border-radius: 5px;
+    width: 75%;
+}
+
+.drop_select {
+    width: 75%;
+}
+
+
+
+
+
+
+
+
+
+
 /* GRUPO INDV*/
 
 
@@ -197,4 +233,6 @@
     padding: 2%;
 }
 
+
+/**/
 
