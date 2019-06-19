@@ -30,7 +30,7 @@ _nav.scss
     grid-template-columns: 1.5rem auto 1.5rem;
     height: 4.5rem;
     background: #fff;
-    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.1), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.1)
 }
 
 .nav__ {
@@ -74,9 +74,7 @@ _nav.scss
     margin-left: 0.5rem;
 }
 @media (max-width: 900px) {
-    .nav__link--text {
-        display: none;
-    }
+
 }
 .nav__controls {
     display: flex;
@@ -121,6 +119,8 @@ _nav.scss
     .nav__search--input {
         display: none;
     }
+
+
 }
 .nav__search--icon {
     color: #323232;
@@ -600,11 +600,80 @@ a.float:hover + div.label-container{
 
 /*PERFIL*/
 
+/*imagem de perfil*/
+
 .img_redonda {
-    width: 190px;
-    height: 170px;
+    width: 192px;
+    height: 192px;
     border-radius: 100%;
 }
+.avatar-upload {
+    position: relative;
+    max-width: 205px;
+    display: block;
+    margin: auto;
+}
+
+.avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+}
+
+input {
+    display: none;
+}
+
+label.label :hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+}
+
+label.label::before{
+    color: black;
+    position: relative;
+    top: 17%;
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+label.label {
+    align-content: end;
+    width: 34px;
+    height: 34px;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+    display: block;
+    margin-left: 75%;
+    z-index: 200;
+}
+
+.avatar-preview {
+    width: 192px;
+    height: 192px;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    z-index: 0;
+}
+
+.avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/***********/
 
 .tamanho {
 
@@ -640,11 +709,9 @@ a.float:hover + div.label-container{
     margin: auto;
 }
 
-
-
-.alinhar{
+.alinhar {
     width: 30%;
-   margin-left: 35%;
+    margin-left: 35%;
 }
 
 div.sticky {
@@ -663,7 +730,7 @@ div.sticky {
     z-index: 1;
 }
 
-.square img{
+.square img {
     width: 100%;
 }
 
@@ -675,34 +742,34 @@ div.sticky {
     z-index: 1;
 }
 
-.square1 img{
+.square1 img {
     width: 40%;
 }
 
-
 /* Extra small devices (0px --- 599px) */
 @media only screen and (max-width: 599px) {
-    .nav-tabs{
+    .nav-tabs {
         display: block;
         margin: auto;
-        width: 45%;!important;
+        width: 45%;
+    !important;
     }
 
-    ul.nav.nav-tabs{
+    ul.nav.nav-tabs {
         width: 55%;
     }
 
-    li .nav-item{
+    li .nav-item {
         width: 25px;
         height: auto;
     }
 
-    .nav-item{
+    .nav-item {
         display: block;
         margin: auto;
     }
 
-    .nav-item img{
+    .nav-item img {
         width: 25px;
         height: auto;
     }
@@ -715,30 +782,32 @@ div.sticky {
         height: 30px;
     }
 
-    .nav-tabs .nav-link{
+    .nav-tabs .nav-link {
         width: 60px;
         height: 30px;
     }
 }
+
 /* Small devices (600px --- 767px) */
 @media only screen and (min-width: 600px) {
-    .nav-tabs{
+    .nav-tabs {
         display: block;
         margin: auto;
-        width: 45%;!important;
+        width: 45%;
+    !important;
     }
 
-    li .nav-item{
+    li .nav-item {
         width: 25px;
         height: auto;
     }
 
-    .nav-item{
+    .nav-item {
         display: block;
         margin: auto;
     }
 
-    .nav-item img{
+    .nav-item img {
         width: 25px;
         height: auto;
     }
@@ -751,34 +820,36 @@ div.sticky {
         height: 30px;
     }
 
-    .nav-tabs .nav-link{
+    .nav-tabs .nav-link {
         width: 60px;
         height: 30px;
     }
 }
+
 /* Medium devices (768px --- 991px) */
 @media only screen and (min-width: 768px) {
-    .nav-tabs{
+    .nav-tabs {
         display: block;
         margin: auto;
-        width: 35%;!important;
+        width: 35%;
+    !important;
     }
 
-    ul.nav.nav-tabs{
+    ul.nav.nav-tabs {
         width: 45%;
     }
 
-    li .nav-item{
+    li .nav-item {
         width: 30px;
         height: auto;
     }
 
-    .nav-item{
+    .nav-item {
         display: block;
         margin: auto;
     }
 
-    .nav-item img{
+    .nav-item img {
         width: 30px;
         height: auto;
     }
@@ -790,30 +861,32 @@ div.sticky {
         height: 40px;
     }
 
-    .nav-tabs .nav-link{
+    .nav-tabs .nav-link {
         width: 60px;
         height: 40px;
     }
 }
+
 /* Large devices (992px --- 1199px) */
 @media only screen and (min-width: 992px) {
-    .nav-tabs{
+    .nav-tabs {
         display: block;
         margin: auto;
-        width: 35%;!important;
+        width: 35%;
+    !important;
     }
 
-    li .nav-item{
+    li .nav-item {
         width: 35px;
         height: auto;
     }
 
-    .nav-item{
+    .nav-item {
         display: block;
         margin: auto;
     }
 
-    .nav-item img{
+    .nav-item img {
         width: 35px;
         height: auto;
     }
@@ -825,31 +898,33 @@ div.sticky {
         height: 45px;
     }
 
-    .nav-tabs .nav-link{
+    .nav-tabs .nav-link {
         width: 75px;
         height: 45px;
     }
 }
+
 /* Extra large devices (1200 e superior) */
 @media only screen and (min-width: 1200px) {
 
-    .nav-tabs{
+    .nav-tabs {
         display: block;
         margin: auto;
-        width: 30%;!important;
+        width: 30%;
+    !important;
     }
 
-    li .nav-item{
-        width:40px;
+    li .nav-item {
+        width: 40px;
         height: auto;
     }
 
-    .nav-item{
+    .nav-item {
         display: block;
         margin: auto;
     }
 
-    .nav-item img{
+    .nav-item img {
         width: 40px;
         height: auto;
     }
@@ -861,25 +936,22 @@ div.sticky {
         height: 50px;
     }
 
-    .nav-tabs .nav-link{
+    .nav-tabs .nav-link {
         width: 80px;
         height: 50px;
     }
 }
 
-
-.icon_perfil{
+.icon_perfil {
     width: 140px;
     height: 154px;
 }
 
-
-
-.cantos_redondos{
+.cantos_redondos {
     border-radius: 20px;
 }
 
-#perfil{
+#perfil {
     margin-top: -6%;
     background-image: url("../img/perfil.png");
     background-repeat: no-repeat;
@@ -890,7 +962,6 @@ div.sticky {
 }
 
 /*FIM DO PERFIL*/
-
 /***********************************PAGINAS DE CODIGOS****************************/
 
 #fundo_codigo{

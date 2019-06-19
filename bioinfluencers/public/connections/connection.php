@@ -11,7 +11,7 @@ function new_db_connection()
 
 
 // Makes the connection
-    $local_link = mysqli_connect($hostname, $username, $password, $dbname);
+    $local_link= mysqli_connect($hostname, $username, $password, $dbname);
 
 // If it fails to connect then die and show errors
     if (!$local_link) {

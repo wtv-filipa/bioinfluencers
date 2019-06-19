@@ -31,7 +31,7 @@ session_start();
 
 <main class="p-0 mb-5" >
 
-    <?php include "componentes/perfil.php"; ?>
+    <?php include "componentes/criar_perfil.php"; ?>
 
 </main>
 
