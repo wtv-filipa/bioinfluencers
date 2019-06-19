@@ -7,15 +7,14 @@ if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"])
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "INSERT INTO utilizadores (nome, nickname, password, email, data_nascimento, descricao, codigo_utilizador) VALUES (?,?,?,?,?,?,?)";
+    $query = "INSERT INTO utilizadores (nome_u, nickname, password, email, data_nascimento, codigo_utilizador) VALUES (?,?,?,?,?,?)";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
-        mysqli_stmt_bind_param($stmt, 'sssssss', $nome, $nickname,  $password_hash, $email, $data_nasc, $descricao, $codigo_uti);
+        mysqli_stmt_bind_param($stmt, 'ssssss', $nome, $nickname,  $password_hash, $email, $data_nasc,  $codigo_uti);
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $nickname = $_POST['nickname'];
         $data_nasc = $_POST["data_nasc"];
-        $descricao = $_POST["descricao"];
 
         $codigo_uti = strtoupper(substr(md5(date("YmdHis")), 1,12));
 
@@ -27,11 +26,11 @@ if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"])
             mysqli_close($link);
 
             // SUCCESS ACTION
-            header("Location: ../login.php?msg=1");
+            header("Location: ../login.php?msg=2");
         } else {
             // ERROR ACTION
 
-            header("Location: ../register.php?msg=0");
+            //header("Location: ../register.php?msg=0");
             echo "Error:" . mysqli_stmt_error($stmt);
         }
 
@@ -41,5 +40,5 @@ if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"])
         mysqli_close($link);
     }
 } else {
-    header("Location: ../register.php?msg=2");
+    //header("Location: ../register.php?msg=2");
 }
