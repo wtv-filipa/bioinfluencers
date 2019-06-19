@@ -33,6 +33,31 @@ session_start();
 
     <?php include "componentes/eventos.php"; ?>
 
+    <div class="row mt-5 ">
+        <div class="col-12">
+            <div class="page-header">
+                <div class="pull-right form-inline">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" data-calendar-nav="prev"><< Prev</button>
+                        <button class="btn btn-default" data-calendar-nav="today">Hoje</button>
+                        <button class="btn btn-primary" data-calendar-nav="next">Next >></button>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-warning" data-calendar-view="year">Ano</button>
+                        <button class="btn btn-warning active" data-calendar-view="month">Mês</button>
+                        <button class="btn btn-warning" data-calendar-view="week">Semana</button>
+                        <button class="btn btn-warning" data-calendar-view="day">Dia</button>
+                    </div>
+                </div>
+                <h3></h3>
+            </div>
+            <div id="showEventCalendar"></div>
+        </div>
+        <div class="col-12 text-center mt-3 ">
+            <h4>Lista de eventos</h4>
+            <ul id="eventlist" class="nav nav-list"></ul>
+        </div>
+    </div>
 </main>
 
 
