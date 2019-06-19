@@ -13,7 +13,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
         <div class="nav__controls--left">
 
             <div class="nav__avatar"><img src="img/menu.png" alt="" class="icones nav__link--icon"/>
-                    <div class="nav__avatar--dropdown"><a href=""></a>
+                    <div class="nav__menu--dropdown"><a href=""></a>
                         <li class="nav__item nav__item--active"><a class="nav__link mr-2" href="index.php"><img src="img/feed.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Feed</span></a>
                         <li class="nav__item"><a class="nav__link mr-2" href="eventos.php"><img src="img/eventos_icon.png" alt="" class="icones nav__link--icon"/></span><span class="nav__link--text">Eventos</span></a></li>
                         <li class="nav__item"><a class="nav__link mr-2" href="top.php"><img src="img/top.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Top</span></a></li>
@@ -40,7 +40,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
                         <?php
                         if(isset($tipo) && $tipo == 1) {
                             ?>
-                            <button class="nav__btn2" style="background: #7FC53C;"><i class="fa fa-shield"></i> ADMIN</button><a href="../admin/index.php"></a>
+                            <a href="../admin/index.php"><button class="nav__btn2" style="background: #7FC53C;"><i class="fa fa-shield"></i> ADMIN</button></a>
                             <?php
                         }
 

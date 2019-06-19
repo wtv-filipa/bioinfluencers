@@ -145,7 +145,7 @@ _nav.scss
     flex-direction: column;
     z-index: 9999999;
     padding: 1rem;
-    top: 2rem;
+    top: 4rem;
     left: 50%;
     transform: translate(-50%);
     position: absolute;
@@ -171,6 +171,48 @@ _nav.scss
     width: 100%;
     cursor: pointer;
 }
+
+/*dropdown mas versão menu*/
+.nav__avatar:hover .nav__menu--dropdown {
+    display: flex;
+    color: #ccc;
+}
+.nav__menu--dropdown {
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    z-index: 9999999;
+    padding: 1rem;
+    top: 2.5rem;
+    left: 50%;
+    transform: translate(-50%);
+    position: absolute;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.19), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.23);
+}
+.nav__menu--dropdown:hover {
+    display: flex;
+}
+.nav__menu--dropdown:before {
+    position: relative;
+    top: -5rem;
+    left: 4rem;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+
+}
+.nav__menu--dropdown button {
+    padding: 0.75rem 2.5rem;
+    margin: 0 0 1rem 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+
+
 .nav__avatar--image {
     font-size: 3rem;
     position: relative;
@@ -717,7 +759,7 @@ label.label {
 div.sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 7.9%;
+    top: 9%;
     background-color: #f1f2f2;
     padding: 10px;
     font-size: 20px;
