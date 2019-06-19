@@ -1,8 +1,7 @@
 <?php
 require_once "../connections/connection.php";
 
-
-$target_dir = "../uploads/noticias/";
+$target_dir = "../uploads/eventos/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -46,8 +45,7 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
 
-
-        if (isset($_POST["titulo"]) && isset($_POST["subtitulo"]) && isset($_POST["texto"]) && isset($_FILES["fileToUpload"]) && isset($_POST["tema"])) {
+        if (isset($_POST["nome"]) && isset($_POST["data_inicio"]) && isset($_POST["data_fim"]) && isset($_POST["hora_inicio"]) && isset($_POST["hora_fim"]) && isset($_POST["local"]) && isset($_POST["descricao"]) && isset($_POST["custos"]) && isset($_POST["responsavel"]) && isset($_FILES["fileToUpload"])) {
 
             $ficheiro = $_FILES["fileToUpload"]["name"];
             //$tipo = $_POST["tipo"];
@@ -72,18 +70,25 @@ if ($uploadOk == 0) {
                     echo "Error: " . mysqli_stmt_error($stmt);
                 } else {
                     $last_id = mysqli_insert_id($link);
-                    //echo "ID: " . "$last_id";
+                    echo "ID: " . "$last_id";
                 }
                 $link2 = new_db_connection();
                 $stmt2 = mysqli_stmt_init($link2);
-                $query2 = "INSERT INTO noticias (titulo, subtitulo, texto,conteudos_id_conteudos, temas_id_temas) VALUES (?,?,?,?,?)";
+                $query2 = "INSERT INTO eventos (nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, responsavel, conteudos_id_conteudos) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
                 if (mysqli_stmt_prepare($stmt2, $query2)) {
-                    mysqli_stmt_bind_param($stmt2, 'sssii', $titulo, $subtitulo, $texto, $last_id, $temas_id);
-                    $titulo = $_POST["titulo"];
-                    $subtitulo = $_POST["subtitulo"];
-                    $texto = $_POST["texto"];
-                    $temas_id = $_POST["tema"];
+                    mysqli_stmt_bind_param($stmt2, 'sssssssisi', $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $descricao, $custos, $responsavel, $last_id);
+
+                    $nome = $_POST['nome'];
+                    $data_inicio = $_POST['data_inicio'];
+                    $data_fim = $_POST['data_fim'];
+                    $hora_inicio = $_POST['hora_inicio'];
+                    $hora_fim = $_POST['hora_fim'];
+                    $local = $_POST['local'];
+                    $descricao = $_POST['descricao'];
+                    $custos = $_POST['custos'];
+                    $responsavel = $_POST['responsavel'];
+
 
                     // Devemos validar também o resultado do execute!
                     if (mysqli_stmt_execute($stmt2)) {
@@ -91,9 +96,9 @@ if ($uploadOk == 0) {
                         mysqli_close($link2);
 
                         // Acção de sucesso
-                        header("Location: ../noticias.php");
+                        header("Location: ../eventos.php");
                     } else {
-                        header("Location: ../criar_noticia.php");
+                        header("Location: ../criar_evento.php");
                         // Acção de erro
                         //echo "Error:" . mysqli_stmt_error($stmt);
                     }
@@ -108,10 +113,3 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-
-mysqli_close($link);
-
-
-
-
-

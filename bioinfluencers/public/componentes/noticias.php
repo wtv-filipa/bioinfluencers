@@ -9,48 +9,48 @@
         <div class="carousel-inner">
 
 
-        <?php
-        require_once("connections/connection.php");
-
-        $link = new_db_connection();
-        $stmt = mysqli_stmt_init($link);
-
-        $query = "SELECT id_noticias, titulo, subtitulo, data_hora FROM noticias ORDER BY data_hora DESC LIMIT 4";
-
-        if (mysqli_stmt_prepare($stmt, $query)) {
-
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $id, $titulo, $subtitulo, $data_hora);
-            $active = true;
-
-            while(mysqli_stmt_fetch($stmt)) {
-                if ($active == true) {
-                    ?>
-                    <div class="carousel-item active">
-                        <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
-                        <div class="carousel-caption">
-                            <h3><?= $titulo ?></h3>
-                            <p><?= $subtitulo ?></p>
-                        </div>
-                    </div>
-
-                    <?php
-                    $active = false;
-                } else {
-                    ?>
-                    <div class="carousel-item">
-                        <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
-                        <div class="carousel-caption">
-                            <h3><?= $titulo ?></h3>
-                            <p><?= $subtitulo ?></p>
-                        </div>
-                    </div>
             <?php
+            require_once("connections/connection.php");
+
+            $link = new_db_connection();
+            $stmt = mysqli_stmt_init($link);
+
+            $query = "SELECT id_noticias, titulo, subtitulo, data_hora FROM noticias ORDER BY data_hora DESC LIMIT 4";
+
+            if (mysqli_stmt_prepare($stmt, $query)) {
+
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_bind_result($stmt, $id, $titulo, $subtitulo, $data_hora);
+                $active = true;
+
+                while (mysqli_stmt_fetch($stmt)) {
+                    if ($active == true) {
+                        ?>
+                        <div class="carousel-item active">
+                            <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
+                            <div class="carousel-caption">
+                                <h3><?= $titulo ?></h3>
+                                <p><?= $subtitulo ?></p>
+                            </div>
+                        </div>
+
+                        <?php
+                        $active = false;
+                    } else {
+                        ?>
+                        <div class="carousel-item">
+                            <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
+                            <div class="carousel-caption">
+                                <h3><?= $titulo ?></h3>
+                                <p><?= $subtitulo ?></p>
+                            </div>
+                        </div>
+                        <?php
+                    }
                 }
             }
-        }
 
-        ?>
+            ?>
 
         </div>
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -79,7 +79,7 @@
                     if (mysqli_stmt_prepare($stmt2, $query2)) {
 
                         mysqli_stmt_execute($stmt2);
-                        mysqli_stmt_bind_result($stmt2,$nome_tema);
+                        mysqli_stmt_bind_result($stmt2, $nome_tema);
 
                         while (mysqli_stmt_fetch($stmt2)) {
                             ?>
@@ -92,17 +92,26 @@
             </div>
         </div>
         <?php
+        $link3 = new_db_connection();
+        $stmt3 = mysqli_stmt_init($link);
 
-        if (mysqli_stmt_prepare($stmt, $query)) {
+        $query3 = "SELECT id_noticias, titulo, subtitulo, data_hora, conteudos_id_conteudos, id_conteudos, filename
+                  FROM noticias 
+                  INNER JOIN conteudos
+                  ON noticias.conteudos_id_conteudos = conteudos.id_conteudos
+                  ORDER BY data_hora DESC";
+        if (mysqli_stmt_prepare($stmt3, $query3)) {
 
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $id, $titulo, $subtitulo, $data_hora);
+            mysqli_stmt_execute($stmt3);
+            mysqli_stmt_bind_result($stmt3, $id, $titulo, $subtitulo, $data_hora, $conteudos_id_cont, $id_conteudos, $filename);
 
-            while (mysqli_stmt_fetch($stmt)) {
+            while (mysqli_stmt_fetch($stmt3)) {
 
                 ?>
                 <div class="card-content mb-5">
-                    <div class="card-photo1"></div>
+                    <div class="card-photo1">
+                        <img class="img-fluid foto_card_noticias" src="../admin/uploads/noticias/<?= $filename ?>">
+                    </div>
                     <div class="card-text">
                         <h2><?= $titulo ?></h2>
                         <p><?= $subtitulo ?></p>

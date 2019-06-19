@@ -3,11 +3,13 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Fórum</h1>
-    <p class="mb-4">Aqui é possível ter uma vista geral de todos os fóruns que existem, bem como as categorias disponíveis e todos os comentários publicados. O administrador pode adicionar novos grupos, categorias e apagar comentários.</p>
+    <p class="mb-4">Aqui é possível ter uma vista geral de todos os fóruns que existem, bem como as categorias
+        disponíveis e todos os comentários publicados. O administrador pode adicionar novos grupos, categorias e apagar
+        comentários.</p>
 
     <div class="row">
         <div class="col-xl-12">
-            <form method="post" action="scripts/inserir_grupo.php">
+            <form method="post" action="scripts/inserir_grupo.php" enctype="multipart/form-data">
 
                 <div class="row">
                     <?php
@@ -28,46 +30,47 @@
                     <!--colocar nome do forum-->
                     <div class="form-group  col-xl-6 col-lg-6 col-sm-6">
                         <label class="text-gray-800" for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Indique o nome do grupo" name="nome">
+                        <input type="text" class="form-control" id="nome" placeholder="Indique o nome do grupo"
+                               name="nome">
                     </div>
 
                     <div class="form-group col-xl-6 col-lg-6 col-sm-6">
                         <label class="text-gray-800" for="cat">Categoria</label>
                         <select class="form-control" id="cat" name="categoria">
-                        <?php
-                        $stmt = mysqli_stmt_init($link);
+                            <?php
+                            $stmt = mysqli_stmt_init($link);
 
-                        $query = "SELECT id_categorias, nome_categoria FROM categorias";
+                            $query = "SELECT id_categorias, nome_categoria FROM categorias";
 
-                        if (mysqli_stmt_prepare($stmt, $query)) {
+                            if (mysqli_stmt_prepare($stmt, $query)) {
 
-                            /* execute the prepared statement */
-                            if (mysqli_stmt_execute($stmt)) {
-                                /* bind result variables */
-                                mysqli_stmt_bind_result($stmt, $id_categorias, $nome_cat);
+                                /* execute the prepared statement */
+                                if (mysqli_stmt_execute($stmt)) {
+                                    /* bind result variables */
+                                    mysqli_stmt_bind_result($stmt, $id_categorias, $nome_cat);
 
-                                /* fetch values */
-                                while (mysqli_stmt_fetch($stmt)) {
-                                    if ($ref_categorias == $id_categorias) {
-                                        $selected = "selected";
-                                    } else {
-                                        $selected = "";
+                                    /* fetch values */
+                                    while (mysqli_stmt_fetch($stmt)) {
+                                        if ($ref_categorias == $id_categorias) {
+                                            $selected = "selected";
+                                        } else {
+                                            $selected = "";
+                                        }
+                                        echo "\n\t\t<option value=\"$id_categorias\" $selected>$nome_cat</option>";
                                     }
-                                    echo "\n\t\t<option value=\"$id_categorias\" $selected>$nome_cat</option>";
+                                } else {
+                                    echo "Error: " . mysqli_stmt_error($stmt);
                                 }
+
+                                /* close statement */
+                                //mysqli_stmt_close($stmt);
                             } else {
-                                echo "Error: " . mysqli_stmt_error($stmt);
+                                echo "Error: " . mysqli_error($link);
                             }
 
-                            /* close statement */
-                            //mysqli_stmt_close($stmt);
-                        } else {
-                            echo "Error: " . mysqli_error($link);
-                        }
-
-                        /* close connection */
-                        //mysqli_close($link);
-                        ?>
+                            /* close connection */
+                            //mysqli_close($link);
+                            ?>
                         </select>
                     </div>
 
@@ -76,16 +79,35 @@
                         <textarea type="text" class="form-control" id="des"
                                   placeholder="Insira o texto relativo ao grupo" name="descricao"></textarea>
                     </div>
+                    <div class="col-xl-12">
+                        <div class="row">
+                            <div class="form-group col-xl-6 col-lg-6 col-sm-6 mt-2">
+                                <!--colocar nome do forum-->
 
-                <button class="buttonCustomise">Criar</button>
-                <?php
+                                <label class="text-gray-800" for="nome">Seleciona uma imagem para
+                                    upload:</label>
+
+                                <div class="row">
+                                    <input type="file" name="fileToUpload" class="file-upload ml-3"/>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-12 mt-3">
+                                <button class="buttonCustomise" type="submit" value="Upload Image" name="Submit">
+                                    Criar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
                 }
 
-                mysqli_stmt_close($stmt);
-                mysqli_close($link);
+                    mysqli_stmt_close($stmt);
+                    mysqli_close($link);
 
-                }
-                ?>
+                    }
+                    ?>
             </form>
         </div>
     </div>
