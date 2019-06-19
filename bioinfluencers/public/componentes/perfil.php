@@ -82,6 +82,7 @@ if (isset($_GET["user"])) {
 
         </div>
 
+
         <!--DIV QUE CONTÉM O NOME E A PONTUAÇÃO DO UTILIZADOR-->
         <div class="text-center utilizador topo1">
         <?php
