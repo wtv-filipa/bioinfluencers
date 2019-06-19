@@ -3,13 +3,13 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
-        }
+            $('#img_perf').attr('src', e.target.result);
+        };
 
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-$("#imgInp").change(function(){
+$("#fileToUpload").change(function(){
     readURL(this);
 });

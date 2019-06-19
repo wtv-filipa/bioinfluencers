@@ -58,8 +58,7 @@ if (isset($_GET["user"])) {
                         <?php
                         while (mysqli_stmt_fetch($stmt)) {
                             ?>
-                            <form style="display: block; margin: auto" id="form1" class="img_redonda"
-                                  action="../scripts/upload_imgperfil.php" method="post">
+                            <form style="display: block; margin: auto" id="form1">
 
                                 <a href="criar_perfil.php?edit=<?= $nome_u ?>"><label class="label fa fa-pencil"
                                                                                       for="imgInp"></label></a>
@@ -71,7 +70,7 @@ if (isset($_GET["user"])) {
                         ?>
                     </div>
                     <div class="avatar-preview">
-                        <img id="blah" class="img_redonda img-fluid" src="img/default.gif" alt="your image"/>
+                        <img id="img_perf" class="img_redonda img-fluid" src="img/default.gif" alt="your image"/>
                     </div>
                 </div>
             </div>

@@ -9,7 +9,9 @@
     box-sizing: border-box;
 }
 
-
+*{
+    color: black;
+}
 
 body {
     margin: 0;
@@ -645,8 +647,8 @@ a.float:hover + div.label-container{
 /*imagem de perfil*/
 
 .img_redonda {
-    width: 192px;
-    height: 192px;
+    width: 180px;
+    height: 180px;
     border-radius: 100%;
 }
 .avatar-upload {
@@ -693,7 +695,7 @@ label.label {
     font-weight: normal;
     transition: all 0.2s ease-in-out;
     display: block;
-    margin-left: 75%;
+    margin-left: -50%;
     z-index: 200;
 }
 
