@@ -6,21 +6,21 @@
             <div class="media-ranking-item segundo-colocado">
                 <img class="br img-ranking img-profile" src="img/pessoa1.jpg" alt="">
                 <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>Pereiro </small>
+                <small>52515 pontos</small>
             </div>
         </div>
         <div class="col-md-4 primeiro-colocado">
             <div class="media-ranking-item">
                 <img class="br img-ranking" src="img/pessoa2.jpg" alt="">
                 <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>Pereiro </small>
+                <small>53211 pontos </small>
             </div>
         </div>
         <div class="col-md-4">
             <div class="media-ranking-item terceiro-colocado">
                 <img class="br img-ranking" src="img/pessoa3.jpg" alt="">
                 <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>Pereiro </small>
+                <small>48892 pontos </small>
             </div>
         </div>
     </div>
