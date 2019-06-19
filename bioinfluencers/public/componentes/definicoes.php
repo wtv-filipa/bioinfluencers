@@ -1,17 +1,5 @@
-<script>
-
-
-    /*function sliderChange(val) {
-
-        document.getElementById('sliderStatus').innerHTML = val;
-    }*/
-
-</script>
-
-
-
 <!--Definições gerais-->
-<div class="container" id="aumentoFonte">
+<div class="container ml-5" id="div_definicoes">
     <div class="row no-gutters">
         <h4 class="mt-5">
             <i class="fa fa-cogs mr-2" aria-hidden="true"></i>
@@ -97,15 +85,132 @@
         <div class="row no-gutters">
             <h6 class="mt-3">
                 <i class=" mr-2" aria-hidden="true"></i>
-                <a href="#"><strong>Sobre</strong></a>
+                <a href="#" id="sobre"><strong>Sobre</strong></a>
             </h6>
         </div>
 
         <div class="row no-gutters">
             <h6 class="mt-3">
                 <i class=" mr-2" aria-hidden="true"></i>
-                <a href="#"><strong>Contactos</strong></a>
+                <a href="#" id="contactos"><strong>Contactos</strong></a>
             </h6>
         </div>
     </div>
 </div>
+
+
+<!--AJUDA-->
+<div class="container ml-5" id="div_ajuda">
+    <div class="no-gutters">
+
+        <h4 class="mt-5">
+            <i class="fa fa-info mr-2" aria-hidden="true"></i>
+            Ajuda
+        </h4>
+
+        <p>
+            Aqui vamos adicionar as ajudas da BioInfluencers
+        </p>
+
+        <p>
+            <a href="definicoes.php">Voltar</a>
+        </p>
+    </div>
+</div>
+
+
+<!--SOBRE-->
+<div class="container ml-5" id="div_sobre">
+    <div class="no-gutters">
+        <h4 class="mt-5">
+            <i class="fa fa-info mr-2" aria-hidden="true"></i>
+            Sobre
+        </h4>
+
+        <br>
+
+        <p>
+            A BioInfluencers é uma rede social destinada unicamente à preservação do nosso planeta.
+        </p>
+
+        <p>
+            Foi criada no âmbito da unidade curricular de Laboratório Multimédia 4 - Perfil A do curso de Novas
+            Tecnologias da Comunicação da
+            Universidade de Aveiro.
+            O grupo, constituído por Ana Filipa Ferreira, Ana Jorge Vaz, Eduardo Soeiro e Frederico Proença, teve esta
+            ideia devido à crescente
+            preocupação da população em tentar mudar o rumo que a Terra está a tomar. Assim, juntando as novas
+            tecnologias e a preocupação ambiental,
+            surgiu a BioInfluencers, uma rede social que vai mudar tudo e todos.
+        </p>
+
+        <p>
+            <a href="definicoes.php">Voltar</a>
+        </p>
+    </div>
+</div>
+
+
+<!--CONTACTOS-->
+<div class="container ml-5" id="div_contactos">
+    <div class="no-gutters">
+        <h4 class="mt-5">
+            <i class="fa fa-phone mr-2" aria-hidden="true"></i>
+            Contactos
+        </h4>
+
+        <br>
+
+        <p>
+            Tel: (+351)963 123 456 / 279 123 456
+
+            <br> <br>
+
+            E-mail: bioinfluencers@live.com.pt
+        </p>
+
+        <p>
+            <a href="definicoes.php">Voltar</a>
+        </p>
+    </div>
+</div>
+
+
+
+<script>
+
+    /*function sliderChange(val) {
+
+        document.getElementById('sliderStatus').innerHTML = val;
+    }*/
+
+    window.onload = function () {
+
+        document.getElementById("div_ajuda").style.display = "none";
+        document.getElementById("div_sobre").style.display = "none";
+        document.getElementById("div_contactos").style.display = "none";
+
+        document.getElementById("ajuda").onclick = function () {
+
+
+            document.getElementById("div_ajuda").style.display = "block";
+            document.getElementById("div_definicoes").style.display = "none";
+        };
+
+
+        document.getElementById("sobre").onclick = function () {
+
+
+            document.getElementById("div_sobre").style.display = "block";
+            document.getElementById("div_definicoes").style.display = "none";
+        };
+
+
+        document.getElementById("contactos").onclick = function () {
+
+
+            document.getElementById("div_contactos").style.display = "block";
+            document.getElementById("div_definicoes").style.display = "none";
+        };
+    };
+</script>
