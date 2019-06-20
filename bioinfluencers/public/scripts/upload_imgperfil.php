@@ -1,4 +1,4 @@
-<?php
+    <?php
 require_once "../connections/connection.php";
 
 
@@ -80,10 +80,10 @@ if ($uploadOk == 0) {
             } else {
                 echo "Error: " . mysqli_error($link);
             }
+
+            header("Location: ../index.php");
             /* close connection */
             mysqli_close($link);
-
-            //header("Location: ../noticias.php");
         }
 
 

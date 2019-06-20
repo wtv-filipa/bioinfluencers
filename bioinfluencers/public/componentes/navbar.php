@@ -1,4 +1,5 @@
 <?php
+require_once("connections/connection.php");
 if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
     $nickname = $_SESSION["nickname"];
     $tipo = $_SESSION["tipo"];
@@ -31,10 +32,38 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
             <div class="nav__search">
                 <input class="nav__search--input text-center" placeholder="Pesquisar..." type="text"/><a class="nav__search--icon " href="#"><i class="fa fa-bell-o" style="font-size: 21px"></i></a>
             </div>
+            <?php
+            // Create a new DB connection
+            $link2 = new_db_connection();
 
-            <div class="nav__avatar"><img src="img/pessoa2.jpg" class="nav__avatar--image" style="width:35px">
+            /* create a prepared statement */
+            $stmt2 = mysqli_stmt_init($link2);
 
 
+            $query2 = "SELECT id_utilizadores,nickname,img_perfil
+                              FROM utilizadores
+                              WHERE nickname LIKE ?";
+
+            if (mysqli_stmt_prepare($stmt2, $query2)) {
+                mysqli_stmt_bind_param($stmt2, 's', $nickname);
+                mysqli_stmt_execute($stmt2);
+                mysqli_stmt_bind_result($stmt2, $id,  $nickname,   $img_perfil);
+            while (mysqli_stmt_fetch($stmt2)) {
+            //var_dump($img_perfil);
+            if (isset($img_perfil)){
+                ?>
+            <div class="nav__avatar"><img src="../admin/uploads/img_perfil/<?=$img_perfil?>" class="nav__avatar--image" style="width:35px">
+
+                <?php
+            }else{
+                ?>
+                <div class="nav__avatar"><img src="img/default.gif"  class="nav__avatar--image" style="width:35px">
+
+                <?php
+            }
+            }
+            }
+            ?>
 
                     <div class="nav__avatar--dropdown"><a href="/login"></a>
                         <?php
@@ -44,7 +73,6 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
                             <?php
                         }
 
-                        require_once("connections/connection.php");
                         $link = new_db_connection();
                         $stmt = mysqli_stmt_init($link);
                         $query = "SELECT id_utilizadores, nickname

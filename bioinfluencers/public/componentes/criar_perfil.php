@@ -13,7 +13,7 @@ if (isset($_GET["edit"])) {
     $stmt = mysqli_stmt_init($link);
 
     //ir buscar os dados
-    $query = "SELECT id_utilizadores, nome_u, nickname, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, active, nome_tipo
+    $query = "SELECT id_utilizadores, nome_u, nickname, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, img_perfil, active, nome_tipo
                               FROM utilizadores
                                INNER JOIN tipos_utilizador
                               ON utilizadores.tipos_id_tipos = tipos_utilizador.id_tipos
@@ -22,10 +22,10 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
     mysqli_stmt_bind_param($stmt, 's', $nickname);
     mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $id, $nome_u, $nickname, $email, $data_nasc, $descricao_u, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $active, $nome_tipo);
+    mysqli_stmt_bind_result($stmt, $id, $nome_u, $nickname, $email, $data_nasc, $descricao_u, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $img_perfil, $active, $nome_tipo);
 ?>
 
-    <header id="perfil">
+    <header id="perfil2">
         <div class="container">
 
             <div class="topo"><!--espaço-->
@@ -47,7 +47,18 @@ if (mysqli_stmt_prepare($stmt, $query)) {
                 </div>
 
                 <div class="avatar-preview">
-                    <img id="img_perf" class="img_redonda" src="img/default.gif" alt="your image"/>
+                    <?php
+                    //var_dump($img_perfil);
+                    if (isset($img_perfil)){
+                        ?>
+                        <img id="img_perf" class="img_redonda" src="../admin/uploads/img_perfil/<?=$img_perfil?>" alt="your image"/>
+                        <?php
+                    }else{
+                        ?>
+                        <img id="img_perf" class="img_redonda" src="img/default.gif" alt="your image"/>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div class="text-center utilizador topo1">
@@ -59,7 +70,9 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
             <textarea type="text" class="form-control" id="descricao" placeholder="Inserir descrição" name="descricao" rows="3"><?= $descricao_u?></textarea>
 
-            <button class="buttonCustomise mt-3" type="submit" value="Upload Image" name="Submit"> Editar</button>
+           <a href="perfil.php?user=<?= $nickname ?>"><button class="buttonCustomise mt-3 mr-3" type="button" value="cancel" name="cancel">Cancelar</button></a>
+
+            <button class="buttonCustomise mt-3 ml-3" type="submit" value="Upload Image" name="Submit"> Editar</button>
 
         </form>
 
@@ -73,243 +86,6 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
         </div> <!--Fim do container-->
     </header>
-
-
-    <!--DIV QUE É A "SEGUNDA NAV" AKA A QUE SELECIONA SE É IMAGENS, MEDALHAS OU CALENDÁRIO-->
-
-    <div class="sticky">
-        <div style="display: block; margin: auto;" class="container text-center">
-
-            <div class="row">
-                <div class="col-12">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item col-4">
-                            <a class="nav-link active" data-toggle="tab" href="#galeria"><img
-                                        class="img-fluid icon_perfil"
-                                        src="img/galeria.png"></a>
-                        </li>
-                        <li class="nav-item col-4">
-                            <a class="nav-link" data-toggle="tab" href="#medalhas"><img
-                                        class="img-fluid"
-                                        src="img/med_trof.png"></a>
-                        </li>
-                        <li class="nav-item col-4">
-                            <a class="nav-link" data-toggle="tab" href="#evento"><img
-                                        class="img-fluid"
-                                        src="img/eventos.png"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Tab panes -->
-    <div class="tab-content">
-
-        <!----------------------------------------GALERIA------------------------------------------------------------->
-        <div id="galeria" class="container tab-pane active"><br>
-            <div class="row">
-                <div class="col-4">
-                    <div class="square "><img class="img-fluid cantos_redondos"
-                                              src="img/arvores.jpg"></div>
-                </div>
-
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square"><img class="img-fluid cantos_redondos"
-                                             src="img/arvores.jpg"></div>
-                </div>
-            </div>
-        </div>
-
-        <!----------------------------------------MEDALHAS------------------------------------------------------------->
-        <div id="medalhas" class="container tab-pane fade"><br>
-
-            <h4 class="text-center mt-3 mb-3">Troféus</h4>
-
-
-            <div class="row text-center">
-
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/trof_plantar.png"></div>
-                </div>
-
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/trof_anfibios.png"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/trof_beatas.png"></div>
-                </div>
-
-
-            </div>
-
-            <h4 class="text-center mt-3 mb-3">Medalhas</h4>
-            <div class="row text-center">
-
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/med_lixo.png"></div>
-                </div>
-
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/med_oceano.png"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/med_abelhas.png"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/med_plantar.png"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/med_reciclar.png"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/med_frutas.png"></div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!----------------------------------------EVENTOS--------------------------------------------------------->
-        <div id="evento" class="container tab-pane fade">
-
-            <h4 class="text-center mt-5 mb-3">Próximos eventos</h4>
-
-            <div class="events row mx-auto">
-
-
-                <div class="event-card">
-                    <img class="cantos_redondos" src="img/escavar.jpg" alt=""/>
-                    <div class="description">
-                        <h4 class="mt-2"><span style="font-weight: bold;">6 JUN | </span>BioLousada
-                        </h4>
-                        <p class="location mb-0">Serra da Lousada</p>
-                        <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9h-16
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <img class="cantos_redondos" src="img/beata.jpg" alt=""/>
-                    <div class="description">
-                        <h4 class="mt-2"><span style="font-weight: bold;">6 JUN | </span>Campus Sem
-                            Filtros
-                        </h4>
-                        <p class="location mb-0">Universidade de Aveiro</p>
-                        <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>14h-15h30
-                    </div>
-                </div>
-
-            </div>
-
-
-            <h4 class="text-center mt-5 mb-3">Eventos passados</h4>
-
-            <div class="events row mx-auto">
-
-                <div class="event-card cantos_redondos">
-                    <img class="cantos_redondos" src="img/escavar.jpg" alt=""/>
-                    <div class="description">
-                        <h4 class="mt-2"><span style="font-weight: bold;">6 JUN | </span>BioLousada
-                        </h4>
-                        <p class="location mb-0">Serra da Lousada</p>
-                        <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9h-16
-                    </div>
-                </div>
-
-                <div class="event-card cantos_redondos ">
-                    <img class="cantos_redondos" src="img/beata.jpg" alt=""/>
-                    <div class="description">
-                        <h4 class="mt-2"><span style="font-weight: bold;">6 JUN | </span>Campus Sem
-                            Filtros
-                        </h4>
-                        <p class="location mb-0">Universidade de Aveiro</p>
-                        <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>14h-15h30
-                    </div>
-                </div>
-
-            </div>
-
-            <?php
-            if (isset($tipo)) {
-                if ($tipo == 1 || $tipo == 3) {
-                    ?>
-                    <a href="#" class="float">
-                        <i class="fa fa-calendar-plus-o my-float"></i>
-                    </a>
-                    <div class="label-container">
-                        <div class="label-text">Criar evento</div>
-                        <i class="fa fa-play label-arrow"></i>
-                    </div>
-
-                    <?php
-                }
-            }
-            ?>
-
-
-        </div>
-
-
-    </div>
-
 
     <?php
 

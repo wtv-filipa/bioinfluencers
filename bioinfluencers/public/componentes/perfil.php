@@ -10,21 +10,12 @@ if (isset($_GET["user"])) {
     // Create a new DB connection
     $link = new_db_connection();
 
-    $link3 = new_db_connection();
 
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
 
-    $stmt3 = mysqli_stmt_init($link3);
 
-    $query = "SELECT id_utilizadores, nome_u, nickname, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, active, nome_tipo
-                              FROM utilizadores
-                               INNER JOIN tipos_utilizador
-                              ON utilizadores.tipos_id_tipos = tipos_utilizador.id_tipos
-                              WHERE nickname LIKE ?";
-
-
-    $query3 = "SELECT id_utilizadores, nome_u, nickname, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, active, nome_tipo
+    $query = "SELECT id_utilizadores, nome_u, nickname, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, img_perfil, active, nome_tipo
                               FROM utilizadores
                                INNER JOIN tipos_utilizador
                               ON utilizadores.tipos_id_tipos = tipos_utilizador.id_tipos
@@ -34,7 +25,7 @@ if (isset($_GET["user"])) {
 
         mysqli_stmt_bind_param($stmt, 's', $nickname);
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $id, $nome_u, $nickname, $email, $data_nasc, $descricao_u, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $active, $nome_tipo);
+        mysqli_stmt_bind_result($stmt, $id, $nome_u, $nickname, $email, $data_nasc, $descricao_u, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador,  $img_perfil, $active, $nome_tipo);
 
         ?>
 
@@ -60,7 +51,7 @@ if (isset($_GET["user"])) {
                             ?>
                             <form style="display: block; margin: auto" id="form1">
 
-                                <a href="criar_perfil.php?edit=<?= $nome_u ?>"><label class="label fa fa-pencil"
+                                <a href="criar_perfil.php?edit=<?=$nickname?>"><label class="label fa fa-pencil"
                                                                                       for="imgInp"></label></a>
 
                             </form>
@@ -70,12 +61,26 @@ if (isset($_GET["user"])) {
                         ?>
                     </div>
                     <div class="avatar-preview">
-                        <img id="img_perf" class="img_redonda img-fluid" src="img/default.gif" alt="your image"/>
+                        <?php
+                        //var_dump($img_perfil);
+                        if (isset($img_perfil)){
+                            ?>
+                            <img id="img_perf" class="img_redonda" src="../admin/uploads/img_perfil/<?=$img_perfil?>" alt="your image"/>
+                            <?php
+                        }else{
+                            ?>
+                            <img id="img_perf" class="img_redonda" src="img/default.gif" alt="your image"/>
+                            <?php
+                        }
+                        ?>
+
+
                     </div>
                 </div>
             </div>
 
             <div class="col-4 text-left centro">
+
                 <h5>2345 <br> A seguir</h5>
             </div>
 
@@ -271,18 +276,57 @@ if (isset($_GET["user"])) {
 
 
                                 <div class="row text-center">
+                                    <?php
+                        // Create a new DB connection
+                        $link4 = new_db_connection();
 
-                                    <div class="col-4">
-                                        <div class="square1 img-fluid"><img src="img/trof_plantar.png"></div>
-                                    </div>
 
-                                    <div class="col-4">
-                                        <div class="square1 img-fluid"><img src="img/trof_anfibios.png"></div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="square1 img-fluid"><img src="img/trof_beatas.png"></div>
-                                    </div>
+                        /* create a prepared statement */
+                        $stmt4 = mysqli_stmt_init($link4);
 
+
+                        $query4 = "SELECT id_utilizadores, pontos
+                              FROM utilizadores
+                              WHERE nickname LIKE ?";
+
+
+                        if (mysqli_stmt_prepare($stmt4, $query4)) {
+
+                            mysqli_stmt_bind_param($stmt4, 's', $nickname);
+                            mysqli_stmt_execute($stmt4);
+                            mysqli_stmt_bind_result($stmt4, $id, $pontos);
+
+
+                            while (mysqli_stmt_fetch($stmt4)) {
+                                ?>
+
+                                <div class="col-4">
+                                    <?php
+                                    if ($pontos >= 1500){
+                                        ?>
+
+                                        <div class="square1 img-fluid"><img src="img/trofeus/trof_anfibios.png"></div>
+
+                                        <?php
+                                    } else{
+                                        ?>
+                                        <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
+                                        <?php
+                                    }
+                                    ?>
+
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
+                                </div>
+                                <?php
+                            }
+                        }
+                                ?>
 
                                 </div>
 
@@ -290,23 +334,23 @@ if (isset($_GET["user"])) {
                                 <div class="row text-center">
 
                                     <div class="col-4">
-                                        <div class="square1 img-fluid"><img src="img/med_lixo.png"></div>
+                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
                                     </div>
 
                                     <div class="col-4">
-                                        <div class="square1 img-fluid"><img src="img/med_oceano.png"></div>
+                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
                                     </div>
                                     <div class="col-4">
-                                        <div class="square1 img-fluid"><img src="img/med_abelhas.png"></div>
+                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
                                     </div>
                                     <div class="col-4">
-                                        <div class="square1 img-fluid"><img src="img/med_plantar.png"></div>
+                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
                                     </div>
                                     <div class="col-4">
-                                        <div class="square1 img-fluid"><img src="img/med_reciclar.png"></div>
+                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
                                     </div>
                                     <div class="col-4">
-                                        <div class="square1 img-fluid"><img src="img/med_frutas.png"></div>
+                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
                                     </div>
 
                                 </div>
