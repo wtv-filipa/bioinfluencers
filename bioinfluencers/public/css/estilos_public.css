@@ -1109,6 +1109,15 @@ div.sticky {
 .preto{
     color: black;
 }
+
+p{
+    font-family: 'Roboto', sans-serif;
+}
+
+*{
+    font-family: 'Dosis', sans-serif;
+}
+
 /* FIM DOS ESTILOS DAS LETRAS*/
 
 /* TOP */

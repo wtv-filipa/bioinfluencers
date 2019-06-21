@@ -1,3 +1,12 @@
+p{
+    font-family: 'Roboto', sans-serif;
+}
+
+*{
+    font-family: 'Dosis', sans-serif;
+}
+
+
 .body_criar_publicacao {
     margin: 0;
     font-size: 1rem;

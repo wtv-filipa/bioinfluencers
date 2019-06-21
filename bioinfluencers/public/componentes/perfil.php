@@ -116,8 +116,7 @@ if (isset($_GET["user"])) {
             while (mysqli_stmt_fetch($stmt2)) {
                 ?>
                 <h4 class="mt-2"><?= $nome_u ?></h4>
-                <h6 class="mt-2">@<?= $nickname ?></h6>
-                <p><?= $pontos ?></p>
+                <h6 class="mt-2">@<?= $nickname?> |<b> <?= $pontos ?></b> pontos </h6>
                 <?php
             }
         }

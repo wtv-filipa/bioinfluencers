@@ -11,10 +11,13 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-*{
+p{
   font-family: 'Roboto', sans-serif;
 }
 
+*{
+  font-family: 'Dosis', sans-serif;
+}
 
 /*meus*/
 
