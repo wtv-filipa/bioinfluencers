@@ -7,11 +7,11 @@ if (isset($_POST["nome"]) && isset($_POST["descricao"]) && isset($_POST["categor
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "INSERT INTO foruns(nome_forum, descricao, categorias_id_categorias) VALUES (?,?,?)";
+    $query = "INSERT INTO grupos(nome_grupos, descricao_g, categorias_id_categorias) VALUES (?,?,?)";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
-        mysqli_stmt_bind_param($stmt, 'ssi', $nome_forum, $descricao, $id_cat);
-        $nome_forum = $_POST['nome'];
+        mysqli_stmt_bind_param($stmt, 'ssi', $nome_grupo, $descricao, $id_cat);
+        $nome_grupo = $_POST['nome'];
         $descricao = $_POST['descricao'];
         $id_cat = $_POST['categoria'];
 

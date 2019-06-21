@@ -76,7 +76,6 @@
                     }
 
 
-
                     if (mysqli_stmt_prepare($stmt, $query)) {
                     mysqli_stmt_bind_param($stmt, 's', $pesquisar);
 

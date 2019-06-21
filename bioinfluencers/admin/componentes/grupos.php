@@ -50,11 +50,15 @@
 
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_foruns, nome_forum, descricao, estado, categorias_id_categorias, id_categorias, nome_categoria FROM foruns INNER JOIN categorias ON foruns.categorias_id_categorias= categorias.id_categorias WHERE nome_forum LIKE ?";
+                    $query = "SELECT id_grupos, nome_grupos, descricao_g, estado, categorias_id_categorias, id_categorias, nome_categoria 
+                              FROM grupos 
+                              INNER JOIN categorias 
+                              ON grupos.categorias_id_categorias= categorias.id_categorias 
+                              WHERE nome_grupos LIKE ?";
 
                     if (isset($_GET["sort"])) {
                         if ($_GET["sort"] == "n") {
-                            $ordem_listagem = "nome_forum";
+                            $ordem_listagem = "nome_grupo";
                         } else {
                             if ($_GET["sort"] == "c") {
                                 $ordem_listagem = "nome_categoria";
@@ -70,7 +74,7 @@
                     mysqli_stmt_bind_param($stmt, 's', $pesquisar);
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $id_f, $nome, $descricao, $estado, $categorias_id, $id_cat, $nome_cat);
+                    mysqli_stmt_bind_result($stmt, $id_g, $nome, $descricao, $estado, $categorias_id, $id_cat, $nome_cat);
                     while (mysqli_stmt_fetch($stmt)) {
 
                     ?>
@@ -79,40 +83,40 @@
                         <td><?= $nome ?></td>
                         <td><?=$nome_cat ?></td>
                         <td><?=$estado ?></td>
-                        <td><a href="comentarios.php?id_f=<?=$id_f?>">ver comentários</a></td>
+                        <td><a href="comentarios.php?id_f=<?=$id_g?>">ver comentários</a></td>
 
 
                         <td>
                             <!-- Button trigger modal -->
 
-                            <a  href="" data-toggle="modal" data-target="#exampleModal<?=$id_f?>"><i class="fas fa-info-circle"></i> </a>
+                            <a  href="" data-toggle="modal" data-target="#exampleModal<?=$id_g?>"><i class="fas fa-info-circle"></i> </a>
 
-                            <a href='editar_grupo.php?id=<?=$id_f?>'><i class="fas fa-edit"></i></a>
+                            <a href='editar_grupo.php?id=<?=$id_g?>'><i class="fas fa-edit"></i></a>
 
-                            <a href="" data-toggle="modal" data-target="#apagar<?=$id_f?>"><i class="fas fa-trash"></i></a>
+                            <a href="" data-toggle="modal" data-target="#apagar<?=$id_g?>"><i class="fas fa-trash"></i></a>
 
                         </td>
 
                     </tr>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal<?=$id_f?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal<?=$id_g?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <?php
 
                             $link2 = new_db_connection();
                             $stmt2 = mysqli_stmt_init($link2);
 
-                            $query2 = "SELECT id_foruns, nome_forum, descricao, estado, categorias_id_categorias, id_categorias, nome_categoria FROM foruns INNER JOIN categorias ON foruns.categorias_id_categorias= categorias.id_categorias WHERE id_foruns=?";
+                            $query2 = "SELECT id_grupos, nome_grupos, descricao_g, estado, categorias_id_categorias, id_categorias, nome_categoria FROM grupos INNER JOIN categorias ON grupos.categorias_id_categorias= categorias.id_categorias WHERE id_grupos=?";
 
 
                             if (mysqli_stmt_prepare($stmt2, $query2)) {
 
-                                mysqli_stmt_bind_param($stmt2, 'i', $id_f);
+                                mysqli_stmt_bind_param($stmt2, 'i', $id_g);
                                 /* execute the prepared statement */
                                 mysqli_stmt_execute($stmt2);
                                 /* bind result variables */
-                                mysqli_stmt_bind_result($stmt2, $id_f, $nome, $descricao, $estado, $categorias_id, $id_cat, $nome_cat);
+                                mysqli_stmt_bind_result($stmt2, $id_g, $nome, $descricao, $estado, $categorias_id, $id_cat, $nome_cat);
 
                                 /* resultados da store */
                                 mysqli_stmt_store_result($stmt2);
@@ -144,19 +148,19 @@
                         </div>
                     </div>
                     <!--MODAL PARA APAGAR-->
-                    <div class="modal fade" id="apagar<?=$id_f?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="apagar<?=$id_g?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <?php
 
                             $link3 = new_db_connection();
                             $stmt3 = mysqli_stmt_init($link3);
 
-                            $query3 = "SELECT id_foruns, nome_forum FROM foruns WHERE id_foruns=?";
+                            $query3 = "SELECT id_grupos, nome_grupos FROM grupos WHERE id_grupos=?";
 
 
                             if (mysqli_stmt_prepare($stmt3, $query3)) {
 
-                                mysqli_stmt_bind_param($stmt3, 'i', $id_f);
+                                mysqli_stmt_bind_param($stmt3, 'i', $id_g);
                                 /* execute the prepared statement */
                                 mysqli_stmt_execute($stmt3);
                                 /* bind result variables */
@@ -177,8 +181,8 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Tem a certeza que quer apagar o forum <?=$nome?>?</p>
-                                    <a href="scripts/delete_grupo.php?id_f=<?=$id_f?>"><input type = "submit" value = "Eliminar" class="buttonCustomise"> </a>
+                                    <p>Tem a certeza que quer apagar o grupo <?=$nome?>?</p>
+                                    <a href="scripts/delete_grupo.php?id_f=<?=$id_g?>"><input type = "submit" value = "Eliminar" class="buttonCustomise"> </a>
                                     <button type="button" class="buttonCustomise" data-dismiss="modal">Cancelar</button>
 
                                 </div>

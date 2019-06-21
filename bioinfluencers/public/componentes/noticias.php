@@ -15,20 +15,24 @@
             $link = new_db_connection();
             $stmt = mysqli_stmt_init($link);
 
-            $query = "SELECT id_noticias, titulo, subtitulo, data_hora FROM noticias ORDER BY data_hora DESC LIMIT 4";
+            $query = "SELECT id_noticias, titulo, subtitulo, data_hora, conteudos_id_conteudos, id_conteudos, filename 
+                      FROM noticias 
+                      INNER JOIN conteudos
+                      ON noticias.conteudos_id_conteudos = conteudos.id_conteudos
+                      ORDER BY data_hora DESC LIMIT 4";
 
             if (mysqli_stmt_prepare($stmt, $query)) {
 
                 mysqli_stmt_execute($stmt);
-                mysqli_stmt_bind_result($stmt, $id, $titulo, $subtitulo, $data_hora);
+                mysqli_stmt_bind_result($stmt, $id_n, $titulo, $subtitulo, $data_hora, $conteudos_id_cont, $id_conteudos, $filename);
                 $active = true;
 
                 while (mysqli_stmt_fetch($stmt)) {
                     if ($active == true) {
                         ?>
                         <div class="carousel-item active">
-                            <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
-                            <div class="carousel-caption">
+                            <img class="img-fluid lala" src="../admin/uploads/noticias/<?= $filename ?>" alt="Los Angeles" width="1140" height="500">
+                            <div class="carousel-caption ">
                                 <h3><?= $titulo ?></h3>
                                 <p><?= $subtitulo ?></p>
                             </div>
@@ -39,7 +43,7 @@
                     } else {
                         ?>
                         <div class="carousel-item">
-                            <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
+                            <img class="img-fluid lala" src="../admin/uploads/noticias/<?= $filename ?>" alt="Los Angeles" width="1140" height="500">
                             <div class="carousel-caption">
                                 <h3><?= $titulo ?></h3>
                                 <p><?= $subtitulo ?></p>
@@ -67,55 +71,66 @@
                 <h3>Encontra aqui todas as notícias disponíveis</h3>
             </div>
             <div class="col-xl-4 col-sm-8 mx-auto mb-5">
-                <select class="form-control" id="" name="">
-                    <option>Seleciona uma notícia</option>
-                    <?php
+                <div class="dropdown text-center">
+                    <button class="btn btn-default dropdown-toggle botao_select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Seleciona a categoria
+                    </button>
+                    <div class="dropdown-menu drop_select" aria-labelledby="dropdownMenuButton">
+                        <?php
 
-                    $link2 = new_db_connection();
-                    $stmt2 = mysqli_stmt_init($link2);
-                    $query2 = "SELECT nome_tema
-                                FROM temas";
+                        $link2 = new_db_connection();
+                        $stmt2 = mysqli_stmt_init($link2);
+                        $query2 = "SELECT id_categorias, nome_categoria
+                              FROM categorias";
 
-                    if (mysqli_stmt_prepare($stmt2, $query2)) {
+                        if (mysqli_stmt_prepare($stmt2, $query2)) {
 
-                        mysqli_stmt_execute($stmt2);
-                        mysqli_stmt_bind_result($stmt2, $nome_tema);
+                            mysqli_stmt_execute($stmt2);
+                            mysqli_stmt_bind_result($stmt2, $id_c, $nome_c);
 
-                        while (mysqli_stmt_fetch($stmt2)) {
-                            ?>
-                            <option value="nome_tema"><?= $nome_tema ?></option>
-                            <?php
+                            while (mysqli_stmt_fetch($stmt2)) {
+                                ?>
+                                <a class="dropdown-item" href="noticias.php?cat=<?= $nome_c ?>"><?= $nome_c ?></a>
+                                <?php
+                            }
                         }
-                    }
-                    ?>
-                </select>
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
         <?php
+        if(isset($_GET["cat"])){
+            $tema = $_GET["cat"];
+        } else {
+            $tema = "";
+        }
+
         $link3 = new_db_connection();
-        $stmt3 = mysqli_stmt_init($link);
+        $stmt3 = mysqli_stmt_init($link3);
 
         $query3 = "SELECT id_noticias, titulo, subtitulo, data_hora, conteudos_id_conteudos, id_conteudos, filename
                   FROM noticias 
                   INNER JOIN conteudos
                   ON noticias.conteudos_id_conteudos = conteudos.id_conteudos
                   ORDER BY data_hora DESC";
+
         if (mysqli_stmt_prepare($stmt3, $query3)) {
 
             mysqli_stmt_execute($stmt3);
-            mysqli_stmt_bind_result($stmt3, $id, $titulo, $subtitulo, $data_hora, $conteudos_id_cont, $id_conteudos, $filename);
+            mysqli_stmt_bind_result($stmt3, $id_n, $titulo, $subtitulo, $data_hora, $conteudos_id_cont, $id_conteudos, $filename);
 
             while (mysqli_stmt_fetch($stmt3)) {
 
                 ?>
-                <div class="card-content mb-5">
-                    <div class="card-photo1">
-                        <img class="img-fluid foto_card_noticias" src="../admin/uploads/noticias/<?= $filename ?>">
+                <div class="card-content mb-3">
+                    <div class="card-photo1" style="background-image: url('../admin/uploads/noticias/<?= $filename ?>')">
+
                     </div>
                     <div class="card-text">
                         <h2><?= $titulo ?></h2>
                         <p><?= $subtitulo ?></p>
-                        <a href="noticia_indv.php?id=<?= $id ?>">Saber mais</a>
+                        <a href="noticia_indv.php?id_n=<?= $id_n ?>">Saber mais</a>
                     </div>
                 </div>
                 <?php

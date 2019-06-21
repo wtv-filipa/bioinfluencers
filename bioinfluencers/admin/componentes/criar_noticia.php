@@ -15,7 +15,7 @@
                     $stmt = mysqli_stmt_init($link);
 
                     $query = "SELECT id_noticias, titulo, subtitulo, texto, temas_id_temas
-                              FROM noticias ";
+                              FROM noticias";
                     if (mysqli_stmt_prepare($stmt, $query)) {
 
 
@@ -107,7 +107,7 @@
                                 }
                                 }
 
-                                mysqli_stmt_close($stmt);
+
                                 mysqli_close($link);
 
                                 ?>

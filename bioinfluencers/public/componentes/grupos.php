@@ -12,12 +12,12 @@
             $link = new_db_connection();
             $stmt = mysqli_stmt_init($link);
 
-            $query = "SELECT id_foruns, nome_forum, descricao, data_criacao_f FROM foruns ORDER BY data_criacao_f DESC LIMIT 3";
+            $query = "SELECT id_grupos, nome_grupos, descricao_g, data_criacao_g FROM grupos ORDER BY data_criacao_g DESC LIMIT 3";
 
             if (mysqli_stmt_prepare($stmt, $query)) {
 
                 mysqli_stmt_execute($stmt);
-                mysqli_stmt_bind_result($stmt, $id, $nome_f, $descricao, $data_criacao_f);
+                mysqli_stmt_bind_result($stmt, $id, $nome_g, $descricao, $data_criacao_g);
                 $active = true;
 
                 while (mysqli_stmt_fetch($stmt)) {
@@ -27,7 +27,7 @@
                         <div class="carousel-item active">
                             <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
                             <div class="carousel-caption">
-                                <h3><?= $nome_f ?></h3>
+                                <h3><?= $nome_g ?></h3>
                                 <p><?= $descricao ?></p>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="carousel-item">
                             <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
                             <div class="carousel-caption">
-                                <h3><?= $nome_f ?></h3>
+                                <h3><?= $nome_g ?></h3>
                                 <p><?= $descricao ?></p>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
         $link = new_db_connection();
         $stmt = mysqli_stmt_init($link);
 
-        $query = "SELECT COUNT(id_foruns) FROM foruns";
+        $query = "SELECT COUNT(id_grupos) FROM grupos";
 
         if (mysqli_stmt_prepare($stmt, $query)) {
 
@@ -98,13 +98,13 @@
                         array_push($array_noticias, $n_ale);
 
                         $offset = $n_ale - 1;
-                        $query = "SELECT id_foruns, nome_forum, descricao
-                                  FROM foruns
+                        $query = "SELECT id_grupos, nome_grupos, descricao_g
+                                  FROM grupos
                                   LIMIT 1 OFFSET $offset";
                         if (mysqli_stmt_prepare($stmt, $query)) {
 
                             mysqli_stmt_execute($stmt);
-                            mysqli_stmt_bind_result($stmt, $id, $nome_forum, $descricao);
+                            mysqli_stmt_bind_result($stmt, $id, $nome_grupos, $descricao);
 
                             mysqli_stmt_fetch($stmt)
                             ?>
@@ -117,7 +117,7 @@
 
                                     <div class="description">
 
-                                        <h4 class="mt-2"><?= $nome_forum ?></h4>
+                                        <h4 class="mt-2"><?= $nome_grupos ?></h4>
                                         <p class="mb-0"><?= $descricao ?></p>
 
                                     </div>
@@ -180,21 +180,24 @@
         $link3 = new_db_connection();
         $stmt3 = mysqli_stmt_init($link3);
 
-        $query3 = "SELECT id_foruns, nome_forum, descricao
-                  FROM foruns";
+        $query3 = "SELECT id_grupos, nome_grupos, descricao_g
+                  FROM grupos
+                  INNER JOIN conteudos
+                  ON noticias.conteudos_id_conteudos = conteudos.id_conteudos
+                  ORDER BY data_hora DESC";
 
         if (mysqli_stmt_prepare($stmt3, $query3)) {
 
             mysqli_stmt_execute($stmt3);
-            mysqli_stmt_bind_result($stmt3, $id, $nome_forum, $descricao);
+            mysqli_stmt_bind_result($stmt3, $id, $nome_grupos, $descricao);
 
             while (mysqli_stmt_fetch($stmt3)) {
 
                 ?>
                 <div class="card-content mb-5">
-                    <div class="card-photo1"></div>
+                    <div class="card-photo1" style="background-image: url('../admin/uploads/noticias/<?= $filename ?>')"></div>
                     <div class="card-text">
-                        <h2><?= $nome_forum ?></h2>
+                        <h2><?= $nome_grupos ?></h2>
                         <p><?= $descricao ?></p>
                         <a href="grupo_indv.php">Saber mais</a>
                     </div>

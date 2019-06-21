@@ -1,6 +1,6 @@
 <?php
-if (isset($_GET["id_f"])) {
-    $id_f = $_GET["id_f"];
+if (isset($_GET["id_g"])) {
+    $id_g = $_GET["id_g"];
 
 // We need the function!
     require_once("connections/connection.php");
@@ -11,12 +11,12 @@ if (isset($_GET["id_f"])) {
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT id_foruns, nome_forum, descricao
-          FROM foruns";
+    $query = "SELECT id_grupos, nome_grupos, descricao_g
+          FROM grupos";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $id_f, $nome_f, $descricao);
+        mysqli_stmt_bind_result($stmt, $id_g, $nome_g, $descricao);
 
 
         while (mysqli_stmt_fetch($stmt)) {
@@ -26,7 +26,7 @@ if (isset($_GET["id_f"])) {
             <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Grupo: <?= $nome_f ?></h1>
+            <h1 class="h3 mb-2 text-gray-800">Grupo: <?= $nome_g ?></h1>
             <p class="mb-4">Descrição: <?= $descricao ?> </p>
             <?php
         }
@@ -56,18 +56,18 @@ if (isset($_GET["id_f"])) {
                     /* create a prepared statement */
                     $stmt2 = mysqli_stmt_init($link2);
 
-                    $query2 = "SELECT id_forumcomentarios, titulo_comentarios, mensagem, data_hora, utilizadores_id_utilizadores, ref_id_foruns, respostas, id_utilizadores, nome
-                                  FROM forum_comentarios
+                    $query2 = "SELECT id_grupocomentarios, titulo_comentarios, mensagem, data_hora, utilizadores_id_utilizadores, grupos_id_grupos, respostas, id_utilizadores, nome
+                                  FROM grupo_comentarios
                                   INNER JOIN utilizadores
-                                  ON forum_comentarios.utilizadores_id_utilizadores = utilizadores.id_utilizadores
-                                  WHERE ref_id_foruns = ?";
+                                  ON grupo_comentarios.utilizadores_id_utilizadores = utilizadores.id_utilizadores
+                                  WHERE grupos_id_grupos = ?";
 
 
                     if (mysqli_stmt_prepare($stmt2, $query2)) {
-                        mysqli_stmt_bind_param($stmt2, 'i', $id_f);
+                        mysqli_stmt_bind_param($stmt2, 'i', $id_g);
 
                         mysqli_stmt_execute($stmt2);
-                        mysqli_stmt_bind_result($stmt2, $id_c, $titulo_c, $mensagem, $data_hora, $uti_id, $id_foruns, $respostas, $id_u, $nome);
+                        mysqli_stmt_bind_result($stmt2, $id_c, $titulo_c, $mensagem, $data_hora, $uti_id, $id_grupos, $respostas, $id_u, $nome);
 
 
                         while (mysqli_stmt_fetch($stmt2)) {
@@ -80,14 +80,14 @@ if (isset($_GET["id_f"])) {
                                 <td><?= $mensagem ?></td>
                                 <td><?= $data_hora ?></td>
                                 <td>
-                                    <a href="" data-toggle="modal" data-target="#apagar<?= $id_f ?><?= $id_c ?>"><i
+                                    <a href="" data-toggle="modal" data-target="#apagar<?= $id_g ?><?= $id_c ?>"><i
                                                 class="fas fa-trash"></i></a>
 
                             </tr>
 
                             </tbody>
                             <!--MODAL PARA APAGAR-->
-                            <div class="modal fade" id="apagar<?= $id_f ?><?= $id_c ?>" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="apagar<?= $id_g ?><?= $id_c ?>" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <?php
@@ -95,11 +95,11 @@ if (isset($_GET["id_f"])) {
                                     $link3 = new_db_connection();
                                     $stmt3 = mysqli_stmt_init($link3);
 
-                                    $query3 = "SELECT id_forumcomentarios, titulo_comentarios, mensagem, data_hora, utilizadores_id_utilizadores, ref_id_foruns, respostas, id_utilizadores, nome
-                                  FROM forum_comentarios
+                                    $query3 = "SELECT id_grupocomentarios, titulo_comentarios, mensagem, data_hora, utilizadores_id_utilizadores, grupos_id_grupos, respostas, id_utilizadores, nome
+                                  FROM grupo_comentarios
                                   INNER JOIN utilizadores
-                                  ON forum_comentarios.utilizadores_id_utilizadores = utilizadores.id_utilizadores
-                                  WHERE id_forumcomentarios = ?";
+                                  ON grupo_comentarios.utilizadores_id_utilizadores = utilizadores.id_utilizadores
+                                  WHERE id_grupocomentarios = ?";
 
 
                                     if (mysqli_stmt_prepare($stmt3, $query3)) {
@@ -108,7 +108,7 @@ if (isset($_GET["id_f"])) {
                                         /* execute the prepared statement */
                                         mysqli_stmt_execute($stmt3);
                                         /* bind result variables */
-                                        mysqli_stmt_bind_result($stmt3, $id_c, $titulo_c, $mensagem, $data_hora, $uti_id, $id_foruns, $respostas, $id_u, $nome);
+                                        mysqli_stmt_bind_result($stmt3, $id_c, $titulo_c, $mensagem, $data_hora, $uti_id, $id_grupos, $respostas, $id_u, $nome);
 
                                         /* resultados da store */
                                         mysqli_stmt_store_result($stmt3);
@@ -126,7 +126,7 @@ if (isset($_GET["id_f"])) {
                                         </div>
                                         <div class="modal-body">
                                             <p>Tem a certeza que quer apagar o comentário <?= $mensagem ?>?</p>
-                                            <a href="scripts/delete_comentario.php?id_f=<?= $id_f ?>&id_c=<?= $id_c ?>"><input
+                                            <a href="scripts/delete_comentario.php?id_f=<?= $id_g ?>&id_c=<?= $id_c ?>"><input
                                                         type="submit" value="Eliminar" class="buttonCustomise"> </a>
                                             <button type="button" class="buttonCustomise" data-dismiss="modal">
                                                 Cancelar

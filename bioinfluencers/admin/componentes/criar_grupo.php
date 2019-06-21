@@ -17,13 +17,13 @@
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
 
-                    $query = "SELECT id_foruns, nome_forum, descricao, estado, categorias_id_categorias
-                                                  FROM foruns ";
+                    $query = "SELECT id_grupos, nome_grupos, descricao_g, estado, categorias_id_categorias
+                              FROM grupos ";
                     if (mysqli_stmt_prepare($stmt, $query)) {
 
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $id_foruns, $nome_forum, $descricao, $estado, $ref_categorias);
+                    mysqli_stmt_bind_result($stmt, $id_grupos, $nome_grupos, $descricao, $estado, $ref_categorias);
                     while (mysqli_stmt_fetch($stmt)) {
 
                     ?>
