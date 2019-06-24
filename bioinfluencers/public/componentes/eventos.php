@@ -8,7 +8,7 @@
 
 
     <div class="event-card">
-        <img src="img/escavar.jpg" alt="" />
+        <a href="evento_indv.php"> <img src="img/escavar.jpg" alt="" /></a>
         <div class="description">
             <h4 class="mt-2"><span style="font-weight: bold;">6 JUN | </span>BioLousada</h4>
             <p class="location mb-0">Serra da Lousada</p>
