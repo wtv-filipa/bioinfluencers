@@ -51,7 +51,7 @@
                             <?php
                             $stmt = mysqli_stmt_init($link);
 
-                            $query = "SELECT id_temas, nome_tema FROM temas";
+                            $query = "SELECT id_temas, nome_tema FROM temas_noticias";
 
                             if (mysqli_stmt_prepare($stmt, $query)) {
 

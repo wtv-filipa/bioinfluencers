@@ -65,7 +65,6 @@ if (mysqli_stmt_prepare($stmt, $query)) {
                 <input type="text" class="form-control text-center" id="nome" placeholder="Nome Próprio" name="nome" value="<?= $nome_u?>">
 
             <h6 class="mt-2">@<?= $nickname ?></h6>
-            <p><?= $pontos ?></p>
             </div>
 
             <textarea type="text" class="form-control" id="descricao" placeholder="Inserir descrição" name="descricao" rows="3"><?= $descricao_u?></textarea>
