@@ -211,21 +211,7 @@
                                                                                     <table border="0" cellspacing="0" cellpadding="0" style="border-radius:4px; " bgcolor="#00CC52" class="mobile-shell">
                                                                                         <tr>
                                                                                             <td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="26"></td>
-                                                                                            <td>
-                                                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                                                    <tr>
-                                                                                                        <td height="12" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                                                    </tr>
-                                                                                                </table>
-                                                                                                <div class="mktEditable" id="Button">
-                                                                                                    <div class="text-btn" style="color: #ffffff; font-family: Helvetica, Arial,sans-serif; font-size: 15px; line-height: 20px; text-align: center; font-weight: bold; letter-spacing: 0.5px;"><a href="http://mkto-sj110151.com/qkGC080mRc000n01E0m600L" target="_blank" class="link-white" style="color: #ffffff; text-decoration: none;"><span class="link-white" style="color: #ffffff; text-decoration: none;">GET THE FREE GUIDE</span></a></div>
-                                                                                                </div>
-                                                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                                                    <tr>
-                                                                                                        <td height="12" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                                                    </tr>
-                                                                                                </table>
-                                                                                            </td>
+
                                                                                             <td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="26"></td>
                                                                                         </tr>
                                                                                     </table>
@@ -233,27 +219,7 @@
                                                                             </tr>
                                                                         </table>
                                                                         <!-- END Button -->
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                            <tr>
-                                                                                <td height="28" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                        <div class="mktEditable" id="text2">
-                                                                            <div class="text2" style="color:#666666; font-family:Helvetica, Arial,sans-serif; font-size:16px; line-height:18px; text-align:left">Cheers,</div>
-                                                                        </div>
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                            <tr>
-                                                                                <td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                        <div class="mktEditable" id="eventbriteImage">
-                                                                            <div class="img" style="font-size:0pt; line-height:0pt; text-align:left"><img src="https://lp.eventbriteacademy.com/rs/269-CEG-133/images/eventbrite.jpg" border="0" width="116" height="22" alt=""></div>
-                                                                        </div>
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                            <tr>
-                                                                                <td height="40" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                            </tr>
-                                                                        </table>
+
                                                                     </td>
                                                                     <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="50"></td>
                                                                 </tr>
