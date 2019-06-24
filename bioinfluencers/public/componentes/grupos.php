@@ -12,23 +12,29 @@
             $link = new_db_connection();
             $stmt = mysqli_stmt_init($link);
 
-            $query = "SELECT id_grupos, nome_grupos, descricao_g, data_criacao_g FROM grupos ORDER BY data_criacao_g DESC LIMIT 3";
+            $query = "SELECT id_grupos, nome_grupos, descricao_g, data_criacao_g, conteudos_id_conteudos, id_conteudos, filename
+                      FROM grupos 
+                      INNER JOIN conteudos
+                      ON grupos.conteudos_id_conteudos = conteudos.id_conteudos
+                      ORDER BY data_criacao_g DESC";
 
             if (mysqli_stmt_prepare($stmt, $query)) {
+                $query .= "LIMIT 3";
 
                 mysqli_stmt_execute($stmt);
-                mysqli_stmt_bind_result($stmt, $id, $nome_g, $descricao, $data_criacao_g);
+                mysqli_stmt_bind_result($stmt, $id, $nome_grupos, $descricao, $data_criacao_g, $conteudos_id_cont, $id_conteudos, $filename);
                 $active = true;
 
                 while (mysqli_stmt_fetch($stmt)) {
                     if ($active == true) {
-
                         ?>
                         <div class="carousel-item active">
-                            <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
+                            <img class="img-fluid lala" src="../admin/uploads/grupos/<?= $filename ?>" alt="" width="1140" height="500">
                             <div class="carousel-caption">
-                                <h3><?= $nome_g ?></h3>
-                                <p><?= $descricao ?></p>
+                                <div class="p-2" style="background-color: white; opacity: 0.7; border-radius: 20px">
+                                    <h3 style="font-weight: 700; text-shadow: white 0.1em 0.1em 0.2em"><?= $nome_grupos ?></h3>
+                                    <p style="font-weight: 600;"><?= $descricao ?></p>
+                                </div>
                             </div>
                         </div>
 
@@ -37,10 +43,12 @@
                     } else {
                         ?>
                         <div class="carousel-item">
-                            <img class="img-fluid" src="img/beata_n.jpg" alt="Los Angeles" width="1140" height="500">
+                            <img class="img-fluid lala" src="../admin/uploads/grupos/<?= $filename ?>" alt="" width="1140" height="500">
                             <div class="carousel-caption">
-                                <h3><?= $nome_g ?></h3>
-                                <p><?= $descricao ?></p>
+                                <div class="p-2" style="background-color: white; opacity: 0.7; border-radius: 20px">
+                                    <h3 style="font-weight: 700; text-shadow: white 0.1em 0.1em 0.2em"><?= $nome_grupos ?></h3>
+                                    <p style="font-weight: 600;"><?= $descricao ?></p>
+                                </div>
                             </div>
                         </div>
                         <?php
@@ -67,17 +75,17 @@
     <div class="events1 mx-auto">
         <?php
 
-        $link = new_db_connection();
-        $stmt = mysqli_stmt_init($link);
+        $link2 = new_db_connection();
+        $stmt2 = mysqli_stmt_init($link2);
 
-        $query = "SELECT COUNT(id_grupos) FROM grupos";
+        $query2 = "SELECT COUNT(id_grupos) FROM grupos";
 
-        if (mysqli_stmt_prepare($stmt, $query)) {
+        if (mysqli_stmt_prepare($stmt2, $query2)) {
 
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $nr_total);
+            mysqli_stmt_execute($stmt2);
+            mysqli_stmt_bind_result($stmt2, $nr_total);
 
-            if (mysqli_stmt_fetch($stmt)) {
+            if (mysqli_stmt_fetch($stmt2)) {
 
                 $array_noticias = array();
 
@@ -90,21 +98,21 @@
                 for ($i = 1; $i <= $registos_mostra; $i++) {
 
                     $n_ale = rand(1, $nr_total);
-
                     $registo_ja_existe = in_array($n_ale, $array_noticias);
-
 
                     if ($registo_ja_existe == "") {
                         array_push($array_noticias, $n_ale);
 
                         $offset = $n_ale - 1;
-                        $query = "SELECT id_grupos, nome_grupos, descricao_g
+                        $query = "SELECT id_grupos, nome_grupos, descricao_g, conteudos_id_conteudos, id_conteudos, filename
                                   FROM grupos
+                                  INNER JOIN conteudos
+                                  ON grupos.conteudos_id_conteudos = conteudos.id_conteudos
                                   LIMIT 1 OFFSET $offset";
                         if (mysqli_stmt_prepare($stmt, $query)) {
 
                             mysqli_stmt_execute($stmt);
-                            mysqli_stmt_bind_result($stmt, $id, $nome_grupos, $descricao);
+                            mysqli_stmt_bind_result($stmt, $id, $nome_grupos, $descricao, $conteudos_id, $id_conteudos, $filename);
 
                             mysqli_stmt_fetch($stmt)
                             ?>
@@ -112,7 +120,7 @@
 
                                 <div class="event-card1 ">
                                     <div class="mg-image">
-                                        <img src="img/escavar.jpg" alt=""/>
+                                        <img src="../admin/uploads/grupos/<?= $filename ?>" alt=""/>
                                     </div>
 
                                     <div class="description">
@@ -150,19 +158,19 @@
                     <div class="dropdown-menu drop_select" aria-labelledby="dropdownMenuButton">
                         <?php
 
-                        $link2 = new_db_connection();
-                        $stmt2 = mysqli_stmt_init($link2);
-                        $query2 = "SELECT id_categorias, nome_categoria
+                        $link4 = new_db_connection();
+                        $stmt4 = mysqli_stmt_init($link4);
+                        $query4 = "SELECT id_categorias, nome_categoria
                               FROM categorias";
 
-                        if (mysqli_stmt_prepare($stmt2, $query2)) {
+                        if (mysqli_stmt_prepare($stmt4, $query4)) {
 
-                            mysqli_stmt_execute($stmt2);
-                            mysqli_stmt_bind_result($stmt2, $id_c, $nome_c);
+                            mysqli_stmt_execute($stmt4);
+                            mysqli_stmt_bind_result($stmt4, $id_c, $nome_c);
 
-                            while (mysqli_stmt_fetch($stmt2)) {
+                            while (mysqli_stmt_fetch($stmt4)) {
                                 ?>
-                                <a class="dropdown-item" href="#"><?= $nome_c ?></a>
+                                <a class="dropdown-item" href="grupos.php?c=<?= $id_c ?>"><?= $nome_c ?></a>
                                 <?php
                             }
                         }
@@ -172,41 +180,75 @@
             </div>
         </div>
 
-
-
-
-
         <?php
         $link3 = new_db_connection();
         $stmt3 = mysqli_stmt_init($link3);
 
-        $query3 = "SELECT id_grupos, nome_grupos, descricao_g
-                  FROM grupos
+        $query3 = "SELECT id_grupos, nome_grupos, descricao_g, data_criacao_g, categorias_id_categorias, conteudos_id_conteudos, id_conteudos, filename, id_categorias, nome_categoria
+                  FROM grupos 
                   INNER JOIN conteudos
-                  ON noticias.conteudos_id_conteudos = conteudos.id_conteudos
-                  ORDER BY data_hora DESC";
+                  ON grupos.conteudos_id_conteudos = conteudos.id_conteudos
+                  INNER JOIN categorias
+                  ON grupos.categorias_id_categorias = categorias.id_categorias";
 
-        if (mysqli_stmt_prepare($stmt3, $query3)) {
+        if (isset($_GET["c"])) {
+            $id_c = $_GET["c"];
 
-            mysqli_stmt_execute($stmt3);
-            mysqli_stmt_bind_result($stmt3, $id, $nome_grupos, $descricao);
+            $tema = "id_categorias";
+            $data = "data_criacao_g";
+            $query3 .= " WHERE " . $tema . " = ? ORDER BY " . $data . " DESC ";
 
-            while (mysqli_stmt_fetch($stmt3)) {
 
-                ?>
-                <div class="card-content mb-5">
-                    <div class="card-photo1" style="background-image: url('../admin/uploads/noticias/<?= $filename ?>')"></div>
-                    <div class="card-text">
-                        <h2><?= $nome_grupos ?></h2>
-                        <p><?= $descricao ?></p>
-                        <a href="grupo_indv.php">Saber mais</a>
+            if (mysqli_stmt_prepare($stmt3, $query3)) {
+                mysqli_stmt_bind_param($stmt3, 'i', $id_c);
+                mysqli_stmt_execute($stmt3);
+                mysqli_stmt_bind_result($stmt3, $id_g, $nome_grupos, $descricao, $data_criacao_g, $categorias_id_cat, $conteudos_id_cont, $id_conteudos, $filename, $id_c, $nome_c);
+
+                while (mysqli_stmt_fetch($stmt3)) {
+
+                    ?>
+                    <div class="card-content mb-3">
+                        <div class="card-photo1"
+                             style="background-image: url('../admin/uploads/grupos/<?= $filename ?>')">
+
+                        </div>
+                        <div class="card-text">
+                            <h2><?= $nome_grupos ?></h2>
+                            <p><?= $descricao ?></p>
+                            <a href="grupo_indv.php?id_g=<?= $id_g ?>">Saber mais</a>
+                        </div>
                     </div>
-                </div>
-                <?php
+                    <?php
+                }
+            }
+
+        } else {
+            $data = "data_criacao_g";
+            $query3 .= " ORDER BY " . $data . " DESC ";
+
+            if (mysqli_stmt_prepare($stmt3, $query3)) {
+
+                mysqli_stmt_execute($stmt3);
+                mysqli_stmt_bind_result($stmt3, $id_g, $nome_grupos, $descricao, $data_criacao_g, $categorias_id_cat ,$conteudos_id_cont, $id_conteudos, $filename, $id_c, $nome_c);
+                while (mysqli_stmt_fetch($stmt3)) {
+
+                    ?>
+                    <div class="card-content mb-3">
+                        <div class="card-photo1"
+                             style="background-image: url('../admin/uploads/grupos/<?= $filename ?>')">
+
+                        </div>
+                        <div class="card-text">
+                            <h2><?= $nome_grupos ?></h2>
+                            <p><?= $descricao ?></p>
+                            <a href="grupo_indv.php?id_g=<?= $id_g ?>">Saber mais</a>
+                        </div>
+                    </div>
+                    <?php
+                }
             }
         }
         ?>
-
 
     </div>
 </div>

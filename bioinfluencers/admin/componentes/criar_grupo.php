@@ -2,8 +2,8 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Fórum</h1>
-    <p class="mb-4">Aqui é possível ter uma vista geral de todos os fóruns que existem, bem como as categorias
+    <h1 class="h3 mb-2 text-gray-800">Grupo</h1>
+    <p class="mb-4">Aqui é possível ter uma vista geral de todos os grupos que existem, bem como as categorias
         disponíveis e todos os comentários publicados. O administrador pode adicionar novos grupos, categorias e apagar
         comentários.</p>
 
