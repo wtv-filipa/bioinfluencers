@@ -30,7 +30,7 @@
                                             break;
                                         case 2:
                                             $message = "Utilizador criado com sucesso";
-                                            $class = "alert-warning";
+                                            $class = "alert-success";
                                             break;
                                         default:
                                             $msg_show = false;

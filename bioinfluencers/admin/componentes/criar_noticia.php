@@ -51,7 +51,7 @@
                             <?php
                             $stmt = mysqli_stmt_init($link);
 
-                            $query = "SELECT id_temas, nome_tema FROM temas";
+                            $query = "SELECT id_temas, nome_tema FROM temas_noticias";
 
                             if (mysqli_stmt_prepare($stmt, $query)) {
 
@@ -84,6 +84,7 @@
                             ?>
                         </select>
                     </div>
+
                     <div class="col-xl-12">
                             <div class="row">
                                 <div class="form-group col-xl-6 col-lg-6 col-sm-6 mt-2">
@@ -107,8 +108,6 @@
                                 }
                                 }
 
-
-                                mysqli_close($link);
 
                                 ?>
                             </div>
