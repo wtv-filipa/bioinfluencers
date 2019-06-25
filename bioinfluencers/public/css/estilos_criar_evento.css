@@ -14,9 +14,11 @@ p{
     line-height: 1.5;
     color: #858796;
     text-align: left;
-    background-image: url("../img/perfil.png");
-    background-size: cover;
+    background-image: url("../img/criar_evento.png");
     width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 h6 {

@@ -137,7 +137,7 @@
 
 
 
-<a href="#" class="float">
+<a href="criar_publicacao.php" class="float">
     <i class="fa  fa-pencil-square-o my-float"></i>
 </a>
 <div class="label-container">

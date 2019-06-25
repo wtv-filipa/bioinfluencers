@@ -29,7 +29,7 @@ session_start();
 
 </header>
 
-<main class="p-0">
+<main class="p-0 container">
 
     <?php include "componentes/noticia_indv.php"; ?>
 

@@ -89,7 +89,7 @@ if ($uploadOk == 0) {
                     $custos = $_POST['custos'];
                     $responsavel = $_POST['responsavel'];
                     $grupos_id_grupos = $_POST["grupo"];
-
+                    $tema_evento_idtema_evento = $_POST["tema_noticia"];
 
                     // Devemos validar também o resultado do execute!
                     if (mysqli_stmt_execute($stmt2)) {
@@ -98,6 +98,7 @@ if ($uploadOk == 0) {
 
                         // Acção de sucesso
                         header("Location: ../eventos.php");
+                        //echo "DEU";
                     } else {
                         header("Location: ../criar_evento.php");
                         // Acção de erro
