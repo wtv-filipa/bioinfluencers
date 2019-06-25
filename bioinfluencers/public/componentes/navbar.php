@@ -1,8 +1,9 @@
 <?php
-if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"]) && isset($_SESSION["id_utilizadores"])) {
+
+require_once("connections/connection.php");
+if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
     $nickname = $_SESSION["nickname"];
     $tipo = $_SESSION["tipo"];
-    $id_uti = $_SESSION["id_utilizadores"];
 }
 ?>
 
@@ -18,15 +19,45 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"]) && isset($_SESSION[
 
         <div class="nav__brand"><a class="nav__link" href="index.php"><img src="img/logo_n.png" class="img-responsive" style="width:150px; margin-right: 5px"></a></div>
         <div class="nav__controls nav__controls--right">
-            <div class="nav__search">
+           <!-- <div class="nav__search">
                 <input class="nav__search--input text-center" placeholder="Pesquisar..." type="text"/><a class="nav__search--icon " href="#"><i class="fa fa-bell-o" style="font-size: 21px"></i></a>
-            </div>
+            </div> -->
 
-            <div class="nav__avatar"><img src="img/pessoa2.jpg" class="nav__avatar--image " style="max-width:35px"> <span class="nome ml-3" style="color: black"><?=$nickname?></span>
+
+            <?php
+            // Create a new DB connection
+            $link3 = new_db_connection();
+
+            /* create a prepared statement */
+            $stmt3 = mysqli_stmt_init($link3);
+
+
+            $query3 = "SELECT id_utilizadores,nickname,img_perfil
+                              FROM utilizadores
+                              WHERE nickname LIKE ?";
+
+            if (mysqli_stmt_prepare($stmt3, $query3)) {
+            mysqli_stmt_bind_param($stmt3, 's', $nickname);
+            mysqli_stmt_execute($stmt3);
+            mysqli_stmt_bind_result($stmt3, $id,  $nickname,   $img_perfil);
+            while (mysqli_stmt_fetch($stmt3)) {
+            //var_dump($img_perfil);
+            if (isset($img_perfil)){
+            ?>
+
+            <div class="nav__avatar"><img src="../admin/uploads/img_perfil/<?=$img_perfil?>" class="nav__avatar--image " style="max-width:35px"> <span class="nome ml-3" style="color: black"><?=$nickname?></span>
+
+                <?php
+                }else{
+                ?>
+                <div class="nav__avatar"><img src="img/default.gif" class="nav__avatar--image " style="max-width:35px"> <span class="nome ml-3" style="color: black"><?=$nickname?></span>
+                    <?php
+                    }
+                    }
+                    }
+                    ?>
 
                 <div class="nav__avatar--dropdown"><a href="/login"></a>
-
-                    <a href="perfil.php?user=<?=$nickname?>"><button class="nome_l nav__btn2" style="color: black"> @<?=$nickname?>  </button></a>
 
                     <?php
                     if(isset($tipo) && $tipo == 1) {
@@ -68,12 +99,43 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"]) && isset($_SESSION[
 
         <div class="nav__brand"><a class="nav__link" href="index.php"><img src="img/logo_n.png" class="img-responsive" style="width:150px; margin-right: 5px"></a></div>
         <div class="nav__controls nav__controls--right">
-            <div class="nav__search">
+            <!--<div class="nav__search">
                 <input class="nav__search--input text-center" placeholder="Pesquisar..." type="text"/><a class="nav__search--icon " href="#"><i class="fa fa-bell-o" style="font-size: 21px"></i></a>
-            </div>
+            </div>-->
 
-            <div class="nav__avatar"><img src="img/pessoa2.jpg" class="nav__avatar--image " style="max-width:35px"> <span class="nome ml-3"><?=$nickname?></span>
+            <?php
+            // Create a new DB connection
+            $link2 = new_db_connection();
 
+            /* create a prepared statement */
+            $stmt2 = mysqli_stmt_init($link2);
+
+
+            $query2 = "SELECT id_utilizadores,nickname,img_perfil
+                              FROM utilizadores
+                              WHERE nickname LIKE ?";
+
+            if (mysqli_stmt_prepare($stmt2, $query2)) {
+            mysqli_stmt_bind_param($stmt2, 's', $nickname);
+            mysqli_stmt_execute($stmt2);
+            mysqli_stmt_bind_result($stmt2, $id,  $nickname,   $img_perfil);
+            while (mysqli_stmt_fetch($stmt2)) {
+            //var_dump($img_perfil);
+            if (isset($img_perfil)){
+            ?>
+
+            <div class="nav__avatar"><img src="../admin/uploads/img_perfil/<?=$img_perfil?>" class="nav__avatar--image " style="max-width:35px"> <span class="nome ml-3"><?=$nickname?></span>
+
+                <?php
+                }else{
+                ?>
+                <div class="nav__avatar"><img src="img/default.gif" class="nav__avatar--image " style="max-width:35px"> <span class="nome ml-3"><?=$nickname?></span>
+
+                    <?php
+                    }
+                    }
+                    }
+                    ?>
 
 
                 <div class="nav__avatar--dropdown"><a href="/login"></a>
@@ -85,7 +147,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"]) && isset($_SESSION[
                         <?php
                     }
 
-                    require_once("connections/connection.php");
+
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
                     $query = "SELECT id_utilizadores, nickname
