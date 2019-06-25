@@ -22,7 +22,7 @@ session_start();
 </head>
 
 
-<body>
+<body id="fundo_top">
 <header class="sticky-top">
 
     <?php include "componentes/navbar.php"; ?>

@@ -3,6 +3,8 @@
 }
 
 /*NAVBAR*/
+
+
 *,
 *:before,
 *:after {
@@ -15,7 +17,7 @@
 
 body {
     margin: 0;
-   /* background: #191919;*/
+    /* background: #191919;*/
 }
 a {
     text-decoration: none;
@@ -43,7 +45,6 @@ _nav.scss
     color: #efefef;
     width: 100%;
     height: 100%;
-    justify-content: space-between;
     align-items: center;
     max-width: 1200px;
 }
@@ -66,18 +67,19 @@ _nav.scss
     height: 100%;
     padding: 0.5rem;
     color: inherit;
-    text-decoration: none;
+    text-decoration: none !important;
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
-}
-.nav__link--text {
-    font-weight: 600;
-    margin-left: 0.5rem;
-}
-@media (max-width: 900px) {
 
+    }
+
+.nav__link--text {
+    font-weight: 500;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    color: black;
 }
+
 .nav__controls {
     display: flex;
     align-items: center;
@@ -103,8 +105,6 @@ _nav.scss
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 1rem;
-    border-right: 0.1rem solid #323232;
     height: 1rem;
 }
 .nav__search--input {
@@ -117,13 +117,7 @@ _nav.scss
     border: 0;
     color: #efefef;
 }
-@media (max-width: 900px) {
-    .nav__search--input {
-        display: none;
-    }
 
-
-}
 .nav__search--icon {
     color: #323232;
 }
@@ -189,21 +183,21 @@ _nav.scss
     left: 50%;
     transform: translate(-50%);
     position: absolute;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.19), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.23);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.19), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.23);
 }
 .nav__menu--dropdown:hover {
     display: flex;
 }
 .nav__menu--dropdown:before {
     position: relative;
-    top: -5rem;
-    left: 4rem;
+    top: -1.5rem;
+    left: 3rem;
     content: "";
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-
+    border-bottom: 10px solid #fff;
 }
 .nav__menu--dropdown button {
     padding: 0.75rem 2.5rem;
@@ -211,12 +205,7 @@ _nav.scss
     width: 100%;
     cursor: pointer;
 }
-
-
-
-
 .nav__avatar--image {
-    font-size: 3rem;
     position: relative;
     border-radius: 50%;
 }
@@ -246,11 +235,163 @@ _nav.scss
     width: 30px;
 }
 
-/*FIM NAVBAR*/
 
-a {
-    text-decoration: none !important;
+label {
+    position: relative;
+    height: 40px;
+    top: 10px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 4;
 }
+.icon {
+    width: 40px;
+    height: 3px;
+    margin-bottom: 12px;
+    background-color: black;
+    border-radius: 1px;
+    transition: all .5s ease;
+}
+
+
+#slide1{
+    position: absolute;
+    width: 0px;
+    height: 100vh;
+    background-color: #DCF8C6;
+
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+
+
+}
+#button{
+    opacity: 1;
+   color: black;
+    font-size: 20px;
+}
+
+#button1 {
+    opacity: 1;
+    color: black;
+    font-size: 20px;
+}
+
+#button2{
+    display: block;
+    margin-left: 86%;
+    margin-top: 0%;
+    padding: 10px 10px;
+    font-size: 20px;
+    color: #fff;
+}
+#button2:hover{
+    color: #7FC53C !important;
+}
+#button:hover{
+    transform: scale(1);
+}
+#slide1 ul{
+    list-style: none;
+    z-index: 1;
+}
+
+#slide1 ul li{
+    display: block;
+    text-align: right;
+}
+#slide1 ul li:hover{
+    background-color: #fff;
+}
+.active1{
+    background-color: #f2f2f2;
+}
+#slide1 ul li a{
+    padding: 0;
+    margin-left: 0px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Helvetica', sans-serif;
+    color: #fff;
+    z-index: 1;
+}
+
+
+
+@media (max-width: 778px) {
+
+    .nome {
+
+        display: none;
+    }
+
+
+    .nav__avatar {
+        margin-right: 0;
+        margin-left: 0.7rem;
+        color: #7FC53C;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 50%;
+    }
+
+    .nav__link {
+        width: 100%;
+        height: 100%;
+        padding: 0rem;
+        color: inherit;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .logo_bi{
+        width: 70px;
+    }
+
+
+    .cont_l {
+
+        display: none;
+    }
+}
+
+
+@media (max-width: 1300px) {
+
+    .nav__avatar--dropdown {
+        background: #fff;
+        display: none;
+        flex-direction: column;
+        z-index: 9999999;
+        padding: 1rem;
+        top: 4rem;
+        left: 50%;
+        transform: translate(-81%);
+        position: absolute;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.19), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.23);
+    }
+
+}
+
+
+@media (min-width: 778px) {
+
+   .nome_l {
+       display: none;
+   }
+
+    .nao_container {
+
+        display: none;
+    }
+}
+
+
 
 /*FEED*/
 .card {
@@ -541,6 +682,19 @@ a {
     color: rgba(0, 0, 0, 0.9);
 }
 
+
+
+.eventos_ind .event-card-ind {
+    display: inline-block;
+    background: white;
+    margin: 20px;
+    cursor: default;
+
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+
 .events .event-card:hover {
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
@@ -552,6 +706,14 @@ a {
     height: 250px;
     border-radius: 2px 2px 0 0;
 }
+
+.eventos_ind .event-card-ind img {
+    width: auto;
+    height: 250px;
+    border-radius: 2px 2px 0 0;
+}
+
+
 
 .events .event-card .description {
     padding: 5px 15px 15px;
@@ -568,7 +730,22 @@ a {
     margin-top: 10px;
 }
 
+.eventos_ind .event-card-ind .description .controls {
+    display: flex;
+
+    margin-top: 10px;
+}
+
 .events .event-card .description .controls a {
+    color: black;
+    cursor: pointer;
+    font-size: 20px;
+    width: 20%;
+    text-align: center;
+    padding: 2px;
+}
+
+.eventos_ind .event-card-ind .description .controls a {
     color: black;
     cursor: pointer;
     font-size: 20px;
@@ -582,11 +759,27 @@ a {
     border-radius: 20px;
 }
 
+.eventos_ind .event-card-ind .description .controls a:hover {
+    background-color: #ddd;
+    border-radius: 20px;
+}
+
 .events .event-card .description .location {
     font-size: 18px;
 }
 
+.eventos_ind .event-card-ind .description .location {
+    font-size: 18px;
+}
+
 .events .event-card .description .location:before {
+    font-family: "FontAwesome";
+    content: "";
+    display: inline-block;
+    height: 18px;
+    margin-right: 8px;
+}
+.eventos_ind .event-card-ind .description .location:before {
     font-family: "FontAwesome";
     content: "";
     display: inline-block;
@@ -647,8 +840,8 @@ a.float:hover + div.label-container{
 /*imagem de perfil*/
 
 .img_redonda {
-    width: 180px;
-    height: 180px;
+    width: 100%;
+    height: 100%;
     border-radius: 100%;
 }
 .avatar-upload {
@@ -665,9 +858,6 @@ a.float:hover + div.label-container{
     top: 10px;
 }
 
-input {
-    display: none;
-}
 
 label.label :hover {
     background: #f1f1f1;
@@ -700,8 +890,8 @@ label.label {
 }
 
 .avatar-preview {
-    width: 192px;
-    height: 192px;
+    width: 100%;
+    height: 100%;
     border-radius: 100%;
     border: 6px solid #F8F8F8;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
@@ -1122,12 +1312,11 @@ p{
 
 /* TOP */
 
-/*.box-ranking {
+.box-ranking {
 
-    box-shadow: 0 2px 69px 10px rgba(0,0,0,0.1);
-    padding: 20px;
-    border-radius: 10px;
-}*/
+    margin: 10px auto;
+
+}
 .img-ranking {
     width: 100px;
     height: 100px;
@@ -1196,6 +1385,48 @@ p{
     margin-bottom: 40px
 }
 
+@media only screen and (max-width: 600px)  {
+     .top_phone div {
+        display:block;
+    }
+    .box-ranking div {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+
+   .top_phone div{
+        display: none;
+    }
+
+    .box-ranking div {
+        display: block ;
+
+    }
+}
+
+.coroas1 {
+    position: absolute;
+    top: -23%;
+    left:40%;
+    width: 50px;
+
+}
+
+.coroas {
+    position: absolute;
+    top: 5%;
+    left:40%;
+    width: 50px;
+
+}
+
+#fundo_top {
+background-image: url("../img/perfil.png");
+background-repeat: repeat-x;
+width: 100%;
+}
 /*INFLUENCERS EM DESTAQUE*/
 
 .v-btn {
@@ -1284,6 +1515,7 @@ p{
     position: relative;
     text-align: center;
     vertical-align: middle;
+
 }
 
 .v-avatar img {
@@ -1342,8 +1574,8 @@ p{
 }
 
 .theme--light .v-card {
-    box-shadow: rgba(0, 0, 0, 0.11) 0 15px 30px 0px,
-    rgba(0, 0, 0, 0.08) 0 5px 15px 0 !important;
+    box-shadow: rgba(0, 0, 0, 0.07) 0 5px 5px 0px,
+    rgba(0, 0, 0, 0.07) 0 5px 5px 5px !important;
 }
 
 .theme--light.application .v-card {

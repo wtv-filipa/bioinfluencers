@@ -1,29 +1,60 @@
 
-<div class="box-ranking col-8 mx-auto text-center mt-5">
-    <h4 class="title-ranking">TOP</h4>
-    <div class="row">
-        <div class="col-md-4">
+
+<div class=" col-lg-8 col-sm-12 mx-auto">
+    <h4 class="title-ranking">Ranking</h4>
+    <div class="row box-ranking no-gutters" style="margin-top: 9%">
+        <div class="col-sm-4">
             <div class="media-ranking-item segundo-colocado">
-                <img class="br img-ranking img-profile" src="img/pessoa1.jpg" alt="">
+                <img class="coroas" src="img/coroa2.png" alt="">
+                <img class="br img-ranking" src="img/pessoa1.jpg" alt="">
                 <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>52515 pontos</small>
+                <small>Pereiro </small>
             </div>
         </div>
-        <div class="col-md-4 primeiro-colocado">
+        <div class="col-sm-4 primeiro-colocado">
             <div class="media-ranking-item">
+                <img class="coroas1" src="img/coroa1.png" alt="">
                 <img class="br img-ranking" src="img/pessoa2.jpg" alt="">
                 <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>53211 pontos </small>
+                <small>Pereiro </small>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-sm-4">
             <div class="media-ranking-item terceiro-colocado">
+                <img class="coroas" src="img/coroa2.png" alt="">
                 <img class="br img-ranking" src="img/pessoa3.jpg" alt="">
                 <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>48892 pontos </small>
+                <small>Pereiro </small>
             </div>
         </div>
     </div>
+
+    <div class="row top_phone">
+        <div class="col-sm-4">
+            <div class="media-ranking-item segundo-colocado">
+                <img class="br img-ranking" src="img/pessoa2.jpg" alt="">
+                <h5 class="name-user">Alex Alan Nunes</h5>
+                <small>Pereiro </small>
+            </div>
+        </div>
+        <div class="col-sm-4 primeiro-colocado">
+            <div class="media-ranking-item">
+                <img class="br img-ranking" src="img/pessoa2.jpg" alt="">
+                <h5 class="name-user">Alex Alan Nunes</h5>
+                <small>Pereiro </small>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="media-ranking-item terceiro-colocado">
+                <img class="br img-ranking" src="img/pessoa2.jpg" alt="">
+                <h5 class="name-user">Alex Alan Nunes</h5>
+                <small>Pereiro </small>
+            </div>
+        </div>
+    </div>
+
+
+
     <hr>
     <div class="row linha-ultimos">
         <div class="col-md-12">
@@ -56,24 +87,27 @@
                 </div>
             </div>
         </div>
-        <i class="fa fa-plus-circle mx-auto" aria-hidden="true" style="font-size: 1.9em"></i>
+
+        <div class="mx-auto">
+            <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 1.9em"></i>
+        </div>
+
     </div>
 </div>
-
 <!-- INFLUENCERS EM DESTAQUE -->
 
-<div class="row no-gutters mt-5"><h3 class="mx-auto">
+<div class="row no-gutters" style="margin-top: 8%"><h3 class="mx-auto">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
         Em destaque</h3>
 
 </div>
 
-<div class="comment-container col-lg-8 theme--light mx-auto mt-5">
+<div class="comment-container col-lg-8 col-xs-10 theme--light mx-auto mt-5">
     <div class="comments" >
-        <div  >
-            <div  class="carddest v-card v-sheet theme--light elevation-2">
+        <div class="mx-auto" >
+            <div  class="carddest v-card v-sheet theme--light elevation-2 ">
                 <div  class="">
-                    <div  class="v-avatar avatar_dest" style="height: 50px; width: 50px;"><img  src="https://images.unsplash.com/photo-1490894641324-cfac2f5cd077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=70"></div>
+                    <div  class="v-avatar avatar_dest" style="height: 50px; width: 50px;"><img  src="img/pessoa1.jpg" class=""></div>
                     <span  class="displayName title">John Doe</span> <span  class="displayName caption">5418 pontos</span></div>
                 <!---->
                 <div  class="wrapper comment">
@@ -89,10 +123,10 @@
                 <!---->
             </div>
         </div>
-        <div  >
+        <div class="">
             <div  class="carddest v-card v-sheet theme--light elevation-2">
                 <div  class="">
-                    <div  class="v-avatar avatar_dest" style="height: 50px; width: 50px;"><img  src="https://images.unsplash.com/photo-1476657680631-c07285ff2581?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=70"></div>
+                    <div  class="v-avatar avatar_dest" style="height: 50px; width: 50px;"><img  src="img/pessoa2.jpg"></div>
                     <span  class="displayName title">Albert Arja</span> <span  class="displayName caption">5587 pontos</span></div>
                 <!---->
                 <div  class="wrapper comment">
@@ -109,12 +143,10 @@
                 <!---->
             </div>
         </div>
-
-
-        <div  >
+        <div class="">
             <div  class="carddest v-card v-sheet theme--light elevation-2">
                 <div  class="">
-                    <div  class="v-avatar avatar_dest" style="height: 50px; width: 50px;"><img  src="https://images.unsplash.com/photo-1490894641324-cfac2f5cd077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=70"></div>
+                    <div  class="v-avatar avatar_dest" style="height: 50px; width: 50px;"><img  src="img/pessoa3.jpg"></div>
                     <span  class="displayName title">John Doe</span> <span  class="displayName caption">5418 pontos</span></div>
                 <!---->
                 <div  class="wrapper comment">

@@ -42,7 +42,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
             <div class="avatar-upload">
                 <div class="avatar-edit">
-                    <input type="file" id="fileToUpload" name="fileToUpload" accept=".png, .jpg, .jpeg"/>
+                    <input style="display: none;" type="file" id="fileToUpload" name="fileToUpload" accept=".png, .jpg, .jpeg"/>
                     <label class="label fa fa-pencil" for="fileToUpload"></label>
                 </div>
 

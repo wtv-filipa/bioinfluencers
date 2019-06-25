@@ -65,7 +65,7 @@ if (isset($_GET["user"])) {
         //var_dump($img_perfil);
         if (isset($img_perfil)) {
             ?>
-            <img id="img_perf" class="img_redonda" src="../admin/uploads/img_perfil/<?= $img_perfil ?>"
+            <img id="img_perf" class="img_redonda img-fluid" src="../admin/uploads/img_perfil/<?= $img_perfil ?>"
                  alt="your image"/>
             <?php
         } else {
@@ -218,7 +218,7 @@ WHERE id_utilizadores=?";
 
                     mysqli_stmt_bind_param($stmt5, 'i', $id);
                     mysqli_stmt_execute($stmt5);
-                    mysqli_stmt_bind_result($stmt5, $id_conteudos, $filename, $partilhas_id_partilhas, $id_partilhas, $utilizadores_id_utilizadores, $id_utilizadores);
+                    mysqli_stmt_bind_result($stmt5, $id_conteudos, $filename, $partilhas_id_partilhas, $id_partilhas, $utilizadores_id_utilizadores, $id);
 
 
                     while (mysqli_stmt_fetch($stmt5)) {
@@ -247,6 +247,88 @@ WHERE id_utilizadores=?";
             <div class="row text-center">
                 <?php
                 // Create a new DB connection
+                $link6 = new_db_connection();
+
+
+                /* create a prepared statement */
+                $stmt6 = mysqli_stmt_init($link6);
+
+
+                $query6 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=?";
+
+                if (mysqli_stmt_prepare($stmt6, $query6)) {
+
+                    mysqli_stmt_bind_param($stmt6, 'i', $id);
+                    mysqli_stmt_execute($stmt6);
+                    mysqli_stmt_bind_result($stmt6,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
+
+
+                    while (mysqli_stmt_fetch($stmt6)) {
+                        ?>
+
+                        <div class="col-4">
+                            <?php
+                            echo $nome_tema;
+
+                            if ($ref_id_eventos >= 4 && $nome_tema=="anfíbios") {
+                                    ?>
+
+                                    <div class="square1 img-fluid"><img src="img/trofeus/trof_anfibios.png"></div>
+
+                                    <?php
+                            } else {
+                                ?>
+                                <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+
+                        <div class="col-4">
+                            <?php
+                            if ($ref_id_eventos >= 2 && $nome_tema=="plantação") {
+                                    ?>
+
+                                    <div class="square1 img-fluid"><img src="img/trofeus/trof_plantar.png"></div>
+
+                                    <?php
+                            } else {
+                                ?>
+                                <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+
+                        <div class="col-4">
+                            <?php
+
+                            if ($ref_id_eventos >= 2 && $nome_tema=="beatas") {
+                                ?>
+
+                                <div class="square1 img-fluid"><img src="img/trofeus/trof_beatas.png"></div>
+
+                                <?php
+                            } else {
+                                ?>
+                                <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+
+                        <?php
+                    }
+                }
+                ?>
+
+            </div>
+
+            <h4 class="text-center mt-3 mb-3">Medalhas</h4>
+            <div class="row text-center">
+
+                <?php
+                // Create a new DB connection
                 $link4 = new_db_connection();
 
 
@@ -269,9 +351,10 @@ WHERE id_utilizadores=?";
                     while (mysqli_stmt_fetch($stmt4)) {
                         ?>
 
+                        <!--pontuação de 500-->
                         <div class="col-4">
                             <?php
-                            if ($pontos >= 1500) {
+                            if ($pontos >= 500) {
                                 ?>
 
                                 <div class="square1 img-fluid"><img src="img/trofeus/trof_anfibios.png"></div>
@@ -279,48 +362,121 @@ WHERE id_utilizadores=?";
                                 <?php
                             } else {
                                 ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
+                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
                                 <?php
                             }
                             ?>
-
                         </div>
 
+                        <!--pontuação de 1000-->
                         <div class="col-4">
-                            <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
+                            <?php
+                            if ($pontos >= 1000) {
+                                ?>
+
+                                <div class="square1 img-fluid"><img src="img/trofeus/trof_anfibios.png"></div>
+
+                                <?php
+                            } else {
+                                ?>
+                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <?php
+                            }
+                            ?>
                         </div>
+
+                        <!--pontuação de 5000-->
                         <div class="col-4">
-                            <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
+                            <?php
+                            if ($pontos >= 5000) {
+                                ?>
+
+                                <div class="square1 img-fluid"><img src="img/trofeus/trof_anfibios.png"></div>
+
+                                <?php
+                            } else {
+                                ?>
+                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <?php
+                            }
+                            ?>
                         </div>
+
+                        <!--pontuação de 10 000-->
+                        <div class="col-4">
+                            <?php
+                            if ($pontos >= 10000) {
+                                ?>
+
+                                <div class="square1 img-fluid"><img src="img/trofeus/trof_anfibios.png"></div>
+
+                                <?php
+                            } else {
+                                ?>
+                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+
+                        <!--pontuação de 25 000-->
+                        <div class="col-4">
+                            <?php
+                            if ($pontos >= 25000) {
+                                ?>
+
+                                <div class="square1 img-fluid"><img src="img/trofeus/trof_anfibios.png"></div>
+
+                                <?php
+                            } else {
+                                ?>
+                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+
+                        <!--pontuação de 50 000-->
+                        <div class="col-4">
+                            <?php
+                            if ($pontos >= 50000) {
+                                ?>
+
+                                <div class="square1 img-fluid"><img src="img/trofeus/trof_anfibios.png"></div>
+
+                                <?php
+                            } else {
+                                ?>
+                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+
+                <div class="col-4">
+                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                </div>
+
+                <div class="col-4">
+                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                </div>
+                <div class="col-4">
+                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                </div>
+                <div class="col-4">
+                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                </div>
+                <div class="col-4">
+                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                </div>
+                <div class="col-4">
+                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                </div>
+
                         <?php
                     }
                 }
                 ?>
-
-            </div>
-
-            <h4 class="text-center mt-3 mb-3">Medalhas</h4>
-            <div class="row text-center">
-
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                </div>
-
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                </div>
-                <div class="col-4">
-                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                </div>
 
             </div>
 
