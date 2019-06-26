@@ -33,30 +33,33 @@ session_start();
 
     <?php include "componentes/eventos.php"; ?>
 
+    <div class="row no-gutters col-12">
+        <h3 class="mx-auto mt-5"><i class="fa fa-calendar-o  mr-2" aria-hidden="true"></i>Calendário</h3>
+    </div>
 
-        <div class="col-12 mt-5">
-            <div class="page-header">
-                <div class="pull-right form-inline">
-                    <div class="btn-group">
-                        <button class="btn btn-light" data-calendar-nav="prev"><< Anterior</button>
-                        <button class="btn btn-default" data-calendar-nav="today">Hoje</button>
-                        <button class="btn btn-light mr-3" data-calendar-nav="next">Próximo >></button>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-outline-secondary" data-calendar-view="year">Ano</button>
-                        <button class="btn btn-outline-secondary active" data-calendar-view="month">Mês</button>
-                        <button class="btn btn-outline-secondary" data-calendar-view="week">Semana</button>
-                        <button class="btn btn-outline-secondary" data-calendar-view="day">Dia</button>
-                    </div>
+    <div class="col-12 mt-5">
+        <div class="page-header">
+            <div class="pull-right form-inline">
+                <div class="btn-group">
+                    <button class="btn btn-light" data-calendar-nav="prev"><< Anterior</button>
+                    <button class="btn btn-default" data-calendar-nav="today">Hoje</button>
+                    <button class="btn btn-light mr-3" data-calendar-nav="next">Próximo >></button>
                 </div>
-                <h3></h3>
+                <div class="btn-group">
+                    <button class="btn btn-outline-secondary" data-calendar-view="year">Ano</button>
+                    <button class="btn btn-outline-secondary active" data-calendar-view="month">Mês</button>
+                    <button class="btn btn-outline-secondary" data-calendar-view="week">Semana</button>
+                    <button class="btn btn-outline-secondary" data-calendar-view="day">Dia</button>
+                </div>
             </div>
-            <div id="showEventCalendar"></div>
+            <h3></h3>
         </div>
-       <!-- <div class="col-12 text-center mt-3 ">
-            <h4>Lista de eventos</h4>
-            <ul id="eventlist" class="nav nav-list"></ul>
-        </div>-->
+        <div id="showEventCalendar"></div>
+    </div>
+    <!-- <div class="col-12 text-center mt-3 ">
+     <h4>Lista de eventos</h4>
+     <ul id="eventlist" class="nav nav-list"></ul>
+ </div>-->
 
 </main>
 

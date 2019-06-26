@@ -45,7 +45,7 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
 
-        if (isset($_POST["nome"]) && isset($_POST["data_inicio"]) && isset($_POST["data_fim"]) && isset($_POST["hora_inicio"]) && isset($_POST["hora_fim"]) && isset($_POST["local"]) && isset($_POST["descricao"]) && isset($_POST["custos"]) && isset($_POST["responsavel"]) && isset($_FILES["fileToUpload"])) {
+        if (isset($_POST["nome"]) && isset($_POST["data_inicio"]) && isset($_POST["data_fim"]) && isset($_POST["hora_inicio"]) && isset($_POST["hora_fim"]) && isset($_POST["local"]) && isset($_POST["descricao"]) && isset($_POST["custos"]) && isset($_POST["responsavel"]) && isset($_POST["tema_noticia"]) && isset($_POST["grupo"]) && isset($_FILES["fileToUpload"])) {
 
             $ficheiro = $_FILES["fileToUpload"]["name"];
             //$tipo = $_POST["tipo"];
@@ -74,10 +74,10 @@ if ($uploadOk == 0) {
                 }
                 $link2 = new_db_connection();
                 $stmt2 = mysqli_stmt_init($link2);
-                $query2 = "INSERT INTO eventos (nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, responsavel, conteudos_id_conteudos) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                $query2 = "INSERT INTO eventos (nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, grupos_id_grupos, responsavel, conteudos_id_conteudos, tema_evento_idtema_evento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
                 if (mysqli_stmt_prepare($stmt2, $query2)) {
-                    mysqli_stmt_bind_param($stmt2, 'sssssssisi', $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $descricao, $custos, $responsavel, $last_id);
+                    mysqli_stmt_bind_param($stmt2, 'sssssssiisii', $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $descricao, $custos, $grupos_id_grupos, $responsavel, $last_id, $tema_evento_idtema_evento);
 
                     $nome = $_POST['nome'];
                     $data_inicio = $_POST['data_inicio'];
@@ -88,7 +88,8 @@ if ($uploadOk == 0) {
                     $descricao = $_POST['descricao'];
                     $custos = $_POST['custos'];
                     $responsavel = $_POST['responsavel'];
-
+                    $grupos_id_grupos = $_POST["grupo"];
+                    $tema_evento_idtema_evento = $_POST["tema_noticia"];
 
                     // Devemos validar também o resultado do execute!
                     if (mysqli_stmt_execute($stmt2)) {
@@ -97,10 +98,12 @@ if ($uploadOk == 0) {
 
                         // Acção de sucesso
                         header("Location: ../eventos.php");
+                        //echo "DEU";
                     } else {
                         header("Location: ../criar_evento.php");
                         // Acção de erro
                         //echo "Error:" . mysqli_stmt_error($stmt);
+                        //echo "Error:" . mysqli_error($link2);
                     }
                 } else {
                     // Acção de erro
@@ -113,3 +116,5 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
+

@@ -11,15 +11,10 @@
 
     <!--Card-->
     <div class="card mdb-color lighten-4 text-center z-depth-2 light-version py-4 px-5">
-        <form class="md-form inserir_dados" class="mb-3" action="scripts/criar_publicacao.php" enctype=“multipart/formdata" method="post">
+        <form class="md-form inserir_dados" class="mb-3" action="scripts/criar_publicacao.php" enctype="multipart/form-data" method="post">
 
-            <input type="file" name="upImagem" class="foo">
+            <input type="file" name="fileToUpload" class="file-upload botao_upload">
 
-
-            <div class="mt-3 mb-3">ou</div>
-
-
-            <input type="file" class="foo video">
 
             <div class="form-group text-left mt-4">
                 <label for="comment">O que queres publicar?</label>
@@ -27,7 +22,7 @@
             </div>
 
             <div>
-                <button type="submit" class="btn btn-success publicar_btn">PUBLICAR</button>
+                <button type="submit" class="btn btn-success publicar_btn" value="Upload Image">PUBLICAR</button>
             </div>
         </form>
     </div>

@@ -62,7 +62,7 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
                     <?php
                     if(isset($tipo) && $tipo == 1) {
                         ?>
-                        <a href="../admin/index.php"><button class="nav__btn2" style="background: #7FC53C;"><i class="fa fa-shield"></i> ADMIN</button></a>
+                        <a href="../admin/index.php"><button class="nav__btn2" style="background: #7FC53C;"><i class="fa fa-shield"></i>ADMIN</button></a>
                         <?php
                     }
 

@@ -22,14 +22,14 @@ session_start();
 </head>
 
 
-<body>
+<body id="fundo_codigo">
 <header class="sticky-top">
 
     <?php include "componentes/navbar.php"; ?>
 
 </header>
 
-<main class="mb-5">
+<main class="">
 
     <?php include "componentes/codigo_utilizador.php"; ?>
 

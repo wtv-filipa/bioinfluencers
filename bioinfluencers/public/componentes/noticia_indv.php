@@ -30,7 +30,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         </div>
 
         <div class="mb-5 text-center">
-            <img class="img-fluid" src="../admin/uploads/noticias/<?= $filename ?>">
+            <img class="img-fluid foto_arred" src="../admin/uploads/noticias/<?= $filename ?>">
         </div>
 
         <div class="notic_text mb-5">
