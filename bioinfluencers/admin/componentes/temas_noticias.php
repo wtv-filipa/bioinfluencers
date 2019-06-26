@@ -122,7 +122,7 @@
                                 //Selecionar todos os temas
                                 $result_temas = "SELECT * FROM temas_noticias";
 
-                                $resultado_temas = mysqli_query($conn, $result_temas);
+                                $resultado_temas = mysqli_query($local_link, $result_temas);
 
                                 //Contar o total de temas
                                 $total_temas = mysqli_num_rows($resultado_temas);
@@ -139,7 +139,7 @@
                                 //Selecionar os temas a ser apresentados na página
                                 $result_temas = "SELECT * FROM temas_noticias limit 5 $inicio, $quantidade_temas";
 
-                                $resultado_temas = mysqli_query($conn, $result_temas);
+                                $resultado_temas = mysqli_query($local_link, $result_temas);
 
                                 $total_temas = mysqli_num_rows($resultado_temas);
 
@@ -204,7 +204,7 @@
                             <?php
                             //Apresentar a paginação
 
-                            for($i = 1; $i < $num_pagina + 1; $i++){ ?> 
+                            for($i = 1; $i < $num_pagina + 1; $i++){ ?>
 
                                 <li class="page-item">
                                     <a class="page-link" href="temas_noticias.php?pagina=<?= $id?>"><?= $i?></a>
