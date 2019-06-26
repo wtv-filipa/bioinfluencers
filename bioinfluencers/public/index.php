@@ -33,7 +33,7 @@ if (isset($_SESSION["nickname"])){
 
     </header>
 
-    <main class="container p-0 mb-5">
+    <main class="p-0 mb-5">
 
         <?php include "componentes/feed.php"; ?>
 
