@@ -1,4 +1,4 @@
-    <?php
+<?php
 require_once "../connections/connection.php";
 
 
@@ -47,9 +47,11 @@ if ($uploadOk == 0) {
         echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
 
 
-        if (isset($_GET["id"]) && isset($_POST["nome"]) && isset($_POST["descricao"]) && isset($_FILES["fileToUpload"])) {
+        if (isset($_GET["id"]) && isset($_POST["nome"])  && isset($_POST["email"]) && isset($_POST["data_nasc"])   && isset($_POST["descricao"]) && isset($_FILES["fileToUpload"]) ) {
             $id_user= $_GET["id"];
             $nome= $_POST["nome"];
+            $email=$_POST["email"];
+            $data_nasc=$_POST["data_nasc"];
             $descricao = $_POST["descricao"];
             $ficheiro = $_FILES["fileToUpload"]["name"];
 
@@ -63,12 +65,12 @@ if ($uploadOk == 0) {
             $stmt = mysqli_stmt_init($link);
 
             $query = "UPDATE utilizadores
-              SET nome_u = ?, descricao_u = ?, img_perfil = ?
+              SET nome_u = ?, email=?, data_nascimento=?, descricao_u = ?, img_perfil = ?
               WHERE id_utilizadores = ?";
 
             if (mysqli_stmt_prepare($stmt, $query)) {
 
-                mysqli_stmt_bind_param($stmt, 'sssi',$nome, $descricao, $ficheiro, $id_user);
+                mysqli_stmt_bind_param($stmt, 'sssssi',$nome,  $email, $data_nasc, $descricao, $ficheiro, $id_user);
 
                 /* execute the prepared statement */
                 if (!mysqli_stmt_execute($stmt)) {

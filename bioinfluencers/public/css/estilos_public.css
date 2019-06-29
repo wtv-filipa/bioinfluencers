@@ -837,75 +837,12 @@ a.float:hover + div.label-container{
 
 /*PERFIL*/
 
-/*imagem de perfil*/
-
 .img_redonda {
     width: 100%;
     height: 100%;
     border-radius: 100%;
 }
-.avatar-upload {
-    position: relative;
-    max-width: 205px;
-    display: block;
-    margin: auto;
-}
 
-.avatar-edit {
-    position: absolute;
-    right: 12px;
-    z-index: 1;
-    top: 10px;
-}
-
-
-label.label :hover {
-    background: #f1f1f1;
-    border-color: #d6d6d6;
-}
-
-label.label::before{
-    color: black;
-    position: relative;
-    top: 17%;
-    text-align: center;
-    display: block;
-    margin: auto;
-}
-
-label.label {
-    align-content: end;
-    width: 34px;
-    height: 34px;
-    border-radius: 100%;
-    background: #FFFFFF;
-    border: 1px solid transparent;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-    cursor: pointer;
-    font-weight: normal;
-    transition: all 0.2s ease-in-out;
-    display: block;
-    margin-left: -50%;
-    z-index: 200;
-}
-
-.avatar-preview {
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-    border: 6px solid #F8F8F8;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-    z-index: 0;
-}
-
-.avatar-preview > div {
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 
 /***********/
 
@@ -985,7 +922,7 @@ div.sticky {
     .nav-tabs {
         display: block;
         margin: auto;
-        width: 45%;
+        width: 70% !important;
     !important;
     }
 
@@ -1004,22 +941,17 @@ div.sticky {
     }
 
     .nav-item img {
-        width: 25px;
+        width: 30px;
         height: auto;
     }
 
     .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
         background-color: transparent !important;
-        border-color: #dddfeb #dddfeb transparent !important;
-
-        width: 60px;
+        width: 60px !important;
         height: 30px;
     }
 
-    .nav-tabs .nav-link {
-        width: 60px;
-        height: 30px;
-    }
+
 }
 
 /* Small devices (600px --- 767px) */
@@ -1027,8 +959,12 @@ div.sticky {
     .nav-tabs {
         display: block;
         margin: auto;
-        width: 45%;
+        width: 35%;
     !important;
+    }
+
+    ul.nav.nav-tabs {
+        width: 50%;
     }
 
     li .nav-item {
@@ -1042,22 +978,16 @@ div.sticky {
     }
 
     .nav-item img {
-        width: 25px;
+        width: 30px;
         height: auto;
     }
 
     .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
         background-color: transparent !important;
-        border-color: #dddfeb #dddfeb transparent !important;
-
-        width: 60px;
+        width: 55px;
         height: 30px;
     }
 
-    .nav-tabs .nav-link {
-        width: 60px;
-        height: 30px;
-    }
 }
 
 /* Medium devices (768px --- 991px) */
@@ -1074,7 +1004,7 @@ div.sticky {
     }
 
     li .nav-item {
-        width: 30px;
+        width: 35px;
         height: auto;
     }
 
@@ -1084,21 +1014,17 @@ div.sticky {
     }
 
     .nav-item img {
-        width: 30px;
+        width: 35px;
         height: auto;
     }
 
     .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
         background-color: transparent !important;
-        border-color: #dddfeb #dddfeb transparent !important;
-        width: 60px;
-        height: 40px;
+        width: 75px;
+        height: 45px;
     }
 
-    .nav-tabs .nav-link {
-        width: 60px;
-        height: 40px;
-    }
+
 }
 
 /* Large devices (992px --- 1199px) */
@@ -1126,8 +1052,6 @@ div.sticky {
     }
 
     .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-        background-color: transparent !important;
-        border-color: #dddfeb #dddfeb transparent !important;
         width: 75px;
         height: 45px;
     }
@@ -1164,8 +1088,6 @@ div.sticky {
     }
 
     .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-        background-color: transparent !important;
-        border-color: #dddfeb #dddfeb transparent !important;
         width: 80px;
         height: 50px;
     }
@@ -1176,10 +1098,28 @@ div.sticky {
     }
 }
 
-.icon_perfil {
+.nav-tabs{
+    border-bottom: 0 solid transparent !important;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+    background-color: transparent;
+    border: 1px solid #B3B3B3 !important;
+    border-bottom: 1px solid #B3B3B3!important;
+    border-radius: 0.35rem !important;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    width: 80px;
+    height: 50px;
+}
+
+.nav-tabs .nav-link{
+    border:0 solid transparent !important;
+}
+
+/*.icon_perfil {
     width: 140px;
     height: 154px;
-}
+}*/
 
 .cantos_redondos {
     border-radius: 20px;
@@ -1192,7 +1132,6 @@ div.sticky {
     background-size: cover;
     width: 100%;
     height: 70vh;
-
 }
 
 #perfil2 {
@@ -1205,20 +1144,7 @@ div.sticky {
 
 }
 
-/*EDITAR PERFIL*/
 
-#editing_overlay{
-    background-color: #FFFFFF;
-    bottom: 0;
-    display: block;
-    opacity: 0.2;
-    z-index: 2;
-    width: 100%;
-    height: auto;
-}
-
-
-/*FIM EDITAR PERFIL*/
 
 /*FIM DO PERFIL*/
 /***********************************PAGINAS DE CODIGOS****************************/

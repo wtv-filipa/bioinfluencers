@@ -60,7 +60,7 @@
                 <h6 class="collapse-header">Eventos:</h6>
                 <a class="collapse-item" href="eventos.php">Eventos</a>
                 <a class="collapse-item" href="criar_evento.php"> Criar evento</a>
-                <a class="collapse-item" href="temas_eventos.php">Temas dos eventos</a>
+                <a class="collapse-item" href="temas_eventos.php">Temas dos eventos</a>x
                 <div class="dropdown-divider"></div>
 
                 <!--parte dos foruns-->

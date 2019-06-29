@@ -456,16 +456,16 @@ if(!String.prototype.formatNum) {
 		var suffix = '';
 
 		if(this.options.format12) {
-			if(hour < 12) {
+			if(hour < 24) {
 				suffix = this.options.am_suffix;
 			}
 			else {
 				suffix = this.options.pm_suffix;
 			}
 
-			hour = hour % 12;
+			hour = hour % 24;
 			if(hour == 0) {
-				hour = 12;
+				hour = 24;
 			}
 		}
 
