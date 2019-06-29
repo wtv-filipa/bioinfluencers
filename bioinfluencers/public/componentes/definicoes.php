@@ -21,8 +21,35 @@
 
         <br> <br>
 
-        <h6><a href="#">Conta</a></h6>
+        <?php
+        // We need the function!
+        require_once("connections/connection.php");
 
+        // Create a new DB connection
+        $link = new_db_connection();
+
+
+        /* create a prepared statement */
+        $stmt = mysqli_stmt_init($link);
+
+
+        $query = "SELECT id_utilizadores, nickname
+                              FROM utilizadores
+                              WHERE nickname LIKE ?";
+
+        if (mysqli_stmt_prepare($stmt, $query)) {
+
+            mysqli_stmt_bind_param($stmt, 's', $nickname);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $id, $nickname);
+        while (mysqli_stmt_fetch($stmt)) {
+            ?>
+
+            <h6><a href="editar_conta.php?edit=<?= $nickname ?>">Conta</a></h6>
+            <?php
+        }
+        }
+        ?>
         <br> <br>
 
         <h6><a href="#">Privacidade e segurança</a></h6>

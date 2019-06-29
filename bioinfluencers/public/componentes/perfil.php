@@ -40,7 +40,7 @@ if (isset($_GET["user"])) {
         <div class="row text-center topo">
 
         <div class="col-4 text-right centro">
-            <h5>2345 <br> Seguidores</h5>
+            <h5 class="alinhar1"> <span class="text">2345</span> <br> Seguidores</h5>
         </div>
 
         <div class="col-4 tamanho">
@@ -51,7 +51,7 @@ if (isset($_GET["user"])) {
             ?>
             <form style="display: block; margin: auto" id="form1">
 
-                <a href="criar_perfil.php?edit=<?= $nickname ?>"><label class="label fa fa-pencil"
+                <a href="editar_conta.php?edit=<?= $nickname ?>"><label class="label fa fa-pencil"
                                                                         for="imgInp"></label></a>
 
             </form>
@@ -82,7 +82,7 @@ if (isset($_GET["user"])) {
 
     <div class="col-4 text-left centro">
 
-        <h5>2345 <br> A seguir</h5>
+        <h5 class="alinhar2"><span class="text">2345</span> <br> A seguir</h5>
     </div>
 
     </div>
@@ -116,7 +116,7 @@ if (isset($_GET["user"])) {
 
             while (mysqli_stmt_fetch($stmt2)) {
                 ?>
-                <h4 class="mt-2"><?= $nome_u ?></h4>
+                <h4 class="cima"><?= $nome_u ?></h4>
                 <h6 class="mt-2">@<?= $nickname ?> |<b> <?= $pontos ?></b> pontos </h6>
                 <?php
             }
@@ -176,19 +176,13 @@ if (isset($_GET["user"])) {
                 <div class="col-12">
                     <ul class="nav nav-tabs">
                         <li class="nav-item col-4">
-                            <a class="nav-link active" data-toggle="tab" href="#galeria"><img
-                                        class="img-fluid icon_perfil"
-                                        src="img/galeria.png"></a>
+                            <a class="nav-link active" data-toggle="tab" href="#galeria"><img style="display: block; margin: auto"  src="img/galeria.png"></a>
                         </li>
                         <li class="nav-item col-4">
-                            <a class="nav-link" data-toggle="tab" href="#medalhas"><img
-                                        class="img-fluid"
-                                        src="img/med_trof.png"></a>
+                            <a  class="nav-link" data-toggle="tab" href="#medalhas"><img style="display: block; margin: auto" src="img/med_trof.png"></a>
                         </li>
                         <li class="nav-item col-4">
-                            <a class="nav-link" data-toggle="tab" href="#evento"><img
-                                        class="img-fluid"
-                                        src="img/eventos.png"></a>
+                            <a  class="nav-link" data-toggle="tab" href="#evento"><img style="display: block; margin: auto" src="img/eventos.png"></a>
                         </li>
                     </ul>
                 </div>
@@ -225,7 +219,8 @@ WHERE id_utilizadores=?";
                         ?>
 
                         <div class="col-4">
-                            <div class="square "><img class="img-fluid cantos_redondos" src="../admin/uploads/<?=$filename?>"></div>
+                            <div class="square "><img class="img-fluid cantos_redondos"
+                                                      src="../admin/uploads/publicacao/<?= $filename ?>"></div>
                         </div>
 
 
@@ -241,142 +236,210 @@ WHERE id_utilizadores=?";
         <!----------------------------------------MEDALHAS------------------------------------------------------------->
         <div id="medalhas" class="container tab-pane fade"><br>
 
-            <h4 class="text-center mt-3 mb-3">Troféus</h4>
+            <h2 style="font-weight: 500" class="text-center mt-3 mb-3">Troféus</h2>
 
 
             <div class="row text-center">
-                <?php
-                // Create a new DB connection
-                $link6 = new_db_connection();
-
-
-                /* create a prepared statement */
-                $stmt6 = mysqli_stmt_init($link6);
-
-
-                $query6 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=? AND nome_tema_e= 'anfíbios'";
-
-                if (mysqli_stmt_prepare($stmt6, $query6)) {
-
-                    mysqli_stmt_bind_param($stmt6, 'i', $id);
-                    mysqli_stmt_execute($stmt6);
-                    mysqli_stmt_bind_result($stmt6,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
-
-
-                    while (mysqli_stmt_fetch($stmt6)) {
-                        ?>
-
-                        <div class="col-4">
-                            <?php
-
-                            if ($ref_id_eventos >= 2) {
-                                    ?>
-
-                                    <div class="square1 img-fluid"><img src="img/trofeus/trof_anfibios.png"></div>
-
-                                    <?php
-                            } else {
-                                ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
-                                <?php
-                            }
-                            ?>
-                        </div>
-
-                        <?php
-                    }
-                } mysqli_close($link6);
-                ?>
+                <!-------TROFÉUS------>
 
                 <?php
                 // Create a new DB connection
-                $link7 = new_db_connection();
-
-
+                $link12 = new_db_connection();
                 /* create a prepared statement */
-                $stmt7 = mysqli_stmt_init($link7);
+                $stmt12 = mysqli_stmt_init($link12);
+
+                $query12 = "SELECT id_utilizadores, id_eventos, tema_evento_idtema_evento, id_tema_evento, nome_tema_e,utilizadores_id_utilizadores, eventos_id_eventos
+                              FROM utilizadores 
+                              INNER JOIN utilizadores_has_eventos
+                              ON utilizadores.id_utilizadores=utilizadores_has_eventos.utilizadores_id_utilizadores
+                              INNER JOIN eventos
+                              ON eventos.id_eventos=utilizadores_has_eventos.eventos_id_eventos
+                              INNER JOIN temas_eventos
+                              ON temas_eventos.id_tema_evento= eventos.tema_evento_idtema_evento
+                              WHERE id_utilizadores=?";
 
 
-                $query7 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=? AND nome_tema_e= 'beatas'";
+                if (mysqli_stmt_prepare($stmt12, $query12)) {
 
-                if (mysqli_stmt_prepare($stmt7, $query7)) {
-
-                    mysqli_stmt_bind_param($stmt7, 'i', $id);
-                    mysqli_stmt_execute($stmt7);
-                    mysqli_stmt_bind_result($stmt7,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
+                    mysqli_stmt_bind_param($stmt12, 'i', $id);
+                    mysqli_stmt_execute($stmt12);
+                    mysqli_stmt_bind_result($stmt12, $id, $id_eventos, $ref_tema_evento, $id_tema_evento, $nome_tema, $utilizadores_id_utilizadores, $eventos_id_eventos);
 
 
-                    while (mysqli_stmt_fetch($stmt7)) {
-                        ?>
+                    while (mysqli_stmt_fetch($stmt12)) {
+                        if (isset($nome_tema)) {
 
-                        <div class="col-4">
-                            <?php
 
-                            if ($ref_id_eventos >= 2) {
-                                ?>
+                            // Create a new DB connection
+                            $link13 = new_db_connection();
+                            /* create a prepared statement */
+                            $stmt13 = mysqli_stmt_init($link13);
+                            $query13 = "SELECT COUNT(eventos_id_eventos) FROM utilizadores_has_eventos";
 
-                                <div class="square1 img-fluid"><img src="img/trofeus/trof_beatas.png"></div>
+                            if (mysqli_stmt_prepare($stmt13, $query13)) {
 
-                                <?php
-                            } else {
-                                ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
-                                <?php
-                            }
-                            ?>
-                        </div>
+                                mysqli_stmt_execute($stmt13);
+                                mysqli_stmt_bind_result($stmt13, $n_total);
+                                mysqli_stmt_fetch($stmt13);
 
-                        <?php
+                                if ($n_total >= 1 && $nome_tema == 'beatas' || $nome_tema == 'anfíbios' ||$nome_tema == 'plantação') {
+
+                                    switch ($nome_tema){
+
+                                        //medalha das abelhas
+                                        case 'beatas':
+                                            echo "<div class=\"col-4\">
+                                           $nome_tema
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_beatas.png\"></div>
+</div>";
+                                            break;
+
+                                        //medalha da poluição
+                                        case 'poluição':
+                                            echo "<div class=\"col-4\">
+                                           $nome_tema
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_anfibios.png\"></div>
+</div>";
+                                            break;
+
+                                        //medalha de plantações
+                                        case 'plantação':
+                                            echo "<div class=\"col-4\">
+                                           $nome_tema
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_plantar.png\"></div>
+</div>";
+                                            break;
+                                    }
+
+                                }
+
+                            } mysqli_close($link13);
+                        }
                     }
-                } mysqli_close($link7);
+                } mysqli_close($link12);
+
                 ?>
 
-                <?php
-                // Create a new DB connection
-                $link9 = new_db_connection();
-
-
-                /* create a prepared statement */
-                $stmt9 = mysqli_stmt_init($link9);
-
-
-                $query9 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=? AND nome_tema_e= 'beatas'";
-
-                if (mysqli_stmt_prepare($stmt9, $query9)) {
-
-                    mysqli_stmt_bind_param($stmt9, 'i', $id);
-                    mysqli_stmt_execute($stmt9);
-                    mysqli_stmt_bind_result($stmt9,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
-
-
-                    while (mysqli_stmt_fetch($stmt9)) {
-                        ?>
-
-                        <div class="col-4">
-                            <?php
-
-                            if ($ref_id_eventos >= 5) {
-                                ?>
-
-                                <div class="square1 img-fluid"><img src="img/trofeus/trof_plantar.png"></div>
-
-                                <?php
-                            } else {
-                                ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/trof_default.png"></div>
-                                <?php
-                            }
-                            ?>
-                        </div>
-
-                        <?php
-                    }
-                } mysqli_close($link9);
-                ?>
+                <!----------------FIM----------------->
             </div>
 
-            <h4 class="text-center mt-3 mb-3">Medalhas</h4>
+            <h2 style="font-weight: 500"  class="text-center mt-3 mb-3">Medalhas</h2>
             <div class="row text-center">
+
+                <!-------MEDALHAS------>
+
+                <?php
+                // Create a new DB connection
+                $link10 = new_db_connection();
+                /* create a prepared statement */
+                $stmt10 = mysqli_stmt_init($link10);
+
+                $query10 = "SELECT id_utilizadores, id_eventos, tema_evento_idtema_evento, id_tema_evento, nome_tema_e,utilizadores_id_utilizadores, eventos_id_eventos
+                              FROM utilizadores
+                              INNER JOIN utilizadores_has_eventos
+                              ON utilizadores.id_utilizadores=utilizadores_has_eventos.utilizadores_id_utilizadores
+                              INNER JOIN eventos
+                              ON eventos.id_eventos=utilizadores_has_eventos.eventos_id_eventos
+                              INNER JOIN temas_eventos
+                              ON temas_eventos.id_tema_evento= eventos.tema_evento_idtema_evento
+                              WHERE id_utilizadores=?";
+
+
+                if (mysqli_stmt_prepare($stmt10, $query10)) {
+
+                    mysqli_stmt_bind_param($stmt10, 'i', $id);
+                    mysqli_stmt_execute($stmt10);
+                    mysqli_stmt_bind_result($stmt10, $id, $id_eventos, $ref_tema_evento, $id_tema_evento, $nome_tema, $utilizadores_id_utilizadores, $eventos_id_eventos);
+
+
+                    while (mysqli_stmt_fetch($stmt10)) {
+                        if (isset($nome_tema)) {
+
+
+                            // Create a new DB connection
+                            $link11 = new_db_connection();
+                            /* create a prepared statement */
+                            $stmt11 = mysqli_stmt_init($link11);
+                            $query11 = "SELECT COUNT(eventos_id_eventos) FROM utilizadores_has_eventos";
+
+                            if (mysqli_stmt_prepare($stmt11, $query11)) {
+
+                                mysqli_stmt_execute($stmt11);
+                                mysqli_stmt_bind_result($stmt11, $n_total);
+                                mysqli_stmt_fetch($stmt11);
+
+                                if ($n_total >= 1 && $nome_tema == 'abelhas' || $nome_tema == 'poluição' || $nome_tema == 'árvores de fruto' || $nome_tema == 'praias' || $nome_tema == 'plantação' || $nome_tema == 'reciclagem') {
+
+                                    switch ($nome_tema){
+
+                                        //medalha das abelhas
+                                        case 'abelhas':
+                                            echo "<div class=\"col-4\">
+                                           $nome_tema
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/med_abelhas.png\"></div>
+</div>";
+                                            break;
+
+                                        //medalha da poluição
+                                        case 'poluição':
+                                            echo "<div class=\"col-4\">
+                                           $nome_tema
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/med_lixo.png\"></div>
+</div>";
+                                            break;
+
+                                        //medalha da plantação das arvores de fruto
+                                        case 'árvores de fruto':
+                                            echo "<div class=\"col-4\">
+                                           $nome_tema
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/med_frutas.png\"></div>
+</div>";
+                                            break;
+
+                                        //medalha de eventos em praias
+                                        case 'praias':
+                                            echo "<div class=\"col-4\">
+                                           $nome_tema
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/med_oceano.png\"></div>
+</div>";
+                                            break;
+
+                                        //medalha de plantações
+                                        case 'plantação':
+                                            echo "<div class=\"col-4\">
+                                           $nome_tema
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/med_plantar.png\"></div>
+</div>";
+                                            break;
+
+                                        //medalha de reciclagem
+                                        case 'reciclagem':
+                                            echo "<div class=\"col-4\">
+                                           $nome_tema
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/med_plantar.png\"></div>
+</div>";
+                                            break;
+
+                                    }
+
+                                } else {
+
+                                    echo "<div class=\"col-4\">
+                                           ahahaha
+<div class=\"square1 img-fluid\"><img src=\"img/trofeus/med_default.png\"></div>
+</div>";
+                                }
+
+                            } mysqli_close($link11);
+                        }
+                    }
+                } mysqli_close($link10);
+
+                ?>
+
+                <!----------------FIM----------------->
+
+
 
                 <?php
                 // Create a new DB connection
@@ -403,404 +466,156 @@ WHERE id_utilizadores=?";
                         ?>
 
                         <!--pontuação de 500-->
-                        <div class="col-4">
+
                             <?php
                             if ($pontos >= 500) {
                                 ?>
-
+                                <div class="col-4">
                                 <div class="square1 img-fluid"><img src="img/trofeus/500pt.png"></div>
-
+                                </div>
                                 <?php
                             } else {
                                 ?>
+                                    <div class="col-4">
                                 <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                    </div>
                                 <?php
                             }
                             ?>
-                        </div>
+
 
                         <!--pontuação de 1000-->
-                        <div class="col-4">
+
                             <?php
                             if ($pontos >= 1000) {
                                 ?>
-
+                                <div class="col-4">
                                 <div class="square1 img-fluid"><img src="img/trofeus/1kpt.png"></div>
-
+                                </div>
                                 <?php
                             } else {
                                 ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <div class="col-4">
+                                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                </div>
                                 <?php
                             }
                             ?>
-                        </div>
+
 
                         <!--pontuação de 3000-->
-                        <div class="col-4">
+
                             <?php
                             if ($pontos >= 3000) {
                                 ?>
-
+                                <div class="col-4">
                                 <div class="square1 img-fluid"><img src="img/trofeus/3kpt.png"></div>
-
+                                </div>
                                 <?php
                             } else {
                                 ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <div class="col-4">
+                                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                </div>
                                 <?php
                             }
                             ?>
-                        </div>
+
 
                         <!--pontuação de 5000-->
-                        <div class="col-4">
+
                             <?php
                             if ($pontos >= 5000) {
                                 ?>
-
+                                <div class="col-4">
                                 <div class="square1 img-fluid"><img src="img/trofeus/5kpt.png"></div>
-
+                                </div>
                                 <?php
                             } else {
                                 ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <div class="col-4">
+                                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                </div>
                                 <?php
                             }
                             ?>
-                        </div>
+
 
                         <!--pontuação de 10 000-->
-                        <div class="col-4">
+
                             <?php
                             if ($pontos >= 10000) {
                                 ?>
-
+                                <div class="col-4">
                                 <div class="square1 img-fluid"><img src="img/trofeus/10kpt.png"></div>
-
+                                </div>
                                 <?php
                             } else {
                                 ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <div class="col-4">
+                                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                </div>
                                 <?php
                             }
                             ?>
-                        </div>
+
 
                         <!--pontuação de 20 000-->
-                        <div class="col-4">
+
                             <?php
                             if ($pontos >= 20000) {
                                 ?>
-
+                                <div class="col-4">
                                 <div class="square1 img-fluid"><img src="img/trofeus/20kpt.png"></div>
-
+                                </div>
                                 <?php
                             } else {
                                 ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <div class="col-4">
+                                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                </div>
                                 <?php
                             }
                             ?>
-                        </div>
+
 
                         <!--pontuação de 30 000-->
-                        <div class="col-4">
+
                             <?php
                             if ($pontos >= 30000) {
                                 ?>
-
+                                <div class="col-4">
                                 <div class="square1 img-fluid"><img src="img/trofeus/30kpt.png"></div>
-
+                                </div>
                                 <?php
                             } else {
                                 ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <div class="col-4">
+                                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                </div>
                                 <?php
                             }
                             ?>
-                        </div>
+
 
                         <!--pontuação de 50 000-->
-                        <div class="col-4">
+
                             <?php
                             if ($pontos >= 50000) {
                                 ?>
-
+                                <div class="col-4">
                                 <div class="square1 img-fluid"><img src="img/trofeus/50kpt.png"></div>
-
+                                </div>
                                 <?php
                             } else {
                                 ?>
-                                <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                <div class="col-4">
+                                    <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
+                                </div>
                                 <?php
                             }
                             ?>
-                        </div>
 
-                        <!-------MEDALHA DAS ABELHAS------>
-                        <?php
-                        // Create a new DB connection
-                        $link10 = new_db_connection();
-
-
-                        /* create a prepared statement */
-                        $stmt10 = mysqli_stmt_init($link10);
-
-
-                        $query10 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=? AND nome_tema_e= 'anfíbios'";
-
-                        if (mysqli_stmt_prepare($stmt10, $query10)) {
-
-                            mysqli_stmt_bind_param($stmt10, 'i', $id);
-                            mysqli_stmt_execute($stmt10);
-                            mysqli_stmt_bind_result($stmt10,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
-
-
-                            while (mysqli_stmt_fetch($stmt10)) {
-                                ?>
-
-                                <div class="col-4">
-                                    <?php
-
-                                    if ($ref_id_eventos >= 1) {
-                                        ?>
-
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_abelhas.png"></div>
-
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                                        <?php
-                                    }
-                                    ?>
-                                </div>
-
-                                <?php
-                            }
-                        } mysqli_close($link10);
-                        ?>
-
-                        <!---------MEDALHA DAS FRUTAS--------->
-                        <?php
-                        // Create a new DB connection
-                        $link11 = new_db_connection();
-
-
-                        /* create a prepared statement */
-                        $stmt11 = mysqli_stmt_init($link11);
-
-
-                        $query11 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=? AND nome_tema_e= 'anfíbios'";
-
-                        if (mysqli_stmt_prepare($stmt11, $query11)) {
-
-                            mysqli_stmt_bind_param($stmt11, 'i', $id);
-                            mysqli_stmt_execute($stmt11);
-                            mysqli_stmt_bind_result($stmt11,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
-
-
-                            while (mysqli_stmt_fetch($stmt11)) {
-                                ?>
-
-                                <div class="col-4">
-                                    <?php
-
-                                    if ($ref_id_eventos >= 1) {
-                                        ?>
-
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_frutas.png"></div>
-
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                                        <?php
-                                    }
-                                    ?>
-                                </div>
-
-                                <?php
-                            }
-                        } mysqli_close($link11);
-                        ?>
-
-                        <!---------MEDALHA DO LIXO--------->
-                        <?php
-                        // Create a new DB connection
-                        $link12 = new_db_connection();
-
-
-                        /* create a prepared statement */
-                        $stmt12 = mysqli_stmt_init($link12);
-
-
-                        $query12 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=? AND nome_tema_e= 'anfíbios'";
-
-                        if (mysqli_stmt_prepare($stmt12, $query12)) {
-
-                            mysqli_stmt_bind_param($stmt12, 'i', $id);
-                            mysqli_stmt_execute($stmt12);
-                            mysqli_stmt_bind_result($stmt12,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
-
-
-                            while (mysqli_stmt_fetch($stmt12)) {
-                                ?>
-
-                                <div class="col-4">
-                                    <?php
-
-                                    if ($ref_id_eventos >= 1) {
-                                        ?>
-
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_lixo.png"></div>
-
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                                        <?php
-                                    }
-                                    ?>
-                                </div>
-
-                                <?php
-                            }
-                        } mysqli_close($link12);
-                        ?>
-
-                        <!---------MEDALHA DO OCEANO--------->
-                        <?php
-                        // Create a new DB connection
-                        $link13 = new_db_connection();
-
-
-                        /* create a prepared statement */
-                        $stmt13 = mysqli_stmt_init($link13);
-
-
-                        $query13 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=? AND nome_tema_e= 'anfíbios'";
-
-                        if (mysqli_stmt_prepare($stmt13, $query13)) {
-
-                            mysqli_stmt_bind_param($stmt13, 'i', $id);
-                            mysqli_stmt_execute($stmt13);
-                            mysqli_stmt_bind_result($stmt13,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
-
-
-                            while (mysqli_stmt_fetch($stmt13)) {
-                                ?>
-
-                                <div class="col-4">
-                                    <?php
-
-                                    if ($ref_id_eventos >= 1) {
-                                        ?>
-
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_oceano.png"></div>
-
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                                        <?php
-                                    }
-                                    ?>
-                                </div>
-
-                                <?php
-                            }
-                        } mysqli_close($link13);
-                        ?>
-
-                        <!---------MEDALHA DO RECICLAR-------->
-                        <?php
-                        // Create a new DB connection
-                        $link14 = new_db_connection();
-
-
-                        /* create a prepared statement */
-                        $stmt14 = mysqli_stmt_init($link14);
-
-
-                        $query14 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=? AND nome_tema_e= 'anfíbios'";
-
-                        if (mysqli_stmt_prepare($stmt14, $query14)) {
-
-                            mysqli_stmt_bind_param($stmt14, 'i', $id);
-                            mysqli_stmt_execute($stmt14);
-                            mysqli_stmt_bind_result($stmt14,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
-
-
-                            while (mysqli_stmt_fetch($stmt14)) {
-                                ?>
-
-                                <div class="col-4">
-                                    <?php
-
-                                    if ($ref_id_eventos >= 1) {
-                                        ?>
-
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_reciclar.png"></div>
-
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                                        <?php
-                                    }
-                                    ?>
-                                </div>
-
-                                <?php
-                            }
-                        } mysqli_close($link14);
-                        ?>
-
-                        <!---------MEDALHA DE PLANTAR------->
-                        <?php
-                        // Create a new DB connection
-                        $link15 = new_db_connection();
-
-
-                        /* create a prepared statement */
-                        $stmt15 = mysqli_stmt_init($link15);
-
-
-                        $query15 = "SELECT COUNT(eventos_id_eventos), utilizadores_id_utilizadores, id_eventos, tema_evento_idtema_evento,id_utilizadores, id_tema_evento, nome_tema_e FROM eventos INNER JOIN utilizadores_has_eventos ON eventos.id_eventos= utilizadores_has_eventos.eventos_id_eventos INNER JOIN utilizadores ON utilizadores.id_utilizadores= utilizadores_has_eventos.utilizadores_id_utilizadores INNER JOIN temas_eventos ON eventos.tema_evento_idtema_evento= temas_eventos.id_tema_evento WHERE id_utilizadores=? AND nome_tema_e= 'anfíbios'";
-
-                        if (mysqli_stmt_prepare($stmt15, $query15)) {
-
-                            mysqli_stmt_bind_param($stmt15, 'i', $id);
-                            mysqli_stmt_execute($stmt15);
-                            mysqli_stmt_bind_result($stmt15,  $ref_id_eventos,$ref_id_utilizadores, $id_eventos, $ref_tema_evento,$id, $id_tema, $nome_tema);
-
-
-                            while (mysqli_stmt_fetch($stmt15)) {
-                                ?>
-
-                                <div class="col-4">
-                                    <?php
-
-                                    if ($ref_id_eventos >= 1) {
-                                        ?>
-
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_plantar.png"></div>
-
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <div class="square1 img-fluid"><img src="img/trofeus/med_default.png"></div>
-                                        <?php
-                                    }
-                                    ?>
-                                </div>
-
-                                <?php
-                            }
-                        } mysqli_close($link15);
-                        ?>
 
                         <?php
                     }
@@ -816,95 +631,48 @@ WHERE id_utilizadores=?";
         <!----------------------------------------EVENTOS--------------------------------------------------------->
         <div id="evento" class="container tab-pane fade">
 
-            <h4 class="text-center mt-5 mb-3">Próximos eventos</h4>
-
-            <div class="events row mx-auto">
-
-    <?php
-    $link6 = new_db_connection();
-
-
-    /* create a prepared statement */
-    $stmt6 = mysqli_stmt_init($link6);
-
-
-    $query6 = "SELECT id_utilizadores,id_eventos, nome, data_inicio, hora_inicio, hora_fim, local, conteudos_id_conteudos, eventos_id_eventos, utilizadores_id_utilizadores, id_conteudos, filename FROM utilizadores INNER JOIN rsvp ON utilizadores.id_utilizadores= rsvp.utilizadores_id_utilizadores INNER JOIN eventos ON eventos.id_eventos= rsvp.eventos_id_eventos INNER JOIN conteudos ON conteudos.id_conteudos= eventos.conteudos_id_conteudos WHERE id_utilizadores=?";
-
-    if (mysqli_stmt_prepare($stmt6, $query6)) {
-
-        mysqli_stmt_bind_param($stmt6, 'i', $id);
-        mysqli_stmt_execute($stmt6);
-        mysqli_stmt_bind_result($stmt6, $id_utilizadores,$id_eventos, $nome, $data_inicio, $hora_inicio, $hora_fim, $local, $ref_conteudos, $ref_eventos, $ref_utilizadores, $id_conteudos, $img);
-
-
-        while (mysqli_stmt_fetch($stmt6)) {
-            //$nextWeek = time() + (7 * 24 * 60 * 60);
-           $today=date('y-m-d');
-           //echo $today;
-
-           if(strtotime($today) < strtotime($data_inicio)){
-
-
-            ?>
-
-            <div class="event-card">
-                <img class="cantos_redondos" src="../admin/uploads/<?=$img?>" alt=""/>
-                <div class="description">
-                    <h4 class="mt-2"><span style="font-weight: bold;"><?=$data_inicio?> | </span><?=$nome?>
-                    </h4>
-                    <p class="location mb-0"><?=$local?></p>
-                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i><?=substr($hora_inicio, 0, 5)?>h - <?=substr($hora_fim, 0, 5)?>h
-                </div>
-            </div>
-            <?php
-           }
-
-        }
-    }
-            ?>
-
-            </div>
-
-
-            <h4 class="text-center mt-5 mb-3">Eventos passados</h4>
+            <h2 style="font-weight: 500" class="text-center mt-5 mb-3">Próximos eventos</h2>
 
             <div class="events row mx-auto">
 
                 <?php
-                $link7 = new_db_connection();
+                $link6 = new_db_connection();
 
 
                 /* create a prepared statement */
-                $stmt7 = mysqli_stmt_init($link7);
+                $stmt6 = mysqli_stmt_init($link6);
 
 
-                $query7 = "SELECT id_utilizadores,id_eventos, nome, data_inicio, hora_inicio, hora_fim, local, conteudos_id_conteudos, eventos_id_eventos, utilizadores_id_utilizadores, id_conteudos, filename FROM utilizadores INNER JOIN rsvp ON utilizadores.id_utilizadores= rsvp.utilizadores_id_utilizadores INNER JOIN eventos ON eventos.id_eventos= rsvp.eventos_id_eventos INNER JOIN conteudos ON conteudos.id_conteudos= eventos.conteudos_id_conteudos WHERE id_utilizadores=?";
+                $query6 = "SELECT id_utilizadores,id_eventos, nome, data_inicio, hora_inicio, hora_fim, local, conteudos_id_conteudos, eventos_interesse, utilizadores_interessados, id_conteudos, filename FROM utilizadores INNER JOIN rsvp ON utilizadores.id_utilizadores= rsvp.utilizadores_interessados INNER JOIN eventos ON eventos.id_eventos= rsvp.eventos_interesse INNER JOIN conteudos ON conteudos.id_conteudos= eventos.conteudos_id_conteudos WHERE id_utilizadores=?";
+
+                if (mysqli_stmt_prepare($stmt6, $query6)) {
+
+                    mysqli_stmt_bind_param($stmt6, 'i', $id);
+                    mysqli_stmt_execute($stmt6);
+                    mysqli_stmt_bind_result($stmt6, $id_utilizadores, $id_eventos, $nome, $data_inicio, $hora_inicio, $hora_fim, $local, $ref_conteudos, $ref_eventos, $ref_utilizadores, $id_conteudos, $img);
 
 
-                if (mysqli_stmt_prepare($stmt7, $query7)) {
 
-                    mysqli_stmt_bind_param($stmt7, 'i', $id);
-                    mysqli_stmt_execute($stmt7);
-                    mysqli_stmt_bind_result($stmt7, $id_utilizadores,$id_eventos, $nome, $data_inicio, $hora_inicio, $hora_fim, $local, $ref_conteudos, $ref_eventos, $ref_utilizadores, $id_conteudos, $img);
-
-
-                    while (mysqli_stmt_fetch($stmt7)) {
+                    while (mysqli_stmt_fetch($stmt6)) {
                         //$nextWeek = time() + (7 * 24 * 60 * 60);
-                        $today=date('y-m-d');
+                        $today = date('y-m-d');
                         //echo $today;
 
-                        if(strtotime($today) > strtotime($data_inicio)){
+                        if (strtotime($today) < strtotime($data_inicio)) {
 
 
                             ?>
 
                             <div class="event-card">
-                                <img class="cantos_redondos" src="../admin/uploads/<?=$img?>" alt=""/>
+                                <img class="cantos_redondos" src="../admin/uploads/<?= $img ?>" alt=""/>
                                 <div class="description">
-                                    <h4 class="mt-2"><span style="font-weight: bold;"><?=$data_inicio?> | </span><?=$nome?>
+                                    <h4 class="mt-2"><span style="font-weight: bold;"><?= $data_inicio ?>
+                                            | </span><?= $nome ?>
                                     </h4>
-                                    <p class="location mb-0"><?=$local?></p>
-                                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i><?=substr($hora_inicio, 0, 5)?>h - <?=substr($hora_fim, 0, 5)?>h
+                                    <p class="location mb-0"><?= $local ?></p>
+                                    <i class="fa fa-clock-o mr-2"
+                                       aria-hidden="true"></i><?= substr($hora_inicio, 0, 5) ?>h
+                                    - <?= substr($hora_fim, 0, 5) ?>h
                                 </div>
                             </div>
                             <?php
@@ -917,7 +685,58 @@ WHERE id_utilizadores=?";
             </div>
 
 
+            <h2 style="font-weight: 500" class="text-center mt-5 mb-3">Eventos passados</h2>
 
+            <div class="events row mx-auto">
+
+                <?php
+                $link7 = new_db_connection();
+
+
+                /* create a prepared statement */
+                $stmt7 = mysqli_stmt_init($link7);
+
+
+                $query7 = "SELECT id_utilizadores,id_eventos, nome, data_inicio, hora_inicio, hora_fim, local, conteudos_id_conteudos, eventos_interesse, utilizadores_interessados, id_conteudos, filename FROM utilizadores INNER JOIN rsvp ON utilizadores.id_utilizadores= rsvp.utilizadores_interessados INNER JOIN eventos ON eventos.id_eventos= rsvp.eventos_interesse INNER JOIN conteudos ON conteudos.id_conteudos= eventos.conteudos_id_conteudos WHERE id_utilizadores=?";
+
+
+                if (mysqli_stmt_prepare($stmt7, $query7)) {
+
+                    mysqli_stmt_bind_param($stmt7, 'i', $id);
+                    mysqli_stmt_execute($stmt7);
+                    mysqli_stmt_bind_result($stmt7, $id_utilizadores, $id_eventos, $nome, $data_inicio, $hora_inicio, $hora_fim, $local, $ref_conteudos, $ref_eventos, $ref_utilizadores, $id_conteudos, $img);
+
+
+                    while (mysqli_stmt_fetch($stmt7)) {
+                        //$nextWeek = time() + (7 * 24 * 60 * 60);
+                        $today = date('y-m-d');
+                        //echo $today;
+
+                        if (strtotime($today) > strtotime($data_inicio)) {
+
+
+                            ?>
+
+                            <div class="event-card">
+                                <img class="cantos_redondos" src="../admin/uploads/<?= $img ?>" alt=""/>
+                                <div class="description">
+                                    <h4 class="mt-2"><span style="font-weight: bold;"><?= $data_inicio ?>
+                                            | </span><?= $nome ?>
+                                    </h4>
+                                    <p class="location mb-0"><?= $local ?></p>
+                                    <i class="fa fa-clock-o mr-2"
+                                       aria-hidden="true"></i><?= substr($hora_inicio, 0, 5) ?>h
+                                    - <?= substr($hora_fim, 0, 5) ?>h
+                                </div>
+                            </div>
+                            <?php
+                        }
+
+                    }
+                }
+                ?>
+
+            </div>
 
 
             <?php
