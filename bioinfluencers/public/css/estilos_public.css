@@ -74,7 +74,7 @@ _nav.scss
     }
 
 .nav__link--text {
-    font-weight: 500;
+    font-weight: bolder;
     margin-left: 0.5rem;
     font-size: 1rem;
     color: black;
@@ -564,111 +564,58 @@ label {
 
 /*EVENTOS*/
 
-.add-event-section {
-    position: fixed;
-    right: 50px;
-    bottom: 120px;
+
+/*botões flutoantes*/
+.float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#7FC53C;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
 }
 
-.add-event-section a {
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.9);
-    display: block;
+.my-float{
+    font-size:24px;
+    margin-top:18px;
+}
+
+a.float + div.label-container {
     visibility: hidden;
     opacity: 0;
-    margin: 0;
-    text-align: right;
-    background-color: white;
-    padding: 5px 15px 5px 30px;
-    border-radius: 20px;
-    position: relative;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
-    transition: all 100ms linear;
-    font-size: 17px;
-    z-index: 4;
+    transition: visibility 0s, opacity 0.5s ease;
 }
 
-.add-event-section a:hover {
-    background-color: rgba(150, 210, 255, 0.9);
-}
-
-.add-event-section a:before {
-    font-family: "FontAwesome";
-    position: absolute;
-    left: 10px;
-    top: 9px;
-}
-
-.add-event-section #upload:before {
-    content: "";
-}
-
-.add-event-section #add:before {
-    content: "";
-}
-
-.add-event-section input[type="checkbox"] {
-    display: none;
-}
-
-.add-event-section input[type="checkbox"]:checked ~ .floating-action-button {
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.add-event-section input[type="checkbox"]:checked ~ .floating-action-button:hover {
-    -webkit-transform: rotate(45deg) scale(1.05);
-    transform: rotate(45deg) scale(1.05);
-}
-
-.add-event-section input[type="checkbox"]:checked ~ a {
+a.float:hover + div.label-container{
     visibility: visible;
     opacity: 1;
-    margin: 25px 0;
 }
 
-.add-event-section input[type="checkbox"]:checked ~ #backdrop {
-    opacity: 0.65;
-    visibility: visible;
-}
 
-.add-event-section .floating-action-button {
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    display: block;
-    width: 70px;
-    z-index: 100;
-    height: 70px;
+.avatar_ind {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: #146eff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    line-height: 70px;
-    text-align: center;
-    font-size: 30px;
-    color: rgba(255, 255, 255, 0.9);
-    cursor: pointer;
-    transition: all 100ms ease-in-out;
 }
-
-.add-event-section .floating-action-button:hover {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.add-event-section .floating-action-button i {
-    transition: -webkit-transform 100ms linear;
-    transition: transform 100ms linear;
-    transition: transform 100ms linear, -webkit-transform 100ms linear;
-}
-
 .events {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     padding: 20px 0 50px;
 }
+
+.eventos_ind {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
 
 .events .event-card {
     display: inline-block;
@@ -683,17 +630,14 @@ label {
 }
 
 
-
 .eventos_ind .event-card-ind {
     display: inline-block;
-    background: white;
-    margin: 20px;
     cursor: default;
-
-    border-radius: 6px;
+    background: #f2f2f2;
+    width: 100%;
     color: rgba(0, 0, 0, 0.9);
-}
 
+}
 
 .events .event-card:hover {
     -webkit-transform: scale(1.02);
@@ -707,10 +651,25 @@ label {
     border-radius: 2px 2px 0 0;
 }
 
-.eventos_ind .event-card-ind img {
-    width: auto;
-    height: 250px;
-    border-radius: 2px 2px 0 0;
+/* TIRAR SE DER P FAZER RESIZE*/
+.eventos_ind_img {
+    width: 100%;
+    height: 350px;
+
+}
+
+.back-eventos {
+    background: #f2f2f2;
+    display: inline-block;
+    cursor: default;
+    width: 100%;
+}
+
+.back-sobre {
+    background: white;
+    display: inline-block;
+    cursor: default;
+    width: 100%;
 }
 
 
@@ -724,6 +683,15 @@ label {
     font-size: 20px;
 }
 
+.eventos_ind .event-card-ind .description {
+    padding: 5px 15px 15px;
+}
+
+.eventos_ind .event-card-ind .description h3 {
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
 .events .event-card .description .controls {
     display: flex;
     justify-content: space-around;
@@ -732,7 +700,7 @@ label {
 
 .eventos_ind .event-card-ind .description .controls {
     display: flex;
-
+    justify-content: space-around;
     margin-top: 10px;
 }
 
@@ -740,7 +708,7 @@ label {
     color: black;
     cursor: pointer;
     font-size: 20px;
-    width: 20%;
+    width: 100%;
     text-align: center;
     padding: 2px;
 }
@@ -803,35 +771,58 @@ label {
     opacity: 0.5;
 }
 
-/*botões flutoantes*/
-.float{
-    position:fixed;
-    width:60px;
-    height:60px;
-    bottom:40px;
-    right:40px;
-    background-color:#7FC53C;
-    color:#FFF;
-    border-radius:50px;
-    text-align:center;
-    box-shadow: 2px 2px 3px #999;
+
+
+@media (max-width: 778px) {
+
+
+    .eventos_ind {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 90%;
+        text-align: left;
+        margin-left: 5%;
+
+    }
+
+    .eventos_ind_img {
+        width: 100%;
+        height: 210px;
+
+    }
+    .titulo_prin {
+
+        font-size: 25px;
+    }
+
 }
 
-.my-float{
-    font-size:24px;
-    margin-top:18px;
+
+@media (min-width: 779px) {
+
+    .eventos_ind {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 50%;
+
+    }
+
+    .titulos_ev {
+
+        margin-left: 5%;
+
+        margin-top: 2%;
+    }
+
+
+    .titulo_prin {
+
+        font-size: 30px;
+    }
 }
 
-a.float + div.label-container {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s ease;
-}
-
-a.float:hover + div.label-container{
-    visibility: visible;
-    opacity: 1;
-}
 
 /*FIM EVENTOS*/
 
@@ -1310,7 +1301,7 @@ p{
     text-align: center;
     margin-bottom: 40px
 }
-
+/*
 @media only screen and (max-width: 600px)  {
      .top_phone div {
         display:block;
@@ -1330,7 +1321,10 @@ p{
         display: block ;
 
     }
-}
+}*/
+
+
+
 
 .coroas1 {
     position: absolute;
@@ -1352,6 +1346,18 @@ p{
 background-image: url("../img/perfil.png");
 background-repeat: repeat-x;
 width: 100%;
+}
+
+
+
+@media (max-width: 599px) {
+
+}
+
+
+@media (min-width: 600px) {
+
+
 }
 /*INFLUENCERS EM DESTAQUE*/
 
