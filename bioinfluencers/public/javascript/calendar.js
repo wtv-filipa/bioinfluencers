@@ -55,8 +55,8 @@ if(!String.prototype.formatNum) {
 		// Initial date. No matter month, week or day this will be a starting point. Can be 'now' or a date in format 'yyyy-mm-dd'
 		day: 'now',
 		// Day Start time and end time with time intervals. Time split 10, 15 or 30.
-		time_start: '06:00',
-		time_end: '22:00',
+		time_start: '03:00',
+		time_end: '22:30',
 		time_split: '30',
 		// Source of events data. It can be one of the following:
 		// - URL to return JSON list of events in special format.
@@ -166,12 +166,12 @@ if(!String.prototype.formatNum) {
 		week_numbers_iso_8601: false,
 		holidays: {
             '01-01': "Ano Novo",
-            '21-04': "Dia de Tiradentes",
             '01-05': "Dia do Trabalhador",
-            '07-09': "Dia da Independência",
-            '12-10': "Nossa Senhora Aparecida",
-            '02-11': "Dia de Finados",
-            '15-11': "Proclamação da República",
+            '15-08': "Assunção de Nossa Senhora",
+            '05-10': "Implantação da República Portuguesa",
+            '01-11': "Dia de Todos os Santos",
+            '01-12': "Restauração da Independência",
+            '08-12': "Dia da Imaculada Conceição",
             '25-12': "Natal"
 		}
 	};
@@ -456,16 +456,16 @@ if(!String.prototype.formatNum) {
 		var suffix = '';
 
 		if(this.options.format12) {
-			if(hour < 24) {
+			if(hour < 12) {
 				suffix = this.options.am_suffix;
 			}
 			else {
 				suffix = this.options.pm_suffix;
 			}
 
-			hour = hour % 24;
+			hour = hour % 12;
 			if(hour == 0) {
-				hour = 24;
+				hour = 12;
 			}
 		}
 

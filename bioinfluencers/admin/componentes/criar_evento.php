@@ -13,13 +13,13 @@
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
 
-                    $query = "SELECT id_eventos, nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, grupos_id_grupos, responsavel, conteudos_id_conteudos, tema_evento_idtema_evento
+                    $query = "SELECT id_eventos, nome, data_inicio, data_fim, local, descricao, custos, grupos_id_grupos, responsavel, conteudos_id_conteudos, tema_evento_idtema_evento
                               FROM eventos ";
                     if (mysqli_stmt_prepare($stmt, $query)) {
 
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $id_eventos, $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $descricao, $custos, $grupos_id_grupos, $responsavel, $conteudos_id_conteudos, $tema_evento_idtema_evento);
+                    mysqli_stmt_bind_result($stmt, $id_eventos, $nome, $data_inicio, $data_fim, $local, $descricao, $custos, $grupos_id_grupos, $responsavel, $conteudos_id_conteudos, $tema_evento_idtema_evento);
                     while (mysqli_stmt_fetch($stmt)) {
 
                     ?>
@@ -34,31 +34,18 @@
                         <input type="text" class="form-control" id="local" name="local" placeholder="Indique o local">
                     </div>
 
-
-                    <div class="form-group col-xl-6 col-lg-6 col-sm-6">
-                        <label class="text-gray-800" for="data_inicio">Data de Início </label>
-                        <input type="date" class="form-control" id="data_inicio" name="data_inicio"
+                    <div class="col-xl-6 col-lg-6 col-sm-6">
+                        <label class="text-gray-800" for="data_inicio">Data/hora inicio:</label>
+                        <input type="datetime-local" class="form-control" id="data_inicio" name="data_inicio"
                                placeholder="Indique a data de início">
                     </div>
 
-
-                    <div class="form-group col-xl-6 col-lg-6 col-sm-6">
-                        <label class="text-gray-800" for="data_fim">Data de Fim </label>
-                        <input type="date" class="form-control" id="data_fim" name="data_fim"
+                    <div class="col-xl-6 col-lg-6 col-sm-6">
+                        <label class="text-gray-800" for="data_fim">Data/hora fim:</label>
+                        <input type="datetime-local" class="form-control" id="data_fim" name="data_fim"
                                placeholder="Indique a data de fim">
                     </div>
 
-                    <div class="form-group col-xl-6 col-lg-6 col-sm-6">
-                        <label class="text-gray-800" for="data_fim">Hora do Início </label>
-                        <input type="time" min="00:00" max="23:59" class="form-control" id="hora_inicio"
-                               name="hora_inicio" placeholder="Indique a hora do início">
-                    </div>
-
-                    <div class="form-group col-xl-6 col-lg-6 col-sm-6">
-                        <label class="text-gray-800" for="data_fim">Hora do Fim </label>
-                        <input type="time" min="00:00" max="23:59" class="form-control" id="hora_fim" name="hora_fim"
-                               placeholder="Indique a hora do fim">
-                    </div>
 
                     <div class="form-group col-12">
                         <label class="text-gray-800" for="descricao">Descrição</label>

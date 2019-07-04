@@ -1,125 +1,130 @@
 <?php
+define ("MAX_SIZE","5000");
 
-//upload.php
+function getExtension($str) {
+
+    $i = strrpos($str,".");
+    if (!$i) { return ""; }
+    $l = strlen($str) - $i;
+    $ext = substr($str,$i+1,$l);
+    return $ext;
+}
+
+$errors=0;
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $image =$_FILES["fileToUpload"]["name"];
+    $uploadedfile = $_FILES['fileToUpload']['tmp_name'];
+
+    if ($image)
+    {
+        $filename = stripslashes($_FILES['fileToUpload']['name']);
+        $extension = getExtension($filename);
+        $extension = strtolower($extension);
+        if (($extension != "jpg") && ($extension != "jpeg")
+            && ($extension != "png") && ($extension != "gif"))
+        {
+            echo ' Unknown Image extension ';
+            $errors=1;
+        }
+        else
+        {
+            $size=filesize($_FILES['fileToUpload']['tmp_name']);
+
+            if ($size > MAX_SIZE*1024)
+            {
+                echo "You have exceeded the size limit";
+                $errors=1;
+            }
+
+            if($extension=="jpg" || $extension=="jpeg" )
+            {
+                //$uploadedfile = $_FILES['fileToUpload']['tmp_name'];
+                $src = imagecreatefromjpeg($uploadedfile);
+            }
+            else if($extension=="png")
+            {
+                //$uploadedfile = $_FILES['fileToUpload']['tmp_name'];
+                $src = imagecreatefrompng($uploadedfile);
+            }
+            else
+            {
+                $src = imagecreatefromgif($uploadedfile);
+            }
+
+            list($width,$height)=getimagesize($uploadedfile);
+
+           /* $newwidth=633;
+            $newheight= 633;
+            $tmp=imagecreatetruecolor($newwidth,$newheight);*/
+
+            $newwidth1=300;
+            $newheight1=300;
+            $tmp1=imagecreatetruecolor($newwidth1,$newheight1);
+
+            //imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight, $width,$height);
+
+            imagecopyresampled($tmp1,$src,0,0,0,0,$newwidth1,$newheight1,
+                $width,$height);
 
 
-?>
-<?php
-require_once "connections/connection.php";
+            $filename= "small". $_FILES['fileToUpload']['name'];
+            $filename1 = "../admin/uploads/img_perfil/".$filename;
 
+            //imagejpeg($tmp,$filename,100);
+            imagejpeg($tmp1,$filename1,100);
 
-$target_dir = "../admin/uploads/img_perfil/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-// Check if image file is a actual image or fake image
-if (isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
+            imagedestroy($src);
+            //imagedestroy($tmp);
+            imagedestroy($tmp1);
+        }
     }
 }
+//If no errors registred, print the success message
 
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
+if(isset($_POST['Submit']) && !$errors)
+{
+    if (isset($_GET["id"]) && isset($_FILES["fileToUpload"]) ) {
+        $id_user = $_GET["id"];
+        $image = $filename;
 
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 5000000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
+        // We need the function!
+        require_once("connections/connection.php");
 
-// Allow certain file formats
-if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif") {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}
+        // Create a new DB connection
+        $link = new_db_connection();
 
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+        /* create a prepared statement */
+        $stmt = mysqli_stmt_init($link);
 
-
-        if (isset($_GET["id"]) && isset($_FILES["fileToUpload"]) ) {
-            $id_user= $_GET["id"];
-            $ficheiro = $_FILES["fileToUpload"]["name"];
-
-            // We need the function!
-            require_once("connections/connection.php");
-
-            // Create a new DB connection
-            $link = new_db_connection();
-
-            /* create a prepared statement */
-            $stmt = mysqli_stmt_init($link);
-
-            $query = "UPDATE utilizadores
+        $query = "UPDATE utilizadores
               SET  img_perfil = ?
               WHERE id_utilizadores = ?";
 
-            if (mysqli_stmt_prepare($stmt, $query)) {
+        if (mysqli_stmt_prepare($stmt, $query)) {
 
-                mysqli_stmt_bind_param($stmt, 'si',$ficheiro, $id_user);
+            mysqli_stmt_bind_param($stmt, 'si',  $image, $id_user);
 
-                /* execute the prepared statement */
-                if (!mysqli_stmt_execute($stmt)) {
-                    echo "Error: " . mysqli_stmt_error($stmt);
-                }
-
-                /* close statement */
-                mysqli_stmt_close($stmt);
-            } else {
-                echo "Error: " . mysqli_error($link);
+            /* execute the prepared statement */
+            if (!mysqli_stmt_execute($stmt)) {
+                echo "Error: " . mysqli_stmt_error($stmt);
             }
 
-
-            if(isset($_POST["image"]))
-            {
-                $data = $_POST["image"];
-
-
-                $image_array_1 = explode(";", $data);
-
-
-
-                $image_array_2 = explode(",", $image_array_1[1]);
-
-
-
-                $data = base64_decode($image_array_2[1]);
-
-                $imageName = time(). '.png';
-
-                file_put_contents($imageName, $data);
-
-                echo '<img src="'.$imageName.'" class="img-thumbnail img_redonda" />';
-
+            if (isset($_POST["edit"])){
+                $nickname=$_POST["edit"];
+                echo $nickname;
+                header("Location: editar_conta.php?edit=".$nickname."");
             }
-            /* close connection */
-            mysqli_close($link);
+
+            /* close statement */
+            mysqli_stmt_close($stmt);
+        } else {
+            echo "Error: " . mysqli_error($link);
         }
 
-
-    } else {
-        echo "Sorry, there was an error uploading your file.";
+        // mysql_query("update SQL statement ");
+        echo "Image Uploaded Successfully!";
     }
 }
-
-
-
-?>
-
 

@@ -29,110 +29,136 @@ if (isset($_GET["edit"])) {
         while (mysqli_stmt_fetch($stmt)) {
             ?>
 
-                <div class="row">
-                    <!-- left column -->
-            <form  class="form-horizontal" role="form" method="post" action="upload.php?id=<?=$id?>" enctype="multipart/form-data">
-                    <div class="col-md-3">
-                        <div class="text-center">
-                            <div class="avatar-upload">
-                                <div class="avatar-edit">
-                                    <input style="display: none" type="file" id="fileToUpload" name="fileToUpload"
-                                           accept=".png, .jpg, .jpeg"/>
-                                    <label class="label fa fa-pencil" for="fileToUpload"></label>
-                                </div>
-                                <br />
-                                <div class="avatar-preview">
-                                    <div id="img_perf"></div>
-                                </div>
+            <div class="row">
+            <!-- left column -->
+
+            <div class="col-md-3">
+
+                <div class="text-center">
+                    <form class="form-horizontal" role="form" method="post" action="upload.php?id=<?= $id ?>"
+                          enctype="multipart/form-data">
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type="hidden" name="edit" value="<?= $nickname ?>">
+                                <input style="display: none" type="file" id="fileToUpload" name="fileToUpload"
+                                       accept=".png, .jpg, .jpeg"/>
+                                <label class="label fa fa-pencil" for="fileToUpload"></label>
+                            </div>
+                            <br/>
+                            <div class="avatar-preview">
+                                <?php
+                                //var_dump($img_perfil);
+                                if (isset($img_perfil)) {
+                                    ?>
+                                    <img id="img_perf" class="img_redonda"
+                                         src="../admin/uploads/img_perfil/<?= $img_perfil ?>"
+                                         alt="your image"/>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <img id="img_perf" class="img_redonda" src="img/default.gif" alt="your image"/>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
-                    </div>
 
-                    <!----------------------MODAL DE CROP--------------->
-                    <div id="uploadimageModal" class="modal" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Upload & Crop Image</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-8 text-center">
-                                            <div id="image_demo" style="width:350px; margin-top:30px"></div>
-                                        </div>
-                                        <div class="col-md-4" style="padding-top:30px;">
-                                            <br />
-                                            <br />
-                                            <br/>
-                                            <button class="buttonCustomise btn btn-primary crop_image" type="submit" value="Upload Image" name="Submit"> Editar</button>
+                        <!----------------------MODAL DE CROP--------------->
+                        <div id="uploadimageModal" class="modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Upload & Crop Image</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-8 text-center">
+                                                <div id="image_demo" style="width:350px; margin-top:30px"></div>
+                                            </div>
+                                            <div class="col-md-4" style="padding-top:30px;">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <button class="buttonCustomise btn btn-primary crop_image" type="submit"
+                                                        value="Upload Image" name="Submit"> Editar
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-----------------------------fim modal------------>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+            <h3>Informação pessoal</h3>
+            <form id="form1" class="form-horizontal" role="form" method="post"
+                  action="scripts/editar_perfil.php?id=<?= $id ?>">
+                <!--nome proprio-->
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" for="nome">Nome:</label>
+                    <div class="col-lg-8">
+                        <input id="nome" name="nome" class="form-control" type="text" value="<?= $nome_u ?>">
                     </div>
-                    <!-----------------------------fim modal------------>
-            </form>
-                    <!-- edit form column -->
-                    <div class="col-md-9 personal-info">
-                        <h3>Informação pessoal</h3>
-            <form id="form1" class="form-horizontal" role="form" method="post" action="scripts/editar_perfil.php?id=<?=$id?>">
-                        <!--nome proprio-->
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label" for="nome">Nome:</label>
-                            <div class="col-lg-8">
-                                <input id="nome" name="nome" class="form-control" type="text" value="<?=$nome_u?>">
-                            </div>
-                        </div>
+                </div>
 
 
-                        <!--email-->
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label" for="email">Email:</label>
-                            <div class="col-lg-8">
-                                <input id="email" name="email" class="form-control" type="text" value="<?=$email?>">
-                            </div>
-                        </div>
+                <!--email-->
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" for="email">Email:</label>
+                    <div class="col-lg-8">
+                        <input id="email" name="email" class="form-control" type="text" value="<?= $email ?>">
+                    </div>
+                </div>
 
-                        <!--data de nascimento-->
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label" for="data_nasc">Data de nascimento</label>
-                            <div class="col-lg-8">
-                                <input type="date" class="form-control" id="data_nasc" name="data_nasc" placeholder="data de nascimento" value="<?=$data_nasc?>">
-                            </div>
-                        </div>
+                <!--data de nascimento-->
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" for="data_nasc">Data de nascimento</label>
+                    <div class="col-lg-8">
+                        <input type="date" class="form-control" id="data_nasc" name="data_nasc"
+                               placeholder="data de nascimento" value="<?= $data_nasc ?>">
+                    </div>
+                </div>
 
-                        <!--descrição-->
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label" for="descricao">Descrição</label>
-                            <div class="col-lg-8">
+                <!--descrição-->
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" for="descricao">Descrição</label>
+                    <div class="col-lg-8">
                         <textarea type="text" class="form-control" id="descricao"
-                                  placeholder="Inserir descrição" name="descricao"><?=$descricao_u?></textarea>
-                            </div>
-                        </div>
+                                  placeholder="Inserir descrição" name="descricao"><?= $descricao_u ?></textarea>
+                    </div>
+                </div>
 
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"></label>
-                            <div class="col-md-8">
-                                <button class="buttonCustomise btn btn-primary" type="submit" value="Upload Image" name="Submit"> Editar</button>
-                                <span></span>
-                                <button  type="reset" class="btn btn-default" value="Cancel">Cancelar</button>
-                            </div>
-                        </div>
+                <input type="hidden" name="edit" value="<?= $nickname ?>">
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <button class="buttonCustomise btn btn-primary" type="submit" value="Upload Image"
+                                name="Submit"> Editar
+                        </button>
+                        <span></span>
+                        <button type="reset" class="btn btn-default" value="Cancel">Cancelar</button>
+                    </div>
+                </div>
             </form>
             <?php
         }
     }
 
-?>
-            </div>
+    ?>
+    </div>
 
     <hr>
-<?php
+    <?php
 }
 ?>
