@@ -1,11 +1,11 @@
 
 
-<div class=" col-lg-8 col-sm-12 mx-auto">
+<div class=" container col-lg-8 col-sm-12 mx-auto mt-5">
     <h4 class="title-ranking">Ranking</h4>
     <div class="row box-ranking no-gutters" style="margin-top: 9%">
         <div class="col-sm-4">
             <div class="media-ranking-item segundo-colocado">
-                <img class="coroas" src="img/coroa2.png" alt="">
+                <img class="coroas img-fluid" src="img/coroa2.png" alt="">
                 <img class="br img-ranking" src="img/pessoa1.jpg" alt="">
                 <h5 class="name-user">Alex Alan Nunes</h5>
                 <small>Pereiro </small>
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-
+   <!--
     <div class="row top_phone">
         <div class="col-sm-4">
             <div class="media-ranking-item segundo-colocado">
@@ -51,7 +51,7 @@
                 <small>Pereiro </small>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 

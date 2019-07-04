@@ -1,280 +1,174 @@
+<?php
+
+if (isset($_GET["id_e"])) {
+    $id_e = $_GET["id_e"];
+
+    require_once("connections/connection.php");
+
+    ?>
 
 
-    <style type="text/css" media="screen">
-        /* Linked Styles */
+    <?php
+    $link = new_db_connection();
 
-        body {
-            padding: 0 !important;
-            margin: 0 !important;
-            display: block !important;
-            min-width: 100% !important;
-            width: 100% !important;
-            background: #f2f2f2;
-            -webkit-text-size-adjust: none
+
+    /* create a prepared statement */
+    $stmt = mysqli_stmt_init($link);
+
+
+    $query = "SELECT id_eventos, nome, data_inicio, data_fim, local, descricao, conteudos_id_conteudos, id_conteudos, responsavel, filename
+              FROM eventos
+              INNER JOIN conteudos
+              ON eventos.conteudos_id_conteudos = conteudos.id_conteudos
+              WHERE id_eventos LIKE ?";
+
+    if (mysqli_stmt_prepare($stmt, $query)) {
+
+        mysqli_stmt_bind_param($stmt, 'i', $id_e);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $id_e, $nome, $data_inicio, $data_fim, $local, $descricao, $conteudos_id_conteudos, $id_conteudos, $responsavel, $filename);
+
+        while (mysqli_stmt_fetch($stmt)) {
+//$nextWeek = time() + (7 * 24 * 60 * 60);
+            $today = date('y-m-d');
+//echo $today;
+            ?>
+            <div class="container p-0 div_geral_event col-lg-9">
+            <div class="text-center eventos_ind_img ">
+                <img class="img-fluid" src="../admin/uploads/eventos/<?= $filename ?>">
+            </div>
+
+            <div class="back-eventos "
+                 style="-moz-border-radius-topleft: 10px; -moz-border-radius-topright: 10px;">
+
+
+            <div class="eventos_ind " style="">
+                <div class="event-card-ind mt-3">
+                    <div class="titulos_ev" style="">
+                        <h2 class="mt-2 titulo_prin"><span
+                                    style="font-weight: bold;"><?= $data_inicio ?> | </span><?= $nome ?>
+                        </h2>
+                        <p class="mb-0"><i class="fa fa-map-marker mr-2"
+                                           aria-hidden="true"></i><?= $local ?></p>
+                        <i class="fa fa-clock-o mr-2"
+                           aria-hidden="true"></i><?= substr($data_inicio, 10, 6) ?>h
+                        - <?= substr($data_fim, 10, 6) ?>h <?php
+                        if (strtotime($today) > strtotime($data_inicio)) {
+
+                            echo "<span class='text-warning ml-2'>TERMINADO</span>";
+
+                        }
+                        ?>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="eventos_ind text-center mx-auto">
+            <div class="event-card-ind mb-3"> <!--style=" border-top: 2px solid lightgrey;"-->
+            <div class="description">
+            <div class="controls">
+            <?php
+
+            // Create a new DB connection
+            $link13 = new_db_connection();
+            /* create a prepared statement */
+            $stmt13 = mysqli_stmt_init($link13);
+            $query13 = "SELECT COUNT(status) FROM rsvp WHERE status='interessado'";
+
+            if (mysqli_stmt_prepare($stmt13, $query13)) {
+
+                mysqli_stmt_execute($stmt13);
+                mysqli_stmt_bind_result($stmt13, $n_total);
+                mysqli_stmt_fetch($stmt13);
+
+                // Create a new DB connection
+                $link14 = new_db_connection();
+
+
+                /* create a prepared statement */
+                $stmt14 = mysqli_stmt_init($link14);
+
+
+                $query14 = "SELECT status FROM rsvp WHERE eventos_interesse = ? AND utilizadores_interessados = ? AND  status = 'interessado'";
+
+                if (mysqli_stmt_prepare($stmt14, $query14)) {
+
+                    mysqli_stmt_bind_param($stmt14, 'ii', $id_e, $id_navegar);
+                    mysqli_stmt_execute($stmt14);
+                    mysqli_stmt_bind_result($stmt14, $id);
+
+                    if (!mysqli_stmt_fetch($stmt14)) {
+                        echo "no results";
+                        echo "  <a href=\"scripts/status_eventos.php?interessado=interessado&id=$id_e\"><button style='width: 100%' class=\"buttonCustomise btn btn-default\" type=\"submit\" value=\"Upload Image\" name=\"Submit\"><i class=\"fa fa-heart-o\" aria-hidden=\"true\" style=\"font-size: 1rem\"></i> <span>$n_total</span></button></a>";
+
+                        ?>
+                        <?php
+
+                    } else {
+                        echo "relação existe";
+                        echo "  <a href=\"scripts/status_eventos.php?naointeressado=naointeressado&id=$id_e\"><button style='width: 100%' class=\"buttonCustomise btn btn-default\" type=\"submit\" value=\"Upload Image\" name=\"Submit\"><i class=\"fa fa-heart\" aria-hidden=\"true\" style=\"font-size: 1rem\"></i> <span>$n_total</span></button></a>";
+                    }
+
+                }
+
+                ?>
+
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+
+                <div class="back-sobre">
+                    <div class="row no-gutters">
+                        <h4 class="mt-5 pl-4" style="font-weight: bold;">
+                            Sobre</h4>
+
+                    </div>
+
+                    <div class="notic_text mb-2 mt-2 pr-4 pl-4">
+                        <p>
+                            <?= $descricao ?>
+
+                        </p>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn" style="background-color: #7FC53C; color: #fff;">Abrir no
+                            grupo
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-5 no-gutters ">
+                    <div class=" mb-5 col-lg-12 col-sm-6 pl-4">
+                        <h4 class="" style="font-weight: bold;">
+                            Responsável</h4>
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="media-ranking-item terceiro-colocado">
+                            <h5 class="name-user mt-2"><?= $responsavel ?></h5>
+                            <small>Organizador</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+                <?php
+
+
+            }
         }
+    }
 
-        a {
-            color: #33bbff;
-            text-decoration: none
-        }
-
-        p {
-            padding: 0 !important;
-            margin: 0 !important
-        }
-
-        img {
-            -ms-interpolation-mode: bicubic;
-            /* Allow smoother rendering of resized image in Internet Explorer */
-        }
-
-        .text-footer2 a {
-            color: #adadad !important;
-            text-decoration: none !important;
-        }
-
-        .text-footer3 a {
-            color: #797979 !important;
-            text-decoration: none !important;
-        }
-        /* Mobile styles */
-
-        @media only screen and (max-device-width: 750px),
-        only screen and (max-width: 480px) {
-            div[class='mobile-br-5'] {
-                height: 5px !important;
-            }
-            div[class='mobile-br-10'] {
-                height: 10px !important;
-            }
-            div[class='mobile-br-15'] {
-                height: 15px !important;
-            }
-            th[class='m-td'],
-            td[class='m-td'],
-            div[class='hide-for-mobile'],
-            span[class='hide-for-mobile'] {
-                display: none !important;
-                width: 0 !important;
-                height: 0 !important;
-                font-size: 0 !important;
-                line-height: 0 !important;
-                min-height: 0 !important;
-            }
-            span[class='mobile-block'] {
-                display: block !important;
-            }
-            div[class='wgmail'] img {
-                min-width: 320px !important;
-                width: 320px !important;
-            }
-            div[class='img-m-center'] {
-                text-align: center !important;
-            }
-            img[class='mobile-image'] {
-                display: block !important;
-                width: 100% !important;
-                height: auto !important;
-            }
-            div[class='fluid-img'] img,
-            td[class='fluid-img'] img {
-                width: 100% !important;
-                max-width: 480px !important;
-                height: auto !important;
-            }
-            table[class='mobile-shell'] {
-                width: 100% !important;
-                min-width: 100% !important;
-            }
-            table[class='center'] {
-                margin: 0 auto;
-            }
-            td[class='column'],
-            th[class='column'] {
-                float: left !important;
-                width: 100% !important;
-                display: block !important;
-            }
-            td[class='td'] {
-                width: 100% !important;
-                min-width: 100% !important;
-            }
-            td[class='content-spacing'] {
-                width: 15px !important;
-            }
-            a[href^="tel"],
-            a[href^="sms"] {
-                text-decoration: none;
-                color: black;
-                pointer-events: none;
-                cursor: default;
-            }
-            .mobile_link a[href^="tel"],
-            .mobile_link a[href^="sms"] {
-                text-decoration: default;
-                color: orange !important;
-                pointer-events: auto;
-                cursor: default;
-            }
-        }
-    </style>
+}
+?>
 
 
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#F2F2F2">
-    <tr>
-        <td valign="top">
-            <!-- Container -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="center" valign="top">
-                        <table width="620" border="0" cellspacing="0" cellpadding="0" class="mobile-shell">
-                            <tr>
-                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-                                <td>
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td class="td" style="width:600px; min-width:600px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0; ">
-                                                <!-- Header -->
-                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                    <tr>
-                                                        <td>
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                <tr>
-                                                                    <td height="20" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                </tr>
-                                                            </table>
-                                                            <div class="mktEditable" id="logo">
-                                                                <div class="img" style="font-size:0pt; line-height:0pt; text-align:left">
-                                                                    <div class="img-m-center" style="font-size:0pt; line-height:0pt">
-                                                                        <a href="http://mkto-sj110151.com/v00m00n408RGCmakE01L000" target="_blank"><img src="https://lp.eventbriteacademy.com/rs/269-CEG-133/images/eventbrite_logo_ff8000_gradient.png" border="0" width="130" alt=""></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                <tr>
-                                                                    <td height="20" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!-- END Header -->
-                                                <!-- Preview text -->
-                                                <div style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">Copywriting isn’t just about words — it’s about numbers, too. The right copy can drive ticket sales and boost your bottom line. Check out this comprehensive guide, and learn how copy can inspire people to visit your event page, buy tickets, and rally their friends. You’ll get insider knowledge from a variety of experts</div>
-                                                <!-- END Preview text -->
-                                                <!-- Main -->
-                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
-                                                    <tr>
-                                                        <td>
-                                                            <div class="mktEditable" id="heroImage">
-                                                                <div class="hide-for-mobile">
-                                                                    <div class="fluid-img" style="font-size: 0pt; line-height: 0pt; text-align: left;">
-                                                                        <a href="http://mkto-sj110151.com/wEmG008CR0000mkb00L150n" target="_blank"><img src="https://mkto.eventbrite.com/rs/269-CEG-133/images/Copywriting BP DESKTOP copy.png" border="0" width="600" height="225" alt=""></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mktEditable" id="heroImageMobile">
-                                                                <!--[if !mso]><!-->
-                                                                <div class="img" style="font-size: 0pt; line-height: 0pt; text-align: left;">
-                                                                    <a href="http://mkto-sj110151.com/wEmG008CR0000mkb00L150n" target="_blank"><img src="https://mkto.eventbrite.com/rs/269-CEG-133/images/Copywriting BP MOBILE.png" width="0" height="0" alt="" border="0" class="mobile-image" style="display: none;"></a>
-                                                                </div>
-                                                                <!--<![endif]-->
-                                                            </div>
-                                                            <!-- Content -->
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="50"></td>
-                                                                    <td>
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                            <tr>
-                                                                                <td height="40" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                        <div class="mktEditable" id="h2">
-                                                                            <div class="h2" style="color: #404041; font-family: Helvetica, Arial,sans-serif; font-size: 28px; line-height: 32px; text-align: left;"><a href="http://mkto-sj110151.com/qkGC080mRc000n01E0m600L" style="text-decoration: none; color: #404041;">The Ultimate Guide to Copywriting for Events</a></div>
-                                                                        </div>
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                            <tr>
-                                                                                <td height="18" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                        <div class="mktEditable" id="text">
-                                                                            <div class="text" style="color: #666666; font-family: Helvetica, Arial,sans-serif; font-size: 16px; line-height: 20px; text-align: left;">Copywriting isn’t just about words — it’s about numbers, too. The right copy can drive registrations and boost your bottom line.
-                                                                                <br>
-                                                                                <br> Check out this <a href="http://mkto-sj110151.com/wEmG008CR0000mkb00L150n" target="_blank" class="link" style="color: #33bbff; text-decoration: none;"><span class="link" style="color: #33bbff; text-decoration: none;">comprehensive guide,</span></a> and learn how copy can inspire people to visit your event page, pay to register, and rally others to attend with them. You’ll get insider knowledge from a variety of experts and learn how to:</div>
-
-                                                                        <!-- Button -->
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                            <tr>
-                                                                                <td align="left">
-                                                                                    <table border="0" cellspacing="0" cellpadding="0" style="border-radius:4px; " bgcolor="#00CC52" class="mobile-shell">
-                                                                                        <tr>
-                                                                                            <td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="26"></td>
-
-                                                                                            <td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="26"></td>
-                                                                                        </tr>
-                                                                                    </table>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                        <!-- END Button -->
-
-                                                                    </td>
-                                                                    <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="50"></td>
-                                                                </tr>
-                                                            </table>
-                                                            <!-- END Content -->
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!-- END Main -->
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- END Container -->
-            <!-- Footer Primary -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="center" valign="top">
-                        <table width="620" border="0" cellspacing="0" cellpadding="0" class="mobile-shell">
-                            <tr>
-                                <td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-                                <td>
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td class="td" style="width:600px; min-width:600px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0; ">
-                                                <!-- Footer -->
-                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                    <tr>
-                                                        <td>
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                                <tr>
-                                                                    <td height="36" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                            <td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
 
 
 
