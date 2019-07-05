@@ -85,16 +85,7 @@ WHERE seguidores=?";
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_bind_result($stmt, $id_u, $nome_u, $nickname, $email, $data_nasc, $descricao_u, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $img_perfil, $active, $nome_tipo);
             while (mysqli_stmt_fetch($stmt)) {
-                ?>
-                <form style="display: block; margin: auto" id="form1">
 
-                    <a href="editar_conta.php?edit=<?= $nickname ?>"><label class="label fa fa-pencil"
-                                                                            for="imgInp"></label></a>
-
-                </form>
-                <?php
-            }
-        }
         ?>
         </div>
         <div class="avatar-preview">
@@ -109,6 +100,8 @@ WHERE seguidores=?";
                 ?>
                 <img id="img_perf" class="img_redonda" src="img/default.gif" alt="your image"/>
                 <?php
+            }
+            }
             }
             ?>
 
@@ -800,18 +793,18 @@ WHERE id_utilizadores=?";
                     $stmt6 = mysqli_stmt_init($link6);
 
 
-                    $query6 = "SELECT id_utilizadores,id_eventos, nome, data_inicio, hora_inicio, hora_fim, local, conteudos_id_conteudos, eventos_interesse, utilizadores_interessados, id_conteudos, filename FROM utilizadores INNER JOIN rsvp ON utilizadores.id_utilizadores= rsvp.utilizadores_interessados INNER JOIN eventos ON eventos.id_eventos= rsvp.eventos_interesse INNER JOIN conteudos ON conteudos.id_conteudos= eventos.conteudos_id_conteudos WHERE id_utilizadores=?";
+                    $query6 = "SELECT id_utilizadores,id_eventos, nome, data_inicio, data_fim, local, conteudos_id_conteudos, eventos_interesse, utilizadores_interessados, id_conteudos, filename FROM utilizadores INNER JOIN rsvp ON utilizadores.id_utilizadores= rsvp.utilizadores_interessados INNER JOIN eventos ON eventos.id_eventos= rsvp.eventos_interesse INNER JOIN conteudos ON conteudos.id_conteudos= eventos.conteudos_id_conteudos WHERE id_utilizadores=?";
 
                     if (mysqli_stmt_prepare($stmt6, $query6)) {
 
                         mysqli_stmt_bind_param($stmt6, 'i', $id_u);
                         mysqli_stmt_execute($stmt6);
-                        mysqli_stmt_bind_result($stmt6, $id_u, $id_eventos, $nome, $data_inicio, $hora_inicio, $hora_fim, $local, $ref_conteudos, $ref_eventos, $ref_utilizadores, $id_conteudos, $img);
+                        mysqli_stmt_bind_result($stmt6, $id_u, $id_eventos, $nome, $data_inicio, $data_fim, $local, $ref_conteudos, $ref_eventos, $ref_utilizadores, $id_conteudos, $img);
 
 
                         while (mysqli_stmt_fetch($stmt6)) {
                             //$nextWeek = time() + (7 * 24 * 60 * 60);
-                            $today = date('y-m-d');
+                            $today = date('Y-m-d H:i:s');
                             //echo $today;
 
                             if (strtotime($today) < strtotime($data_inicio)) {
@@ -820,15 +813,15 @@ WHERE id_utilizadores=?";
                                 ?>
 
                                 <div class="event-card">
-                                    <img class="cantos_redondos" src="../admin/uploads/<?= $img ?>" alt=""/>
+                                    <img class="cantos_redondos" src="../admin/uploads/eventos/<?=$img?>" alt=""/>
                                     <div class="description">
-                                        <h4 class="mt-2"><span style="font-weight: bold;"><?= $data_inicio ?>
+                                        <h4 class="mt-2"><span style="font-weight: bold;"><?= substr($data_inicio, 0, 10)?>
                                                 | </span><?= $nome ?>
                                         </h4>
                                         <p class="location mb-0"><?= $local ?></p>
                                         <i class="fa fa-clock-o mr-2"
-                                           aria-hidden="true"></i><?= substr($hora_inicio, 0, 5) ?>h
-                                        - <?= substr($hora_fim, 0, 5) ?>h
+                                           aria-hidden="true"></i><?= substr($data_inicio, 10, 6)?>h
+                                        - <?= substr($data_fim, 10, 6) ?>h
                                     </div>
                                 </div>
                                 <?php
@@ -865,7 +858,7 @@ WHERE id_utilizadores=?";
 
                         while (mysqli_stmt_fetch($stmt7)) {
                             //$nextWeek = time() + (7 * 24 * 60 * 60);
-                            $today = date('y-m-d');
+                            $today = date('Y-m-d H:i:s');
                             //echo $today;
 
                             if (strtotime($today) > strtotime($data_inicio)) {
@@ -874,9 +867,9 @@ WHERE id_utilizadores=?";
                                 ?>
 
                                 <div class="event-card">
-                                    <img class="cantos_redondos" src="../admin/uploads/<?= $img ?>" alt=""/>
+                                    <img class="cantos_redondos" src="../admin/uploads/eventos/<?=$img?>" alt=""/>
                                     <div class="description">
-                                        <h4 class="mt-2"><span style="font-weight: bold;"><?= substr($data_inicio, 0, 10) ?>
+                                        <h4 class="mt-2"><span style="font-weight: bold;"><?= substr($data_inicio, 0, 10)?>
                                                 | </span><?= $nome ?>
                                         </h4>
                                         <p class="location mb-0"><?= $local ?></p>
@@ -899,7 +892,7 @@ WHERE id_utilizadores=?";
                 if (isset($tipo)) {
                     if ($tipo == 1 || $tipo == 3) {
                         ?>
-                        <a href="#" class="float">
+                        <a href="criar_evento.php" class="float">
                             <i class="fa fa-calendar-plus-o my-float"></i>
                         </a>
                         <div class="label-container">

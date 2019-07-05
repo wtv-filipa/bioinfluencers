@@ -22,10 +22,9 @@ p{
 /*meus*/
 
 .buttonCustomise{
-  border-radius: 15px;
+  border-radius: 20px;
   background-color: #cdcdcd;
   color : white;
-  background-color: #cdcdcd;
   width: 100px;
   padding: 2px;
 }

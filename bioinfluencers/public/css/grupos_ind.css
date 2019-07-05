@@ -1,0 +1,71 @@
+/* GRUPO INDV*/
+
+
+.container section {
+    color: #000000;
+    padding: 10px 0;
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url("../img/beata.png");
+}
+.divider {
+    padding:0;
+    margin:0;
+}
+.divider h1 {
+    margin: 20%;
+    text-align:center;
+    color: black;
+    background-color: white;
+    opacity: 0.8;
+    border-radius: 10px;
+    padding: 2%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.card-header {
+    position: relative;
+}
+
+.card-header span {
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    .card-header::before,
+    .card-header::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .card-header::before {
+        left: -8px;
+        z-index: -1;
+        width: 16px;
+        height: 16px;
+        background-color: rgba(0,0,0,0.03);
+        border-width: 0 0 1px 1px;
+        border-style: solid;
+        border-color: rgba(0,0,0,0.125);
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    .card-header::after {
+        left: -1px;
+        width: 2px;
+        height: 18px;
+        background-color: #f7f7f7;
+    }
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}

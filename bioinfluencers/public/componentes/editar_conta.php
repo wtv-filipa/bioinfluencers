@@ -143,9 +143,7 @@ if (isset($_GET["edit"])) {
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                        <button class="buttonCustomise btn btn-primary" type="submit" value="Upload Image"
-                                name="Submit"> Editar
-                        </button>
+                        <button class="buttonCustomise btn btn-primary" type="submit" value="Upload Image" name="Submit"> Editar  </button>
                         <span></span>
                         <button type="reset" class="btn btn-default" value="Cancel">Cancelar</button>
                     </div>
