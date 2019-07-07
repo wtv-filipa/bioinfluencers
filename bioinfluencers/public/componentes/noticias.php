@@ -34,7 +34,7 @@
                             <img class="img-fluid lala" src="../admin/uploads/noticias/<?= $filename ?>"
                                  alt="Los Angeles" width="1140" height="500">
                             <div class="carousel-caption">
-                                <a href="noticia_indv.php?id_n=<?= $id_n ?>">
+                                <a style="text-decoration: none" href="noticia_indv.php?id_n=<?= $id_n ?>">
                                     <div class="p-2" style="background-color: white; opacity: 0.7; border-radius: 20px">
                                         <h3 style="font-weight: 700; text-shadow: white 0.1em 0.1em 0.2em"><?= $titulo ?></h3>
                                         <p style="font-weight: 600;"><?= $subtitulo ?></p>
@@ -51,7 +51,7 @@
                             <img class="img-fluid lala" src="../admin/uploads/noticias/<?= $filename ?>"
                                  alt="Los Angeles" width="1140" height="500">
                             <div class="carousel-caption">
-                                <a href="noticia_indv.php?id_n=<?= $id_n ?>">
+                                <a style="text-decoration: none" href="noticia_indv.php?id_n=<?= $id_n ?>">
                                     <div class="p-2" style="background-color: white; opacity: 0.7; border-radius: 20px">
                                         <h3 style="font-weight: 700; text-shadow: white 0.1em 0.1em 0.2em"><?= $titulo ?></h3>
                                         <p style="font-weight: 600;"><?= $subtitulo ?></p>
@@ -85,7 +85,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Seleciona a categoria
                     </button>
-                    <div class="dropdown-menu drop_select" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu drop_select" aria-labelledby="dropdownMenuButton" style="font-size: 1rem">
                         <?php
 
                         $link2 = new_db_connection();

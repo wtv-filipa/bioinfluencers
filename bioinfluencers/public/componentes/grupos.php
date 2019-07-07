@@ -22,7 +22,7 @@
                 $query .= "LIMIT 3";
 
                 mysqli_stmt_execute($stmt);
-                mysqli_stmt_bind_result($stmt, $id, $nome_grupos, $descricao, $data_criacao_g, $conteudos_id_cont, $id_conteudos, $filename);
+                mysqli_stmt_bind_result($stmt, $id_g, $nome_grupos, $descricao, $data_criacao_g, $conteudos_id_cont, $id_conteudos, $filename);
                 $active = true;
 
                 while (mysqli_stmt_fetch($stmt)) {
@@ -32,8 +32,10 @@
                             <img class="img-fluid lala" src="../admin/uploads/grupos/<?= $filename ?>" alt="" width="1140" height="500">
                             <div class="carousel-caption">
                                 <div class="p-2" style="background-color: white; opacity: 0.7; border-radius: 20px">
-                                    <h3 style="font-weight: 700; text-shadow: white 0.1em 0.1em 0.2em"><?= $nome_grupos ?></h3>
-                                    <p style="font-weight: 600;"><?= $descricao ?></p>
+                                    <a style="text-decoration: none" href="grupo_indv.php?id_g=<?= $id_g ?>">
+                                        <h3 style="font-weight: 700; text-shadow: white 0.1em 0.1em 0.2em"><?= $nome_grupos ?></h3>
+                                        <p style="font-weight: 600;"><?= $descricao ?></p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -46,8 +48,10 @@
                             <img class="img-fluid lala" src="../admin/uploads/grupos/<?= $filename ?>" alt="" width="1140" height="500">
                             <div class="carousel-caption">
                                 <div class="p-2" style="background-color: white; opacity: 0.7; border-radius: 20px">
-                                    <h3 style="font-weight: 700; text-shadow: white 0.1em 0.1em 0.2em"><?= $nome_grupos ?></h3>
-                                    <p style="font-weight: 600;"><?= $descricao ?></p>
+                                    <a style="text-decoration: none" href="grupo_indv.php?id_g=<?= $id_g ?>">
+                                        <h3 style="font-weight: 700; text-shadow: white 0.1em 0.1em 0.2em"><?= $nome_grupos ?></h3>
+                                        <p style="font-weight: 600;"><?= $descricao ?></p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +159,7 @@
                     <button class="btn btn-default dropdown-toggle botao_select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Seleciona a categoria
                     </button>
-                    <div class="dropdown-menu drop_select" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu drop_select" aria-labelledby="dropdownMenuButton" style="font-size: 1rem">
                         <?php
 
                         $link4 = new_db_connection();
