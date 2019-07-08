@@ -268,9 +268,12 @@ WHERE id_utilizadores=?";
                     while (mysqli_stmt_fetch($stmt5)) {
                         ?>
 
+
                         <div class="col-4">
+                            <a href="publicacao_ind.php?img=<?=$id_conteudos?>">
                             <div class="square "><img class="img-fluid cantos_redondos"
                                                       src="../admin/uploads/publicacao/<?= $filename ?>"></div>
+                            </a>
                         </div>
 
 
@@ -321,71 +324,71 @@ WHERE id_utilizadores=?";
                         if (isset($nome_tema)) {
 
 
-                                if ($n_total >= 4 && $nome_tema == 'abelhas'){
+                                if ($n_total >= 5 && $nome_tema == 'abelhas'){
                                     echo "<div class=\"col-4\">
                           
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_abelhas.png\"></div>
 </div>";
                                 }
-                                if ($n_total >= 3 && $nome_tema == 'anfíbios' ){
+                                if ($n_total >= 5 && $nome_tema == 'anfíbios' ){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_anfibios.png\"></div>
 </div>";
 
                                 }
-                                if ($n_total >= 4 && $nome_tema == 'animais' ){
+                                if ($n_total >= 5 && $nome_tema == 'animais' ){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_animais.png\"></div>
 </div>";
 
                                 }
-                                if ($n_total >= 3 && $nome_tema == 'beatas' ){
+                                if ($n_total >= 8 && $nome_tema == 'beatas' ){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_beatas.png\"></div>
 </div>";
 
                                 }
-                                if ($n_total >= 4 && $nome_tema == 'árvores de fruto'  ){
+                                if ($n_total >= 5 && $nome_tema == 'árvores de fruto'  ){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_frutos.png\"></div>
 </div>";
                                 }
-                                if ($n_total >= 4 && $nome_tema == 'incêndios florestais' ){
+                                if ($n_total >= 5 && $nome_tema == 'incêndios florestais' ){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_incendios.png\"></div>
 </div>";
                                 }
-                                if ($n_total >= 4 && $nome_tema == 'insetos'){
+                                if ($n_total >= 5 && $nome_tema == 'insetos'){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_insetos.png\"></div>
 </div>";
                                 }
-                                if ($n_total >= 4 && $nome_tema == 'observação animal' ){
+                                if ($n_total >= 5 && $nome_tema == 'observação animal' ){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_observacao.png\"></div>
 </div>";
                                 }
-                                if ($n_total >= 4 && $nome_tema == 'palestras'){
+                                if ($n_total >= 6 && $nome_tema == 'palestras'){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_palestras.png\"></div>
 </div>";
                                 }
-                                if ($n_total >= 4 && $nome_tema == 'plantação'){
+                                if ($n_total >= 8 && $nome_tema == 'plantação'){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_plantar.png\"></div>
 </div>";
                                 }
-                                if ($n_total >= 4 &&$nome_tema == 'poluição' ){
+                                if ($n_total >= 5 &&$nome_tema == 'poluição' ){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_poluicao.png\"></div>
 </div>";
                                 }
-                                if ($n_total >= 4 && $nome_tema == 'praias' ){
+                                if ($n_total >= 5 && $nome_tema == 'praias' ){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_praias.png\"></div>
 </div>";
                                 }
-                                if ($n_total >= 4 && $nome_tema == 'reciclagem'){
+                                if ($n_total >= 5 && $nome_tema == 'reciclagem'){
                                     echo "<div class=\"col-4\">
 <div class=\"square1 img-fluid\"><img src=\"img/trofeus/trof_reciclar.png\"></div>
 </div>";
