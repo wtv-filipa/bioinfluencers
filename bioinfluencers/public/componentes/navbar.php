@@ -7,6 +7,18 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
 }
 ?>
 
+<style>
+    .zoom {
+        padding: 50px;
+
+        transition: transform .2s; /* Animation */
+        margin: 0 auto;
+    }
+
+    .zoom:hover {
+        transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+</style>
 <header class="top  ">
 
 
@@ -178,12 +190,12 @@ if (isset($_SESSION["nickname"]) && isset($_SESSION["tipo"])) {
 
         <ul class="ml-2">
 
-            <li><a class="nav__link mr-2 mb-3" href="index.php"><img src="img/feed.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Feed</span></a></li>
-            <li><a class="nav__link mr-2 mb-3" href="eventos.php"><img src="img/eventos_icon.png" alt="" class="icones nav__link--icon"/></span><span class="nav__link--text">Eventos</span></a></li>
-            <li><a class="nav__link mr-2 mb-3" href="top.php"><img src="img/top.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Top</span></a></li>
-            <li><a class="nav__link mr-2 mb-3" href="noticias.php"><img src="img/noticias.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Notícias</span></a></li>
-            <li><a class="nav__link mr-2 mb-3" href="grupos.php"><img src="img/grupos.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Grupos</span></a></li>
-            <li><a class="nav__link mr-2 mb-3" href="codigo_evento.php"><img src="img/med_trof.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Inserir código</span></a></li>
+            <li><a class="nav__link mr-2 mb-3 zoom" href="index.php"><img src="img/feed.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Feed</span></a></li>
+            <li><a class="nav__link mr-2 mb-3 zoom" href="eventos.php"><img src="img/eventos_icon.png" alt="" class="icones nav__link--icon"/></span><span class="nav__link--text">Eventos</span></a></li>
+            <li><a class="nav__link mr-2 mb-3 zoom" href="top.php"><img src="img/top.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Top</span></a></li>
+            <li><a class="nav__link mr-2 mb-3 zoom" href="noticias.php"><img src="img/noticias.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Notícias</span></a></li>
+            <li><a class="nav__link mr-2 mb-3 zoom" href="grupos.php"><img src="img/grupos.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Grupos</span></a></li>
+            <li><a class="nav__link mr-2 mb-3 zoom" href="codigo_evento.php"><img src="img/med_trof.png" alt="" class="icones nav__link--icon"/><span class="nav__link--text">Inserir código</span></a></li>
 
         </ul>
     </div>

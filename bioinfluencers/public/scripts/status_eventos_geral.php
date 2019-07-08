@@ -30,7 +30,7 @@ if (isset($_GET['interessado']) && isset($_SESSION['id_utilizadores'])) {
 
             // SUCCESS ACTION
             //echo "olha vai ao evento!";
-            header("Location: ../evento_indv.php?id_e=".$id_e."");
+            header("Location: ../eventos.php");
         } else {
             // ERROR ACTION
 
@@ -81,16 +81,13 @@ if (isset($_GET['interessado']) && isset($_SESSION['id_utilizadores'])) {
         mysqli_close($link3);
 
         //echo "deixou de seguir";
-        header("Location: ../evento_indv.php?id_e=".$id_e."");
+        header("Location: ../eventos.php");
 
 
 
 
     }
 }
-
-
-
 
 
 if (isset($_GET['vai']) && isset($_SESSION['id_utilizadores'])) {
@@ -120,7 +117,7 @@ echo "kjadfhgalthgçtg";
 
             // SUCCESS ACTION
             //echo "olha vai ao evento!";
-            header("Location: ../evento_indv.php?id_e=".$id_e."");
+            header("Location: ../eventos.php");
         } else {
             // ERROR ACTION
 
@@ -170,7 +167,7 @@ echo "kjadfhgalthgçtg";
         mysqli_close($link5);
 
         //echo "deixou de seguir";
-        header("Location: ../evento_indv.php?id_e=".$id_e."");
+        header("Location: ../eventos.php");
 
 
 

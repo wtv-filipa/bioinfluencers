@@ -24,24 +24,17 @@
             ?>
             <div class="event-card">
                 <a href="evento_indv.php?id_e=<?= $id_e ?>">
-                    <img src="../admin/uploads/eventos/<?= $filename ?>" alt=""/>
+                    <img class="img-fluid lala" src="../admin/uploads/eventos/<?= $filename ?>" alt=""/>
                 </a>
                 <div class="description">
-                    <a href="evento_indv.php?id_e=<?= $id_e ?>"><h4 class="mt-2"><span
-                                    style="font-weight: bold;"><?= $data_inicio ?> | </span><?= $nome ?></h4></a>
+                    <a href="evento_indv.php?id_e=<?= $id_e ?>"><h4 class="mt-2" style="text-decoration: none !important;"><span
+                                    style="font-weight: bold;"><?= substr($data_inicio, 0, 10) ?>   |   </span><?= $nome ?></h4></a>
                     <p class="location mb-0"><?= $local ?></p>
                     <i class="fa fa-clock-o mr-2" aria-hidden="true"></i><?= substr($data_inicio, 10, 6) ?>h
                     - <?= substr($data_fim, 10, 6) ?>h
-                    <div class="controls">
-                        <a href="#">
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-share" aria-hidden="true"></i>
-                        </a>
+                    <div class="controls w-50 mx-auto">
+
+                        <a href="evento_indv.php?id_e=<?= $id_e ?>"><button style="font-size: 1.3rem; color: black; width: 100%" class="buttonCustomise1 btn btn-default "><i class="fa fa-plus-circle" aria-hidden="true"></i> <span style="font-size: 1.1rem">Ver mais</span></button></a>
                     </div>
                 </div>
             </div>

@@ -301,7 +301,7 @@ label {
     text-align: right;
 }
 #slide1 ul li:hover{
-    background-color: #fff;
+
 }
 .active1{
     background-color: #f2f2f2;
@@ -663,6 +663,7 @@ a.float:hover + div.label-container{
     display: inline-block;
     cursor: default;
     width: 100%;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .back-sobre {
@@ -684,7 +685,7 @@ a.float:hover + div.label-container{
 }
 
 .eventos_ind .event-card-ind .description {
-    padding: 5px 15px 15px;
+    padding: 5px;
 }
 
 .eventos_ind .event-card-ind .description h3 {
@@ -720,16 +721,28 @@ a.float:hover + div.label-container{
     width: 20%;
     text-align: center;
     padding: 2px;
+    text-decoration: none;
 }
 
 .events .event-card .description .controls a:hover {
     background-color: #ddd;
     border-radius: 20px;
+    text-decoration: none !important;
+
+
+
+}
+
+
+.events .event-card .description a:hover {
+    text-decoration: none;
+
 }
 
 .eventos_ind .event-card-ind .description .controls a:hover {
     background-color: #ddd;
     border-radius: 20px;
+
 }
 
 .events .event-card .description .location {
@@ -819,7 +832,8 @@ a.float:hover + div.label-container{
 
     .titulo_prin {
 
-        font-size: 30px;
+        font-size: 25px;
+
     }
 }
 
@@ -1683,19 +1697,22 @@ p{
     text-align: center;
     margin-bottom: 40px
 }
-/*
-@media only screen and (max-width: 600px)  {
-     .top_phone div {
+
+@media (max-width: 600px) {
+
+
+    .top_phone div {
         display:block;
     }
     .box-ranking div {
         display: none;
     }
+
 }
 
-@media only screen and (min-width: 600px) {
+@media (min-width: 599px) {
 
-   .top_phone div{
+    .top_phone div{
         display: none;
     }
 
@@ -1703,9 +1720,7 @@ p{
         display: block ;
 
     }
-}*/
-
-
+}
 
 
 .coroas1 {
