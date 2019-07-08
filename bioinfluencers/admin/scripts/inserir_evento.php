@@ -25,7 +25,7 @@ if (file_exists($target_file)) {
 }
 
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 5000000) {
+if ($_FILES["fileToUpload"]["size"] > 7000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
@@ -45,7 +45,7 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
 
-        if (isset($_POST["nome"]) && isset($_POST["data_inicio"]) && isset($_POST["data_fim"]) && isset($_POST["hora_inicio"]) && isset($_POST["hora_fim"]) && isset($_POST["local"]) && isset($_POST["descricao"]) && isset($_POST["custos"]) && isset($_POST["responsavel"]) && isset($_POST["tema_noticia"]) && isset($_POST["grupo"]) && isset($_FILES["fileToUpload"])) {
+        if (isset($_POST["nome"]) && isset($_POST["data_inicio"]) && isset($_POST["data_fim"]) && isset($_POST["local"]) && isset($_POST["descricao"]) && isset($_POST["custos"]) && isset($_POST["responsavel"]) && isset($_POST["tema_noticia"]) && isset($_POST["grupo"]) && isset($_FILES["fileToUpload"])) {
 
             $ficheiro = $_FILES["fileToUpload"]["name"];
             //$tipo = $_POST["tipo"];
@@ -74,16 +74,14 @@ if ($uploadOk == 0) {
                 }
                 $link2 = new_db_connection();
                 $stmt2 = mysqli_stmt_init($link2);
-                $query2 = "INSERT INTO eventos (nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, grupos_id_grupos, responsavel, conteudos_id_conteudos, tema_evento_idtema_evento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                $query2 = "INSERT INTO eventos (nome, data_inicio, data_fim, local, descricao, custos, grupos_id_grupos, responsavel, conteudos_id_conteudos, tema_evento_idtema_evento) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
                 if (mysqli_stmt_prepare($stmt2, $query2)) {
-                    mysqli_stmt_bind_param($stmt2, 'sssssssiisii', $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $descricao, $custos, $grupos_id_grupos, $responsavel, $last_id, $tema_evento_idtema_evento);
+                    mysqli_stmt_bind_param($stmt2, 'sssssiisii', $nome, $data_inicio, $data_fim, $local, $descricao, $custos, $grupos_id_grupos, $responsavel, $last_id, $tema_evento_idtema_evento);
 
                     $nome = $_POST['nome'];
                     $data_inicio = $_POST['data_inicio'];
                     $data_fim = $_POST['data_fim'];
-                    $hora_inicio = $_POST['hora_inicio'];
-                    $hora_fim = $_POST['hora_fim'];
                     $local = $_POST['local'];
                     $descricao = $_POST['descricao'];
                     $custos = $_POST['custos'];

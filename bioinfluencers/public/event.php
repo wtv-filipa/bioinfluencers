@@ -5,12 +5,12 @@ require_once ("connections/connection.php");
 $link= new_db_connection();
 $stmt= mysqli_stmt_init($link);
 
-$sqlEvents= "SELECT id_eventos, nome, data_inicio, data_fim, hora_inicio, hora_fim FROM eventos";
+$sqlEvents= "SELECT id_eventos, nome, data_inicio, data_fim FROM eventos";
 
 if (mysqli_stmt_prepare($stmt, $sqlEvents)) {
 
     mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $id_eventos, $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim);
+    mysqli_stmt_bind_result($stmt, $id_eventos, $nome, $data_inicio, $data_fim);
 
     $calendar = array();
 

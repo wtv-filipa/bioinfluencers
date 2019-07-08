@@ -301,7 +301,7 @@ label {
     text-align: right;
 }
 #slide1 ul li:hover{
-    background-color: #fff;
+
 }
 .active1{
     background-color: #f2f2f2;
@@ -663,6 +663,7 @@ a.float:hover + div.label-container{
     display: inline-block;
     cursor: default;
     width: 100%;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .back-sobre {
@@ -684,7 +685,7 @@ a.float:hover + div.label-container{
 }
 
 .eventos_ind .event-card-ind .description {
-    padding: 5px 15px 15px;
+    padding: 5px;
 }
 
 .eventos_ind .event-card-ind .description h3 {
@@ -720,16 +721,28 @@ a.float:hover + div.label-container{
     width: 20%;
     text-align: center;
     padding: 2px;
+    text-decoration: none;
 }
 
 .events .event-card .description .controls a:hover {
     background-color: #ddd;
     border-radius: 20px;
+    text-decoration: none !important;
+
+
+
+}
+
+
+.events .event-card .description a:hover {
+    text-decoration: none;
+
 }
 
 .eventos_ind .event-card-ind .description .controls a:hover {
     background-color: #ddd;
     border-radius: 20px;
+
 }
 
 .events .event-card .description .location {
@@ -819,7 +832,8 @@ a.float:hover + div.label-container{
 
     .titulo_prin {
 
-        font-size: 30px;
+        font-size: 25px;
+
     }
 }
 
@@ -828,13 +842,395 @@ a.float:hover + div.label-container{
 
 /*PERFIL*/
 
+
 .img_redonda {
     width: 100%;
     height: 100%;
     border-radius: 100%;
 }
 
+/*imagem de perfil*/
 
+
+/* Extra small devices (0px --- 599px) */
+@media only screen and (max-width: 599px) {
+    .img_redonda {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+    .avatar-upload {
+        position: relative;
+        max-width: 200px;
+        display: block;
+        margin: auto;
+    }
+
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+    }
+
+
+    label.label :hover {
+        background: #f1f1f1;
+        border-color: #d6d6d6;
+    }
+
+    label.label::before{
+        color: black;
+        position: relative;
+        top: 17%;
+        text-align: center;
+        display: block;
+        margin: auto;
+    }
+
+    label.label {
+        align-content: end;
+        width: 28px;
+        height: 28px;
+        border-radius: 100%;
+        background: #FFFFFF;
+        border: 1px solid transparent;
+        box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+        display: block;
+        margin-left: 65%;
+        margin-top: -27%;
+        z-index: 200;
+    }
+
+    .avatar-preview {
+        width: 140%;
+        height: 140%;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        z-index: 0;
+        margin-left: -14%;
+    }
+
+    .avatar-preview > div {
+        width: 140%;
+        height: 140%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .cima{
+        margin-top: -10%;
+    }
+
+    .alinhar1{
+        text-align: center;
+    }
+    .alinhar2{
+        text-align: center;
+    }
+
+
+}
+/* Small devices (600px --- 767px) */
+@media only screen and (min-width: 600px) {
+
+    .img_redonda {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+    .avatar-upload {
+        position: relative;
+        max-width: 200px;
+        display: block;
+        margin: auto;
+    }
+
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+    }
+
+
+    label.label :hover {
+        background: #f1f1f1;
+        border-color: #d6d6d6;
+    }
+
+    label.label::before{
+        color: black;
+        position: relative;
+        top: 17%;
+        text-align: center;
+        display: block;
+        margin: auto;
+    }
+
+    label.label {
+        align-content: end;
+        width: 34px;
+        height: 34px;
+        border-radius: 100%;
+        background: #FFFFFF;
+        border: 1px solid transparent;
+        box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+        display: block;
+        margin-left: -20%;
+        margin-top: -27%;
+        z-index: 200;
+    }
+
+    .avatar-preview {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        z-index: 0;
+    }
+
+    .avatar-preview > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+}
+/* Medium devices (768px --- 991px) */
+@media only screen and (min-width: 768px) {
+    .img_redonda {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+    .avatar-upload {
+        position: relative;
+        max-width: 200px;
+        display: block;
+        margin: auto;
+    }
+
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+    }
+
+
+    label.label :hover {
+        background: #f1f1f1;
+        border-color: #d6d6d6;
+    }
+
+    label.label::before{
+        color: black;
+        position: relative;
+        top: 17%;
+        text-align: center;
+        display: block;
+        margin: auto;
+    }
+
+    label.label {
+        align-content: end;
+        width: 34px;
+        height: 34px;
+        border-radius: 100%;
+        background: #FFFFFF;
+        border: 1px solid transparent;
+        box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+        display: block;
+        margin-left: -86%;
+        z-index: 200;
+    }
+
+    .avatar-preview {
+        width: 90%;
+        height: 90%;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        z-index: 0;
+    }
+
+    .avatar-preview > div {
+        width: 90%;
+        height: 90%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .cima{
+        margin-top: 2%;
+    }
+}
+/* Large devices (992px --- 1199px) */
+@media only screen and (min-width: 992px) {
+    .img_redonda {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+    .avatar-upload {
+        position: relative;
+        max-width: 205px;
+        display: block;
+        margin: auto;
+    }
+
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+    }
+
+
+    label.label :hover {
+        background: #f1f1f1;
+        border-color: #d6d6d6;
+    }
+
+    label.label::before{
+        color: black;
+        position: relative;
+        top: 17%;
+        text-align: center;
+        display: block;
+        margin: auto;
+    }
+
+    label.label {
+        align-content: end;
+        width: 34px;
+        height: 34px;
+        border-radius: 100%;
+        background: #FFFFFF;
+        border: 1px solid transparent;
+        box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+        display: block;
+        margin-left: -85%;
+        z-index: 200;
+    }
+
+    .avatar-preview {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        z-index: 0;
+    }
+
+    .avatar-preview > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .cima{
+        margin-top: 2%;
+    }
+}
+/* Extra large devices (1200 e superior) */
+@media only screen and (min-width: 1200px) {
+    .img_redonda {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+    .avatar-upload {
+        position: relative;
+        max-width: 205px;
+        display: block;
+        margin: auto;
+    }
+
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+    }
+
+
+    label.label :hover {
+        background: #f1f1f1;
+        border-color: #d6d6d6;
+    }
+
+    label.label::before{
+        color: black;
+        position: relative;
+        top: 17%;
+        text-align: center;
+        display: block;
+        margin: auto;
+    }
+
+    label.label {
+        align-content: end;
+        width: 34px;
+        height: 34px;
+        border-radius: 100%;
+        background: #FFFFFF;
+        border: 1px solid transparent;
+        box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+        display: block;
+        margin-left: -85%;
+        z-index: 200;
+    }
+
+    .avatar-preview {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        z-index: 0;
+    }
+
+    .avatar-preview > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .cima{
+        margin-top: 2%;
+    }
+}
 /***********/
 
 .tamanho {
@@ -1301,19 +1697,22 @@ p{
     text-align: center;
     margin-bottom: 40px
 }
-/*
-@media only screen and (max-width: 600px)  {
-     .top_phone div {
+
+@media (max-width: 600px) {
+
+
+    .top_phone div {
         display:block;
     }
     .box-ranking div {
         display: none;
     }
+
 }
 
-@media only screen and (min-width: 600px) {
+@media (min-width: 599px) {
 
-   .top_phone div{
+    .top_phone div{
         display: none;
     }
 
@@ -1321,9 +1720,7 @@ p{
         display: block ;
 
     }
-}*/
-
-
+}
 
 
 .coroas1 {

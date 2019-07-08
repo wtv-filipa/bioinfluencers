@@ -64,7 +64,7 @@ session_start();
                 }).then(function(){
                     console.log('jQuery bind complete');
                 });
-            }
+            };
             reader.readAsDataURL(this.files[0]);
             $('#uploadimageModal').modal('show');
         });

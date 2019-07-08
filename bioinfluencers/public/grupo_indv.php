@@ -16,8 +16,7 @@ session_start();
     <?php include "helpers/fonts.php"; ?>
 
     <!-- Custom styles for this template-->
-
-    <?php include "helpers/css.php"; ?>
+    <?php include "helpers/css_grupo_ind.php";?>
 
 </head>
 

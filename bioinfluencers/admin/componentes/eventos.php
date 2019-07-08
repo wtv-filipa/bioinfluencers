@@ -49,7 +49,7 @@
 
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_eventos, nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, responsavel 
+                    $query = "SELECT id_eventos, nome, data_inicio, data_fim, local, descricao, custos, responsavel 
                               FROM eventos 
                               WHERE nome LIKE ?";
 
@@ -78,7 +78,7 @@
                     mysqli_stmt_bind_param($stmt, 's', $pesquisar);
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $id_evento, $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $descricao, $custos, $responsavel);
+                    mysqli_stmt_bind_result($stmt, $id_evento, $nome, $data_inicio, $data_fim, $local, $descricao, $custos, $responsavel);
                     while (mysqli_stmt_fetch($stmt)) {
 
                         ?>
@@ -86,7 +86,7 @@
                         <tr>
                             <td><?= $nome?></td>
                             <td><?= $local?></td>
-                            <td><?= $data_inicio. " -> ". $data_fim?></td>
+                            <td><?= substr($data_inicio, 0, 10)?></td>
                             <td><a href="participantes.php?id_e=<?=$id_evento?>">Ver participantes</td>
                             <td><?= $responsavel?></td>
                             <td>
@@ -109,7 +109,7 @@
                                 $link2 = new_db_connection();
                                 $stmt2 = mysqli_stmt_init($link2);
 
-                                $query2 = "SELECT id_eventos, nome, data_inicio, data_fim, hora_inicio, hora_fim, local, descricao, custos, responsavel FROM eventos WHERE id_eventos=?";
+                                $query2 = "SELECT id_eventos, nome, data_inicio, data_fim, local, descricao, custos, responsavel FROM eventos WHERE id_eventos=?";
 
 
                                 if (mysqli_stmt_prepare($stmt2, $query2)) {
@@ -118,7 +118,7 @@
                                     /* execute the prepared statement */
                                     mysqli_stmt_execute($stmt2);
                                     /* bind result variables */
-                                    mysqli_stmt_bind_result($stmt2, $id_evento, $nome, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $descricao, $custos, $responsavel);
+                                    mysqli_stmt_bind_result($stmt2, $id_evento, $nome, $data_inicio, $data_fim, $local, $descricao, $custos, $responsavel);
 
                                     /* resultados da store */
                                     mysqli_stmt_store_result($stmt2);
@@ -142,10 +142,10 @@
                                         <p><?=$responsavel?></p>
                                         <hr style="background-color: #78BE20; opacity: 0.3">
                                         <h5>Data:</h5>
-                                        <p><?=$data_inicio. " -> ". $data_fim?></p>
+                                        <p><?=substr($data_inicio, 0, 10). " -> ". substr($data_fim, 0, 10)?></p>
                                         <hr style="background-color: #78BE20; opacity: 0.3">
                                         <h5>Horário:</h5>
-                                        <p><?=$hora_inicio. " -> ". $hora_fim?></p>
+                                        <p><?=substr($data_inicio, 10, 6)."h -> ". substr($data_fim, 10, 6)."h"?></p>
                                         <hr style="background-color: #78BE20; opacity: 0.3">
                                         <h5>Local:</h5>
                                         <p><?=$local?></p>

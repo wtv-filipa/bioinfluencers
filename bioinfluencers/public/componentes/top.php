@@ -7,51 +7,62 @@
             <div class="media-ranking-item segundo-colocado">
                 <img class="coroas img-fluid" src="img/coroa2.png" alt="">
                 <img class="br img-ranking" src="img/pessoa1.jpg" alt="">
-                <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>Pereiro </small>
+                <h5 class="name-user">#2 • Sérgio Matos</h5>
+                <small>49857 pontos</small>
             </div>
         </div>
         <div class="col-sm-4 primeiro-colocado">
             <div class="media-ranking-item">
                 <img class="coroas1" src="img/coroa1.png" alt="">
                 <img class="br img-ranking" src="img/pessoa2.jpg" alt="">
-                <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>Pereiro </small>
+
+                <h5 class="name-user"> #1 • Lara Santos</h5>
+                <small>50154 pontos</small>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="media-ranking-item terceiro-colocado">
                 <img class="coroas" src="img/coroa2.png" alt="">
                 <img class="br img-ranking" src="img/pessoa3.jpg" alt="">
-                <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>Pereiro </small>
+                <h5 class="name-user">#3 • Mara Vaz</h5>
+                <small>45755 pontos</small>
             </div>
         </div>
     </div>
-   <!--
-    <div class="row top_phone">
-        <div class="col-sm-4">
-            <div class="media-ranking-item segundo-colocado">
-                <img class="br img-ranking" src="img/pessoa2.jpg" alt="">
-                <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>Pereiro </small>
-            </div>
-        </div>
+
+
+    <div class="row no-gutters top_phone" style="margin-top: 9%">
+
+
         <div class="col-sm-4 primeiro-colocado">
             <div class="media-ranking-item">
+                <img class="coroas1" src="img/coroa1.png" alt="">
                 <img class="br img-ranking" src="img/pessoa2.jpg" alt="">
-                <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>Pereiro </small>
+                <h5 class="name-user">#1 • Sérgio Matos</h5>
+                <small>49857 pontos</small>
             </div>
         </div>
+
+        <div class="col-sm-4">
+            <div class="media-ranking-item segundo-colocado">
+                <img class="coroas img-fluid" src="img/coroa2.png" alt="">
+                <img class="br img-ranking" src="img/pessoa1.jpg" alt="">
+                <h5 class="name-user">#2 • Lara Santos</h5>
+                <small>50154 pontos</small>
+            </div>
+        </div>
+
         <div class="col-sm-4">
             <div class="media-ranking-item terceiro-colocado">
-                <img class="br img-ranking" src="img/pessoa2.jpg" alt="">
-                <h5 class="name-user">Alex Alan Nunes</h5>
-                <small>Pereiro </small>
+                <img class="coroas" src="img/coroa2.png" alt="">
+                <img class="br img-ranking" src="img/pessoa3.jpg" alt="">
+                <h5 class="name-user">#3 • Mara Vaz</h5>
+                <small>45755 pontos</small>
             </div>
         </div>
-    </div> -->
+    </div>
+
+
 
 
 
@@ -59,31 +70,31 @@
     <div class="row linha-ultimos">
         <div class="col-md-12">
             <div class="flex-row">
-                <h5 class="number-ranking-position">5</h5>
-                <img class="br img-list-ultimos" src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" alt="">
+                <h5 class="number-ranking-position">#4</h5>
+                <img class="br img-list-ultimos" src="img/pessoa4.jpg" alt="">
                 <div class="name-user-ranking-cidade">
-                    <h5 class="name-user-ultimos">Alex Alan Nunes</h5>
-                    <span>Pereiro</span>
+                    <h5 class="name-user-ultimos">Rúben Pinto</h5>
+                    <span>47859 pontos</span>
                 </div>
             </div>
         </div>
         <div class="col-md-12">
             <div class="flex-row">
-                <h5 class="number-ranking-position">5</h5>
-                <img class="br img-list-ultimos" src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" alt="">
+                <h5 class="number-ranking-position">#5</h5>
+                <img class="br img-list-ultimos" src="img/pessoa3.jpg" alt="">
                 <div class="name-user-ranking-cidade">
-                    <h5 class="name-user-ultimos">Alex Alan Nunes</h5>
-                    <span>Pereiro</span>
+                    <h5 class="name-user-ultimos">Mara Vaz</h5>
+                    <span>46874 pontos</span>
                 </div>
             </div>
         </div>
         <div class="col-md-12">
             <div class="flex-row">
-                <h5 class="number-ranking-position">5</h5>
-                <img class="br img-list-ultimos" src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" alt="">
+                <h5 class="number-ranking-position">#6</h5>
+                <img class="br img-list-ultimos" src="img/pessoa1.jpg" alt="">
                 <div class="name-user-ranking-cidade">
-                    <h5 class="name-user-ultimos">Alex Alan Nunes</h5>
-                    <span>Pereiro</span>
+                    <h5 class="name-user-ultimos">Sérgio Matos</h5>
+                    <span>45778 pontos</span>
                 </div>
             </div>
         </div>

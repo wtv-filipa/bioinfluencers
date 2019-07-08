@@ -21,12 +21,11 @@ p{
 
 /*meus*/
 
-.buttonCustomise{
-  border-radius: 15px;
+.buttonCustomise1{
+  border-radius: 20px;
   background-color: #cdcdcd;
   color : white;
-  background-color: #cdcdcd;
-  width: 100px;
+  width: 500px;
   padding: 2px;
 }
 

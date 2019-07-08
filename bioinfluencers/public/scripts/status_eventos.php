@@ -3,12 +3,14 @@ session_start();
 require_once "../connections/connection.php";
 
 
-if (isset($_GET['id']) && isset($_GET['interessado']) && isset($_SESSION['id_utilizadores'])) {
+if (isset($_GET['interessado']) && isset($_SESSION['id_utilizadores'])) {
 
-    $id_e = $_GET["id"];
-    $interessado= $_GET["interessado"];
+    $id_e= $_GET["interessado"];
     $id_navegar= $_SESSION["id_utilizadores"];
+    $interessado= "interessado";
 
+    echo $id_e;
+    echo $id_navegar;
 
     $link2 = new_db_connection();
 
@@ -27,7 +29,8 @@ if (isset($_GET['id']) && isset($_GET['interessado']) && isset($_SESSION['id_uti
             mysqli_close($link2);
 
             // SUCCESS ACTION
-            //header("Location: ../evento_indv.php?id_e=$id_e");
+            //echo "olha vai ao evento!";
+            header("Location: ../evento_indv.php?id_e=".$id_e."");
         } else {
             // ERROR ACTION
 
@@ -37,22 +40,21 @@ if (isset($_GET['id']) && isset($_GET['interessado']) && isset($_SESSION['id_uti
 
     } else {
 
-        echo "olha seguiu!";
+
         // ERROR ACTION
         echo "Error:" . mysqli_error($link2);
         mysqli_close($link2);
     }
 
 
-
-
 }else {
-    if (isset($_GET['id']) && isset($_GET['naointeressado']) && isset($_SESSION['id_utilizadores'])) {
+    if (isset($_GET['naointeressado']) && isset($_SESSION['id_utilizadores'])) {
 
-        $id_e = $_GET["id"];
-        $naointeressado= $_GET["naointeressado"];
+        $id_e= $_GET["naointeressado"];
         $id_navegar= $_SESSION["id_utilizadores"];
 
+        echo $id_e;
+        echo $id_navegar;
 
         $link3 = new_db_connection();
 
@@ -78,8 +80,98 @@ if (isset($_GET['id']) && isset($_GET['interessado']) && isset($_SESSION['id_uti
         }
         mysqli_close($link3);
 
-        echo "deixou de seguir";
-        //header("Location: ../categorias.php");
+        //echo "deixou de seguir";
+        header("Location: ../evento_indv.php?id_e=".$id_e."");
+
+
+
+
+    }
+}
+
+
+
+
+
+if (isset($_GET['vai']) && isset($_SESSION['id_utilizadores'])) {
+
+    $id_e= $_GET["vai"];
+    $id_navegar= $_SESSION["id_utilizadores"];
+    $vai= "vai";
+
+
+echo "kjadfhgalthgçtg";
+
+    $link4 = new_db_connection();
+
+    $stmt4 = mysqli_stmt_init($link4);
+
+    $query4 = "INSERT INTO rsvp (eventos_interesse, utilizadores_interessados, status) VALUES (?,?,?)";
+
+
+    if (mysqli_stmt_prepare($stmt4, $query4)) {
+        mysqli_stmt_bind_param($stmt4, 'iis',  $id_e, $id_navegar, $vai);
+
+
+        // VALIDAÇÃO DO RESULTADO DO EXECUTE
+        if (mysqli_stmt_execute($stmt4)){
+            mysqli_stmt_close($stmt4);
+            mysqli_close($link4);
+
+            // SUCCESS ACTION
+            //echo "olha vai ao evento!";
+            header("Location: ../evento_indv.php?id_e=".$id_e."");
+        } else {
+            // ERROR ACTION
+
+            //header("Location: ../register.php?msg=0");
+            echo "Error:" . mysqli_stmt_error($stmt4);
+        }
+
+    } else {
+
+
+        // ERROR ACTION
+        echo "Error:" . mysqli_error($link4);
+        mysqli_close($link4);
+    }
+
+
+}else {
+    if (isset($_GET['naovai']) && isset($_SESSION['id_utilizadores'])) {
+
+        $id_e= $_GET["naovai"];
+        $id_navegar= $_SESSION["id_utilizadores"];
+
+
+
+        $link5 = new_db_connection();
+
+        $stmt5 = mysqli_stmt_init($link5);
+
+        $query5 = "DELETE FROM rsvp WHERE eventos_interesse=? AND utilizadores_interessados=?";
+
+        if (mysqli_stmt_prepare($stmt5, $query5)) {
+            mysqli_stmt_bind_param($stmt5, 'ii', $id_e, $id_navegar);
+
+            //header("Location: ../evento_indv.php?id_e=$id_e");
+            // VALIDAÇÃO DO RESULTADO DO EXECUTE
+            if (!mysqli_stmt_execute($stmt5)) {
+
+                echo "ERROR:" . mysqli_error($link5);
+
+            }
+
+            mysqli_stmt_close($stmt5);
+        }else {
+
+            echo "Error:" . mysqli_stmt_error($stmt5);
+        }
+        mysqli_close($link5);
+
+        //echo "deixou de seguir";
+        header("Location: ../evento_indv.php?id_e=".$id_e."");
+
 
 
 
