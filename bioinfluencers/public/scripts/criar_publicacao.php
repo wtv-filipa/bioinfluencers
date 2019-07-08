@@ -4,13 +4,13 @@ require_once "../connections/connection.php";
 
 
 
-if (isset($_POST["comentar"]) && $_SESSION["id_utilizadores"]) {
+if (isset($_POST["comentar"]) && $_SESSION["id_utilizadores"] && (!isset($_FILES["fileToUpload"]))) {
     $id = $_SESSION["id_utilizadores"];
     $link = new_db_connection();
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "INSERT INTO partilhas(descricao, utilizadores_id_utilizadores) VALUES(?,?)";
+    $query = "INSERT INTO partilhas(descricao, utilizadores_id_utilizadores_p) VALUES(?,?)";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
 
@@ -38,6 +38,7 @@ if (isset($_POST["comentar"]) && $_SESSION["id_utilizadores"]) {
     } else {
 
         // ERROR ACTION
+        echo "erro";
         echo "Error:" . mysqli_error($link);
         mysqli_close($link);
     }
@@ -98,7 +99,7 @@ if ($uploadOk == 0) {
 
             $stmt = mysqli_stmt_init($link);
 
-            $query = "INSERT INTO partilhas(descricao, utilizadores_id_utilizadores) VALUES(?,?)";
+            $query = "INSERT INTO partilhas(descricao, utilizadores_id_utilizadores_p) VALUES(?,?)";
 
             if (mysqli_stmt_prepare($stmt, $query)) {
 
@@ -159,7 +160,7 @@ if ($uploadOk == 0) {
 
 
         } else {
-
+            echo "fodeu gerau";
     }}}}
 
 

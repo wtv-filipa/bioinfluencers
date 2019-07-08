@@ -8,14 +8,17 @@
         </div>
 
         <div class="text-center">
-            <h2 class="semibold preto mb-5 mt-5">Insere um código</h2>
+            <h2 class="semibold preto mb-5 mt-4">Insere um código</h2>
+            <form method="post" action="scripts/codigo.php">
+                <input style="height: 45px"  class="text-center personalizar" type="text" placeholder="código" name="codigo">
+                <div class="text-center mt-4">
+                    <button class="buttonCustomise btn btn-primary" type="submit" name="Submit"> submeter
+                    </button>
+                </div>
 
-            <input style="height: 45px"  class="text-center personalizar" type="text" placeholder="código">
+            </form>
 
 
-            <div class="row">
-                <!-----------colocar aqui os icons--->
-            </div>
         </div>
 
         <div class="text-center mb-5">

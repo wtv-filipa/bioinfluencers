@@ -5,16 +5,10 @@ if (isset($_GET["id_e"])) {
 
     require_once("connections/connection.php");
 
-    ?>
-
-
-    <?php
     $link = new_db_connection();
-
 
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
-
 
     $query = "SELECT id_eventos, nome, data_inicio, data_fim, local, descricao, conteudos_id_conteudos, id_conteudos, responsavel, filename
               FROM eventos
@@ -171,7 +165,12 @@ WHERE eventos_interesse = ? AND utilizadores_interessados = ? AND status= 'vai'"
             }
                 ?>
 
-                <a href="scripts/status_eventos.php?naointeressado=$id_e"><button style="font-size: 1.3rem; color: black;"style='width: 100%' class="buttonCustomise btn btn-default"><i style="font-size: 1.2rem" class="fa fa-share" aria-hidden="true"></i> <span style="font-size: 1.2rem">0</span></button></a>
+                <a href="scripts/partilha_evento.php?e=<?= $id_e ?>">
+                    <button style="font-size: 1.3rem; color: black;"style='width: 100%' class="buttonCustomise btn btn-default">
+                        <i style="font-size: 1.2rem" class="fa fa-share" aria-hidden="true"></i>
+                        <span style="font-size: 1.2rem">0</span>
+                    </button>
+                </a>
 
                 </div>
                 </div>

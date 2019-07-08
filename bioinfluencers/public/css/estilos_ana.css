@@ -6,8 +6,12 @@ p{
     font-family: 'Dosis', sans-serif;
 }
 
-
-
+a > .gosto:hover {
+    color:#7FC53C;
+}
+a > .gosto1 {
+    color:#7FC53C;
+}
 
 /*noticias*/
 

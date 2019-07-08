@@ -43,9 +43,6 @@ if (isset($_GET['segue']) && isset($_SESSION['id_utilizadores'])){
     }
 
 
-
-
-
 }else {
     if (isset($_GET['naosegue']) && isset($_SESSION['id_utilizadores'])) {
 
