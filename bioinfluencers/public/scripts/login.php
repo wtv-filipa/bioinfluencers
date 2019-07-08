@@ -39,13 +39,13 @@ WHERE utilizadores_id_utilizadores = ? AND seguidores = ?";
 
 
                         if (!mysqli_stmt_fetch($stmt3)) {
-                           echo "ahajha0";
+                           //echo "ahajha0";
                             $id= $_SESSION["id_utilizadores"];
                             echo $id;
 
                             $id_navegar= $_SESSION["id_utilizadores"];
 
-                            echo "estás para seguir";
+                            //inserir o código caso o user ainda não o tenha na bd
 
                             $link2 = new_db_connection();
 
@@ -61,21 +61,17 @@ WHERE utilizadores_id_utilizadores = ? AND seguidores = ?";
                                 if (mysqli_stmt_execute($stmt2)) {
                                     mysqli_stmt_close($stmt2);
                                     mysqli_close($link2);
-                                    echo "olha seguiu!";
                                     // SUCCESS ACTION
 
                                 } else {
                                     // ERROR ACTION
+                                    header("Location: ../login.php?msg=2");
 
-                                    //header("Location: ../register.php?msg=0");
-                                    echo "Error:" . mysqli_stmt_error($stmt2);
                                 }
 
                             } else {
-
-
                                 // ERROR ACTION
-                                echo "Error:" . mysqli_error($link2);
+                                header("Location: ../login.php?msg=2");
                                 mysqli_close($link2);
                             }
 
@@ -84,8 +80,6 @@ WHERE utilizadores_id_utilizadores = ? AND seguidores = ?";
 
                         }
                     }
-
-
 
                     // feedback de sucesso
                     header("Location: ../index.php");

@@ -29,8 +29,8 @@
                                             $class = "alert-warning";
                                             break;
                                         case 2:
-                                            $message = "Utilizador criado com sucesso";
-                                            $class = "alert-success";
+                                            $message = "ocorreu um erro ao fazer login, por favor tente novamente...";
+                                            $class = "alert-warning";
                                             break;
                                         default:
                                             $msg_show = false;

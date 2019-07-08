@@ -44,20 +44,19 @@ if(isset($_POST["codigo"])) {
                         echo $pontos_u;
                         echo "<br>";
                         //echo "OLHA FEZ!!!!";
-                        //header("Location: ../codigo_evento.php");
+                        header("Location: ../codigo_evento.php?msg=1");
                     }
 
                 } else {
                     // ERROR ACTION
-                    //header("Location: ../register.php?msg=0");
-                    echo "Error:" . mysqli_stmt_error($stmt2);
+                    header("Location: ../codigo_evento.php?msg=0");
                 }
             }
         }
     }
 
     } else {
-        echo "DEU MERD*";
+    header("Location: ../codigo_evento.php?msg=0");
     }
 
 

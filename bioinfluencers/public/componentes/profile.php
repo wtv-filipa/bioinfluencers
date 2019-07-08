@@ -33,7 +33,7 @@ if (isset($_GET["user"]) && $_SESSION["id_utilizadores"]) {
 
 
         $query16 = "SELECT COUNT(seguidores) FROM utilizadores_has_utilizadores INNER JOIN utilizadores ON utilizadores_has_utilizadores.utilizadores_id_utilizadores= utilizadores.id_utilizadores
-WHERE id_utilizadores=? ";
+WHERE id_utilizadores=?  AND utilizadores_id_utilizadores!=seguidores";
 
 
         // Create a new DB connection
@@ -45,7 +45,7 @@ WHERE id_utilizadores=? ";
 
 
         $query17 = "SELECT COUNT(utilizadores_id_utilizadores) FROM utilizadores_has_utilizadores
-WHERE seguidores=?";
+WHERE seguidores=?  AND utilizadores_id_utilizadores!=seguidores";
 
 
         ?>
@@ -53,10 +53,33 @@ WHERE seguidores=?";
             <header id="perfil">
 
             <div class="container">
+                <div class="topo">
 
-            <div class="topo">
+                </div>
+                <?php
+                if (isset($_GET["msg"])) {
+                    $msg_show = true;
+                    switch ($_GET["msg"]) {
+                        case 0:
+                            $message = "ocorreu um erro, por favor tente novamente...";
+                            $class = "alert-warning";
+                            break;
+                        default:
+                            $msg_show = false;
+                    }
 
-            </div>
+                    echo "<div class=\"alert $class alert-dismissible fade show mt-5\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+                    if ($msg_show) {
+                        echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+                    }
+                }
+                ?>
+
+
             <!--DIV QUE CONTÉM OS SEGUIDORES E A FOTO DE PERFIL-->
             <div class="row text-center topo">
 
@@ -181,7 +204,7 @@ WHERE utilizadores_id_utilizadores = ? AND seguidores = ?";
                         if (!mysqli_stmt_fetch($stmt14)){
                             //echo "no results";
                             echo "
-<button class=\"buttonCustomise btn btn-primary\" type=\"submit\" value=\"Upload Image\" name=\"Submit\"> Seguir</button>
+<button style='width: 12%' class=\"buttonCustomise btn btn-primary\" type=\"submit\" value=\"Upload Image\" name=\"Submit\"> Seguir</button>
 ";
                             ?>
                             </a>
@@ -190,12 +213,13 @@ WHERE utilizadores_id_utilizadores = ? AND seguidores = ?";
 
                         else{
                             //echo "relação existe";
-                            echo " <a href=\"scripts/seguir.php?naosegue=$id_u\"><button style='width: 12%' class=\"buttonCustomise btn btn-primary\" type=\"submit\" value=\"Upload Image\" name=\"Submit\">Não Seguir </button></a>";
+                            echo " <a href=\"scripts/seguir.php?naosegue=$id_u\"><button style='width: 12%; background-color: #f1f2f2; color: black;' class=\"buttonCustomise btn btn-light\" type=\"submit\" value=\"Upload Image\" name=\"Submit\">Não Seguir </button></a>";
                         }
 
                     }
 
                     ?>
+
 
                     <h6 class="mt-2">@<?= $nickname ?> |<b> <?= $pontos ?></b> pontos </h6>
                     <?php
@@ -286,7 +310,7 @@ WHERE utilizadores_id_utilizadores = ? AND seguidores = ?";
                     $stmt5 = mysqli_stmt_init($link5);
 
 
-                    $query5 = "SELECT  filename FROM conteudos INNER JOIN partilhas ON conteudos.partilhas_id_partilhas= partilhas.id_partilhas INNER JOIN utilizadores ON partilhas.utilizadores_id_utilizadores= utilizadores.id_utilizadores
+                    $query5 = "SELECT  filename FROM conteudos INNER JOIN partilhas ON conteudos.partilhas_id_partilhas= partilhas.id_partilhas INNER JOIN utilizadores ON partilhas.utilizadores_id_utilizadores_p= utilizadores.id_utilizadores
 WHERE id_utilizadores=?";
 
                     if (mysqli_stmt_prepare($stmt5, $query5)) {

@@ -33,16 +33,12 @@ if (isset($_GET['interessado']) && isset($_SESSION['id_utilizadores'])) {
             header("Location: ../evento_indv.php?id_e=".$id_e."");
         } else {
             // ERROR ACTION
-
-            //header("Location: ../register.php?msg=0");
-            echo "Error:" . mysqli_stmt_error($stmt2);
+            header("Location: ../evento_indv.php?id_e=".$id_e."&msg=1");
         }
 
     } else {
-
-
         // ERROR ACTION
-        echo "Error:" . mysqli_error($link2);
+        header("Location: ../evento_indv.php?id_e=".$id_e."&msg=1");
         mysqli_close($link2);
     }
 
@@ -65,22 +61,20 @@ if (isset($_GET['interessado']) && isset($_SESSION['id_utilizadores'])) {
         if (mysqli_stmt_prepare($stmt3, $query3)) {
             mysqli_stmt_bind_param($stmt3, 'ii', $id_e, $id_navegar);
 
-            //header("Location: ../evento_indv.php?id_e=$id_e");
             // VALIDAÇÃO DO RESULTADO DO EXECUTE
             if (!mysqli_stmt_execute($stmt3)) {
 
-                echo "ERROR:" . mysqli_error($link3);
+                header("Location: ../evento_indv.php?id_e=".$id_e."&msg=1");
 
             }
 
             mysqli_stmt_close($stmt3);
         }else {
 
-            echo "Error:" . mysqli_stmt_error($stmt3);
+            header("Location: ../evento_indv.php?id_e=".$id_e."&msg=1");
         }
         mysqli_close($link3);
 
-        //echo "deixou de seguir";
         header("Location: ../evento_indv.php?id_e=".$id_e."");
 
 
@@ -100,7 +94,7 @@ if (isset($_GET['vai']) && isset($_SESSION['id_utilizadores'])) {
     $vai= "vai";
 
 
-echo "kjadfhgalthgçtg";
+echo "estou a funcionar até aqui :)";
 
     $link4 = new_db_connection();
 
@@ -123,16 +117,13 @@ echo "kjadfhgalthgçtg";
             header("Location: ../evento_indv.php?id_e=".$id_e."");
         } else {
             // ERROR ACTION
-
-            //header("Location: ../register.php?msg=0");
+            header("Location: ../evento_indv.php?id_e=".$id_e."&msg=1");
             echo "Error:" . mysqli_stmt_error($stmt4);
         }
 
     } else {
-
-
         // ERROR ACTION
-        echo "Error:" . mysqli_error($link4);
+        header("Location: ../evento_indv.php?id_e=".$id_e."&msg=1");
         mysqli_close($link4);
     }
 
@@ -154,22 +145,20 @@ echo "kjadfhgalthgçtg";
         if (mysqli_stmt_prepare($stmt5, $query5)) {
             mysqli_stmt_bind_param($stmt5, 'ii', $id_e, $id_navegar);
 
-            //header("Location: ../evento_indv.php?id_e=$id_e");
             // VALIDAÇÃO DO RESULTADO DO EXECUTE
             if (!mysqli_stmt_execute($stmt5)) {
-
-                echo "ERROR:" . mysqli_error($link5);
+                header("Location: ../evento_indv.php?id_e=".$id_e."&msg=1");
 
             }
 
             mysqli_stmt_close($stmt5);
         }else {
 
-            echo "Error:" . mysqli_stmt_error($stmt5);
+            header("Location: ../evento_indv.php?id_e=".$id_e."&msg=1");
         }
         mysqli_close($link5);
 
-        //echo "deixou de seguir";
+        //echo "deixou de seguir o evento";
         header("Location: ../evento_indv.php?id_e=".$id_e."");
 
 

@@ -23,16 +23,12 @@ if (isset($_GET["g"]) && isset($_SESSION['id_utilizadores'])) {
             header("Location: ../index.php");
         } else {
             // ERROR ACTION
-
-            //header("Location: ../register.php?msg=0");
-            echo "Error:" . mysqli_stmt_error($stmt);
+            header("location:javascript://history.go(-1)");
         }
 
     } else {
-
-
         // ERROR ACTION
-        echo "Error:" . mysqli_error($link);
+        header("location:javascript://history.go(-1)");
         mysqli_close($link);
     }
 } else {
@@ -51,14 +47,13 @@ if (isset($_GET["g"]) && isset($_SESSION['id_utilizadores'])) {
             // VALIDAÇÃO DO RESULTADO DO EXECUTE
             if (!mysqli_stmt_execute($stmt)) {
 
-                echo "ERROR:".mysqli_error($link);
+                header("location:javascript://history.go(-1)");
 
             }
 
             mysqli_stmt_close($stmt);
         }else {
-
-            echo "Error:" . mysqli_stmt_error($stmt);
+            header("location:javascript://history.go(-1)");
         }
         mysqli_close($link);
 

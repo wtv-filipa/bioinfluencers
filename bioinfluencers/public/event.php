@@ -22,7 +22,7 @@ if (mysqli_stmt_prepare($stmt, $sqlEvents)) {
         $calendar[] = array(
             'id' =>$id_eventos,
             'title' => $nome,
-            'url' => "#",
+            'url' => "evento_indv.php?id_e=$id_eventos",
             "class" => 'event-important',
             'start' => "$start",
             'end' => "$end"

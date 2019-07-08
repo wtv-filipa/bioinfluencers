@@ -29,16 +29,14 @@ if (isset($_POST["nome"]) && isset($_POST["nickname"]) && isset($_POST["email"])
             header("Location: ../login.php?msg=2");
         } else {
             // ERROR ACTION
-
-            //header("Location: ../register.php?msg=0");
-            echo "Error:" . mysqli_stmt_error($stmt);
+            header("Location: ../register.php?msg=0");
         }
 
     } else {
         // ERROR ACTION
-        echo "Error:" . mysqli_error($link);
+        header("Location: ../register.php?msg=0");
         mysqli_close($link);
     }
 } else {
-    //header("Location: ../register.php?msg=2");
+    header("Location: ../register.php?msg=2");
 }

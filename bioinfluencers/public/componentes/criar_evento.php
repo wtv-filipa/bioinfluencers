@@ -12,6 +12,45 @@
     <!--Card-->
     <div class="card mdb-color lighten-4 text-center z-depth-2 light-version py-4 px-5">
 
+        <?php
+        if (isset($_GET["msg"])) {
+            $msg_show = true;
+            switch ($_GET["msg"]) {
+                case 0:
+                    $message = "Ocorreu um erro ao carregar o evento/ ficheiro, por favor tente novamente...";
+                    $class = "alert-warning";
+                    break;
+                case 1:
+                    $message = "O ficheiro não é uma imagem.";
+                    $class = "alert-warning";
+                    break;
+                case 2:
+                    $message = "O ficheiro já existe.";
+                    $class = "alert-warning";
+                    break;
+                case 3:
+                    $message = "O ficheiro é demasiado grande.";
+                    $class = "alert-warning";
+                    break;
+                case 4:
+                    $message = "Apenas são aceites ficheiros JPG, JPEG, PNG e GIF.";
+                    $class = "alert-warning";
+                    break;
+                default:
+                    $msg_show = false;
+            }
+
+            echo "<div class=\"alert $class alert-dismissible fade show\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+            if ($msg_show) {
+                echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+            }
+        }
+        ?>
+
         <form class="md-form inserir_dados" class="mb-3" action="scripts/criar_evento.php" enctype="multipart/form-data" method="post">
             <?php
             require_once("connections/connection.php");
@@ -27,8 +66,11 @@
             mysqli_stmt_bind_result($stmt, $id_eventos, $nome, $data_inicio, $data_fim, $local, $descricao, $custos, $grupos_id_grupos, $responsavel, $conteudos_id_conteudos, $tema_evento_idtema_evento);
             while (mysqli_stmt_fetch($stmt)) {
             ?>
-            <input type="file" name="fileToUpload" class="file-upload mb-5"/>
+            <input type="file" name="fileToUpload" class="file-upload mb-3"/>
 
+            <div class="alert alert-warning" role="alert">
+                Insira uma imagem até 5MB.
+            </div>
 
 
                 <div class="form-group text-left">

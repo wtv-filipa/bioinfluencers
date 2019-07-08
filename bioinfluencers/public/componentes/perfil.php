@@ -31,7 +31,7 @@ if (isset($_GET["user"])) {
 
 
     $query13 = "SELECT COUNT(seguidores) FROM utilizadores_has_utilizadores INNER JOIN utilizadores ON utilizadores_has_utilizadores.utilizadores_id_utilizadores= utilizadores.id_utilizadores
-WHERE id_utilizadores=? ";
+WHERE id_utilizadores=?  AND utilizadores_id_utilizadores!=seguidores";
 
 
     // Create a new DB connection
@@ -43,7 +43,7 @@ WHERE id_utilizadores=? ";
 
 
     $query14 = "SELECT COUNT(utilizadores_id_utilizadores) FROM utilizadores_has_utilizadores
-WHERE seguidores=?";
+WHERE seguidores=? AND utilizadores_id_utilizadores!=seguidores";
 
 
 
@@ -67,6 +67,8 @@ WHERE seguidores=?";
                 mysqli_stmt_bind_param($stmt13, 'i', $id);
                 mysqli_stmt_execute($stmt13);
                 mysqli_stmt_bind_result($stmt13, $num_seguidores);
+
+
 
                 while (mysqli_stmt_fetch($stmt13)) {
                     echo "<h5 class=\"alinhar1\"> <span class=\"font-weight-bolder\">$num_seguidores</span> <br> Seguidores</h5>";
@@ -253,7 +255,7 @@ WHERE seguidores=?";
                 $stmt5 = mysqli_stmt_init($link5);
 
 
-                $query5 = "SELECT id_conteudos, filename, partilhas_id_partilhas, id_partilhas, utilizadores_id_utilizadores,id_utilizadores FROM conteudos INNER JOIN partilhas ON conteudos.partilhas_id_partilhas= partilhas.id_partilhas INNER JOIN utilizadores ON partilhas.utilizadores_id_utilizadores= utilizadores.id_utilizadores
+                $query5 = "SELECT id_conteudos, filename, partilhas_id_partilhas, id_partilhas, utilizadores_id_utilizadores_p,id_utilizadores FROM conteudos INNER JOIN partilhas ON conteudos.partilhas_id_partilhas= partilhas.id_partilhas INNER JOIN utilizadores ON partilhas.utilizadores_id_utilizadores_p= utilizadores.id_utilizadores
 WHERE id_utilizadores=?";
 
                 if (mysqli_stmt_prepare($stmt5, $query5)) {

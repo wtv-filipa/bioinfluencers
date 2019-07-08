@@ -61,6 +61,11 @@ if (isset($_GET["edit"])) {
                                 }
                                 ?>
                             </div>
+
+                        </div>
+
+                        <div class="alert alert-warning mt-3" role="alert">
+                            Insira uma imagem até 5MB.
                         </div>
 
                         <!----------------------MODAL DE CROP--------------->
@@ -101,6 +106,32 @@ if (isset($_GET["edit"])) {
 
             <!-- edit form column -->
             <div class="col-md-9 personal-info">
+            <?php
+            if (isset($_GET["msg"])) {
+                $msg_show = true;
+                switch ($_GET["msg"]) {
+                    case 0:
+                        $message = "Perfil atualizado com sucesso!";
+                        $class = "alert-success";
+                        break;
+                    case 1:
+                        $message = "Alguma coisa correu mal, por favor tente novamente...";
+                        $class = "alert-warning";
+                        break;
+                    default:
+                        $msg_show = false;
+                }
+
+                echo "<div class=\"alert $class alert-dismissible fade show\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+                if ($msg_show) {
+                    echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+                }
+            }
+            ?>
             <h3>Informação pessoal</h3>
             <form id="form1" class="form-horizontal" role="form" method="post"
                   action="scripts/editar_perfil.php?id=<?= $id ?>">
@@ -156,6 +187,8 @@ if (isset($_GET["edit"])) {
     ?>
     </div>
 
+    </div>
+    </div>
     <hr>
     <?php
 }

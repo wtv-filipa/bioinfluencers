@@ -120,8 +120,9 @@
 
                             mysqli_stmt_fetch($stmt)
                             ?>
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mx-auto p-0">
 
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mx-auto p-0">
+                                <a href="grupo_indv.php?id_g=<?=$id?>" style="text-decoration: none">
                                 <div class="event-card1 ">
                                     <div class="mg-image">
                                         <img src="../admin/uploads/grupos/<?= $filename ?>" alt=""/>
@@ -134,7 +135,9 @@
 
                                     </div>
                                 </div>
+                                </a>
                             </div>
+
 
                             <?php
                         }

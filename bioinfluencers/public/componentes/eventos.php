@@ -1,4 +1,27 @@
+<?php
+if (isset($_GET["msg"])) {
+    $msg_show = true;
+    switch ($_GET["msg"]) {
+        case 0:
+            $message = "Evento criado com sucesso!";
+            $class = "alert-success";
+            break;
+        default:
+            $msg_show = false;
+    }
+
+    echo "<div class=\"alert $class alert-dismissible fade show mt-5\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+    if ($msg_show) {
+        echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+    }
+}
+?>
 <div class="row no-gutters">
+
     <h3 class="mx-auto mt-5"><i class="fa fa-calendar-o  mr-2" aria-hidden="true"></i>Próximos eventos</h3>
 
 </div>

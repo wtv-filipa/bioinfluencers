@@ -178,7 +178,35 @@ WHERE eventos_interesse = ? AND utilizadores_interessados = ? AND status= 'vai'"
                 </div>
                 </div>
 
+
+
                 <div class="back-sobre">
+                    <?php
+                    if (isset($_GET["msg"])) {
+                        $msg_show = true;
+                        switch ($_GET["msg"]) {
+                            case 0:
+                                $message = "Ocorreu uma falha na partilha, por favor tente novamente...";
+                                $class = "alert-warning";
+                                break;
+                            case 1:
+                                $message = "Ocorreu uma falha na atualização do status do evento, por favor tente novamente...";
+                                $class = "alert-warning";
+                                break;
+                            default:
+                                $msg_show = false;
+                        }
+
+                        echo "<div class=\"alert $class alert-dismissible fade show mt-3\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+                        if ($msg_show) {
+                            echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+                        }
+                    }
+                    ?>
                     <div class="row no-gutters">
                         <h4 class="mt-5 pl-4" style="font-weight: bold;">
                             Sobre</h4>

@@ -9,7 +9,33 @@
 
         <div class="text-center">
             <h2 class="semibold preto mb-5 mt-4">Insere um código</h2>
-            <form method="post" action="scripts/codigo.php">
+            <?php
+            if (isset($_GET["msg"])) {
+                $msg_show = true;
+                switch ($_GET["msg"]) {
+                    case 0:
+                        $message = "Ocorreu um erro ao inserir o código, por favor tente novamente...";
+                        $class = "alert-warning";
+                        break;
+                    case 1:
+                        $message = "Código inserido com sucesso!";
+                        $class = "alert-success";
+                        break;
+                    default:
+                        $msg_show = false;
+                }
+
+                echo "<div class=\"alert $class alert-dismissible fade show mt-2\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+                if ($msg_show) {
+                    echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+                }
+            }
+            ?>
+            <form method="post" action="scripts/codigo.php" class="mt-5">
                 <input style="height: 45px"  class="text-center personalizar" type="text" placeholder="código" name="codigo">
                 <div class="text-center mt-4">
                     <button class="buttonCustomise btn btn-primary" type="submit" name="Submit"> submeter

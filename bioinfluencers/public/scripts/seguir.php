@@ -29,16 +29,12 @@ if (isset($_GET['segue']) && isset($_SESSION['id_utilizadores'])){
             header("Location: ../profile.php?user=".$id."");
         } else {
             // ERROR ACTION
-
-            //header("Location: ../register.php?msg=0");
-            echo "Error:" . mysqli_stmt_error($stmt2);
+            header("Location: ../profile.php?user=".$id."&msg=0");
         }
 
     } else {
-
-
         // ERROR ACTION
-        echo "Error:" . mysqli_error($link2);
+        header("Location: ../profile.php?user=".$id."&msg=0");
         mysqli_close($link2);
     }
 
@@ -64,20 +60,18 @@ if (isset($_GET['segue']) && isset($_SESSION['id_utilizadores'])){
             // VALIDAÇÃO DO RESULTADO DO EXECUTE
             if (!mysqli_stmt_execute($stmt3)) {
 
-                echo "ERROR:".mysqli_error($link3);
+                header("Location: ../profile.php?user=".$id."&msg=0");
 
             }
 
             mysqli_stmt_close($stmt3);
         }else {
-
-            echo "Error:" . mysqli_stmt_error($stmt3);
+            header("Location: ../profile.php?user=".$id."&msg=0");
         }
         mysqli_close($link3);
 
         echo "deixou de seguir";
         header("Location: ../profile.php?user=".$id."");
-
 
 
     }

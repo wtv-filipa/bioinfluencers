@@ -1,5 +1,5 @@
 <?php
-define ("MAX_SIZE","5000");
+define ("MAX_SIZE","50000");
 
 function getExtension($str) {
 
@@ -55,9 +55,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
             list($width,$height)=getimagesize($uploadedfile);
 
-           /* $newwidth=633;
-            $newheight= 633;
-            $tmp=imagecreatetruecolor($newwidth,$newheight);*/
 
             $newwidth1=300;
             $newheight1=300;
@@ -68,8 +65,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             imagecopyresampled($tmp1,$src,0,0,0,0,$newwidth1,$newheight1,
                 $width,$height);
 
+            $nome= $_GET["id"];
 
-            $filename= "small". $_FILES['fileToUpload']['name'];
+            $filename= "small".$nome.".".$extension;
             $filename1 = "../admin/uploads/img_perfil/".$filename;
 
             //imagejpeg($tmp,$filename,100);

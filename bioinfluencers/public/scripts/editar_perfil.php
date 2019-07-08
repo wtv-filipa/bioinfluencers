@@ -26,19 +26,23 @@
 
                 /* execute the prepared statement */
                 if (!mysqli_stmt_execute($stmt)) {
-                    echo "Error: " . mysqli_stmt_error($stmt);
+                    $nickname=$_POST["edit"];
+                    echo $nickname;
+                    header("Location: ../editar_conta.php?edit=".$nickname."&msg=1");
                 }
 
                 /* close statement */
                 mysqli_stmt_close($stmt);
             } else {
-                echo "Error: " . mysqli_error($link);
+                $nickname=$_POST["edit"];
+                echo $nickname;
+                header("Location: ../editar_conta.php?edit=".$nickname."&msg=1");
             }
 
             if (isset($_POST["edit"])){
                 $nickname=$_POST["edit"];
                 echo $nickname;
-                header("Location: ../editar_conta.php?edit=".$nickname."");
+                header("Location: ../editar_conta.php?edit=".$nickname."&msg=0");
             }
             /* close connection */
             mysqli_close($link);

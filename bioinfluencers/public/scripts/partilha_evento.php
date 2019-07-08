@@ -25,10 +25,9 @@ if(isset($_GET["e"])) {
             header("Location: ../index.php");
 
         } else {
-
             // ERROR ACTION
-            //header("Location: ../index.php");
-            echo "Error:" . mysqli_stmt_error($stmt);
+            $id_e = $_GET["e"];
+            header("Location: ../evento_indv.php?id_e=".$id_e."&msg=0");
         }
     }
 }
