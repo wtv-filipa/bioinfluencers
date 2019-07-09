@@ -21,19 +21,19 @@ if (isset($_GET["id"])) {
 
         /* execute the prepared statement */
         if (!mysqli_stmt_execute($stmt)) {
-            echo "Error: " . mysqli_stmt_error($stmt);
+            header("Location: ../temas_noticias.php?msg=0");
         }
 
         /* close statement */
         mysqli_stmt_close($stmt);
     } else {
-        echo "Error: " . mysqli_error($link);
+        header("Location: ../temas_noticias.php?msg=0");
     }
 
     /* close connection */
     mysqli_close($link);
 
-    header("Location: ../temas_noticias.php");
+    header("Location: ../temas_noticias.php?msg=1");
 
 }
 

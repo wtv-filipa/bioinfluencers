@@ -12,7 +12,7 @@ if (isset($_SESSION["nickname"])){
         <!-- metadados -->
         <?php include "helpers/meta.php"; ?>
 
-        <title>Página Inicial</title>
+        <title>Homepage</title>
 
         <!-- Custom fonts for this template-->
         <?php include "helpers/fonts.php"; ?>

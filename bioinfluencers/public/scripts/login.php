@@ -25,6 +25,9 @@ if (isset($_POST["nickname"]) && isset($_POST["password"])){
                     $_SESSION["id_utilizadores"] = $id;
                     $link3 = new_db_connection();
 
+
+                    //seguir nós mesmos por causa do feed
+
                     $stmt3 = mysqli_stmt_init($link3);
 
                     $query3 = "SELECT utilizadores_id_utilizadores
@@ -80,6 +83,66 @@ WHERE utilizadores_id_utilizadores = ? AND seguidores = ?";
 
                         }
                     }
+
+                    //update para organizador
+                    $_SESSION["id_utilizadores"] = $id;
+
+                    $link4 = new_db_connection();
+                    $stmt4 = mysqli_stmt_init($link4);
+                    $query4 = "SELECT id_utilizadores, pontos, tipos_id_tipos
+                              FROM utilizadores 
+                              WHERE id_utilizadores = ?";
+
+                    if (mysqli_stmt_prepare($stmt4, $query4)) {
+                        mysqli_stmt_bind_param($stmt4, 'i', $id);
+                        mysqli_stmt_bind_result($stmt4, $id, $pontos_u, $tipo);
+
+                        // VALIDAÇÃO DO RESULTADO DO EXECUTE
+                        if (mysqli_stmt_execute($stmt4)) {
+                            mysqli_stmt_fetch($stmt4);
+
+
+                            if (isset($pontos_u) && $pontos_u >= 10000 && $tipo== 2){
+
+                                var_dump($pontos_u);
+                                var_dump($id);
+                                var_dump($tipo);
+
+                                $tipo_id= 3;
+                                $_SESSION["id_utilizadores"] = $id;
+
+                                $link5 = new_db_connection();
+                                $stmt5 = mysqli_stmt_init($link5);
+                                $query5 = "UPDATE utilizadores SET tipos_id_tipos = ? WHERE id_utilizadores = ?";
+                                echo $pontos_u;
+
+                                if (mysqli_stmt_prepare($stmt5, $query5)) {
+
+                                    mysqli_stmt_bind_param($stmt5, 'ii', $tipo_id, $id);
+                                    if (mysqli_stmt_execute($stmt5)) {
+
+                                        echo $id;
+                                        echo "<br>";
+                                        //echo "OLHA FEZ!!!!";
+                                        header("Location: ../index.php");
+
+                                    }
+
+                                } else {
+                                    // ERROR ACTION
+                                    header("Location: ../login.php?msg=2");
+
+                                }
+
+                            }
+
+                            /*
+                          */
+                        }
+                    }
+
+
+                    /***********************************************/
 
                     // feedback de sucesso
                     header("Location: ../index.php");

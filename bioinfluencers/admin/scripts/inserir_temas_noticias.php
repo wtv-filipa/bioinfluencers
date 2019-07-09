@@ -21,25 +21,25 @@ if (isset($_POST["nome"])) {
             mysqli_close($link);
 
             // SUCCESS ACTION
-            header("Location: ../temas_noticias.php");
+            header("Location: ../temas_noticias.php?msg=1");
 
         } else {
 
             // ERROR ACTION
-            header("Location: ../temas_noticias.php");
-            echo "Error:" . mysqli_stmt_error($stmt);
+            header("Location: ../criar_tema_noticia.php?msg=3");
+
         }
 
     } else {
 
         // ERROR ACTION
-        echo "Error:" . mysqli_error($link);
+        header("Location: ../criar_tema_noticia.php?msg=3");
         mysqli_close($link);
 
     }
 } else {
 
-    echo "Error:" .mysqli_error($link);
+    header("Location: ../criar_tema_noticia.php?msg=4");
     echo "Campos do formulário por preencher";
 };
 

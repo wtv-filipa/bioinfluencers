@@ -45,7 +45,6 @@
     ?>
 
 
-
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
 
@@ -79,6 +78,7 @@
                      <?php
                     require_once("connections/connection.php");
 
+
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
 
@@ -105,6 +105,7 @@
                          mysqli_stmt_bind_result($stmt, $id_noticias, $titulo, $subtitulo, $texto, $data_hora, $conteudos_id_conteudos, $temas_id_temas);
 
                          while ($row_temas = mysqli_fetch_assoc($resultado_temas)) {
+
                              ?>
                              <tbody>
                              <tr>
@@ -217,6 +218,35 @@
 
                 </table>
 
+                <nav>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <?php
+
+                                echo "<li class='page-item'><a class='page-link' href='noticias.php?p=1'>Primeira</a></li>";
+
+                                for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+
+                                    if($pag_ant >= 1){
+                                        echo "<li class='page-item'><a class='page-link' href='noticias.php?p=$pag_ant'>$pag_ant</a>";
+                                    }
+                                }
+
+                                echo "<li class='page-item'><a style='background-color: lightgrey;' class='page-link' href='noticias.php?p=$pagina'>$pagina</a>";
+
+                                for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+
+                                    if($pag_dep <= $quantidade_pg){
+
+                                        echo "<li class='page-item'><a class='page-link' href='noticias.php?p=$pag_dep'>$pag_dep</a>";
+                                    }
+                                }
+
+                                echo "<li class='page-item'><a class='page-link' href='noticias.php?p=$quantidade_pg'>Última</a>";
+                                ?>
+                        </ul>
+                    </nav>
             </div>
         </div>
     </div>

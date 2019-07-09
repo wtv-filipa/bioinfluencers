@@ -1,4 +1,7 @@
 <?php
+
+require_once("connections/connection.php");
+
 if (isset($_SESSION["nickname"])) {
     $nickname = $_SESSION["nickname"];
 }
@@ -16,14 +19,47 @@ if (isset($_SESSION["nickname"])) {
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $nickname ?><span>
-                <img class="ml-3 img-profile rounded-circle" src="img/pessoa 2.jpg">
+
+                        <?php
+                        // Create a new DB connection
+                        $link3 = new_db_connection();
+
+                        /* create a prepared statement */
+                        $stmt3 = mysqli_stmt_init($link3);
+
+
+                        $query3 = "SELECT img_perfil
+                              FROM utilizadores
+                              WHERE nickname LIKE ?";
+
+                        if (mysqli_stmt_prepare($stmt3, $query3)) {
+                        mysqli_stmt_bind_param($stmt3, 's', $nickname);
+                        mysqli_stmt_execute($stmt3);
+                        mysqli_stmt_bind_result($stmt3,   $img_perfil);
+                        while (mysqli_stmt_fetch($stmt3)) {
+                        //var_dump($img_perfil);
+                        if (isset($img_perfil)){
+                        ?>
+
+                        <img class="ml-3 img-profile rounded-circle" src="uploads/img_perfil/<?=$img_perfil?>">
+
+                            <?php
+                            }else{
+                            ?>
+                            <img class="ml-3 img-profile rounded-circle" src="../public/img/default.gif">
+                                <?php
+                                }
+                                }
+                                }
+                                ?>
+
                 </a>
                 <!-- Dropdown - User Information-->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#feedmodal">
-                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Voltar
+                        <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Website
                     </a>
 
                     <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">

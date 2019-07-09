@@ -9,7 +9,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Fórum</title>
+    <title>Criar grupo</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>

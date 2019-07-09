@@ -9,7 +9,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Administradores</title>
+    <title>Utilizadores</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>

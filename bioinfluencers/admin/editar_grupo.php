@@ -9,7 +9,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Editar Eventos</title>
+    <title>Editar Grupos</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>

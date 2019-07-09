@@ -208,112 +208,16 @@
                 </div>
                 <?php
             }
-            /*
-                echo "$id_u_feed";
-                echo "<br>";
-                var_dump($utilizadores_id_utilizadores_p);
-                echo "<br>";
-                var_dump($id_utilizadores);*/
 
-
-            ?>
-            <a href="criar_publicacao.php" class="float">
-                <i class="fa  fa-pencil-square-o my-float"></i>
-            </a>
-            <div class="label-container">
-                <div class="label-text">Criar publicação</div>
-                <i class="fa fa-play label-arrow"></i>
-            </div>
-            <?php
         }
     }
     ?>
+    <a href="criar_publicacao.php" class="float">
+        <i class="fa  fa-pencil-square-o my-float"></i>
+    </a>
+    <div class="label-container">
+        <div class="label-text">Criar publicação</div>
+        <i class="fa fa-play label-arrow"></i>
+    </div>
 </div>
 
-<!--
-        <div class="row no-gutters">
-            <div class="card test">
-                <div class="header">
-                    <div class="right-side">
-                        <img src="img/pessoa2.jpg" class="avatar"/>
-                        <div class="headers-text">
-                            <span class="author-name">Cristina Costa</span>
-                            <span class="header-secondary-text">Há 15 min.</span>
-                        </div>
-                    </div>
-                    <i class="material-icons dropdown-icon">expand_more</i>
-                </div>
-                <div class="text-content">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla et turpis in condimentum. Sed
-                        ac turpis massa.
-                    </p>
-                </div>
-                <div class="photo-content">
-                    <div class="photo two">
-                        <img class="card-photo" src="img/beata.jpg"/>
-                    </div>
-                    <div class="photo three">
-                        <img class="card-photo" src="img/escavar.jpg"/>
-                    </div>
-                </div>
-
-                <div class="actions">
-                    <div class="like-wrapper">
-                        <i class="fa fa-leaf" aria-hidden="true" style="font-size: 1.5rem"></i>
-                        <span class="like-napis-dla-rafala">
-              Gosto
-            </span>
-                    </div>
-                    <div class="social-wrapper">
-                       <a href="#" class="comment-count">16 comments</a>
-                    <i class="fa fa-share" aria-hidden="true" style="font-size: 1.2rem"></i>
-                    <span class="like-napis-dla-rafala pl-1">
-         Partilhar
-        </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row no-gutters">
-        <div class="card test">
-            <div class="header">
-                <div class="right-side">
-                    <img src="img/pessoa4.jpg" class="avatar"/>
-                    <div class="headers-text">
-                        <span class="author-name">Rui Ferreira</span>
-                        <span class="header-secondary-text">Há 22 min.</span>
-                    </div>
-                </div>
-                <i class="material-icons dropdown-icon">expand_more</i>
-            </div>
-            <div class="text-content">
-                <p>
-                    <span style="font-weight: bold;">Comentou</span> "Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit.
-                    Sed fringilla et turpis in condimentum. Sed ac turpis massa." <span style="font-weight: bold;">em #desflorestação.</span>
-
-                </p>
-            </div>
-            <div class="actions">
-                <div class="like-wrapper">
-                    <i class="fa fa-leaf" aria-hidden="true" style="font-size: 1.5rem"></i>
-                    <span class="like-napis-dla-rafala">
-          Gosto
-        </span>
-                </div>
-                <div class="social-wrapper">
-                    <a href="#" class="comment-count">16 comments</a>
-                    <i class="fa fa-share" aria-hidden="true" style="font-size: 1.2rem"></i>
-                    <span class="like-napis-dla-rafala pl-1">
-         Partilhar
-        </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
--->

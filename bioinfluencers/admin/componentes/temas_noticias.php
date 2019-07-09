@@ -5,6 +5,44 @@
     <h1 class="h3 mb-2 text-gray-800">Temas das Notícias</h1>
     <p class="mb-4">Aqui é possível gerir e ter uma vista geral dos temas das notícias da BioInfluencers.</p>
 
+    <?php
+    if (isset($_GET["msg"])) {
+        $msg_show = true;
+        switch ($_GET["msg"]) {
+            case 0:
+                $message = "Ocorreu um erro ao apagar o tema, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            case 1:
+                $message = "Tema apagado com sucesso!";
+                $class = "alert-success";
+                break;
+            case 2:
+                $message = "Tema inserido com sucesso!";
+                $class = "alert-success";
+                break;
+            case 5:
+                $message = "Tema atualizado com sucesso!";
+                $class = "alert-success";
+                break;
+            case 6:
+                $message = "Ocorreu um erro ao atualizar o tema, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            default:
+                $msg_show = false;
+        }
+
+        echo "<div class=\"alert $class alert-dismissible fade show mt-2\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+        if ($msg_show) {
+            echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+        }
+    }
+    ?>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -146,7 +184,7 @@
                                     }
                                 }
 
-                                echo "<li class='page-item'><a class='page-link' href='temas_noticias.php?p=$pagina'>$pagina</a>";
+                                echo "<li class='page-item'><a style='background-color: lightgrey;' class='page-link' href='temas_noticias.php?p=$pagina'>$pagina</a>";
 
                                 for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
 

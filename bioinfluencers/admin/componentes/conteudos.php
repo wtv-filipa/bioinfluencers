@@ -166,7 +166,7 @@
                                     }
                                 }
 
-                                echo "<li class='page-item'><a class='page-link' href='conteudos.php?p=$pagina'>$pagina</a>";
+                                echo "<li class='page-item'><a style='background-color: lightgrey;' class='page-link' href='conteudos.php?p=$pagina'>$pagina</a>";
 
                                 for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
 

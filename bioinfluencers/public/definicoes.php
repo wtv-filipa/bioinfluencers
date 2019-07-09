@@ -39,6 +39,7 @@ session_start();
 <!-- JavaScript-->
 
 <?php include "helpers/js.php"; ?>
+<script src="javascript/fonte.js"></script>
 
 </body>
 

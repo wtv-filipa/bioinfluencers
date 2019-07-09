@@ -5,6 +5,34 @@
     <h1 class="h3 mb-2 text-gray-800">Temas das notícias</h1>
     <p class="mb-4">Aqui é possível criar todas os temas das notícias.</p>
 
+    <?php
+    if (isset($_GET["msg"])) {
+        $msg_show = true;
+        switch ($_GET["msg"]) {
+
+            case 3:
+                $message = "Ocorreu um erro ao inserir o tema, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            case 4:
+                $message = "Campos do fomulário por preencher.";
+                $class = "alert-warning";
+                break;
+            default:
+                $msg_show = false;
+        }
+
+        echo "<div class=\"alert $class alert-dismissible fade show mt-2\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+        if ($msg_show) {
+            echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+        }
+    }
+    ?>
+
     <div class="row">
         <div class="col-xl-12">
 

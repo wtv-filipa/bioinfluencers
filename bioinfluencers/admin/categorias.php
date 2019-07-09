@@ -9,7 +9,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Categorias do Fórum</title>
+    <title>Categorias do Grupo</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>

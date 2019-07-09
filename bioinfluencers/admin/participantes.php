@@ -9,7 +9,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Comentários</title>
+    <title>Participantes</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>

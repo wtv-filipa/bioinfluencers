@@ -31,17 +31,20 @@ if (isset($_GET["id"]) && isset($_GET["a"])) {
 
         /* execute the prepared statement */
         if (!mysqli_stmt_execute($stmt)) {
-            echo "Error: " . mysqli_stmt_error($stmt);
+
+            header("Location: ../administradores.php?msg=1");
         }
 
         /* close statement */
         mysqli_stmt_close($stmt);
     } else {
-        echo "Error: " . mysqli_error($link);
+
+        header("Location: ../administradores.php?msg=1");
     }
     /* close connection */
 
-    header("Location: ../administradores.php");
+    header("Location: ../administradores.php?msg=0");
 } else {
-    echo "ERRO";
+
+    header("Location: ../administradores.php?msg=1");
 }
