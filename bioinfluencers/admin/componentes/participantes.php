@@ -47,38 +47,38 @@ if (isset($_GET["id_e"])) {
 
                 $query7 = "SELECT COUNT(utilizadores_interessados) FROM rsvp WHERE status = 'não vou' AND eventos_interesse = ?";
 
-            if (mysqli_stmt_prepare($stmt5, $query5)) {
-                mysqli_stmt_bind_param($stmt5, 'i', $id_evento);
-                mysqli_stmt_execute($stmt5);
-                mysqli_stmt_bind_result($stmt5, $status5);
+                if (mysqli_stmt_prepare($stmt5, $query5)) {
+                    mysqli_stmt_bind_param($stmt5, 'i', $id_evento);
+                    mysqli_stmt_execute($stmt5);
+                    mysqli_stmt_bind_result($stmt5, $status5);
 
-                while (mysqli_stmt_fetch($stmt5)) {
-                    echo "<p>Nº de pessoas que vão: $status5</p>";
+                    while (mysqli_stmt_fetch($stmt5)) {
+                        echo "<p>Nº de pessoas que vão: $status5</p>";
 
-                }
-
-                if (mysqli_stmt_prepare($stmt6, $query6)) {
-                    mysqli_stmt_bind_param($stmt6, 'i', $id_evento);
-                    mysqli_stmt_execute($stmt6);
-                    mysqli_stmt_bind_result($stmt6, $status6);
-
-                    while (mysqli_stmt_fetch($stmt6)) {
-                        echo "<p>Nº de pessoas interessadas: $status6</p>";
                     }
 
+                    if (mysqli_stmt_prepare($stmt6, $query6)) {
+                        mysqli_stmt_bind_param($stmt6, 'i', $id_evento);
+                        mysqli_stmt_execute($stmt6);
+                        mysqli_stmt_bind_result($stmt6, $status6);
 
-                if (mysqli_stmt_prepare($stmt7, $query7)) {
-                    mysqli_stmt_bind_param($stmt7, 'i', $id_evento);
-                    mysqli_stmt_execute($stmt7);
-                    mysqli_stmt_bind_result($stmt7, $status7);
+                        while (mysqli_stmt_fetch($stmt6)) {
+                            echo "<p>Nº de pessoas interessadas: $status6</p>";
+                        }
 
-                    while (mysqli_stmt_fetch($stmt7)) {
-                        echo "<p>Nº de pessoas que não vão: $status7 </p>";
+
+                        if (mysqli_stmt_prepare($stmt7, $query7)) {
+                            mysqli_stmt_bind_param($stmt7, 'i', $id_evento);
+                            mysqli_stmt_execute($stmt7);
+                            mysqli_stmt_bind_result($stmt7, $status7);
+
+                            while (mysqli_stmt_fetch($stmt7)) {
+                                echo "<p>Nº de pessoas que não vão: $status7 </p>";
+                            }
+
+                        }
                     }
-
                 }
-                }
-            }
                 ?>
 
 
@@ -129,9 +129,26 @@ if (isset($_GET["id_e"])) {
                         <td><?= $nome_u ?></td>
                         <td><?= $status ?></td>
                         <td>
-                            <a href='' data-toggle="modal" data-target="#marcarpresencas">
-                                <i class="fas fa-check"></i>
-                            </a>
+                            <?php
+                            $link3 = new_db_connection();
+                            $stmt3 = mysqli_stmt_init($link3);
+                            $query3 = "SELECT eventos_id_eventos, status_atual FROM utilizadores_has_eventos WHERE status_atual = 0 AND utilizadores_id_utilizadores = ? AND eventos_id_eventos = ?";
+
+                            if (mysqli_stmt_prepare($stmt3, $query3)) {
+                                mysqli_stmt_bind_param($stmt3, 'ii', $id_u, $id_evento);
+                                mysqli_stmt_execute($stmt3);
+                                mysqli_stmt_bind_result($stmt3, $id_evento, $status_atual);
+                                if (!mysqli_stmt_fetch($stmt3)) {
+                                    echo "<a href='' data-toggle='modal' data-target='#marcarpresencas'>
+                        <i class='fas fa-check'></i></a>";
+                                } else {
+                                    echo "<a href='' data-toggle='modal' data-target='#cancelarpresencas'>
+                        <i class='fas fa-times'></i></a>";
+                                }
+
+                            }
+                            ?>
+
                         </td>
                     </tr>
 
@@ -175,7 +192,29 @@ if (isset($_GET["id_e"])) {
             <div class="modal-body">Tens a certeza que queres confirmar a presença desta pessoa?</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Não</button>
-                <a class="btn btn-primary" href="scripts/confirmacao_evento.php?id_e<?= $id_evento ?>">Sim</a>
+                <a class="btn btn-primary"
+                   href="scripts/confirmacao_evento.php?id_e=<?= $id_evento ?>&id_u=<?= $id_u ?>">Sim</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feed Modal-->
+<div class="modal fade" id="cancelarpresencas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Aviso:</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Tens a certeza que queres cancelar a presença desta pessoa?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Não</button>
+                <a class="btn btn-primary"
+                   href="scripts/confirmacao_evento.php?id_e=<?= $id_evento ?>&id_u=<?= $id_u ?>&s=<?= $status_atual ?>">Sim</a>
             </div>
         </div>
     </div>
