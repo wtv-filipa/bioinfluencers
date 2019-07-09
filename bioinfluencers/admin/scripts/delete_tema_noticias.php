@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_GET["id"])) {
-    $id_noticia = $_GET["id"];
+    $id_tema = $_GET["id"];
 
     // We need the function!
     require_once("../connections/connection.php");
@@ -12,28 +12,28 @@ if (isset($_GET["id"])) {
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
 
-    $query = "DELETE FROM noticias
-              WHERE id_noticias = ?";
+    $query = "DELETE FROM temas_noticias
+              WHERE id_temas = ?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
 
-        mysqli_stmt_bind_param($stmt, 'i',$id_noticia );
+        mysqli_stmt_bind_param($stmt, 'i',$id_tema );
 
         /* execute the prepared statement */
         if (!mysqli_stmt_execute($stmt)) {
-            header("Location: ../noticias.php?msg=0");
+            echo "Error: " . mysqli_stmt_error($stmt);
         }
 
         /* close statement */
         mysqli_stmt_close($stmt);
     } else {
-        header("Location: ../noticias.php?msg=0");
+        echo "Error: " . mysqli_error($link);
     }
 
     /* close connection */
     mysqli_close($link);
 
-    header("Location: ../noticias.php?msg=1");
+    header("Location: ../temas_noticias.php");
 
 }
 

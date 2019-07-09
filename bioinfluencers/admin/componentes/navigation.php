@@ -38,7 +38,7 @@
 
     </li>
 
-                <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
            aria-controls="collapsePages">
@@ -48,7 +48,7 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
 
-<!--parte das notícias-->
+                <!--parte das notícias-->
                 <h6 class="collapse-header">Notícias:</h6>
                 <a class="collapse-item" href="noticias.php">Notícias</a>
                 <a class="collapse-item" href="criar_noticia.php"> Criar notícia</a>
@@ -60,7 +60,7 @@
                 <h6 class="collapse-header">Eventos:</h6>
                 <a class="collapse-item" href="eventos.php">Eventos</a>
                 <a class="collapse-item" href="criar_evento.php"> Criar evento</a>
-                <a class="collapse-item" href="temas_eventos.php">Temas dos eventos</a>x
+
                 <div class="dropdown-divider"></div>
 
                 <!--parte dos foruns-->
@@ -74,8 +74,6 @@
                 <!--parte dos Categorias-->
                 <h6 class="collapse-header">Conteúdos:</h6>
                 <a class="collapse-item" href="conteudos.php">Conteúdos</a>
-                <a class="collapse-item" href="criar_conteudos.php">Adicionar conteúdos</a>
-
             </div>
         </div>
     </li>

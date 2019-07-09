@@ -5,6 +5,53 @@
     <h1 class="h3 mb-2 text-gray-800">Categorias</h1>
     <p class="mb-4">Aqui é possível gerir todas as categorias dos grupos.</p>
 
+    <?php
+    if (isset($_GET["msg"])) {
+        $msg_show = true;
+        switch ($_GET["msg"]) {
+            case 0:
+                $message = "Ocorreu um erro ao apagar a categoria, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            case 1:
+                $message = "Categoria apagada com sucesso!";
+                $class = "alert-success";
+                break;
+            case 2:
+                $message = "Categoria inserida com sucesso!";
+                $class = "alert-success";
+                break;
+            case 3:
+                $message = "Ocorreu um erro ao inserir a categoria, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            case 4:
+                $message = "Campos do fomulário por preencher.";
+                $class = "alert-warning";
+                break;
+            case 5:
+                $message = "Categoria atualizada com sucesso!";
+                $class = "alert-success";
+                break;
+            case 6:
+                $message = "Ocorreu um erro ao atualizar a categoria, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            default:
+                $msg_show = false;
+        }
+
+        echo "<div class=\"alert $class alert-dismissible fade show mt-2\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+        if ($msg_show) {
+            echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+        }
+    }
+    ?>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
 
@@ -22,6 +69,8 @@
             </div>
         </form>
 
+        <a href="criar_categorias.php" class="mr-4 ml-md-3 my-2 my-md-0 mw-2">Criar categoria <i class="fa fa-plus-square fa-1x" aria-hidden="true"></i></a>
+
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
@@ -37,84 +86,57 @@
                     <?php
                     require_once("connections/connection.php");
 
-                    if (isset($_GET["p"])) {
-
-                        $pesquisar = "%" . $_GET["p"] . "%";
-                    } else {
-
-                        $pesquisar = "%";
-                    }
-
                     $link = new_db_connection();
-                    $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_categorias, nome_categoria, data_criacao, descricao_c
-                              FROM categorias WHERE nome_categoria LIKE ?";
+                        $stmt = mysqli_stmt_init($link);
 
-                    if (isset($_GET["sort"])) {
-                        if ($_GET["sort"] == "n") {
-                            $ordem_listagem = "nome_categoria";
-                        } else {
-                            if ($_GET["sort"] == "d") {
-                                $ordem_listagem = "data_criacao";
-                            }
-                        }
+                        $pagina_atual = filter_input(INPUT_GET,'p', FILTER_SANITIZE_NUMBER_INT);
 
-                        $query .= " ORDER BY " . $ordem_listagem . " ASC ";
-                    }
+                        $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+
+                        $qtn_result_pg = 5;
+
+                        $inicio = ($qtn_result_pg * $pagina) - $qtn_result_pg;
+
+                        $result_temas = "SELECT id_categorias, nome_categoria, data_criacao, descricao_c
+                                        FROM categorias 
+                                        ORDER BY id_categorias DESC
+                                        LIMIT $inicio, $qtn_result_pg";
+
+                        $resultado_temas = mysqli_query($link, $result_temas);
 
 
-
-                    if (mysqli_stmt_prepare($stmt, $query)) {
-                    mysqli_stmt_bind_param($stmt, 's', $pesquisar);
+                    //Prepared Statements
+                    if (mysqli_stmt_prepare($stmt, $result_temas)) {
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $id_categoria,$nome_categoria, $data_criacao, $descricao);
-                    while (mysqli_stmt_fetch($stmt)) {
+                    mysqli_stmt_bind_result($stmt, $id_categorias, $nome_categoria, $data_criacao, $descricao_c);
 
+                    while ($row_temas = mysqli_fetch_assoc($resultado_temas)){
                     ?>
                     <tbody>
                     <tr>
-                        <td><?= $nome_categoria?></td>
-                        <td><?= $data_criacao?></td>
+                        <td><?= $row_temas['nome_categoria'] ?></td>
+                        <td><?= $row_temas['data_criacao'] ?></td>
 
                         <td>
                             <!-- Button trigger modal -->
 
-                            <a  href="" data-toggle="modal" data-target="#exampleModal<?=$id_categoria?>"><i class="fas fa-info-circle"></i> </a>
-                            <a href="editar_categorias.php?id=<?=$id_categoria?>"><i class="fas fa-edit"></i></a>
+                            <a href="" data-toggle="modal"
+                               data-target="#exampleModal<?= $row_temas['id_categorias'] ?>"><i
+                                        class="fas fa-info-circle"></i> </a>
+                            <a href="editar_categorias.php?id=<?= $row_temas['id_categorias'] ?>"><i
+                                        class="fas fa-edit"></i></a>
 
-                            <a href="" data-toggle="modal" data-target="#apagar<?=$id_categoria?>"><i class="fas fa-trash"></i> </a>
+                            <a href="" data-toggle="modal" data-target="#apagar<?= $row_temas['id_categorias'] ?>"><i
+                                        class="fas fa-trash"></i> </a>
                         </td>
 
                     </tr>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal<?=$id_categoria?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal<?= $row_temas['id_categorias'] ?>" tabindex="-1"
+                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <?php
-
-                            $link2 = new_db_connection();
-                            $stmt2 = mysqli_stmt_init($link2);
-
-                            $query2 = "SELECT id_categorias, nome_categoria, data_criacao, descricao_c
-                              FROM categorias WHERE id_categorias=?";
-
-
-                            if (mysqli_stmt_prepare($stmt2, $query2)) {
-
-                                mysqli_stmt_bind_param($stmt2, 'i', $id_categoria);
-                                /* execute the prepared statement */
-                                mysqli_stmt_execute($stmt2);
-                                /* bind result variables */
-                                mysqli_stmt_bind_result($stmt2, $id_categoria,$nome_categoria, $data_criacao, $descricao);
-
-                                /* resultados da store */
-                                mysqli_stmt_store_result($stmt2);
-                                while (mysqli_stmt_fetch($stmt2)) {
-                                    echo ' ';
-                                }
-                            }
-                            ?>
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #78BE20; color:white">
                                     <h5 class="modal-title" id="exampleModalLabel">Mais info</h5>
@@ -124,13 +146,13 @@
                                 </div>
                                 <div class="modal-body">
                                     <h5>Nome da Categoria:</h5>
-                                    <p><?=$nome_categoria?></p>
+                                    <p><?= $row_temas['nome_categoria'] ?></p>
                                     <hr style="background-color: #78BE20; opacity: 0.3">
                                     <h5>Data de criação</h5>
-                                    <p><?=$data_criacao?></p>
+                                    <p><?= $row_temas['data_criacao'] ?></p>
                                     <hr style="background-color: #78BE20; opacity: 0.3">
                                     <h5>Descrição:</h5>
-                                    <p><?=$descricao?></p>
+                                    <p><?= $row_temas['descricao_c'] ?></p>
                                     <hr style="background-color: #78BE20; opacity: 0.3">
 
                                 </div>
@@ -141,7 +163,8 @@
 
 
                     <!--MODAL PARA APAGAR-->
-                    <div class="modal fade" id="apagar<?=$id_categoria?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="apagar<?= $row_temas['id_categorias'] ?>" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <?php
 
@@ -157,7 +180,7 @@
                                 /* execute the prepared statement */
                                 mysqli_stmt_execute($stmt3);
                                 /* bind result variables */
-                                mysqli_stmt_bind_result($stmt3, $id_categoria,$nome_categoria );
+                                mysqli_stmt_bind_result($stmt3, $id_categoria, $nome_categoria);
 
                                 /* resultados da store */
                                 mysqli_stmt_store_result($stmt3);
@@ -174,8 +197,10 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Tem a certeza que quer apagar a categoria <?=$nome_categoria?>?</p>
-                                    <a href="scripts/apagar_categorias.php?id=<?=$id_categoria?>"><input type = "submit" value = "Eliminar" class="buttonCustomise"> </a>
+                                    <p>Tem a certeza que quer apagar a categoria <?= $row_temas['nome_categoria'] ?>
+                                        ?</p>
+                                    <a href="scripts/apagar_categorias.php?id=<?= $row_temas['id_categorias'] ?>"><input
+                                                type="submit" value="Eliminar" class="buttonCustomise"> </a>
                                     <button type="button" class="buttonCustomise" data-dismiss="modal">Cancelar</button>
 
                                 </div>
@@ -184,11 +209,20 @@
                         </div>
                     </div>
 
-
-
                     <?php
                     }
+                    }
 
+                    $result_pg = "SELECT COUNT(id_categorias) AS num_result FROM categorias";
+                    $link2 = new_db_connection();
+
+                    $resultado_pg = mysqli_query($link2, $result_pg);
+
+                    $row_pg = mysqli_fetch_assoc($resultado_pg);
+
+                    $quantidade_pg = ceil($row_pg['num_result'] / $qtn_result_pg);
+
+                    $max_links = 5;
                     ?>
                     </tbody>
                     <tfoot>
@@ -199,18 +233,40 @@
 
                     </tr>
                     </tfoot>
-
                 </table>
+
+
+                <nav>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <?php
+
+                                echo "<li class='page-item'><a class='page-link' href='categorias.php?p=1'>Primeira</a></li>";
+
+                                for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+
+                                    if($pag_ant >= 1){
+                                        echo "<li class='page-item'><a class='page-link' href='categorias.php?p=$pag_ant'>$pag_ant</a>";
+                                    }
+                                }
+
+                                echo "<li class='page-item'><a class='page-link' href='categorias.php?p=$pagina'>$pagina</a>";
+
+                                for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+
+                                    if($pag_dep <= $quantidade_pg){
+
+                                        echo "<li class='page-item'><a class='page-link' href='categorias.php?p=$pag_dep'>$pag_dep</a>";
+                                    }
+                                }
+
+                                echo "<li class='page-item'><a class='page-link' href='categorias.php?p=$quantidade_pg'>Última</a>";
+                                ?>
+                        </ul>
+                    </nav>
             </div>
         </div>
     </div>
 </div>
-<?php
-/* close statement */
-mysqli_stmt_close($stmt);
-
-/* close connection */
-mysqli_close($link);
-}
-?>
 <!-- /.container-fluid -->

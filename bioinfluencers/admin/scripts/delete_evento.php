@@ -19,18 +19,18 @@ if (isset($_GET["id"])) {
         // VALIDAÇÃO DO RESULTADO DO EXECUTE
         if (!mysqli_stmt_execute($stmt)) {
 
-            echo "ERROR:" . mysqli_error($stmt);
+            header("Location: ../eventos.php?msg=0");
 
         }
 
         mysqli_stmt_close($stmt);
     } else {
 
-        echo "Error:" . mysqli_stmt_error($stmt);
+        header("Location: ../eventos.php?msg=0");
     }
     mysqli_close($link);
 
-    header("Location: ../eventos.php");
+    header("Location: ../eventos.php?msg=1");
 
 
 }

@@ -1,6 +1,52 @@
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800">Criar uma notícia</h1>
     <p class="mb-4">Aqui é possível criar novas notícias.</p>
+
+    <?php
+    if (isset($_GET["msg"])) {
+        $msg_show = true;
+        switch ($_GET["msg"]) {
+            case 3:
+                $message = "Ocorreu um erro ao inserir a notícia, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            case 4:
+                $message = "Ocorreu um erro ao inserir o seu ficheiro, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            case 5:
+                $message = "O ficheiro inserido não é uma imagem.";
+                $class = "alert-warning";
+                break;
+            case 6:
+                $message = "O ficheiro inserido já existe.";
+                $class = "alert-warning";
+                break;
+            case 7:
+                $message = "O ficheiro inserido é demasiado grande.";
+                $class = "alert-warning";
+                break;
+            case 8:
+                $message = "Apenas ficheiros JPG, JPEG, PNG e GIF são aceites";
+                $class = "alert-warning";
+                break;
+            default:
+                $msg_show = false;
+        }
+
+        echo "<div class=\"alert $class alert-dismissible fade show mt-2\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+        if ($msg_show) {
+            echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+        }
+    }
+    ?>
+
+
+
     <div class="row">
         <div class="col-xl-12">
 

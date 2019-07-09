@@ -12,9 +12,10 @@ if (isset($_GET["id_g"])) {
     $stmt = mysqli_stmt_init($link);
 
     $query = "SELECT id_grupos, nome_grupos, descricao_g
-          FROM grupos";
+          FROM grupos WHERE id_grupos=?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
+        mysqli_stmt_bind_param($stmt, 'i', $id_g);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $id_g, $nome_g, $descricao);
 
@@ -32,6 +33,35 @@ if (isset($_GET["id_g"])) {
         }
     }
     ?>
+
+
+    <?php
+    if (isset($_GET["msg"])) {
+        $msg_show = true;
+        switch ($_GET["msg"]) {
+            case 0:
+                $message = "Ocorreu um erro ao apagar o comentário, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            case 1:
+                $message = "Comentário apagado com sucesso!";
+                $class = "alert-success";
+                break;
+            default:
+                $msg_show = false;
+        }
+
+        echo "<div class=\"alert $class alert-dismissible fade show mt-2\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+        if ($msg_show) {
+            echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+        }
+    }
+    ?>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
 
@@ -56,18 +86,16 @@ if (isset($_GET["id_g"])) {
                     /* create a prepared statement */
                     $stmt2 = mysqli_stmt_init($link2);
 
-                    $query2 = "SELECT id_grupocomentarios, titulo_comentarios, mensagem, data_hora, utilizadores_id_utilizadores, grupos_id_grupos, respostas, id_utilizadores, nome
-                                  FROM grupo_comentarios
-                                  INNER JOIN utilizadores
-                                  ON grupo_comentarios.utilizadores_id_utilizadores = utilizadores.id_utilizadores
-                                  WHERE grupos_id_grupos = ?";
+                    $query2 = "SELECT nome_u, nickname, id_grupocomentarios, titulo_comentarios, mensagem, data_hora
+                              FROM utilizadores INNER JOIN grupo_comentarios ON utilizadores.id_utilizadores= grupo_comentarios.utilizadores_id_utilizadores 
+                              WHERE grupos_id_grupos=?";
 
 
                     if (mysqli_stmt_prepare($stmt2, $query2)) {
                         mysqli_stmt_bind_param($stmt2, 'i', $id_g);
 
                         mysqli_stmt_execute($stmt2);
-                        mysqli_stmt_bind_result($stmt2, $id_c, $titulo_c, $mensagem, $data_hora, $uti_id, $id_grupos, $respostas, $id_u, $nome);
+                        mysqli_stmt_bind_result($stmt2, $nome, $nickname, $id_c, $titulo, $mensagem, $data);
 
 
                         while (mysqli_stmt_fetch($stmt2)) {
@@ -76,9 +104,9 @@ if (isset($_GET["id_g"])) {
                             <tbody>
                             <tr>
                                 <td><?= $nome ?></td>
-                                <td><?= $titulo_c ?></td>
+                                <td><?= $titulo ?></td>
                                 <td><?= $mensagem ?></td>
-                                <td><?= $data_hora ?></td>
+                                <td><?= $data ?></td>
                                 <td>
                                     <a href="" data-toggle="modal" data-target="#apagar<?= $id_g ?><?= $id_c ?>"><i
                                                 class="fas fa-trash"></i></a>

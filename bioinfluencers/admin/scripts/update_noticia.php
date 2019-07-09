@@ -25,18 +25,18 @@ if (isset($_GET["id"]) && isset($_POST["titulo"]) && isset($_POST["subtitulo"]) 
 
         /* execute the prepared statement */
         if (!mysqli_stmt_execute($stmt)) {
-            echo "Error: " . mysqli_stmt_error($stmt);
+            header("Location: ../noticias.php?msg=10");
         }
 
         /* close statement */
         mysqli_stmt_close($stmt);
     } else {
-        echo "Error: " . mysqli_error($link);
+        header("Location: ../noticias.php?msg=10");
     }
     /* close connection */
     mysqli_close($link);
 
-    header("Location: ../noticias.php");
+    header("Location: ../noticias.php?msg=9");
 }
 
 ?>

@@ -20,19 +20,19 @@ if (isset($_GET["id_f"])) {
 
         /* execute the prepared statement */
         if (!mysqli_stmt_execute($stmt)) {
-            echo "Error: " . mysqli_stmt_error($stmt);
+            header("Location: ../grupos.php?msg=0");
         }
 
         /* close statement */
         mysqli_stmt_close($stmt);
     } else {
-        echo "Error: " . mysqli_error($link);
+        header("Location: ../grupos.php?msg=0");
     }
 
     /* close connection */
     mysqli_close($link);
 
-    header("Location: ../grupos.php");
+    header("Location: ../grupos.php?msg=1");
 
 }
 

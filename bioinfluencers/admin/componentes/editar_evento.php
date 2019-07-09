@@ -28,6 +28,7 @@ if (isset($_GET["id"])){
             <div class="container-fluid">
                 <h1 class="h3 mb-2 text-gray-800">Editar evento</h1>
                 <p class="mb-4">Editar eventos já criados</p>
+
                 <div class="row">
                     <div class="col-xl-12">
                         <form method="post" action="scripts/update_evento.php?id=<?= $id_evento?>" enctype="multipart/form-data">

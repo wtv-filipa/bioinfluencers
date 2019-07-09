@@ -24,19 +24,19 @@ if (isset($_GET["id"]) && isset($_POST["nome_categoria"]) && isset($_POST["descr
 
         /* execute the prepared statement */
         if (!mysqli_stmt_execute($stmt)) {
-            echo "Error: " . mysqli_stmt_error($stmt);
+            header("Location: ../categorias.php?msg=6");
         }
 
         /* close statement */
         mysqli_stmt_close($stmt);
     } else {
-        echo "Error: " . mysqli_error($link);
+        header("Location: ../categorias.php?msg=6");
     }
     /* close connection */
     mysqli_close($link);
 
 
-    header("Location: ../categorias.php");
+    header("Location: ../categorias.php?msg=5");
 }
 
 ?>

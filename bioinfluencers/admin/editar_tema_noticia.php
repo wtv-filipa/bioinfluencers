@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Conteúdos</title>
+    <title>Editar Tema das Notícias</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
@@ -39,7 +40,7 @@ session_start();
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <?php include "componentes/criar_conteudos.php"; ?>
+            <?php include "componentes/editar_tema_noticia.php"; ?>
             <!-- /.container-fluid -->
 
         </div>
@@ -54,7 +55,6 @@ session_start();
 
 </div>
 <!-- End of Page Wrapper -->
-
 <!-- JavaScript-->
 
 <?php include "helpers/js.php"; ?>

@@ -35,18 +35,18 @@ if (isset($_GET["id"])  && isset($_POST["nome"]) && isset($_POST["local"])  && i
 
         /* execute the prepared statement */
         if (!mysqli_stmt_execute($stmt)) {
-            echo "Error: " . mysqli_stmt_error($stmt);
+            header("Location: ../eventos.php?msg=10");
         }
 
         /* close statement */
         mysqli_stmt_close($stmt);
     } else {
-        echo "Error: " . mysqli_error($link);
+        header("Location: ../eventos.php?msg=10");
     }
     /* close connection */
     mysqli_close($link);
 
-    header("Location: ../eventos.php");
+    header("Location: ../eventos.php?msg=9");
 }
 
 ?>

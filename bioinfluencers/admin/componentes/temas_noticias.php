@@ -31,146 +31,99 @@
                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th><a href="temas_noticias.php?sort=t">Tema</a></th>
+                        <th><a href="temas_noticias.php">Tema</a></th>
                         <th>Ações</th>
+
+                        <?php
+                        require_once("connections/connection.php");
+
+                        $link = new_db_connection();
+                        $stmt = mysqli_stmt_init($link);
+
+                        $pagina_atual = filter_input(INPUT_GET,'p', FILTER_SANITIZE_NUMBER_INT);
+
+                        $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+
+                        $qtn_result_pg = 5;
+
+                        $inicio = ($qtn_result_pg * $pagina) - $qtn_result_pg;
+
+                        $result_temas = "SELECT id_temas, nome_tema 
+                                        FROM temas_noticias 
+                                        ORDER BY id_temas DESC
+                                        LIMIT $inicio, $qtn_result_pg";
+
+                        $resultado_temas = mysqli_query($link, $result_temas);
+
+                        //Prepared Statements
+                        if (mysqli_stmt_prepare($stmt, $result_temas)) {
+
+                        mysqli_stmt_execute($stmt);
+                        mysqli_stmt_bind_result($stmt, $id_temas, $nome_tema);
+
+                        while ($row_temas = mysqli_fetch_assoc($resultado_temas)) {
+                        ?>
 
                     </tr>
                     </thead>
+                    <tbody>
+                    <tr>
 
-                    <?php
-                    require_once("connections/connection.php");
+                        <td><?= $row_temas['nome_tema'] ?></td>
 
-                    if (isset($_GET["p"])) {
+                        <td>
+                            <!-- Button trigger modal -->
 
-                        $pesquisar = "%" . $_GET["p"] . "%";
-                    } else {
+                            <a href="editar_tema_noticia.php?id=<?= $row_temas['id_temas'] ?>"><i
+                                        class="fas fa-edit"></i></a>
 
-                        $pesquisar = "%";
-                    }
+                            <a href="" data-toggle="modal" data-target="#apagar<?= $row_temas['id_temas'] ?>"><i
+                                        class="fas fa-trash"></i></a>
+                        </td>
 
+                    </tr>
+                    </tbody>
 
-                    $link = new_db_connection();
-                    $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_temas, nome_tema FROM temas_noticias WHERE nome_tema LIKE ?";
+                    <div class="modal fade" id="apagar<?= $row_temas['id_temas'] ?>" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
 
-                    if (isset($_GET["sort"])) {
-                        if ($_GET["sort"] == "t") {
-                            $ordem_listagem = "tema";
-                        }
-
-                        $query .= " ORDER BY " . $ordem_listagem . " ASC ";
-                    }
-
-
-
-                    if (mysqli_stmt_prepare($stmt, $query)) {
-                    mysqli_stmt_bind_param($stmt, 's', $pesquisar);
-
-                    mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt,  $id,$tema_noticia);
-                    while (mysqli_stmt_fetch($stmt)) {
-
-                        ?>
-                        <tbody>
-                        <tr>
-
-                            <td><?=$tema_noticia?></td>
-
-                            <td>
-                                <!-- Button trigger modal -->
-
-                                <!--<a href="" data-toggle="modal" data-target="#exampleModalCenter<?=$id?>"><i class="fas fa-info-circle"></i></a>-->
-
-                                <a href="editar_tema_noticia.php?id=<?=$id?>"><i class="fas fa-edit"></i></a>
-
-                                <a href="" data-toggle="modal" data-target="#apagar<?=$id?>"><i class="fas fa-trash"></i></a>
-                            </td>
-
-                        </tr>
-                        </tbody>
-
-
-
-                        <div class="modal fade" id="apagar<?=$id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <?php
-
-                                $link3 = new_db_connection();
-                                $stmt3 = mysqli_stmt_init($link3);
-
-                                $query3 = "SELECT id_temas, nome_tema FROM temas_noticias WHERE id_temas LIKE ?";
-
-
-                                if (mysqli_stmt_prepare($stmt3, $query3)) {
-
-                                    mysqli_stmt_bind_param($stmt3, 'i', $id);
-                                    /* execute the prepared statement */
-                                    mysqli_stmt_execute($stmt3);
-                                    /* bind result variables */
-                                    mysqli_stmt_bind_result($stmt3, $id,$tema_noticia);
-
-                                    /* resultados da store */
-                                    mysqli_stmt_store_result($stmt3);
-                                    while (mysqli_stmt_fetch($stmt3)) {
-                                        echo ' ';
-                                    }
-                                }
-
-                                //PAGINAÇÃO
-                                $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
-
-                                //Selecionar todos os temas
-                                $result_temas = "SELECT * FROM temas_noticias";
-
-                                $resultado_temas = mysqli_query($conn, $result_temas);
-
-                                //Contar o total de temas
-                                $total_temas = mysqli_num_rows($resultado_temas);
-
-                                //Quantidade de temas por página
-                                $quantidade_temas = 5;
-
-                                //Cálculo de número de páginas necessárias para apresentar os temas
-                                $num_pagina = ceil($total_temas/$quantidade_temas);
-
-                                //Calcular o inicio da visualização
-                                $inicio = ($quantidade_temas * $pagina) - $quantidade_temas;
-
-                                //Selecionar os temas a ser apresentados na página
-                                $result_temas = "SELECT * FROM temas_noticias limit 5 $inicio, $quantidade_temas";
-
-                                $resultado_temas = mysqli_query($conn, $result_temas);
-
-                                $total_temas = mysqli_num_rows($resultado_temas);
-
-                                //ACABOU PAGINAÇÃO
-
-                                ?>
-                                <div class="modal-content">
-                                    <div class="modal-header" style="background-color: #78BE20; color:white">
-                                        <h5 class="modal-title" id="exampleModalLabel">Apagar</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Tem a certeza que quer apagar o tema <?=$tema_noticia?>?</p>
-                                        <a href="scripts/delete_tema_noticias.php?id=<?=$id?>"><input type = "submit" value = "Eliminar" class="buttonCustomise"> </a>
-                                        <button type="button" class="buttonCustomise" data-dismiss="modal">Cancelar</button>
-
-                                    </div>
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #78BE20; color:white">
+                                    <h5 class="modal-title" id="exampleModalLabel">Apagar</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Tem a certeza que quer apagar o tema <?= $row_temas['nome_tema'] ?>?</p>
+                                    <a href="scripts/delete_tema_noticias.php?id=<?= $row_temas['id_temas'] ?>"><input
+                                                type="submit" value="Eliminar" class="buttonCustomise"> </a>
+                                    <button type="button" class="buttonCustomise" data-dismiss="modal">Cancelar</button>
 
                                 </div>
+
                             </div>
                         </div>
-
-
-                        <?php
-                    }
-
-                    ?>
+                    </div>
                     <tfoot>
                     <tr>
+                        <?php
+                        }
+                        }
+
+                        $link2 = new_db_connection();
+
+                        $result_pg = "SELECT COUNT(id_temas) AS num_result FROM temas_noticias";
+
+                        $resultado_pg = mysqli_query($link2, $result_pg);
+
+                        $row_pg = mysqli_fetch_assoc($resultado_pg);
+
+                        $quantidade_pg = ceil($row_pg['num_result'] / $qtn_result_pg);
+
+                        $max_links = 5;
+                        ?>
                         <th>Tema</th>
                         <th>Ações</th>
 
@@ -178,57 +131,39 @@
                     </tfoot>
                 </table>
 
-                <?php
+                <nav>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <?php
 
-                $pagina_anterior= $pagina - 1;
-                $pagina_posterior= $pagina + 1;
-                ?>
+                                echo "<li class='page-item'><a class='page-link' href='temas_noticias.php?p=1'>Primeira</a></li>";
 
-                <nav aria-label="Navegação de página exemplo">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <?php
+                                for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
 
-                            if($pagina_anterior != 0){ ?>
+                                    if($pag_ant >= 1){
+                                        echo "<li class='page-item'><a class='page-link' href='temas_noticias.php?p=$pag_ant'>$pag_ant</a>";
+                                    }
+                                }
 
-                                <a class="page-link" href="#" aria-label="Anterior">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
+                                echo "<li class='page-item'><a class='page-link' href='temas_noticias.php?p=$pagina'>$pagina</a>";
 
-                            <?php }?>
+                                for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
 
+                                    if($pag_dep <= $quantidade_pg){
 
+                                        echo "<li class='page-item'><a class='page-link' href='temas_noticias.php?p=$pag_dep'>$pag_dep</a>";
+                                    }
+                                }
 
-                        </li>
+                                echo "<li class='page-item'><a class='page-link' href='temas_noticias.php?p=$quantidade_pg'>Última</a>";
+                                ?>
+                        </ul>
+                    </nav>
 
-                            <?php
-                            //Apresentar a paginação
-
-                            for($i = 1; $i < $num_pagina + 1; $i++){ ?> 
-
-                                <li class="page-item">
-                                    <a class="page-link" href="temas_noticias.php?pagina=<?= $id?>"><?= $i?></a>
-                                </li>
-
-                        <?php } ?>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Próximo">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Próximo</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </div>
 </div>
-<?php
-/* close statement */
-mysqli_stmt_close($stmt);
 
-/* close connection */
-mysqli_close($link);
-}
-?>
 <!-- /.container-fluid -->

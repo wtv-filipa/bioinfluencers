@@ -24,7 +24,7 @@ WHERE id_conteudos=?";
 
     ?>
             <div class=" container mt-5">
-            <a href="profile.php?user=<?=$id?>">
+            <a style="text-decoration: none" href="profile.php?user=<?=$id?>">
 
                 <h5>&#8592; voltar</h5>
             </a>

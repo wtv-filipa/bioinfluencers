@@ -22,26 +22,26 @@ if (isset($_POST["nome"]) && isset($_POST["descricao"])) {
             mysqli_close($link);
 
             // SUCCESS ACTION
-            header("Location: ../categorias.php");
+            header("Location: ../categorias.php?msg=2");
 
         } else {
 
             // ERROR ACTION
-            header("Location: ../categorias.php");
-            echo "Error:" . mysqli_stmt_error($stmt);
+            header("Location: ../categorias.php?msg=3");
+
         }
 
     } else {
 
         // ERROR ACTION
-        echo "Error:" . mysqli_error($link);
+        header("Location: ../categorias.php?msg=3");
         mysqli_close($link);
 
     }
 } else {
 
-    echo "Error:" .mysqli_error($link);
-    echo "Campos do formulário por preencher";
+    header("Location: ../categorias.php?msg=4");
+    //echo "Campos do formulário por preencher";
 };
 
 

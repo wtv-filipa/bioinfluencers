@@ -5,6 +5,45 @@
     <h1 class="h3 mb-2 text-gray-800">Grupos</h1>
     <p class="mb-4">Aqui é possível gerir e ter uma vista geral dos grupos do BioInfluencers.</p>
 
+    <?php
+    if (isset($_GET["msg"])) {
+        $msg_show = true;
+        switch ($_GET["msg"]) {
+            case 0:
+                $message = "Ocorreu um erro ao apagar o grupo, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            case 1:
+                $message = "Grupo apagado com sucesso!";
+                $class = "alert-success";
+                break;
+            case 2:
+                $message = "Grupo inserido com sucesso!";
+                $class = "alert-success";
+                break;
+            case 9:
+                $message = "Notícia atualizada com sucesso!";
+                $class = "alert-success";
+                break;
+            case 10:
+                $message = "Ocorreu um erro ao atualizar a notícia, por favor tente novamente...";
+                $class = "alert-warning";
+                break;
+            default:
+                $msg_show = false;
+        }
+
+        echo "<div class=\"alert $class alert-dismissible fade show mt-2\" role=\"alert\">" . $message . "
+                          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                          </button>
+                        </div>";
+        if ($msg_show) {
+            echo '<script>window.onload=function (){$(\'.alert\').alert();}</script>';
+        }
+    }
+    ?>
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -40,91 +79,62 @@
                     <?php
                     require_once("connections/connection.php");
 
-                    if (isset($_GET["p"])) {
-
-                        $pesquisar = "%" . $_GET["p"] . "%";
-                    } else {
-
-                        $pesquisar = "%";
-                    }
-
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_grupos, nome_grupos, descricao_g, estado, categorias_id_categorias, id_categorias, nome_categoria 
+
+                    $pagina_atual = filter_input(INPUT_GET,'p', FILTER_SANITIZE_NUMBER_INT);
+
+                    $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+
+                    $qtn_result_pg = 5;
+
+                    $inicio = ($qtn_result_pg * $pagina) - $qtn_result_pg;
+
+                    $result_temas = "SELECT id_grupos, nome_grupos, descricao_g, estado, data_criacao_g, categorias_id_categorias, conteudos_id_conteudos, id_categorias, nome_categoria, data_criacao, descricao_c 
                               FROM grupos 
                               INNER JOIN categorias 
-                              ON grupos.categorias_id_categorias= categorias.id_categorias 
-                              WHERE nome_grupos LIKE ?";
+                              ON grupos.categorias_id_categorias= categorias.id_categorias
+                              ORDER BY id_grupos DESC  
+                              LIMIT $inicio, $qtn_result_pg";
 
-                    if (isset($_GET["sort"])) {
-                        if ($_GET["sort"] == "n") {
-                            $ordem_listagem = "nome_grupo";
-                        } else {
-                            if ($_GET["sort"] == "c") {
-                                $ordem_listagem = "nome_categoria";
-                            }
-                        }
+                    $resultado_temas = mysqli_query($link, $result_temas);
 
-                        $query .= " ORDER BY " . $ordem_listagem . " ASC ";
-                    }
-
-
-
-                    if (mysqli_stmt_prepare($stmt, $query)) {
-                    mysqli_stmt_bind_param($stmt, 's', $pesquisar);
+                    //Prepared Statements
+                    if (mysqli_stmt_prepare($stmt, $result_temas)) {
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $id_g, $nome, $descricao, $estado, $categorias_id, $id_cat, $nome_cat);
-                    while (mysqli_stmt_fetch($stmt)) {
+                    mysqli_stmt_bind_result($stmt,$id_grupos, $nome_grupos, $descricao_g, $estado, $data_criacao_g, $categorias_id_categorias, $conteudos_id_conteudos, $id_categorias, $nome_categoria, $data_criacao, $descricao_c);
 
+                    while ($row_temas = mysqli_fetch_assoc($resultado_temas)) {
                     ?>
                     <tbody>
                     <tr>
-                        <td><?= $nome ?></td>
-                        <td><?=$nome_cat ?></td>
-                        <td><?=$estado ?></td>
-                        <td><a href="comentarios.php?id_f=<?=$id_g?>">ver comentários</a></td>
+                        <td><?= $row_temas['nome_grupos'] ?></td>
+                        <td><?= $row_temas['nome_categoria'] ?></td>
+                        <td><?= $row_temas['estado'] ?></td>
+                        <td><a href="comentarios.php?id_g=<?= $row_temas['id_grupos'] ?>">ver comentários</a></td>
 
 
                         <td>
                             <!-- Button trigger modal -->
 
-                            <a  href="" data-toggle="modal" data-target="#exampleModal<?=$id_g?>"><i class="fas fa-info-circle"></i> </a>
+                            <a href="" data-toggle="modal" data-target="#exampleModal<?= $row_temas['id_grupos'] ?>"><i
+                                        class="fas fa-info-circle"></i> </a>
 
-                            <a href='editar_grupo.php?id=<?=$id_g?>'><i class="fas fa-edit"></i></a>
+                            <a href='editar_grupo.php?id=<?= $row_temas['id_grupos'] ?>'><i class="fas fa-edit"></i></a>
 
-                            <a href="" data-toggle="modal" data-target="#apagar<?=$id_g?>"><i class="fas fa-trash"></i></a>
+                            <a href="" data-toggle="modal" data-target="#apagar<?= $row_temas['id_grupos'] ?>"><i
+                                        class="fas fa-trash"></i></a>
 
                         </td>
 
                     </tr>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal<?=$id_g?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal<?= $row_temas['id_grupos'] ?>" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <?php
 
-                            $link2 = new_db_connection();
-                            $stmt2 = mysqli_stmt_init($link2);
-
-                            $query2 = "SELECT id_grupos, nome_grupos, descricao_g, estado, categorias_id_categorias, id_categorias, nome_categoria FROM grupos INNER JOIN categorias ON grupos.categorias_id_categorias= categorias.id_categorias WHERE id_grupos=?";
-
-
-                            if (mysqli_stmt_prepare($stmt2, $query2)) {
-
-                                mysqli_stmt_bind_param($stmt2, 'i', $id_g);
-                                /* execute the prepared statement */
-                                mysqli_stmt_execute($stmt2);
-                                /* bind result variables */
-                                mysqli_stmt_bind_result($stmt2, $id_g, $nome, $descricao, $estado, $categorias_id, $id_cat, $nome_cat);
-
-                                /* resultados da store */
-                                mysqli_stmt_store_result($stmt2);
-                                while (mysqli_stmt_fetch($stmt2)) {
-                                    echo ' ';
-                                }
-                            }
-                            ?>
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #78BE20; color:white">
                                     <h5 class="modal-title" id="exampleModalLabel">Mais info</h5>
@@ -134,13 +144,13 @@
                                 </div>
                                 <div class="modal-body">
                                     <h5>Nome do grupo:</h5>
-                                    <p><?=$nome?></p>
+                                    <p><?= $nome ?></p>
                                     <hr style="background-color: #78BE20; opacity: 0.3">
                                     <h5>Categoria:</h5>
-                                    <p><?=$nome_cat?></p>
+                                    <p><?= $nome_cat ?></p>
                                     <hr style="background-color: #78BE20; opacity: 0.3">
                                     <h5>Descrição:</h5>
-                                    <p><?=$descricao?></p>
+                                    <p><?= $descricao ?></p>
                                     <hr style="background-color: #78BE20; opacity: 0.3">
                                 </div>
 
@@ -148,31 +158,10 @@
                         </div>
                     </div>
                     <!--MODAL PARA APAGAR-->
-                    <div class="modal fade" id="apagar<?=$id_g?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="apagar<?= $id_g ?>" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <?php
 
-                            $link3 = new_db_connection();
-                            $stmt3 = mysqli_stmt_init($link3);
-
-                            $query3 = "SELECT id_grupos, nome_grupos FROM grupos WHERE id_grupos=?";
-
-
-                            if (mysqli_stmt_prepare($stmt3, $query3)) {
-
-                                mysqli_stmt_bind_param($stmt3, 'i', $id_g);
-                                /* execute the prepared statement */
-                                mysqli_stmt_execute($stmt3);
-                                /* bind result variables */
-                                mysqli_stmt_bind_result($stmt3, $id,$nome);
-
-                                /* resultados da store */
-                                mysqli_stmt_store_result($stmt3);
-                                while (mysqli_stmt_fetch($stmt3)) {
-                                    echo ' ';
-                                }
-                            }
-                            ?>
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #78BE20; color:white">
                                     <h5 class="modal-title" id="exampleModalLabel">Apagar</h5>
@@ -181,8 +170,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Tem a certeza que quer apagar o grupo <?=$nome?>?</p>
-                                    <a href="scripts/delete_grupo.php?id_f=<?=$id_g?>"><input type = "submit" value = "Eliminar" class="buttonCustomise"> </a>
+                                    <p>Tem a certeza que quer apagar o grupo <?= $nome ?>?</p>
+                                    <a href="scripts/delete_grupo.php?id_f=<?= $id_g ?>"><input type="submit"
+                                                                                                value="Eliminar"
+                                                                                                class="buttonCustomise">
+                                    </a>
                                     <button type="button" class="buttonCustomise" data-dismiss="modal">Cancelar</button>
 
                                 </div>
@@ -194,10 +186,24 @@
 
                     <?php
                     }
-
+                    }
                     ?>
                     </tbody>
                     <tfoot>
+                    <?php
+
+                    $link2 = new_db_connection();
+
+                    $result_pg = "SELECT COUNT(id_grupos) AS num_result FROM grupos";
+
+                    $resultado_pg = mysqli_query($link2, $result_pg);
+
+                    $row_pg = mysqli_fetch_assoc($resultado_pg);
+
+                    $quantidade_pg = ceil($row_pg['num_result'] / $qtn_result_pg);
+
+                    $max_links = 5;
+                    ?>
                     <tr>
                         <th>Nome</th>
                         <th>Categoria</th>
@@ -209,16 +215,37 @@
                     </tfoot>
 
                 </table>
+                <nav>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <?php
+
+                                echo "<li class='page-item'><a class='page-link' href='grupos.php?p=1'>Primeira</a></li>";
+
+                                for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+
+                                    if($pag_ant >= 1){
+                                        echo "<li class='page-item'><a class='page-link' href='grupos.php?p=$pag_ant'>$pag_ant</a>";
+                                    }
+                                }
+
+                                echo "<li class='page-item'><a class='page-link' href='grupos.php?p=$pagina'>$pagina</a>";
+
+                                for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+
+                                    if($pag_dep <= $quantidade_pg){
+
+                                        echo "<li class='page-item'><a class='page-link' href='grupos.php?p=$pag_dep'>$pag_dep</a>";
+                                    }
+                                }
+
+                                echo "<li class='page-item'><a class='page-link' href='grupos.php?p=$quantidade_pg'>Última</a>";
+                                ?>
+                        </ul>
+                    </nav>
             </div>
         </div>
     </div>
 </div>
-<?php
-/* close statement */
-mysqli_stmt_close($stmt);
-
-/* close connection */
-mysqli_close($link);
-}
-?>
 <!-- /.container-fluid -->
