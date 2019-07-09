@@ -132,18 +132,24 @@ if (isset($_GET["id_e"])) {
                             <?php
                             $link3 = new_db_connection();
                             $stmt3 = mysqli_stmt_init($link3);
-                            $query3 = "SELECT eventos_id_eventos, status_atual FROM utilizadores_has_eventos WHERE status_atual = 0 AND utilizadores_id_utilizadores = ? AND eventos_id_eventos = ?";
+                            $query3 = "SELECT eventos_id_eventos FROM utilizadores_has_eventos WHERE utilizadores_id_utilizadores = ? AND eventos_id_eventos = ?";
 
                             if (mysqli_stmt_prepare($stmt3, $query3)) {
                                 mysqli_stmt_bind_param($stmt3, 'ii', $id_u, $id_evento);
                                 mysqli_stmt_execute($stmt3);
-                                mysqli_stmt_bind_result($stmt3, $id_evento, $status_atual);
+                                mysqli_stmt_bind_result($stmt3, $id_evento);
+                                ?>
+                                <a href="scripts/confirmacao_evento.php?confirma=<?=$id_evento?>&u=<?=$id_u?>">
+                                <?php
                                 if (!mysqli_stmt_fetch($stmt3)) {
-                                    echo "<a href='' data-toggle='modal' data-target='#marcarpresencas'>
-                        <i class='fas fa-check'></i></a>";
+                                    //echo "não fui confirmado";
+                                    echo "<i class='fas fa-check'></i>";
+                                    ?>
+                                    </a>
+                                    <?php
                                 } else {
-                                    echo "<a href='' data-toggle='modal' data-target='#cancelarpresencas'>
-                        <i class='fas fa-times'></i></a>";
+                                    //echo "fui confirmado";
+                                    echo "<a href=\"scripts/confirmacao_evento.php?cancela=$id_evento&u=$id_u\"> <i class='fas fa-times'></i></a>";
                                 }
 
                             }
@@ -178,45 +184,3 @@ if (isset($_GET["id_e"])) {
     }
 }
 ?>
-<!-- Feed Modal-->
-<div class="modal fade" id="marcarpresencas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Aviso:</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Tens a certeza que queres confirmar a presença desta pessoa?</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Não</button>
-                <a class="btn btn-primary"
-                   href="scripts/confirmacao_evento.php?id_e=<?= $id_evento ?>&id_u=<?= $id_u ?>">Sim</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Feed Modal-->
-<div class="modal fade" id="cancelarpresencas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Aviso:</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Tens a certeza que queres cancelar a presença desta pessoa?</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Não</button>
-                <a class="btn btn-primary"
-                   href="scripts/confirmacao_evento.php?id_e=<?= $id_evento ?>&id_u=<?= $id_u ?>&s=<?= $status_atual ?>">Sim</a>
-            </div>
-        </div>
-    </div>
-</div>
-
