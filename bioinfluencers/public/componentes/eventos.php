@@ -1,3 +1,5 @@
+
+
 <?php
 if (isset($_GET["msg"])) {
     $msg_show = true;
@@ -20,7 +22,7 @@ if (isset($_GET["msg"])) {
     }
 }
 ?>
-<div class="row no-gutters">
+<div class="row no-gutters"  data-aos="fade-up" >
 
     <h3 class="mx-auto mt-5"><i class="fa fa-calendar-o  mr-2" aria-hidden="true"></i>Próximos eventos</h3>
 
@@ -45,13 +47,13 @@ if (isset($_GET["msg"])) {
         mysqli_stmt_bind_result($stmt, $id_e, $nome, $data_inicio, $data_fim, $local, $descricao, $conteudos_id_cont, $id_conteudos, $filename);
         while (mysqli_stmt_fetch($stmt)) {
             ?>
-            <div class="event-card">
+            <div class="event-card"  data-aos="fade-up" >
                 <a href="evento_indv.php?id_e=<?= $id_e ?>">
                     <img class="img-fluid lala" src="../admin/uploads/eventos/<?= $filename ?>" alt=""/>
                 </a>
                 <div class="description">
                     <a href="evento_indv.php?id_e=<?= $id_e ?>"><h4 class="mt-2" style="text-decoration: none !important;"><span
-                                    style="font-weight: bold;"><?= substr($data_inicio, 0, 10) ?>   |   </span><?= $nome ?></h4></a>
+                                    style="font-weight: bold;"><?= substr($data_inicio, 8,2 ) ?>/<?= substr($data_inicio, 5,2 ) ?>  |   </span><?= $nome ?></h4></a>
                     <p class="location mb-0"><?= $local ?></p>
                     <i class="fa fa-clock-o mr-2" aria-hidden="true"></i><?= substr($data_inicio, 10, 6) ?>h
                     - <?= substr($data_fim, 10, 6) ?>h

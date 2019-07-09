@@ -71,8 +71,8 @@ if (mysqli_stmt_prepare($stmt, $query)) {
                         </div>
                         <div class="card-text">
                             <h2><?= $titulo ?></h2>
-                            <p><?= $subtitulo ?></p>
-                            <a href="noticia_indv.php?id_n=<?= $id_n ?>">Saber mais</a>
+                            <p class="esconder"><?= $subtitulo ?></p>
+                            <div class="sabermais"><a href="noticia_indv.php?id_n=<?= $id_n ?>">Saber mais</a></div>
                         </div>
                     </div>
                     <?php

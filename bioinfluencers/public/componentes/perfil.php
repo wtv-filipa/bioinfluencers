@@ -51,7 +51,7 @@ WHERE seguidores=? AND utilizadores_id_utilizadores!=seguidores";
 
         <header id="perfil">
 
-        <div class="container">
+        <div class="container pt-4 pb-4">
 
         <div class="topo">
 
@@ -269,7 +269,7 @@ WHERE id_utilizadores=?";
                         ?>
 
 
-                        <div class="col-4">
+                        <div data-aos="fade-up" class="col-4">
                             <a href="publicacao_ind.php?img=<?=$id_conteudos?>">
                             <div class="square "><img class="img-fluid cantos_redondos"
                                                       src="../admin/uploads/publicacao/<?= $filename ?>"></div>
@@ -292,7 +292,7 @@ WHERE id_utilizadores=?";
             <h2 style="font-weight: 500" class="text-center mt-3 mb-3">Troféus</h2>
 
 
-            <div class="row text-center">
+            <div data-aos="fade-up" class="row text-center">
                 <!-------TROFÉUS------>
 
                 <?php
@@ -404,8 +404,8 @@ WHERE id_utilizadores=?";
                 <!----------------FIM----------------->
             </div>
 
-            <h2 style="font-weight: 500"  class="text-center mt-3 mb-3">Medalhas</h2>
-            <div class="row text-center">
+            <h2 data-aos="fade-up" style="font-weight: 500"  class="text-center mt-3 mb-3">Medalhas</h2>
+            <div data-aos="fade-up" class="row text-center">
 
                 <!-------MEDALHAS------>
 
@@ -751,7 +751,7 @@ WHERE id_utilizadores=?";
         <!----------------------------------------EVENTOS--------------------------------------------------------->
         <div id="evento" class="container tab-pane fade">
 
-            <h2 style="font-weight: 500" class="text-center mt-5 mb-3">Próximos eventos</h2>
+            <h2 style="font-weight: 500" class="text-center mt-5 mb-3" data-aos="fade-up">Próximos eventos</h2>
 
             <div class="events row mx-auto">
 
@@ -782,11 +782,10 @@ WHERE id_utilizadores=?";
 
                             ?>
 
-                            <div class="event-card">
+                            <div class="event-card" data-aos="fade-up">
                                 <img class="cantos_redondos" src="../admin/uploads/eventos/<?=$img?>" alt=""/>
                                 <div class="description">
-                                    <h4 class="mt-2"><span style="font-weight: bold;"><?= substr($data_inicio, 0, 10)?>
-                                            | </span><?= $nome ?>
+                                    <h4 class="mt-2"><span style="font-weight: bold;"><?= substr($data_inicio, 8,2 ) ?>/<?= substr($data_inicio, 5,2 ) ?> </span><?= $nome ?>
                                     </h4>
                                     <p class="location mb-0"><?= $local ?></p>
                                     <i class="fa fa-clock-o mr-2"
@@ -804,9 +803,9 @@ WHERE id_utilizadores=?";
             </div>
 
 
-            <h2 style="font-weight: 500" class="text-center mt-5 mb-3">Eventos passados</h2>
+            <h2 style="font-weight: 500" data-aos="fade-up" class="text-center mt-5 mb-3">Eventos passados</h2>
 
-            <div class="events row mx-auto">
+            <div class="events row mx-auto" >
 
                 <?php
                 $link7 = new_db_connection();
@@ -835,11 +834,10 @@ WHERE id_utilizadores=?";
                         if (strtotime($today) > strtotime($data_inicio)) {
                             ?>
 
-                            <div class="event-card">
+                            <div class="event-card" data-aos="fade-up">
                                 <img class="cantos_redondos" src="../admin/uploads/eventos/<?=$img?>" alt=""/>
                                 <div class="description">
-                                    <h4 class="mt-2"><span style="font-weight: bold;"><?= substr($data_inicio, 0, 10)?>
-                                            | </span><?= $nome ?>
+                                    <h4 class="mt-2"><span style="font-weight: bold;"><?= substr($data_inicio, 8,2 ) ?>/<?= substr($data_inicio, 5,2 ) ?> </span><?= $nome ?>
                                     </h4>
                                     <p class="location mb-0"><?= $local ?></p>
                                     <i class="fa fa-clock-o mr-2"

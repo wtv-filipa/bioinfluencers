@@ -1,5 +1,6 @@
-<div class=" container col-lg-8 col-sm-12 mx-auto mt-5">
-    <h4 class="title-ranking">TOP 6</h4>
+
+<div class=" container col-lg-8 col-sm-12 mx-auto mt-5" >
+    <h4 class="title-ranking"  data-aos="fade-up" >TOP 6</h4>
     <div class="row box-ranking no-gutters" style="margin-top: 9%">
 
 
@@ -19,7 +20,7 @@
         while (mysqli_stmt_fetch($stmt7)) {
         ?>
 
-        <div class="col-sm-4 primeiro-colocado phone1">
+        <div class="col-sm-4 primeiro-colocado phone1"  data-aos="fade-up" >
             <div class="media-ranking-item">
                 <img class="coroas1" src="img/coroa1.png" alt="">
                 <?php
@@ -67,7 +68,7 @@
             mysqli_stmt_bind_result($stmt, $id,$nome, $ptn, $img_perfil);
             while (mysqli_stmt_fetch($stmt)) {
                 ?>
-                <div class="col-sm-4">
+                <div class="col-sm-4"  data-aos="fade-up" >
                     <div class="media-ranking-item segundo-colocado">
                         <img class="coroas img-fluid" src="img/coroa2.png" alt="">
                         <?php
@@ -115,7 +116,7 @@
             while (mysqli_stmt_fetch($stmt2)) {
                 ?>
 
-                <div class="col-sm-4 primeiro-colocado phone2">
+                <div class="col-sm-4 primeiro-colocado phone2"  data-aos="fade-up" >
                     <div class="media-ranking-item">
                         <img class="coroas1" src="img/coroa1.png" alt="">
                         <?php
@@ -160,7 +161,7 @@
             while (mysqli_stmt_fetch($stmt3)) {
                 ?>
 
-                <div class="col-sm-4 terceiro-colocado">
+                <div class="col-sm-4 terceiro-colocado"  data-aos="fade-up" >
                     <div class="media-ranking-item">
                         <img class="coroas2 img-fluid" src="img/coroa2.png" alt="">
                         <?php
@@ -211,7 +212,7 @@
             while (mysqli_stmt_fetch($stmt4)) {
                 ?>
 
-                <div class="col-md-12">
+                <div class="col-md-12"  data-aos="fade-up" >
                     <div class="flex-row">
                         <h5 class="number-ranking-position">#<?= $cont++ ?></h5>
                         <?php
@@ -246,9 +247,10 @@
     </div>
 </div>
 
+
 <!-- INFLUENCERS EM DESTAQUE -->
 
-<div class="row no-gutters" style="margin-top: 5%"><h3 class="mx-auto">
+<div  data-aos="fade-up"  class="row no-gutters" style="margin-top: 5%"><h3 class="mx-auto">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
         Em destaque</h3>
 
@@ -306,7 +308,7 @@
                             while (mysqli_stmt_fetch($stmt6)) {
                                 ?>
 
-                                <div class="mx-auto">
+                                <div class="mx-auto"  data-aos="fade-up" >
                                     <div class="carddest v-card v-sheet theme--light elevation-2 ">
                                         <div class="">
                                             <div class="v-avatar avatar_dest" style="height: 50px; width: 50px;">

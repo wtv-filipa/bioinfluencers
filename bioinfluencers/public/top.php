@@ -23,13 +23,13 @@ session_start();
 
 
 <body id="fundo_top">
-<header class="sticky-top">
+<header class="sticky-top" >
 
     <?php include "componentes/navbar.php"; ?>
 
 </header>
 
-<main class="container mb-5 p-0">
+<main class="container mb-5 p-0" >
 
     <?php include "componentes/top.php"; ?>
 

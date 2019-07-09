@@ -30,7 +30,7 @@
                 while (mysqli_stmt_fetch($stmt)) {
                     if ($active == true) {
                         ?>
-                        <div class="carousel-item active">
+                        <div class="carousel-item active"  data-aos="fade-up" >
                             <img class="img-fluid lala" src="../admin/uploads/noticias/<?= $filename ?>"
                                  alt="Los Angeles" width="1140" height="500">
                             <div class="carousel-caption">
@@ -47,7 +47,7 @@
                         $active = false;
                     } else {
                         ?>
-                        <div class="carousel-item">
+                        <div class="carousel-item"  data-aos="fade-up" >
                             <img class="img-fluid lala" src="../admin/uploads/noticias/<?= $filename ?>"
                                  alt="Los Angeles" width="1140" height="500">
                             <div class="carousel-caption">
@@ -135,12 +135,12 @@
                 while (mysqli_stmt_fetch($stmt3)) {
 
                     ?>
-                    <div class="card-content mb-3">
+                    <div class="card-content mb-3" data-aos="fade-up" >
                         <div class="card-photo1"
                              style="background-image: url('../admin/uploads/noticias/<?= $filename ?>')">
 
                         </div>
-                        <div class="card-text">
+                        <div class="card-text" >
                             <h2><?= $titulo ?></h2>
                             <p><?= $subtitulo ?></p>
                             <a href="noticia_indv.php?id_n=<?= $id_n ?>">Saber mais</a>
@@ -161,15 +161,15 @@
                 while (mysqli_stmt_fetch($stmt3)) {
 
                     ?>
-                    <div class="card-content mb-3">
+                    <div class="card-content mb-3"  data-aos="fade-up" >
                         <div class="card-photo1"
                              style="background-image: url('../admin/uploads/noticias/<?= $filename ?>')">
 
                         </div>
-                        <div class="card-text">
-                            <h2><?= $titulo ?></h2>
-                            <p><?= $subtitulo ?></p>
-                            <a href="noticia_indv.php?id_n=<?= $id_n ?>">Saber mais</a>
+                        <div class="card-text" >
+                            <h2 class=""><?= $titulo ?></h2>
+                            <p class="esconder"><?= $subtitulo ?></p>
+                            <div class="sabermais" ><a href="noticia_indv.php?id_n=<?= $id_n ?>">Saber mais</a></div>
                         </div>
                     </div>
                     <?php

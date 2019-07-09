@@ -1,3 +1,4 @@
+
 <div class="container">
     <div id="demo" class="carousel slide mb-5" data-ride="carousel">
         <ul class="carousel-indicators">
@@ -28,7 +29,7 @@
                 while (mysqli_stmt_fetch($stmt)) {
                     if ($active == true) {
                         ?>
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" >
                             <img class="img-fluid lala" src="../admin/uploads/grupos/<?= $filename ?>" alt="" width="1140" height="500">
                             <div class="carousel-caption">
                                 <div class="p-2" style="background-color: white; opacity: 0.7; border-radius: 20px">
@@ -121,7 +122,7 @@
                             mysqli_stmt_fetch($stmt)
                             ?>
 
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mx-auto p-0">
+                            <div data-aos="fade-up" class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mx-auto p-0">
                                 <a href="grupo_indv.php?id_g=<?=$id?>" style="text-decoration: none">
                                 <div class="event-card1 ">
                                     <div class="mg-image">
@@ -130,7 +131,7 @@
 
                                     <div class="description">
 
-                                        <h4 class="mt-2"><?= $nome_grupos ?></h4>
+                                        <h4 class="mt-2 font-weight-bolder"><?= $nome_grupos ?></h4>
                                         <p class="mb-0"><?= $descricao ?></p>
 
                                     </div>
@@ -214,15 +215,15 @@
                 while (mysqli_stmt_fetch($stmt3)) {
 
                     ?>
-                    <div class="card-content mb-3">
+                    <div data-aos="fade-up" class="card-content mb-3">
                         <div class="card-photo1"
                              style="background-image: url('../admin/uploads/grupos/<?= $filename ?>')">
 
                         </div>
                         <div class="card-text">
                             <h2><?= $nome_grupos ?></h2>
-                            <p><?= $descricao ?></p>
-                            <a href="grupo_indv.php?id_g=<?= $id_g ?>">Saber mais</a>
+                            <p class="esconder"><?= $descricao ?></p>
+                            <div class="sabermais"><a href="grupo_indv.php?id_g=<?= $id_g ?>">Saber mais</a></div>
                         </div>
                     </div>
                     <?php
@@ -240,15 +241,15 @@
                 while (mysqli_stmt_fetch($stmt3)) {
 
                     ?>
-                    <div class="card-content mb-3">
+                    <div data-aos="fade-up" class="card-content mb-3">
                         <div class="card-photo1"
                              style="background-image: url('../admin/uploads/grupos/<?= $filename ?>')">
 
                         </div>
                         <div class="card-text">
                             <h2><?= $nome_grupos ?></h2>
-                            <p><?= $descricao ?></p>
-                            <a href="grupo_indv.php?id_g=<?= $id_g ?>">Saber mais</a>
+                            <p class="esconder"><?= $descricao ?></p>
+                            <div class="sabermais"><a href="grupo_indv.php?id_g=<?= $id_g ?>">Saber mais</a></div>
                         </div>
                     </div>
                     <?php

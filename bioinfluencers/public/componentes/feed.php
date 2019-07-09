@@ -28,7 +28,7 @@
 
             if ($eventos_id_eventos == null) {
                 ?>
-                <div class="row no-gutters">
+                <div class="row no-gutters"  data-aos="fade-up" >
                     <div class="card test">
                         <div class="header">
                             <div class="right-side">
@@ -179,12 +179,12 @@
                 ?>
                 <div class="row no-gutters">
                     <div class="card test">
-                        <div class="event-card ml-3">
+                        <div class="event-card ml-3"  data-aos="fade-up" >
                             <div>
                                 <a href="evento_indv.php?id_e=<?= $id_e ?>">
                                     <h4 class="mt-2" style="text-decoration: none !important;"><i class="fa fa-calendar-o  mr-2" aria-hidden="true"></i>
                                         <span style="font-weight: bold;"><?= $nome ?>
-                                            |   </span><?= substr($data_inicio, 0, 10) ?>
+                                            |   <?= substr($data_inicio, 8,2 ) ?>/<?= substr($data_inicio, 5,2 ) ?>
                                     </h4>
                                 </a>
                             </div>

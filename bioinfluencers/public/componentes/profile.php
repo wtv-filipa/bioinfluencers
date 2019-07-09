@@ -323,7 +323,7 @@ WHERE id_utilizadores=?";
                         while (mysqli_stmt_fetch($stmt5)) {
                             ?>
 
-                            <div class="col-4">
+                            <div class="col-4" data-aos="fade-up">
                                 <a href="publicacao_ind.php?img=<?=$id_conteudos?>">
                                 <div class="square "><img class="img-fluid cantos_redondos"
                                                           src="../admin/uploads/publicacao/<?= $filename ?>"></div>
@@ -341,7 +341,7 @@ WHERE id_utilizadores=?";
             </div>
 
             <!----------------------------------------MEDALHAS------------------------------------------------------------->
-            <div id="medalhas" class="container tab-pane fade"><br>
+            <div id="medalhas" data-aos="fade-up" class="container tab-pane fade"><br>
 
                 <h2 style="font-weight: 500" class="text-center mt-3 mb-3">Troféus</h2>
 
@@ -460,7 +460,7 @@ WHERE id_utilizadores=?";
                     <!----------------FIM----------------->
                 </div>
 
-                <h2 style="font-weight: 500" class="text-center mt-3 mb-3">Medalhas</h2>
+                <h2 style="font-weight: 500" class="text-center mt-3 mb-3" data-aos="fade-up">Medalhas</h2>
                 <div class="row text-center">
 
                     <!-------MEDALHAS------>
@@ -809,7 +809,7 @@ WHERE id_utilizadores=?";
 
                 <h2 style="font-weight: 500" class="text-center mt-5 mb-3">Próximos eventos</h2>
 
-                <div class="events row mx-auto">
+                <div class="events row mx-auto" data-aos="fade-up" >
 
                     <?php
                     $link6 = new_db_connection();
@@ -860,7 +860,7 @@ WHERE id_utilizadores=?";
                 </div>
 
 
-                <h2 style="font-weight: 500" class="text-center mt-5 mb-3">Eventos passados</h2>
+                <h2 style="font-weight: 500" class="text-center mt-5 mb-3" >Eventos passados</h2>
 
                 <div class="events row mx-auto">
 
@@ -892,7 +892,7 @@ WHERE id_utilizadores=?";
 
                                 ?>
 
-                                <div class="event-card">
+                                <div class="event-card"  data-aos="fade-up" >
                                     <img class="cantos_redondos" src="../admin/uploads/eventos/<?=$img?>" alt=""/>
                                     <div class="description">
                                         <h4 class="mt-2"><span style="font-weight: bold;"><?= substr($data_inicio, 0, 10)?>

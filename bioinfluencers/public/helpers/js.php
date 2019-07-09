@@ -9,8 +9,8 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-
+<!--AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 
 
@@ -22,3 +22,7 @@
 <script type="text/javascript" src="javascript/calendar.js"></script>
 <script type="text/javascript" src="javascript/events.js"></script>
 
+
+<script>
+    AOS.init();
+</script>
