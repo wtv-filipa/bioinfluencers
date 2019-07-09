@@ -92,8 +92,8 @@
 
                     <div class="form-group col-12">
                         <label class="text-gray-800" for="descricao">Descrição</label>
-                        <input type="text" class="form-control" id="descricao" name="descricao"
-                               placeholder="Insira aqui a descrição do evento">
+                        <textarea type="text" class="form-control" id="descricao" name="descricao"
+                                  placeholder="Insira aqui a descrição do evento"> </textarea>
                     </div>
 
 

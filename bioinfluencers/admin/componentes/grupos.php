@@ -22,11 +22,11 @@
                 $class = "alert-success";
                 break;
             case 9:
-                $message = "Notícia atualizada com sucesso!";
+                $message = "Grupo atualizado com sucesso!";
                 $class = "alert-success";
                 break;
             case 10:
-                $message = "Ocorreu um erro ao atualizar a notícia, por favor tente novamente...";
+                $message = "Ocorreu um erro ao atualizar o grupo, por favor tente novamente...";
                 $class = "alert-warning";
                 break;
             default:
@@ -61,6 +61,10 @@
                 </div>
             </div>
         </form>
+
+        <div class="mt-3">
+        <a href="criar_grupo.php" class="mr-4 ml-md-3 my-2 my-md-0 mw-2 mt-4">Criar grupo <i class="fa fa-plus-square fa-1x" aria-hidden="true"></i></a>
+        </div>
 
         <div class="card-body">
             <div class="table-responsive">
@@ -144,21 +148,23 @@
                                 </div>
                                 <div class="modal-body">
                                     <h5>Nome do grupo:</h5>
-                                    <p><?= $nome ?></p>
+                                    <p><?= $row_temas['nome_grupos'] ?></p>
                                     <hr style="background-color: #78BE20; opacity: 0.3">
                                     <h5>Categoria:</h5>
-                                    <p><?= $nome_cat ?></p>
+                                    <p><?= $row_temas['nome_categoria'] ?></p>
                                     <hr style="background-color: #78BE20; opacity: 0.3">
                                     <h5>Descrição:</h5>
-                                    <p><?= $descricao ?></p>
+                                    <p><?= $row_temas['descricao_g'] ?></p>
                                     <hr style="background-color: #78BE20; opacity: 0.3">
                                 </div>
 
                             </div>
                         </div>
                     </div>
+
+
                     <!--MODAL PARA APAGAR-->
-                    <div class="modal fade" id="apagar<?= $id_g ?>" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="apagar<?= $row_temas['id_grupos']  ?>" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
 
@@ -170,8 +176,8 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Tem a certeza que quer apagar o grupo <?= $nome ?>?</p>
-                                    <a href="scripts/delete_grupo.php?id_f=<?= $id_g ?>"><input type="submit"
+                                    <p>Tem a certeza que quer apagar o grupo <?= $row_temas['nome_grupos'] ?>?</p>
+                                    <a href="scripts/delete_grupo.php?id_f=<?=$row_temas['id_grupos'] ?>"><input type="submit"
                                                                                                 value="Eliminar"
                                                                                                 class="buttonCustomise">
                                     </a>

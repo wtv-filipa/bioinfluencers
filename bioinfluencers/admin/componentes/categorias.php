@@ -56,7 +56,7 @@
     <div class="card shadow mb-4">
 
         <!-- Topbar Search -->
-        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search mb-4"
               method="get" action="">
             <div class="input-group mt-3">
                 <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -69,7 +69,9 @@
             </div>
         </form>
 
-        <a href="criar_categorias.php" class="mr-4 ml-md-3 my-2 my-md-0 mw-2">Criar categoria <i class="fa fa-plus-square fa-1x" aria-hidden="true"></i></a>
+        <div class="mt-3">
+        <a href="criar_categorias.php" class="mr-4 ml-md-3 my-2 my-md-0 mw-2 mt-4">Criar categoria <i class="fa fa-plus-square fa-1x" aria-hidden="true"></i></a>
+        </div>
 
         <div class="card-body">
             <div class="table-responsive">

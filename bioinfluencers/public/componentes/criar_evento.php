@@ -114,7 +114,7 @@
             </div>
 
             <div class="form-group text-left mt-4">
-                <label for="cat">Tema notícia</label>
+                <label for="cat">Tema do evento</label>
                 <select class="form-control" id="cat" name="tema_noticia">
                     <?php
                     $stmt = mysqli_stmt_init($link);
@@ -159,7 +159,7 @@
                     <?php
                     $stmt = mysqli_stmt_init($link);
 
-                    $query = "SELECT id_grupos, nome_grupos FROM grupos";
+                    $query = "SELECT id_grupos, nome_grupos FROM grupos WHERE nome_grupos LIKE 'Evento%'";
 
                     if (mysqli_stmt_prepare($stmt, $query)) {
 

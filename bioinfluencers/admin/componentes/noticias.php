@@ -62,7 +62,9 @@
             </div>
         </form>
 
+        <div class="mt-3">
         <a href="criar_noticia.php" class="mr-4 ml-md-3 my-2 my-md-0 mw-2">Criar notícia <i class="fa fa-plus-square fa-1x" aria-hidden="true"></i></a>
+        </div>
 
         <div class="card-body">
             <div class="table-responsive">

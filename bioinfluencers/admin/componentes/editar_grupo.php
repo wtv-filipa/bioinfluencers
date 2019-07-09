@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET["id"])){
-    $id_forum= $_GET["id"];
+    $id_grupo= $_GET["id"];
 
     // We need the function!
     require_once("connections/connection.php");
@@ -11,15 +11,15 @@ if (isset($_GET["id"])){
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT id_foruns, nome_forum, descricao, categorias_id_categorias
-                                                  FROM foruns  WHERE id_foruns=?";
+    $query = "SELECT id_grupos, nome_grupos, descricao_g, categorias_id_categorias
+                                                  FROM grupos  WHERE id_grupos=?";
 
 
     if (mysqli_stmt_prepare($stmt, $query)) {
 
-        mysqli_stmt_bind_param($stmt, 'i', $id_forum);
+        mysqli_stmt_bind_param($stmt, 'i', $id_grupo);
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $id_forum, $nome_forum, $descricao, $id_cat);
+        mysqli_stmt_bind_result($stmt, $id_forum, $nome_forum, $descricao, $ref_categorias);
         while (mysqli_stmt_fetch($stmt)) {
                                         ?>
             <div class="container-fluid">

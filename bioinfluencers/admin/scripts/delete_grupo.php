@@ -11,8 +11,8 @@ if (isset($_GET["id_f"])) {
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
 
-    $query = "DELETE FROM foruns
-              WHERE id_foruns = ?";
+    $query = "DELETE FROM grupos
+              WHERE id_grupos = ?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
 

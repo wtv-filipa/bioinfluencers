@@ -16,9 +16,9 @@ if (isset($_GET["id"]) && isset($_POST["nome"]) && isset($_POST["categoria"]) &&
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
 
-    $query = "UPDATE foruns
-              SET nome_forum = ?, descricao = ?, categorias_id_categorias = ?
-              WHERE id_foruns = ?";
+    $query = "UPDATE grupos
+              SET nome_grupos = ?, descricao_g = ?, categorias_id_categorias = ?
+              WHERE id_grupos = ?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
 
