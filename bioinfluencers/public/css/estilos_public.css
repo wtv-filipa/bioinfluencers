@@ -1584,8 +1584,6 @@ div.sticky {
 }
 
 
-
-
 .personalizar{
     border: 10px solid #f2f2f2;
     border-radius: 10px;
@@ -1681,8 +1679,8 @@ p{
     font-size: 15px;
 }
 .segundo-colocado, .terceiro-colocado {
-    margin-top:55px
-}
+     margin-top:55px
+ }
 .linha-ultimos .col-md-12 {
     padding: 20px;
     transition: all .3s ease-in;
@@ -1698,34 +1696,17 @@ p{
     margin-bottom: 40px
 }
 
-@media (max-width: 600px) {
-
-
-    .top_phone div {
-        display:block;
-    }
-    .box-ranking div {
-        display: none;
-    }
-
-}
-
-@media (min-width: 599px) {
-
-    .top_phone div{
-        display: none;
-    }
-
-    .box-ranking div {
-        display: block ;
-
-    }
-}
-
-
 .coroas1 {
     position: absolute;
-    top: -23%;
+    top: -21%;
+    left:39%;
+    width: 50px;
+
+}
+
+.coroas2 {
+    position: absolute;
+    top: -30%;
     left:40%;
     width: 50px;
 
@@ -1745,15 +1726,74 @@ background-repeat: repeat-x;
 width: 100%;
 }
 
-
-
 @media (max-width: 599px) {
+
+    .coroas1 {
+        position: absolute;
+        top: -21%;
+        left:43%;
+        width: 50px;
+
+    }
+
+    .coroas2 {
+        position: absolute;
+        top: -30%;
+        left:43%;
+        width: 50px;
+
+    }
+
+    .coroas {
+        position: absolute;
+        top: -30%;
+        left:43%;
+        width: 50px;
+
+    }
+
+    .primeiro-colocado {
+      margin-top: 18%;
+    }
+
+    .phone1 {
+        margin-top: 18%;
+        display:block;
+        margin-bottom: 20%;
+    }
+    .phone2 {
+        margin-top: 18%;
+        display:none;
+    }
+
+
+    .title-ranking {
+        margin-top: 5%;
+        margin-bottom:0;
+    }
+
+    .segundo-colocado {
+        margin-top:0px;
+    }
+
+    .comments {
+        width: 255px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
 }
 
 
 @media (min-width: 600px) {
+    .phone1 {
+        margin-top: 18%;
+        display:none;
+    }
+    .phone2 {
+        display:block;
 
+    }
 
 }
 /*INFLUENCERS EM DESTAQUE*/

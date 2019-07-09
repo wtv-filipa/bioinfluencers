@@ -10,7 +10,7 @@ session_start();
     <!-- metadados -->
     <?php include "helpers/meta.php"; ?>
 
-    <title>Eventos</title>
+    <title>TOP</title>
 
     <!-- Custom fonts for this template-->
     <?php include "helpers/fonts.php"; ?>
