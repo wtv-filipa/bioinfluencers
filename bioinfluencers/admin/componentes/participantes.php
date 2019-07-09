@@ -29,33 +29,38 @@ if (isset($_GET["id_e"])) {
                 <p class="mb-4"><?= $descricao ?></p>
             </div>
 
-            <div class="col-4">
+
                 <?php
                 $link5 = new_db_connection();
                 $link6 = new_db_connection();
-                $link7 = new_db_connection();
 
                 $stmt5 = mysqli_stmt_init($link5);
                 $stmt6 = mysqli_stmt_init($link6);
-                $stmt7 = mysqli_stmt_init($link7);
 
                 $query5 = "SELECT COUNT(utilizadores_interessados) 
                           FROM rsvp 
-                          WHERE status = 'vou' AND eventos_interesse = ?";
+                          WHERE status = 'vai' AND eventos_interesse = ?";
 
                 $query6 = "SELECT COUNT(utilizadores_interessados) FROM rsvp WHERE status = 'interessado' AND eventos_interesse = ?";
+                ?>
 
-                $query7 = "SELECT COUNT(utilizadores_interessados) FROM rsvp WHERE status = 'não vou' AND eventos_interesse = ?";
+                <div class="row text-center">
 
+                <?php
                 if (mysqli_stmt_prepare($stmt5, $query5)) {
                     mysqli_stmt_bind_param($stmt5, 'i', $id_evento);
                     mysqli_stmt_execute($stmt5);
                     mysqli_stmt_bind_result($stmt5, $status5);
 
                     while (mysqli_stmt_fetch($stmt5)) {
-                        echo "<p>Nº de pessoas que vão: $status5</p>";
+                        echo "<div class=\"card col-6 mb-5\">
+ <div class=\"card-body\">
+  <b> $status5 </b>pessoas responderam que iam a este evento.
+  </div>
+</div>";
 
                     }
+                }
 
                     if (mysqli_stmt_prepare($stmt6, $query6)) {
                         mysqli_stmt_bind_param($stmt6, 'i', $id_evento);
@@ -63,26 +68,20 @@ if (isset($_GET["id_e"])) {
                         mysqli_stmt_bind_result($stmt6, $status6);
 
                         while (mysqli_stmt_fetch($stmt6)) {
-                            echo "<p>Nº de pessoas interessadas: $status6</p>";
-                        }
-
-
-                        if (mysqli_stmt_prepare($stmt7, $query7)) {
-                            mysqli_stmt_bind_param($stmt7, 'i', $id_evento);
-                            mysqli_stmt_execute($stmt7);
-                            mysqli_stmt_bind_result($stmt7, $status7);
-
-                            while (mysqli_stmt_fetch($stmt7)) {
-                                echo "<p>Nº de pessoas que não vão: $status7 </p>";
-                            }
+                            echo "<div class=\"card col-6 mb-5\">
+ <div class=\"card-body\">
+   <b> $status6 </b>têm interesse neste evento.
+  </div>
+</div>";
 
                         }
+
+
                     }
-                }
+
                 ?>
 
-
-            </div>
+                </div>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -139,7 +138,7 @@ if (isset($_GET["id_e"])) {
                                 mysqli_stmt_execute($stmt3);
                                 mysqli_stmt_bind_result($stmt3, $id_evento);
                                 ?>
-                                <a href="scripts/confirmacao_evento.php?confirma=<?=$id_evento?>&u=<?=$id_u?>">
+                            <a href="scripts/confirmacao_evento.php?confirma=<?= $id_evento ?>&u=<?= $id_u ?>">
                                 <?php
                                 if (!mysqli_stmt_fetch($stmt3)) {
                                     //echo "não fui confirmado";
@@ -149,7 +148,7 @@ if (isset($_GET["id_e"])) {
                                     <?php
                                 } else {
                                     //echo "fui confirmado";
-                                    echo "<a href=\"scripts/confirmacao_evento.php?cancela=$id_evento&u=$id_u\"> <i class='fas fa-times'></i></a>";
+                                    echo "<a href=\"scripts/confirmacao_evento.php?cancela=$id_evento&u=$id_u\"> <i style='color: red' class='fas fa-times'></i></a>";
                                 }
 
                             }

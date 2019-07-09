@@ -37,242 +37,227 @@
                     <?php
                     require_once("connections/connection.php");
 
-                    if (isset($_GET["p"])) {
-
-                        $pesquisar = "%" . $_GET["p"] . "%";
-                    } else {
-
-                        $pesquisar = "%";
-                    }
-
                     $link = new_db_connection();
                     $stmt = mysqli_stmt_init($link);
-                    $query = "SELECT id_utilizadores, nome_u, nickname, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, active, nome_tipo
-                              FROM utilizadores
-                               INNER JOIN tipos_utilizador
-                              ON utilizadores.tipos_id_tipos = tipos_utilizador.id_tipos
-                              WHERE nickname LIKE ?";
 
-                    if (isset($_GET["sort"])) {
-                        if ($_GET["sort"] == "n") {
-                            $ordem_listagem = "nickname";
-                        } else {
-                            if ($_GET["sort"] == "e") {
-                                $ordem_listagem = "email";
-                            } /*else {
-                                if ($_GET["sort"] == "p") {
-                                    $ordem_listagem = "pontos";
-                                } else {
-                                    if ($_GET["sort"] == "t") {
-                                        $ordem_listagem = "tipo";
-                                    } else {
-                                        $ordem_listagem = "username";
-                                    }
-                                }
-                            }*/
-                        }
+                    $pagina_atual = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_NUMBER_INT);
 
-                        $query .= " ORDER BY " . $ordem_listagem . " ASC ";
-                    }
+                    $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+
+                    $qtn_result_pg = 5;
+
+                    $inicio = ($qtn_result_pg * $pagina) - $qtn_result_pg;
+
+                    $result_temas = "SELECT id_utilizadores, nome_u, nickname, password, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, img_perfil, active, id_tipos, nome_tipo
+                                    FROM utilizadores 
+                                    INNER JOIN tipos_utilizador
+                                    ON utilizadores.tipos_id_tipos = tipos_utilizador.id_tipos
+                                    ORDER BY id_utilizadores DESC
+                                    LIMIT $inicio, $qtn_result_pg";
 
 
-                    if (mysqli_stmt_prepare($stmt, $query)) {
-                    mysqli_stmt_bind_param($stmt, 's', $pesquisar);
+                    $resultado_temas = mysqli_query($link, $result_temas);
+
+                    //Prepared Statements
+                    if (mysqli_stmt_prepare($stmt, $result_temas)) {
 
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $id, $nome_u, $nickname, $email, $data_nasc, $descricao_u, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $active, $nome_tipo);
+                    mysqli_stmt_bind_result($stmt, $id_utilizadores, $nome_u, $nickname, $password, $email, $data_nascimento, $descricao_u, $pontos, $data_criacao, $tipos_id_tipos, $codigo_utilizador, $img_perfil, $active, $id_tipos, $nome_tipo);
 
-                    while (mysqli_stmt_fetch($stmt)) {
+                    while ($row_temas = mysqli_fetch_assoc($resultado_temas)) {
 
-                        ?>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <?php
-                                if ($active == 0) {
-                                    echo '<i class="fas fa-lock mr-1" style="color: red"></i>';
-                                } echo $nickname
-                                ?>
-                            </td>
-                            <td><?= $email ?></td>
-                            <td>pontos</td>
-                            <td><?= $nome_tipo ?></td>
-                            <td>
-                                <!-- Button trigger modal -->
-
-                                <a data-toggle="modal" data-target="#info<?=$id?>">
-                                    <i class="fas fa-info-circle"></i>
-                                </a>
-                                <?php
-                                if ($active == 0 ) {
-                                    echo "<a href='' data-toggle=\"modal\" data-target=\"#bloquear_ativar_utilizador$id\">
-                                        <i class=\"fas fa-lock-open\"></i>
-                                    </a>";
-
-                                } else {
-                                    echo "<a data-toggle=\"modal\" data-target=\"#bloquear_ativar_utilizador$id\">
-                                        <i style='color:red' class=\"fas fa-lock\"></i>
-                                    </a>";
-
-                                }
-
-                                ?>
-
-                            </td>
-
-                        </tr>
-                        </tbody>
-                        <!-- Modal Info -->
-                        <div class="modal fade" id="info<?=$id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <?php
-
-                                $link2 = new_db_connection();
-                                $stmt2 = mysqli_stmt_init($link2);
-
-                                $query2 = "SELECT id_utilizadores, nome_u, nickname, email, data_nascimento, descricao_u, pontos, data_criacao, tipos_id_tipos, codigo_utilizador, nome_tipo
-                                            FROM utilizadores";
-
-                                if (mysqli_stmt_prepare($stmt2, $query2)) {
-
-                                /* execute the prepared statement */
-                                mysqli_stmt_execute($stmt2);
-                                /* bind result variables */
-                                mysqli_stmt_bind_result($stmt2, $id, $nome_u, $nickname, $email, $data_nasc, $descricao_u, $pontos, $data_criacao, $tipo_id_tipo, $codigo_utilizador, $nome_tipo );
-
-                                /* resultados da store */
-                                mysqli_stmt_store_result($stmt2);
-                                while (mysqli_stmt_fetch($stmt2)) {
-                                echo ' ';
-                                }
-                                }
-                                ?>
-                                <div class="modal-content">
-                                    <div class="modal-header" style="background-color: #78BE20; color:white">
-                                        <h5 class="modal-title" id="exampleModalLabel">Mais info</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h5>Nome:</h5>
-                                        <p><?=$nome_u?></p>
-                                            <hr style="background-color: #78BE20; opacity: 0.3">
-                                        <h5>Nickname</h5>
-                                        <p><?=$nickname?></p>
-                                            <hr style="background-color: #78BE20; opacity: 0.3">
-                                        <h5>Email:</h5>
-                                        <p><?=$email?></p>
-                                            <hr style="background-color: #78BE20; opacity: 0.3">
-                                        <h5>Data de Nascimento:</h5>
-                                        <p><?=$data_nasc?></p>
-                                            <hr style="background-color: #78BE20; opacity: 0.3">
-                                        <h5>Descrição:</h5>
-                                        <p><?=$descricao_u?></p>
-                                            <hr style="background-color: #78BE20; opacity: 0.3">
-                                        <h5>Pontos:</h5>
-                                        <p><?=$pontos?></p>
-                                            <hr style="background-color: #78BE20; opacity: 0.3">
-                                        <h5>Código:</h5>
-                                        <p><?=$codigo_utilizador?></p>
-                                            <hr style="background-color: #78BE20; opacity: 0.3">
-                                        <h5>Tipo:</h5>
-                                        <p><?=$nome_tipo?></p>
-                                            <hr style="background-color: #78BE20; opacity: 0.3">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal Info -->
-                        <div class="modal fade" id="bloquear_ativar_utilizador<?=$id?>" tabindex="-1" role="dialog" aria-labelledby="bloquear_utilizador" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <?php
-
-                                $link3 = new_db_connection();
-                                $stmt3 = mysqli_stmt_init($link3);
-
-                                $query3 = "SELECT id_utilizadores, active,
-                                            FROM utilizadores";
-
-                                if (mysqli_stmt_prepare($stmt3, $query3)) {
-
-                                    /* execute the prepared statement */
-                                    mysqli_stmt_execute($stmt3);
-                                    /* bind result variables */
-                                    mysqli_stmt_bind_result($stmt3, $id, $active);
-
-                                    /* resultados da store */
-                                    mysqli_stmt_store_result($stmt3);
-                                    while (mysqli_stmt_fetch($stmt3)) {
-                                        echo ' ';
-                                    }
-                                }
-                                ?>
-                                <div class="modal-content">
-                                    <?php
-                                    if ($active == 0 ){
-                                        echo "<div class=\"modal-header\" style=\"background-color: #5a5c69; color:white\">
-                                        <h5 class=\"modal-title\" id=\"bloquear_utilizador\">Alerta</h5>
-                                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
-                                            <span aria-hidden=\"true\">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class=\"modal-body\">
-                                        <h5>Tem a certeza que deseja ativar este utilizador?</h5>
-                                        <a class='branco' href=\"scripts/update_active.php?id=$id&a=$active\">
-                                            <button type=\"submit\" class=\"buttonCustomise\">Sim</a>
-                                        </button>
-                                        <button type=\"button\" class=\"buttonCustomise\" data-dismiss=\"modal\">Não</button>
-
-                                    </div>";
-
-                                    } else {
-                                        echo "<div class=\"modal-header\" style=\"background-color: #5a5c69; color:white\">
-                                        <h5 class=\"modal-title\" id =\"bloquear_utilizador\"> Alerta</h5 >
-                                        <button type = \"button\" class=\"close\" data-dismiss= \"modal\" aria-label = \"Close\" >
-                                            <span aria-hidden = \"true\">&times;</span >
-                                        </button >
-                                    </div >
-                                    <div class=\"modal-body\" >
-                                        <h5> Tem a certeza que deseja bloquear este utilizador ?</h5 >
-                                        <a class='branco'  href = \"scripts/update_active.php?id=$id&a=$active\" >
-                                            <button type = \"submit\" class=\"buttonCustomise\" >Sim</a >
-
-                                        </button >
-                                        <button type = \"button\" class=\"buttonCustomise\" data-dismiss =\"modal\">Não</button >
-
-                                    </div >";
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-            <?php
-                    }
 
                     ?>
-                    <tfoot>
+                    <tbody>
                     <tr>
-                        <th>Nickname</th>
-                        <th>Email</th>
-                        <th>Pontos</th>
-                        <th>Tipo</th>
-                        <th>Ações</th>
-                    </tr>
-                    </tfoot>
+                        <td>
+                            <?php
+                            if ($row_temas['active'] == 0) {
+                                echo '<i class="fas fa-lock mr-1" style="color: red"></i>';
+                            }
+                            echo $row_temas['nickname']
+                            ?>
+                        </td>
+                        <td><?= $row_temas['email'] ?></td>
+                        <td>pontos</td>
+                        <td><?= $row_temas['nome_tipo'] ?></td>
+                        <td>
+                            <!-- Button trigger modal -->
 
-                </table>
+                            <a data-toggle="modal" data-target="#info<?= $row_temas['id_utilizadores'] ?>">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            <?php
+                            if ($row_temas['active'] == 0) { ?>
+                                <a href='' data-toggle="modal" data-target="#bloquear_ativar_utilizador<?= $row_temas['id_utilizadores']?>">
+                                        <i class="fas fa-lock-open"></i>
+                                    </a>
+                            <?php
+                            } else {?>
+                                <a data-toggle="modal" data-target="#bloquear_ativar_utilizador<?= $row_temas['id_utilizadores']?>">
+                                        <i style='color:red' class="fas fa-lock"></i>
+                                    </a>
+                            <?php
+                            }
+
+                            ?>
+
+                        </td>
+
+                    </tr>
+                    </tbody>
+                    <!-- Modal Info -->
+                    <div class="modal fade" id="info<?= $row_temas['id_utilizadores']?>" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #78BE20; color:white">
+                                    <h5 class="modal-title" id="exampleModalLabel">Mais info</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Nome:</h5>
+                                    <p><?= $row_temas['nome_u'] ?></p>
+                                    <hr style="background-color: #78BE20; opacity: 0.3">
+                                    <h5>Nickname</h5>
+                                    <p><?= $row_temas['nickname'] ?></p>
+                                    <hr style="background-color: #78BE20; opacity: 0.3">
+                                    <h5>Email:</h5>
+                                    <p><?= $row_temas['email'] ?></p>
+                                    <hr style="background-color: #78BE20; opacity: 0.3">
+                                    <h5>Data de Nascimento:</h5>
+                                    <p><?= $row_temas['data_nascimento'] ?></p>
+                                    <hr style="background-color: #78BE20; opacity: 0.3">
+                                    <h5>Descrição:</h5>
+                                    <p><?= $row_temas['descricao_u'] ?></p>
+                                    <hr style="background-color: #78BE20; opacity: 0.3">
+                                    <h5>Pontos:</h5>
+                                    <p><?= $row_temas['pontos'] ?></p>
+                                    <hr style="background-color: #78BE20; opacity: 0.3">
+                                    <h5>Código:</h5>
+                                    <p><?= $row_temas['codigo_utilizador'] ?></p>
+                                    <hr style="background-color: #78BE20; opacity: 0.3">
+                                    <h5>Tipo:</h5>
+                                    <p><?= $row_temas['nome_tipo'] ?></p>
+                                    <hr style="background-color: #78BE20; opacity: 0.3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Info -->
+                    <div class="modal fade" id="bloquear_ativar_utilizador<?= $row_temas['id_utilizadores'] ?>"
+                         tabindex="-1" role="dialog" aria-labelledby="bloquear_utilizador" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+
+                            <div class="modal-content">
+                                <?php
+                                if ($row_temas['active'] == 0){ ?>
+
+                                <div class="modal-header" style="background-color: #5a5c69; color:white">
+                                <h5 class="modal-title" id="bloquear_utilizador">Alerta</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Tem a certeza que deseja ativar este utilizador?</h5>
+                                <a class='branco'
+                                   href="scripts/update_active.php?id=<?= $row_temas['id_utilizadores'] ?>&a=<?= $row_temas['active'] ?>">
+                                    <button type="submit" class="buttonCustomise">Sim</button> </a>
+
+
+                                <button type="button" class="buttonCustomise" data-dismiss="modal">Não</button>
+
+                            </div>
+
+                            <?php
+                            } else { ?>
+
+                            <div class="modal-header" style="background-color: #5a5c69; color:white">
+                            <h5 class="modal-title" id="bloquear_utilizador"> Alerta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h5> Tem a certeza que deseja bloquear este utilizador ?</h5>
+                            <a class='branco'
+                               href="scripts/update_active.php?id=<?= $row_temas['id_utilizadores'] ?>&a=<?= $row_temas['active'] ?>">
+                                <button type="submit" class="buttonCustomise">Sim</button ></a>
+
+
+
+                            <button type="button" class="buttonCustomise" data-dismiss="modal">Não</button>
+
+                        </div>
+                        <?php
+                        }
+                        }
+                        ?>
+                    </div>
             </div>
         </div>
+        <tfoot>
+        <?php
+        }
+        $result_pg = "SELECT COUNT(id_utilizadores) AS num_result FROM utilizadores";
+
+        $link2 = new_db_connection();
+
+        $resultado_pg = mysqli_query($link2, $result_pg);
+
+        $row_pg = mysqli_fetch_assoc($resultado_pg);
+
+        $quantidade_pg = ceil($row_pg['num_result'] / $qtn_result_pg);
+
+        $max_links = 5;
+        ?>
+        <tr>
+            <th>Nickname</th>
+            <th>Email</th>
+            <th>Pontos</th>
+            <th>Tipo</th>
+            <th>Ações</th>
+        </tr>
+        </tfoot>
+
+        </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <?php
+
+                    echo "<li class='page-item'><a class='page-link' href='administradores.php?p=1'>Primeira</a></li>";
+
+                    for ($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++) {
+
+                        if ($pag_ant >= 1) {
+                            echo "<li class='page-item'><a class='page-link' href='administradores.php?p=$pag_ant'>$pag_ant</a>";
+                        }
+                    }
+
+                    echo "<li class='page-item'><a style='background-color: lightgrey;'  class='page-link' href='administradores.php?p=$pagina'>$pagina</a>";
+
+                    for ($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++) {
+
+                        if ($pag_dep <= $quantidade_pg) {
+
+                            echo "<li class='page-item'><a class='page-link' href='administradores.php?p=$pag_dep'>$pag_dep</a>";
+                        }
+                    }
+
+                    echo "<li class='page-item'><a class='page-link' href='administradores.php?p=$quantidade_pg'>Última</a>";
+                    ?>
+            </ul>
+        </nav>
+
     </div>
 </div>
-<?php
-/* close statement */
-mysqli_stmt_close($stmt);
+</div>
+</div>
 
-/* close connection */
-mysqli_close($link);
-}
-?>
-<!-- /.container-fluid -->
