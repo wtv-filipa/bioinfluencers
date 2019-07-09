@@ -78,8 +78,8 @@
                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th><a href="categorias.php?sort=n">Nome</a></th>
-                        <th><a href="categorias.php?sort=d">Data de criação</a></th>
+                        <th>Nome</th>
+                        <th>Data de criação</th>
                         <th>Ação</th>
 
 

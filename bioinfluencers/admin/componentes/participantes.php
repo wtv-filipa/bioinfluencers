@@ -24,27 +24,35 @@ if (isset($_GET["id_e"])) {
             ?>
 
             <div class="container-fluid">
+
+            <div>
+                <a style="text-decoration: none" href="eventos.php">
+
+                    <h5>&#8592; voltar</h5>
+                </a>
+            </div>
+
             <div class="col-8">
                 <h1 class="h3 mb-2 text-gray-800">Evento: <?= $nome_e ?></h1>
                 <p class="mb-4"><?= $descricao ?></p>
             </div>
 
 
-                <?php
-                $link5 = new_db_connection();
-                $link6 = new_db_connection();
+            <?php
+            $link5 = new_db_connection();
+            $link6 = new_db_connection();
 
-                $stmt5 = mysqli_stmt_init($link5);
-                $stmt6 = mysqli_stmt_init($link6);
+            $stmt5 = mysqli_stmt_init($link5);
+            $stmt6 = mysqli_stmt_init($link6);
 
-                $query5 = "SELECT COUNT(utilizadores_interessados) 
+            $query5 = "SELECT COUNT(utilizadores_interessados) 
                           FROM rsvp 
                           WHERE status = 'vai' AND eventos_interesse = ?";
 
-                $query6 = "SELECT COUNT(utilizadores_interessados) FROM rsvp WHERE status = 'interessado' AND eventos_interesse = ?";
-                ?>
+            $query6 = "SELECT COUNT(utilizadores_interessados) FROM rsvp WHERE status = 'interessado' AND eventos_interesse = ?";
+            ?>
 
-                <div class="row text-center">
+            <div class="row text-center">
 
                 <?php
                 if (mysqli_stmt_prepare($stmt5, $query5)) {
@@ -62,26 +70,26 @@ if (isset($_GET["id_e"])) {
                     }
                 }
 
-                    if (mysqli_stmt_prepare($stmt6, $query6)) {
-                        mysqli_stmt_bind_param($stmt6, 'i', $id_evento);
-                        mysqli_stmt_execute($stmt6);
-                        mysqli_stmt_bind_result($stmt6, $status6);
+                if (mysqli_stmt_prepare($stmt6, $query6)) {
+                    mysqli_stmt_bind_param($stmt6, 'i', $id_evento);
+                    mysqli_stmt_execute($stmt6);
+                    mysqli_stmt_bind_result($stmt6, $status6);
 
-                        while (mysqli_stmt_fetch($stmt6)) {
-                            echo "<div class=\"card col-6 mb-5\">
+                    while (mysqli_stmt_fetch($stmt6)) {
+                        echo "<div class=\"card col-6 mb-5\">
  <div class=\"card-body\">
    <b> $status6 </b>têm interesse neste evento.
   </div>
 </div>";
 
-                        }
-
-
                     }
+
+
+                }
 
                 ?>
 
-                </div>
+            </div>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -108,14 +116,25 @@ if (isset($_GET["id_e"])) {
             /* create a prepared statement */
             $stmt2 = mysqli_stmt_init($link2);
 
+            $pagina_atual = filter_input(INPUT_GET,'p', FILTER_SANITIZE_NUMBER_INT);
+
+            $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+
+            $qtn_result_pg = 5;
+
+            $inicio = ($qtn_result_pg * $pagina) - $qtn_result_pg;
+
             $query2 = "SELECT id_eventos, nome, descricao, id_utilizadores, nome_u, eventos_interesse, utilizadores_interessados, status
               FROM eventos
               INNER JOIN rsvp
               ON eventos.id_eventos = rsvp.eventos_interesse
               INNER JOIN utilizadores 
               ON rsvp.utilizadores_interessados = utilizadores.id_utilizadores
-              WHERE id_eventos LIKE ?";
+              WHERE id_eventos LIKE ?
+              LIMIT $inicio, $qtn_result_pg";
 
+
+            $resultado_temas = mysqli_query($link, $query2);
 
             if (mysqli_stmt_prepare($stmt2, $query2)) {
 
@@ -164,6 +183,25 @@ if (isset($_GET["id_e"])) {
 
                 <tfoot>
                 <tr>
+
+                    <?php
+
+                    $id_evento = $_GET["id_e"];
+
+                    $result_pg = "SELECT COUNT(eventos_interesse) AS num_result FROM rsvp";
+                    $link7 = new_db_connection();
+
+                    $resultado_pg = mysqli_query($link7, $result_pg);
+
+                    $row_pg = mysqli_fetch_assoc($resultado_pg);
+
+                    $quantidade_pg = ceil($row_pg['num_result'] / $qtn_result_pg);
+
+                    $max_links = 5;
+
+
+                    ?>
+
                     <th>Nome</th>
                     <th>Status</th>
                     <th>Presenças</th>
@@ -171,6 +209,37 @@ if (isset($_GET["id_e"])) {
                 </tfoot>
 
                 </table>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <?php
+
+
+                            echo "<li class='page-item'><a class='page-link' href='participantes.php?id_e=$id_evento&p=1'>Primeira</a></li>";
+
+                            for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+
+                                if($pag_ant >= 1){
+                                    echo "<li class='page-item'><a class='page-link' href='participantes.php?id_e=$id_evento&p=$pag_ant'>$pag_ant</a>";
+                                }
+                            }
+
+                            echo "<li class='page-item'><a class='page-link' style='background-color: lightgrey;' href='participantes.php?id_e=$id_evento&p=$pagina'>$pagina</a>";
+
+                            for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+
+                                if($pag_dep < $quantidade_pg){
+
+                                    echo "<li class='page-item'><a class='page-link' href='participantes.php?id_e=$id_evento&p=$pag_dep'>$pag_dep</a>";
+                                }
+                            }
+
+                            echo "<li class='page-item'><a class='page-link' href='participantes.php?id_e=$id_evento&p=$quantidade_pg'>Última</a>";
+                            ?>
+                    </ul>
+                </nav>
+
                 </div>
                 </div>
                 </div>

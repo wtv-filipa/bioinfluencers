@@ -71,8 +71,8 @@
                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th><a href="noticias.php?sort=t">Título</a></th>
-                        <th><a href="noticias.php?sort=s">Subtitulo</a></th>
+                        <th>Título</th>
+                        <th>Subtitulo</th>
                         <th>Ações</th>
 
                     </tr>

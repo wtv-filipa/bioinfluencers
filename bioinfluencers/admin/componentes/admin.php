@@ -56,10 +56,10 @@
                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th><a href="administradores.php?sort=n">Nickname</a></th>
-                        <th><a href="administradores.php?sort=e">Email</a></th>
-                        <th><!--<a href="administradores.php?sort=p"-->Pontos</th>
-                        <th><!--<a href="administradores.php?sort=t"-->Tipo</th>
+                        <th>Nickname</th>
+                        <th>Email</th>
+                        <th>Pontos</th>
+                        <th>Tipo</th>
                         <th>Ações</th>
                     </tr>
                     </thead>

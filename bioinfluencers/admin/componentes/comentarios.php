@@ -27,8 +27,16 @@ if (isset($_GET["id_g"])) {
             <div class="container-fluid">
 
             <!-- Page Heading -->
+            <div>
+                <a style="text-decoration: none" href="grupos.php">
+
+                    <h5>&#8592; voltar</h5>
+                </a>
+            </div>
+
             <h1 class="h3 mb-2 text-gray-800">Grupo: <?= $nome_g ?></h1>
             <p class="mb-4">Descrição: <?= $descricao ?> </p>
+
             <?php
         }
     }
@@ -86,9 +94,22 @@ if (isset($_GET["id_g"])) {
                     /* create a prepared statement */
                     $stmt2 = mysqli_stmt_init($link2);
 
+                    $pagina_atual = filter_input(INPUT_GET,'p', FILTER_SANITIZE_NUMBER_INT);
+
+                    $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+
+                    $qtn_result_pg = 5;
+
+                    $inicio = ($qtn_result_pg * $pagina) - $qtn_result_pg;
+
                     $query2 = "SELECT nome_u, nickname, id_grupocomentarios, titulo_comentarios, mensagem, data_hora
-                              FROM utilizadores INNER JOIN grupo_comentarios ON utilizadores.id_utilizadores= grupo_comentarios.utilizadores_id_utilizadores 
-                              WHERE grupos_id_grupos=?";
+                              FROM utilizadores 
+                              INNER JOIN grupo_comentarios 
+                              ON utilizadores.id_utilizadores= grupo_comentarios.utilizadores_id_utilizadores 
+                              WHERE grupos_id_grupos=?
+                              LIMIT $inicio, $qtn_result_pg";
+
+                    $resultado_temas = mysqli_query($link2, $query2);
 
 
                     if (mysqli_stmt_prepare($stmt2, $query2)) {
@@ -174,6 +195,23 @@ if (isset($_GET["id_g"])) {
 
                     <tfoot>
                     <tr>
+
+                        <?php
+
+                        $result_pg = "SELECT COUNT(id_eventos) AS num_result FROM eventos";
+                        $link2 = new_db_connection();
+
+                        $resultado_pg = mysqli_query($link2, $result_pg);
+
+                        $row_pg = mysqli_fetch_assoc($resultado_pg);
+
+                        $quantidade_pg = ceil($row_pg['num_result'] / $qtn_result_pg);
+
+                        $max_links = 5;
+
+                        $id_g = $_GET["id_g"];
+                        ?>
+
                         <th>Autor</th>
                         <th>Título</th>
                         <th>Comentário</th>
@@ -183,6 +221,35 @@ if (isset($_GET["id_g"])) {
                     </tfoot>
 
                 </table>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <?php
+
+                            echo "<li class='page-item'><a class='page-link' href='comentarios.php?id_g=$id_g&p=1'>Primeira</a></li>";
+
+                            for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+
+                                if($pag_ant >= 1){
+                                    echo "<li class='page-item'><a class='page-link' href='comentarios.php?id_g=$id_g&p=$pag_ant'>$pag_ant</a>";
+                                }
+                            }
+
+                            echo "<li class='page-item'><a class='page-link' style='background-color: lightgrey;' href='comentarios.php?id_g=$id_g&p=$pagina'>$pagina</a>";
+
+                            for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+
+                                if($pag_dep < $quantidade_pg){
+
+                                    echo "<li class='page-item'><a class='page-link' href='comentarios.php?id_g=$id_g&p=$pag_dep'>$pag_dep</a>";
+                                }
+                            }
+
+                            echo "<li class='page-item'><a class='page-link' href='comentarios.php?id_g=$id_g&p=$quantidade_pg'>Última</a>";
+                            ?>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

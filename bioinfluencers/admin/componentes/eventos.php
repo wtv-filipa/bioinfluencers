@@ -71,11 +71,11 @@
                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th><a href="eventos.php?sort=n">Nome</a></th>
-                        <th><a href="eventos.php?sort=l">Local</a></th>
-                        <th><a href="eventos.php?sort=d">Data</a></th>
+                        <th>Nome</th>
+                        <th>Local</th>
+                        <th>Data</th>
                         <th>Participantes</th>
-                        <th><a href="eventos.php?sort=r">Responsável</a></th>
+                        <th>Responsável</th>
                         <th>Ação</th>
 
                     </tr>

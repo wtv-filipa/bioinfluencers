@@ -71,8 +71,8 @@
                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th><a href="grupos.php?sort=n">Nome</a></th>
-                        <th><a href="noticias.php?sort=c">Categoria</a></th>
+                        <th>Nome</th>
+                        <th>Categoria</th>
                         <th>Estado</th>
                         <th>Comentários</th>
                         <th>Ação</th>
